@@ -16,7 +16,7 @@
   \********************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://hue-local-experience/./assets/scss/style.scss?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://phuquocislandtour/./assets/scss/style.scss?\n}");
 
 /***/ }
 

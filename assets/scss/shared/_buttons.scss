@@ -1,35 +1,45 @@
 .vm-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    gap: 8px;
-    padding: 0px 24px;
-    background-color: $color-primary;
+    max-width: fit-content;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background: $color-secondary;
     color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
+    height: 50px;
+    padding: 0 20px;
     transition: $transition-base;
-    border: 2px solid $color-primary;
-    font-weight: 500;
-    border-radius: 40px 40px 40px 0;
+    gap: 8px;
+    font-weight: 700;
+    text-decoration: none;
+
+    svg {
+        width: 100%;
+        height: auto;
+        max-width: 18px;
+        transform: rotate(45deg);
+        transition: $transition-base;
+
+        path {
+            stroke: #fff;
+            stroke-width: 2.5;
+        }
+    }
 
     &:hover {
-        background-color: #fff;
-        color: $color-primary;
+        transform: translateY(-1px);
+
+        svg {
+            transform: rotate(90deg);
+        }
     }
 
-    @include media-breakpoint-down(md) {
-        font-size: 14px;
-        height: 40px;
-        padding: 0 16px;
-    }
-}
+    // &:hover {
+    //     background-color: #fff;
+    //     color: $color-primary;
+    // }
 
-.vm-button-container {
-    margin-top: 32px;
-
-    @include media-breakpoint-down(md) {
-        margin-top: 24px;
-    }
+    // @include media-breakpoint-down(md) {
+    //     font-size: 14px;
+    //     height: 40px;
+    //     padding: 0 16px;
+    // }
 }

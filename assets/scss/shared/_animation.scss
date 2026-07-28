@@ -1,102 +1,39 @@
-@keyframes effectDeformY {
+@keyframes vm_scroll_animation {
     0% {
-        transform: none;
-    }
-
-    25% {
-        transform: scaleY(1.05) skewY(2deg);
-    }
-
-    50% {
-        transform: none;
-    }
-
-    75% {
-        transform: scaleY(1.05) skewY(-2deg);
+        margin-top: -120px;
     }
 
     100% {
-        transform: none;
+        margin-top: 0;
     }
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
+@keyframes vm_swing {
+    0% {
+        transform: rotate(-5deg);
     }
 
-    to {
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes vm_sld_20 {
+    0% {
         transform: translateY(0);
     }
+
+    100% {
+        transform: translateY(-20px);
+    }
 }
 
-@keyframes dashed_border_running {
+@keyframes vm_sld_30 {
     0% {
-        stroke-dashoffset: 0;
+        transform: translateY(0);
     }
 
     100% {
-        stroke-dashoffset: 200;
-    }
-}
-
-@keyframes ripple-wave {
-    0% {
-        opacity: 0.8;
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-
-    100% {
-        opacity: 0;
-        -webkit-transform: scale(2);
-        transform: scale(2);
-    }
-}
-
-
-
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translate3d(100%, 0, 0);
-    }
-
-    100% {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-
-@keyframes tours-spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes tours-pulse-dot {
-
-    0%,
-    100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    50% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(0.85);
-    }
-}
-
-@keyframes tours-pulse-text {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.6;
+        transform: translateY(30px);
     }
 }

@@ -3,14 +3,38 @@ $custom_logo_id = get_theme_mod('custom_logo');
 $logo_url = wp_get_attachment_url($custom_logo_id);
 $cta_header = get_field('cta_header', 'option');
 $socials = get_field('socials', 'option');
+$sologan = get_field('sologan_hd_top', 'option');
+$email = get_field('email', 'option');
 ?>
 
 
-<div class="header-top">
-    <div class="container">
-        <div class="header-top-wrap d-flex align-items-center justify-content-between gap-3">
-            <div class="header-top-left"> Welcome! Get the latest updates and Edukas response here. </div>
-            <div class="header-top-right">
+
+<header id="site-header" class="header-main">
+    <div class="header-main-inner">
+        <div class="header-top d-flex align-items-center justify-content-between">
+            <div class="header-top__sologan">
+                <?php if (!empty($sologan)): ?>
+                    <p class="mb-0">
+                        <?= $sologan ?>
+                    </p>
+                <?php endif; ?>
+            </div>
+
+            <div class="header-top__right d-flex align-items-center justify-content-end gap-3">
+
+                <?php if (!empty($email)): ?>
+                    <a class="header-top__email d-flex align-items-center justify-content-center"
+                        href="mailto:<?= $email ?>">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22 4 12 14 2 4"></polyline>
+                        </svg>
+                        <?= $email ?>
+                    </a>
+                <?php endif; ?>
+
+
                 <?php if (!empty($socials)): ?>
                     <div class="header-top__socials d-flex align-items-center">
                         <?php foreach ($socials as $social): ?>
@@ -24,12 +48,8 @@ $socials = get_field('socials', 'option');
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-</div>
 
-<header id="site-header" class="header-main">
-    <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="header-main-warp d-flex align-items-center justify-content-between gap-3">
             <div class="header-main__logo">
                 <a class="d-flex " href="<?php echo home_url(); ?>" aria-label="<?php echo get_bloginfo('name'); ?>">
                     <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
@@ -44,7 +64,7 @@ $socials = get_field('socials', 'option');
 
             <div class=" header-main__actions d-flex align-items-center justify-content-end gap-3">
                 <button class="header-main__search d-flex align-items-center justify-content-center"
-                    aria-label="<?php esc_attr_e('Open search', 'vm'); ?>" type="button">
+                    aria-label="<?php esc_attr_e('Open search', 'hle'); ?>" type="button">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 17L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -56,57 +76,12 @@ $socials = get_field('socials', 'option');
                     </svg>
                 </button>
 
-                <?php if (!empty($cta_header)): ?>
-                    <div class=" header-main__cta d-none d-md-block">
-                        <a class="vm-button" href="<?php echo $cta_header['url']; ?>">
-                            <?php echo $cta_header['title']; ?>
-                        </a>
-                    </div>
-                <?php endif; ?>
-
-                <div class="header-humberger d-block d-md-none ">
-                    <button type="button" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu"
-                        aria-expanded="false" aria-controls="mobile-menu-drawer">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+                <div class="header-top__cta ">
+                    <?php if (!empty($cta_header)): ?>
+                        <?php vm_load_button($cta_header['url'], $cta_header['title']) ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
-<div id="mobile-menu-drawer" class="mobile-menu-drawer" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="mobile-menu-drawer__overlay"></div>
-    <div class="mobile-menu-drawer__content">
-        <div class="mobile-menu-drawer__header d-flex align-items-center justify-content-end">
-            <button type="button" id="mobile-menu-close" class="mobile-menu-drawer__close"
-                aria-label="<?php esc_attr_e('Close menu', 'vm'); ?>">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-        <div class="mobile-menu-drawer__body">
-            <nav class="mobile-navigation">
-                <?php if (has_nav_menu('primary-menu')): ?>
-                    <?php wp_nav_menu(array(
-                        'theme_location' => 'primary-menu',
-                        'menu_class' => 'mobile-primary-menu',
-                        'container' => false
-                    )) ?>
-                <?php endif; ?>
-            </nav>
-            <?php if (!empty($cta_header)): ?>
-                <div class="mobile-menu-drawer__cta mt-4">
-                    <a class="vm-button w-100" href="<?php echo $cta_header['url']; ?>">
-                        <?php echo $cta_header['title']; ?>
-                    </a>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>

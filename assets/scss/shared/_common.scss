@@ -1,6 +1,8 @@
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    font-variation-settings: "GRAD" 0;
 }
 
 #wpadminbar {
@@ -11,6 +13,17 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
 }
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-variation-settings: normal;
+}
+
 
 .vm-section {
     width: 100%;
@@ -32,66 +45,4 @@ html {
             object-fit: cover;
         }
     }
-}
-
-.vm-heading {
-    color: $color-text;
-    position: relative;
-    padding-bottom: 10px;
-
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 30px;
-        height: 4px;
-        border-radius: 2px;
-        background-color: $color-primary;
-    }
-
-    &.center {
-        &::before {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    }
-}
-
-.vm-sub-heading {
-    margin: 16px 0 0 0;
-
-}
-
-.section-heading {
-    text-align: center;
-    width: 100%;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-
-    >h2,
-    >p {
-        text-align: center;
-    }
-
-    .vm-sub-heading {
-        margin: 16px 0 0 0;
-    }
-}
-
-
-.vm-letter {
-    display: inline-block;
-    opacity: 0; // ẩn mặc định
-    transform: translateX(50px);
-}
-
-.vm-word {
-    display: inline-block;
-}
-
-// Animation chỉ kích hoạt khi JS add class vm-in-view
-.vm-in-view .vm-letter {
-    animation: fadeInRight 0.5s ease forwards;
 }
