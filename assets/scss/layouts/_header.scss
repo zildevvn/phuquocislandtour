@@ -23,7 +23,7 @@
     &-inner {
         background-color: #fff;
         border-radius: 20px;
-        overflow: hidden;
+        // overflow: hidden;
     }
 
     .header-top,
@@ -97,27 +97,221 @@
         ul {
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            list-style: none;
+
+            @include media-breakpoint-up(lg) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
             li {
                 list-style-type: none;
-
-                &.current_page_item,
-                &:hover {
-                    >a {
-                        color: $color-primary;
-                    }
-                }
+                position: relative;
 
                 a {
                     text-decoration: none;
                     color: $color-text;
-                    font-size: 18px;
-                    padding: 0px 20px;
+                    font-size: 14px;
+                    padding: 12px 0;
                     cursor: pointer;
                     font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    transition: $transition-base;
+
+                    @include media-breakpoint-up(lg) {
+                        padding: 0px 12px;
+                        justify-content: flex-start;
+                        font-size: 14px;
+                    }
+
+                    @include media-breakpoint-up(xl) {
+                        font-size: 16px;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        color: $color-primary;
+                    }
+                }
+
+                &.current_page_item>a,
+                &.current-menu-item>a {
+                    color: $color-primary;
+                }
+
+                @include media-breakpoint-up(lg) {
+                    &:last-child>a {
+                        padding-right: 0;
+                    }
+
+                    &:first-child>a {
+                        padding-left: 0;
+                    }
+                }
+
+                // Sub-menu indicator
+                &.menu-item-has-children {
+                    >a::after {
+                        content: "";
+                        display: inline-block;
+                        margin-left: 8px;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 5px 4px 0 4px;
+                        border-color: currentColor transparent transparent transparent;
+                        transition: transform 0.3s ease;
+                    }
+
+                    @include media-breakpoint-up(lg) {
+                        &:hover>a::after {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    @include media-breakpoint-down(lg) {
+
+                        &.is-active>a::after,
+                        &.show>a::after,
+                        &:hover>a::after {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                // Sub-menu Styling
+                ul.sub-menu {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    // Desktop Dropdown
+                    @include media-breakpoint-up(lg) {
+                        display: flex;
+                        flex-direction: column; // Override parent's flex row
+                        position: absolute;
+                        top: calc(100% + 15px);
+                        left: 0;
+                        min-width: 260px;
+                        background-color: #ffffff;
+                        padding: 16px 0;
+                        border-radius: 12px;
+                        box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.08);
+                        border: 1px solid rgba(0, 0, 0, 0.03);
+                        opacity: 0;
+                        visibility: hidden;
+                        transform: translateY(15px);
+                        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+                        z-index: 1000;
+
+                        // Nested Dropdown Position
+                        ul.sub-menu {
+                            top: 0;
+                            left: 100%;
+                            transform: translateX(10px);
+                            margin-left: 5px; // Add slight gap
+                        }
+                    }
+
+                    // Mobile Accordion
+                    @include media-breakpoint-down(lg) {
+                        display: flex;
+                        flex-direction: column;
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.4s ease, padding 0.4s ease;
+                        padding-left: 15px;
+                        background: rgba(0, 0, 0, 0.02);
+                        border-radius: 8px;
+
+                        &.is-active,
+                        &.show,
+                        .menu-item-has-children:hover>&,
+                        .menu-item-has-children:focus-within>& {
+                            max-height: 1000px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            margin-top: 5px;
+                            margin-bottom: 10px;
+                        }
+                    }
+
+                    // Sub-menu Item
+                    li {
+                        width: 100%;
+                        display: block;
+
+                        a {
+                            padding: 10px 24px;
+                            font-size: 15px;
+                            font-weight: 500;
+                            color: $color-text;
+                            white-space: nowrap; // Prevent text wrap on desktop
+                            justify-content: flex-start; // Reset flex alignment
+                            width: 100%; // Ensure it takes full width of row
+                            display: flex; // Ensure it behaves predictably
+
+                            @include media-breakpoint-down(lg) {
+                                white-space: normal;
+                                padding: 10px 16px;
+                                justify-content: space-between;
+                            }
+
+                            @include media-breakpoint-up(lg) {
+
+                                &:hover,
+                                &:focus {
+                                    background-color: rgba($color-primary, 0.04);
+                                    color: $color-primary;
+                                    padding-left: 28px; // Smooth left shift
+                                }
+                            }
+                        }
+
+                        &.current_page_item>a,
+                        &.current-menu-item>a {
+                            color: $color-primary;
+                            background-color: rgba($color-primary, 0.03);
+
+                            @include media-breakpoint-up(lg) {
+                                padding-left: 28px;
+                            }
+                        }
+
+                        // Nested sub-menu indicator
+                        &.menu-item-has-children>a::after {
+                            @include media-breakpoint-up(lg) {
+                                border-width: 4px 0 4px 5px;
+                                border-color: transparent transparent transparent currentColor;
+                                margin-left: auto; // Push arrow to right
+                            }
+                        }
+
+                        @include media-breakpoint-up(lg) {
+                            &.menu-item-has-children:hover>a::after {
+                                transform: none; // Reset hover rotation for right arrow
+                            }
+                        }
+                    }
+                }
+
+                // Desktop Hover Activation
+                @include media-breakpoint-up(lg) {
+
+                    &:hover>ul.sub-menu,
+                    &:focus-within>ul.sub-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+
+                    ul.sub-menu li:hover>ul.sub-menu,
+                    ul.sub-menu li:focus-within>ul.sub-menu {
+                        transform: translateX(0);
+                    }
                 }
             }
         }
