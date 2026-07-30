@@ -139,3 +139,4 @@ add_filter('comment_post_redirect', function ($location, $comment) {
 	return $location;
 }, 10, 2);
 
+
