@@ -56,7 +56,7 @@ $email = get_field('email', 'option');
                 </a>
             </div>
 
-            <div class="header-main__menu d-none d-md-block">
+            <div class="header-main__menu d-none d-xl-block">
                 <?php if (has_nav_menu('primary-menu')): ?>
                     <?php wp_nav_menu(array('theme_location' => 'primary-menu', 'menu_class' => 'primary-menu')) ?>
                 <?php endif; ?>
@@ -81,7 +81,39 @@ $email = get_field('email', 'option');
                         <?php vm_load_button($cta_header['url'], $cta_header['title']) ?>
                     <?php endif; ?>
                 </div>
+
+
+                <button id="mobile-side-drawer" data-target="#offcanvas-menu" type="button"
+                    class="d-xl-none d-block" aria-expanded="false" aria-controls="offcanvas-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar icon-bar-first"></span>
+                    <span class="icon-bar icon-bar-two"></span>
+                    <span class="icon-bar icon-bar-three"></span>
+                </button>
             </div>
         </div>
     </div>
 </header>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas-overlay" aria-hidden="true" tabindex="-1"></div>
+<div id="offcanvas-menu" class="offcanvas-menu d-xl-none" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="offcanvas-menu__header d-flex align-items-center justify-content-between">
+        <div class="offcanvas-menu__logo">
+            <a class="d-flex" href="<?php echo home_url(); ?>" aria-label="<?php echo get_bloginfo('name'); ?>">
+                <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
+            </a>
+        </div>
+        <button class="offcanvas-menu__close d-flex align-items-center justify-content-center" aria-label="<?php esc_attr_e('Close menu', 'hle'); ?>" type="button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+    <div class="offcanvas-menu__body">
+        <?php if (has_nav_menu('primary-menu')): ?>
+            <?php wp_nav_menu(array('theme_location' => 'primary-menu', 'menu_class' => 'offcanvas-menu__nav')) ?>
+        <?php endif; ?>
+    </div>
+</div>
