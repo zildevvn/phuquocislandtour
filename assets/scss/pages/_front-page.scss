@@ -6,6 +6,10 @@
             position: relative;
             height: 760px;
 
+            @include media-breakpoint-down(md) {
+                height: auto;
+            }
+
             img {
                 border-style: none;
                 height: auto;
@@ -30,6 +34,11 @@
                 max-width: 1300px;
                 background-position: top center
             }
+
+            @include media-breakpoint-down(md) {
+                position: static;
+                background-position: left;
+            }
         }
 
         &-gallery {
@@ -41,6 +50,14 @@
                     -o-object-position: center;
                     object-position: center;
                     width: 100%;
+
+                    @include media-breakpoint-down(lg) {
+                        height: 560px;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        height: 330px;
+                    }
                 }
             }
         }
@@ -52,6 +69,23 @@
 
             @media (max-width: 1440px) {
                 max-width: 720px;
+            }
+
+            @include media-breakpoint-down(xl) {
+                max-width: 560px;
+                padding-left: 30px;
+                padding-top: 90px;
+            }
+
+            @include media-breakpoint-down(lg) {
+                max-width: 460px;
+                padding-left: 20px;
+                padding-top: 60px;
+            }
+
+            @include media-breakpoint-down(md) {
+                padding-bottom: 40px;
+                padding-right: 20px;
             }
 
             h1 {
@@ -92,6 +126,7 @@
 
             @include media-breakpoint-down(md) {
                 margin-top: 24px;
+                flex-wrap: wrap;
             }
         }
 

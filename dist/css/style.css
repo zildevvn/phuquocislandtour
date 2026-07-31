@@ -8092,6 +8092,11 @@ body.offcanvas-open {
   position: relative;
   height: 760px;
 }
+@media (max-width: 767.98px) {
+  .page-template-front-page .hero-section-inner {
+    height: auto;
+  }
+}
 .page-template-front-page .hero-section-inner img {
   border-style: none;
   height: auto;
@@ -8115,6 +8120,12 @@ body.offcanvas-open {
     background-position: top center;
   }
 }
+@media (max-width: 767.98px) {
+  .page-template-front-page .hero-section__bg {
+    position: static;
+    background-position: left;
+  }
+}
 .page-template-front-page .hero-section-gallery .gallery-item img {
   height: 760px;
   -o-object-fit: cover;
@@ -8122,6 +8133,16 @@ body.offcanvas-open {
   -o-object-position: center;
   object-position: center;
   width: 100%;
+}
+@media (max-width: 1023.98px) {
+  .page-template-front-page .hero-section-gallery .gallery-item img {
+    height: 560px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .hero-section-gallery .gallery-item img {
+    height: 330px;
+  }
 }
 .page-template-front-page .hero-section-content {
   padding-top: 100px;
@@ -8131,6 +8152,26 @@ body.offcanvas-open {
 @media (max-width: 1440px) {
   .page-template-front-page .hero-section-content {
     max-width: 720px;
+  }
+}
+@media (max-width: 1199.98px) {
+  .page-template-front-page .hero-section-content {
+    max-width: 560px;
+    padding-left: 30px;
+    padding-top: 90px;
+  }
+}
+@media (max-width: 1023.98px) {
+  .page-template-front-page .hero-section-content {
+    max-width: 460px;
+    padding-left: 20px;
+    padding-top: 60px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .hero-section-content {
+    padding-bottom: 40px;
+    padding-right: 20px;
   }
 }
 .page-template-front-page .hero-section-content h1, .page-template-front-page .hero-section-content .h1 {
@@ -8170,6 +8211,7 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .page-template-front-page .hero-section__contact {
     margin-top: 24px;
+    flex-wrap: wrap;
   }
 }
 .page-template-front-page .hero-section__whatsapp {
