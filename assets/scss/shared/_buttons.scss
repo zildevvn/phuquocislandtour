@@ -10,6 +10,7 @@
     gap: 8px;
     font-weight: 700;
     text-decoration: none;
+    border: none;
 
     svg {
         width: 100%;
@@ -42,4 +43,61 @@
     //     height: 40px;
     //     padding: 0 16px;
     // }
+}
+
+// Global Swiper Navigation Buttons
+.swiper-button-prev,
+.swiper-button-next {
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+    margin-top: -24px; // Center vertically perfectly based on custom height
+    
+    // Hide default Swiper font icons as we use custom SVGs
+    &::after {
+        display: none;
+    }
+    
+    svg {
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+        
+        path {
+            stroke: $color-primary;
+            transition: all 0.3s ease;
+        }
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        transform: scale(1.05);
+
+        svg path {
+            stroke: #ffffff;
+        }
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
 }

@@ -94,8 +94,101 @@ import { CountUp } from 'countup.js';
         counters.forEach(counter => observer.observe(counter));
     }
 
+    const vmIconHeading = () => {
+        const waves = document.querySelectorAll('.wave-svg');
+
+        const isElementorEdit =
+            window.elementorFrontend?.isEditMode?.() ||
+            document.body.classList.contains('elementor-editor-active');
+
+
+        if (isElementorEdit) {
+
+            waves.forEach((wave) => {
+                wave.classList.add('is-visible');
+            });
+
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    const wave = entry.target;
+
+                    setTimeout(() => {
+                        wave.classList.add('is-visible');
+                    }, 500);
+
+                    observer.unobserve(wave);
+                }
+            });
+
+        }, {
+            threshold: 0.3
+        });
+
+        waves.forEach((wave) => {
+            observer.observe(wave);
+        });
+
+    }
+
+    const hleInitDailyTourSwiper = () => {
+        const $section = $('.daily-tour-section');
+        if (!$section.length) return;
+
+        const $carousel = $section.find('.daily-tour-section__carousel');
+        if (!$carousel.length) return;
+
+        const $slides = $carousel.find('.swiper-slide');
+        if ($slides.length <= 1) return;
+
+        new Swiper($carousel[0], {
+            modules: [Navigation, Pagination, Autoplay],
+            slidesPerView: 1,
+            spaceBetween: 16,
+            loop: $slides.length > 4,
+            grabCursor: true,
+            speed: 600,
+            observer: true,
+            observeParents: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.daily-tour-section .swiper-button-next',
+                prevEl: '.daily-tour-section .swiper-button-prev',
+            },
+            pagination: {
+                el: '.daily-tour-section .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1400: {
+                    slidesPerView: 4
+                }
+            }
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
+        vmIconHeading()
+        hleInitDailyTourSwiper()
     });
 })(jQuery);

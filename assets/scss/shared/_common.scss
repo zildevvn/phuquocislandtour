@@ -12,6 +12,10 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
+
+    @include media-breakpoint-down(md) {
+        font-size: 14px;
+    }
 }
 
 
@@ -46,3 +50,77 @@ h6 {
         }
     }
 }
+
+.vm-icon-heading {
+    width: 100%;
+    margin-bottom: 12px;
+
+    svg {
+        width: 72px;
+        overflow: visible;
+        transform: rotateX(180deg);
+
+        path {
+            fill: none;
+            stroke-width: 24;
+            stroke-linecap: round;
+            stroke: $color-primary;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+
+            // animation: draw 4s ease forwards;
+        }
+
+        &.is-visible {
+            path {
+                animation: vm-draw 4s ease forwards;
+            }
+        }
+    }
+}
+
+.vm-heading {
+    margin: 0;
+    text-align: center;
+
+    span {
+        color: $color-primary;
+    }
+}
+
+.vm-sub-heading {
+    margin: 16px 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.vm-rating {
+    span {
+        margin-right: 4px;
+        font-weight: 300;
+        color: $color-primary;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        max-width: 16px;
+
+        path {
+            fill: #FFAA0D;
+            stroke: #FFAA0D;
+        }
+    }
+}
+
+
+
+// .wave-svg {}
+
+// .wave-svg path {}
+
+// .wave-svg.is-visible path {}
+
+// .elementor-editor-active .wave-svg path {
+//     stroke-dashoffset: 0 !important;
+// }

@@ -1,5 +1,134 @@
 <?php
 
+function vm_icon_heading()
+{ ?>
+    <div class="vm-icon-heading d-flex align-items-center justify-content-center">
+        <svg class="wave-svg" viewBox="-60 0 820 120">
+            <path d="
+        M-75 60
+
+        Q -40 80, 0 40
+
+        C 25 0, 75 0, 100 40
+        S 175 80, 200 40
+        S 275 0, 300 40
+        S 375 80, 400 40
+        S 475 0, 500 40
+        S 575 80, 600 40
+        S 675 0, 700 40
+        S 775 80, 800 40
+
+        L775 80
+        "></path>
+        </svg>
+    </div>
+<? }
+
+function vm_rating()
+{ ?>
+    <div class="vm-rating d-flex align-items-center">
+        <span>(5)</span>
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"
+            stroke-width="1.5">
+            <path
+                d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"
+            stroke-width="1.5">
+            <path
+                d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"
+            stroke-width="1.5">
+            <path
+                d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"
+            stroke-width="1.5">
+            <path
+                d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+
+
+        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"
+            stroke-width="1.5">
+            <path
+                d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z"
+                fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+    </div>
+<?php }
+
+function vm_item_daily_tour($class = '')
+{
+    $time = get_field('time_tour');
+    $price = get_field('price_tour');
+    ?>
+    <a class="tour-item <?= $class ?>" aria-label="read more <?php the_title() ?>">
+        <div class="tour-item__thumb">
+            <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>">
+        </div>
+
+        <div class="tour-item-content">
+            <h3 class="h5 mb-0">
+                <?php the_title() ?>
+            </h3>
+
+            <div class="tour-item-meta d-flex align-items-center justify-content-between">
+                <?php vm_rating() ?>
+                <?php if (!empty($time)): ?>
+                    <div class="tour-item__time d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-clock-check-icon lucide-clock-check">
+                            <path d="M12 6v6l4 2" />
+                            <path d="M22 12a10 10 0 1 0-11 9.95" />
+                            <path d="m22 16-5.5 5.5L14 19" />
+                        </svg>
+
+                        <?= $time; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+
+            <div class="tour-item-action d-flex align-items-center justify-content-between">
+                <button class="vm-button d-flex align-items-center justify-content-center"
+                    aria-label="book now <?php the_title() ?>">
+                    Book Now
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        color="#000000">
+                        <path d="M12 21L12 3M12 3L20.5 11.5M12 3L3.5 11.5" stroke="#000000" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+
+                <?php if (!empty($price)): ?>
+                    <div class="tour-item__price d-flex align-items-center">
+                        <span class="h4 mb-0"><?= $price ?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-dollar-sign-icon lucide-dollar-sign">
+                            <line x1="12" x2="12" y1="2" y2="22" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+
+        </div>
+    </a>
+<?php }
+
 function vm_post_item()
 { ?>
     <a href="<?= the_permalink(); ?>" class="post-item" aria-label="read more <?= the_title(); ?>">
@@ -13,7 +142,8 @@ function vm_post_item()
                     stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 <path d="M3 10V6C3 4.89543 3.89543 4 5 4H7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                     stroke-linejoin="round"></path>
-                <path d="M7 2V6" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M7 2V6" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
                 <path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                     stroke-linejoin="round"></path>
             </svg>
