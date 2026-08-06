@@ -1,7 +1,7 @@
 
 
 import Swiper from 'swiper';
-import { Pagination, Navigation, Autoplay, EffectFade, Keyboard } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay, EffectFade, Keyboard, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -137,50 +137,175 @@ import { CountUp } from 'countup.js';
 
     }
 
-    const hleInitDailyTourSwiper = () => {
-        const $section = $('.daily-tour-section');
+    const hleInitToursSwiper = () => {
+        const $carousels = $('.tours-carousel');
+        if (!$carousels.length) return;
+
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length <= 1) return;
+
+            new Swiper(this, {
+                modules: [Navigation, Pagination, Autoplay],
+                slidesPerView: 1,
+                spaceBetween: 16,
+                loop: $slides.length > 3,
+                grabCursor: true,
+                speed: 600,
+                observer: true,
+                observeParents: true,
+                // autoplay: {
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // },
+                autoplay: false,
+                navigation: {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                },
+                pagination: {
+                    el: $carousel.find('.swiper-pagination')[0],
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    }
+                }
+            });
+        });
+    };
+
+    const hleInitCarToursSwiper = () => {
+        const $carousels = $('.car-tours-swiper');
+        if (!$carousels.length) return;
+
+        const initOrDestroySwiper = () => {
+            const isDesktop = window.innerWidth >= 1024;
+
+            $carousels.each(function () {
+                const $carousel = $(this);
+                let swiper = $carousel.data('swiper-instance');
+
+                if (isDesktop) {
+                    if (swiper) {
+                        swiper.destroy(true, true);
+                        $carousel.removeData('swiper-instance');
+                    }
+                } else {
+                    if (!swiper) {
+                        const $slides = $carousel.find('.swiper-slide');
+
+                        swiper = new Swiper(this, {
+                            modules: [Navigation, Pagination, Autoplay],
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            loop: $slides.length > 2,
+                            grabCursor: true,
+                            speed: 600,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+                            // autoplay: false,
+                            navigation: {
+                                nextEl: $carousel.find('.swiper-button-next')[0],
+                                prevEl: $carousel.find('.swiper-button-prev')[0],
+                            }
+                        });
+                        $carousel.data('swiper-instance', swiper);
+                    }
+                }
+            });
+        };
+
+        initOrDestroySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroySwiper, 150);
+        });
+    };
+
+    const hleInitTestimonialsSwiper = () => {
+        const $section = $('.testimonials-section');
         if (!$section.length) return;
 
-        const $carousel = $section.find('.daily-tour-section__carousel');
-        if (!$carousel.length) return;
+        const $carousel = $section.find('.testimonials-carousel');
+        const $thumbs = $section.find('.testimonials-thumbs');
+        if (!$carousel.length || !$thumbs.length) return;
 
         const $slides = $carousel.find('.swiper-slide');
         if ($slides.length <= 1) return;
 
+        const thumbsSwiper = new Swiper($thumbs[0], {
+            modules: [Thumbs, Autoplay],
+            spaceBetween: 10,
+            slidesPerView: 3,
+            centeredSlides: true,
+            slideToClickedSlide: true,
+            watchSlidesProgress: true,
+            watchSlidesVisibility: true,
+            freeMode: true,
+            loop: true,
+            direction: 'horizontal',
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    direction: 'horizontal',
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    direction: 'vertical',
+                }
+            }
+        });
+
         new Swiper($carousel[0], {
-            modules: [Navigation, Pagination, Autoplay],
+            modules: [Navigation, Pagination, Autoplay, Thumbs, EffectFade],
             slidesPerView: 1,
-            spaceBetween: 16,
-            loop: $slides.length > 4,
+            spaceBetween: 24,
+            loop: true,
             grabCursor: true,
             speed: 600,
             observer: true,
             observeParents: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
             navigation: {
-                nextEl: '.daily-tour-section .swiper-button-next',
-                prevEl: '.daily-tour-section .swiper-button-prev',
+                nextEl: '.testimonials-section .swiper-button-next',
+                prevEl: '.testimonials-section .swiper-button-prev',
             },
             pagination: {
-                el: '.daily-tour-section .swiper-pagination',
+                el: '.testimonials-section .swiper-pagination',
                 clickable: true,
             },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 24,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-                1400: {
-                    slidesPerView: 4
-                }
+            thumbs: {
+                swiper: thumbsSwiper,
             }
         });
     };
@@ -189,6 +314,8 @@ import { CountUp } from 'countup.js';
         vmHeroSliders()
         vmCounters()
         vmIconHeading()
-        hleInitDailyTourSwiper()
+        hleInitToursSwiper()
+        hleInitTestimonialsSwiper()
+        hleInitCarToursSwiper()
     });
 })(jQuery);

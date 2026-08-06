@@ -13,15 +13,18 @@ $query = new WP_Query($args);
 <?php if ($query->have_posts()): ?>
     <section class="vm-section posts-section">
         <div class="container">
-            <div class="section-heading">
-                <?php if ($heading): ?>
-                    <h2 class="vm-heading center vm-heading-animation"><?php echo esc_html($heading); ?></h2>
-                <?php endif; ?>
+            <?php vm_icon_heading() ?>
 
-                <?php if ($sub_heading): ?>
-                    <p class="vm-sub-heading"><?php echo esc_html($sub_heading); ?></p>
-                <?php endif; ?>
-            </div>
+            <?php if (!empty($heading)): ?>
+                <h2 class="vm-heading">
+                    <?= $heading ?>
+                </h2>
+            <?php endif; ?>
+            <?php if (!empty($sub_heading)): ?>
+                <p class="vm-sub-heading">
+                    <?= $sub_heading ?>
+                </p>
+            <?php endif; ?>
 
             <div class="posts-section__list post-grid" data-aos="fade-up">
                 <?php while ($query->have_posts()):
@@ -32,8 +35,8 @@ $query = new WP_Query($args);
                 <?php wp_reset_postdata(); ?>
             </div>
 
-            <div class="d-flex justify-content-center vm-button-container">
-                <a href="/hue-travel-guide/" class="vm-button" aria-label="View All Posts"> View All </a>
+            <div class="posts-section__cta">
+                <?php vm_load_button('#!', 'View All', '', 'view all posts') ?>
             </div>
         </div>
     </section>

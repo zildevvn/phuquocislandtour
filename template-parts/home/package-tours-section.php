@@ -1,6 +1,6 @@
 <?php
-$heading = get_field('hd_daily_tours');
-$sub_heading = get_field('sub_hd_daily_tours');
+$heading = get_field('hd_package_tours');
+$sub_heading = get_field('sub_hd_package_tours');
 
 $args = array(
     'post_type' => 'tours',
@@ -10,14 +10,14 @@ $args = array(
         array(
             'taxonomy' => 'tour_cats',
             'field' => 'slug',
-            'terms' => 'daily-tours',
+            'terms' => 'package-tours',
         ),
     ),
 );
 $query = new WP_Query($args);
 ?>
 <?php if ($query->have_posts()): ?>
-    <section class="vm-section daily-tour-section">
+    <section class="vm-section package-tours-section">
         <div class="container">
             <?php vm_icon_heading() ?>
             <?php if (!empty($heading)): ?>
@@ -31,7 +31,7 @@ $query = new WP_Query($args);
                 </p>
             <?php endif; ?>
 
-            <div class="daily-tour-section__carousel swiper tours-carousel">
+            <div class="package-tours-section__carousel swiper tours-carousel">
                 <div class=" swiper-wrapper">
                     <?php while ($query->have_posts()):
                         $query->the_post();

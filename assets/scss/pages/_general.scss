@@ -2,14 +2,94 @@
     background: $color-primary;
     min-height: 400px;
     padding: 20px;
+}
 
-    // .vm-section__bg {
-    //     max-width: calc(100% - 40px);
-    //     max-height: calc(100% - 40px);
-    //     left: 50%;
-    //     top: 50%;
-    //     transform: translate(-50%, -50%);
-    //     border-radius: 20px;
-    //     overflow: hidden;
-    // }
+.tour-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: $border-radius ;
+    box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
+    background: #fff;
+    height: auto !important;
+    text-decoration: none;
+
+    &:hover {
+        .tour-item__thumb img {
+            transform: scale(1.04);
+        }
+    }
+
+    &__thumb {
+        img {
+            width: 100%;
+            height: auto;
+            height: 260px;
+            object-fit: cover;
+            transition: all 0.7s ease;
+        }
+    }
+
+    &-content {
+        padding: 24px 16px;
+    }
+
+    &-meta,
+    &-action {
+        margin-top: 16px;
+    }
+
+    &__time {
+        font-size: 15px;
+        gap: 4px;
+        font-weight: 700;
+        color: $color-primary;
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 18px;
+        }
+    }
+
+    .vm-button {
+        font-size: 13px;
+        height: 40px;
+        padding: 0 10px;
+
+        svg {
+            max-width: 15px;
+
+        }
+    }
+
+    &__price {
+        span {
+            color: $color-secondary;
+            font-weight: 800;
+        }
+
+        svg {
+            stroke-width: 3;
+            width: 100%;
+            height: auto;
+            max-width: 20px;
+            stroke: $color-secondary;
+        }
+    }
+
+    &__location {
+        font-size: 15px;
+        align-items: start;
+        gap: 5px;
+        margin-top: 12px;
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 17px;
+            flex-shrink: 0;
+            stroke: $color-primary;
+            margin-top: 4px;
+        }
+    }
 }
