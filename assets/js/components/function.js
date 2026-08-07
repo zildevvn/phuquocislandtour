@@ -237,6 +237,59 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const hleInitPostsSwiper = () => {
+        const $carousels = $('.posts-swiper');
+        if (!$carousels.length) return;
+
+        const initOrDestroySwiper = () => {
+            const isDesktop = window.innerWidth >= 1024;
+
+            $carousels.each(function () {
+                const $carousel = $(this);
+                let swiper = $carousel.data('swiper-instance');
+
+                if (isDesktop) {
+                    if (swiper) {
+                        swiper.destroy(true, true);
+                        $carousel.removeData('swiper-instance');
+                    }
+                } else {
+                    if (!swiper) {
+                        const $slides = $carousel.find('.swiper-slide');
+
+                        swiper = new Swiper(this, {
+                            modules: [Navigation, Pagination, Autoplay],
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            loop: $slides.length > 2,
+                            grabCursor: true,
+                            speed: 600,
+                            // autoplay: {
+                            //     delay: 3000,
+                            //     disableOnInteraction: false,
+                            //     pauseOnMouseEnter: true,
+                            // },
+                            autoplay: false,
+                            navigation: {
+                                nextEl: $carousel.find('.swiper-button-next')[0],
+                                prevEl: $carousel.find('.swiper-button-prev')[0],
+                            },
+                        });
+                        $carousel.data('swiper-instance', swiper);
+                    }
+                }
+            });
+        };
+
+        initOrDestroySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroySwiper, 150);
+        });
+    };
+
     const hleInitTestimonialsSwiper = () => {
         const $section = $('.testimonials-section');
         if (!$section.length) return;
@@ -310,6 +363,36 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const hleInitFaqsAccordion = () => {
+        $('.faqs-section__list').each(function() {
+            const $list = $(this);
+            
+            // Initialize active items
+            $list.find('.faq-item.is-active .faq-item__answer').show();
+
+            $list.on('click', '.faq-item__question', function() {
+                const $question = $(this);
+                const $item = $question.closest('.faq-item');
+                const $answer = $item.find('.faq-item__answer');
+                
+                if ($item.hasClass('is-active')) {
+                    // Close this item
+                    $item.removeClass('is-active');
+                    $answer.slideUp(300);
+                } else {
+                    // Close other active items
+                    const $activeItems = $list.find('.faq-item.is-active');
+                    $activeItems.removeClass('is-active');
+                    $activeItems.find('.faq-item__answer').slideUp(300);
+                    
+                    // Open this item
+                    $item.addClass('is-active');
+                    $answer.slideDown(300);
+                }
+            });
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -317,5 +400,7 @@ import { CountUp } from 'countup.js';
         hleInitToursSwiper()
         hleInitTestimonialsSwiper()
         hleInitCarToursSwiper()
+        hleInitPostsSwiper()
+        hleInitFaqsAccordion()
     });
 })(jQuery);

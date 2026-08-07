@@ -275,7 +275,7 @@
     }
 
     .counters-section {
-        background: $color-bg;
+        background: #fff;
         padding: 60px 0;
 
         @include media-breakpoint-down(md) {
@@ -1008,6 +1008,7 @@
     }
 
     .car-tour-section {
+        background: $color-bg;
         padding: 90px 0;
 
         @include media-breakpoint-down(lg) {
@@ -1169,6 +1170,256 @@
 
     .faqs-section {
         padding: 90px 0;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        &-inner {
+            gap: 48px;
+
+            @include media-breakpoint-down(lg) {
+                flex-wrap: wrap;
+                gap: 60px;
+            }
+
+            >div {
+                width: 100%;
+
+                @include media-breakpoint-up(lg) {
+                    width: 50%;
+                }
+            }
+        }
+
+        &__left {
+
+            h2,
+            p {
+                @include media-breakpoint-up(lg) {
+                    text-align: left;
+                }
+            }
+
+            .vm-icon-heading {
+                @include media-breakpoint-up(lg) {
+                    justify-content: start !important;
+                }
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: $border-radius;
+                // aspect-ratio: 1 / 1;
+                object-fit: cover;
+            }
+        }
+
+        &__img {
+            position: relative;
+            box-shadow:
+                0 25px 50px -12px rgb(0 0 0 / 0.25);
+            border-radius: $border-radius;
+            margin-top: 20px;
+
+            @include media-breakpoint-up(lg) {
+                margin-top: 24px;
+            }
+
+            p {
+                background-color: rgb(255 255 255 / 0.6);
+                border-color: rgb(255 255 255 / 0.4);
+                box-shadow: inset 0 0 20px rgba(255, 184, 0, 0.1), 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+                background: rgba(255, 255, 255, 0.6);
+                /* bg-white/60 */
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+
+                border: 1px solid rgba(255, 255, 255, 0.4);
+
+                box-shadow:
+                    0 8px 32px rgba(255, 184, 0, 0.15);
+
+                position: absolute;
+                bottom: -2rem;
+                /* -bottom-8 */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 91.666667%;
+                padding: 1.5rem;
+                border-radius: 1rem;
+                color: $color-primary;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                justify-content: center;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    z-index: -1;
+
+                    border-radius: 1rem;
+                    background: linear-gradient(to right,
+                            rgba(253, 230, 138, 0.5),
+                            /* amber-100/50 */
+                            transparent);
+
+                    /* before:p-[2px] */
+                    padding: 2px;
+                    box-sizing: border-box;
+                }
+
+                /* w-11/12 */
+            }
+        }
+
+        &__list {
+            border-radius: $border-radius;
+            padding: 30px;
+            background: $color-bg;
+            box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
+            border: 5px solid $color-primary;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            @include media-breakpoint-down(lg) {
+                padding: 24px;
+            }
+
+            @include media-breakpoint-down(md) {
+                padding: 16px;
+                gap: 12px;
+                border-width: 3px;
+            }
+
+            .faq-item {
+                background: #fff;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                border-radius: 12px;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+                }
+
+                &__question {
+                    padding: 24px;
+                    cursor: pointer;
+                    align-items: center;
+
+                    @include media-breakpoint-down(xl) {
+                        padding: 20px;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        padding: 16px;
+                    }
+
+                    h3 {
+                        font-size: 18px;
+                        font-weight: 600;
+                        line-height: 1.4;
+                        color: $color-text;
+                        transition: color 0.3s ease;
+
+                        @include media-breakpoint-down(md) {
+                            font-size: 16px;
+                        }
+                    }
+
+                    svg {
+                        flex-shrink: 0;
+                        width: 40px;
+                        height: 40px;
+                        padding: 8px;
+                        background: rgba(0, 0, 0, 0.04);
+                        border-radius: 50%;
+                        color: $color-text;
+                        transition: all 0.3s ease;
+
+                        @include media-breakpoint-down(md) {
+                            width: 32px;
+                            height: 32px;
+                            padding: 6px;
+                        }
+                    }
+
+                    &:hover {
+                        h3 {
+                            color: $color-primary;
+                        }
+
+                        svg {
+                            background: rgba(6, 97, 104, 0.1); // using primary color approx
+                            color: $color-primary;
+                        }
+                    }
+                }
+
+                &__answer {
+                    display: none;
+                    padding: 0 24px 24px 24px;
+                    font-size: 14px;
+
+                    @include media-breakpoint-down(xl) {
+                        padding: 0 20px 20px 20px;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        padding: 0 16px 16px 16px;
+                    }
+
+                    p,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    h5,
+                    h6 {
+                        color: rgba($color-text, 0.85);
+                        line-height: 1.6;
+
+                        b {
+                            color: $color-text;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
+                &.is-active {
+                    border-color: $color-primary;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                    transform: translateY(-2px);
+
+                    .faq-item__question {
+                        h3 {
+                            color: $color-primary;
+                        }
+
+                        svg {
+                            transform: rotate(180deg);
+                            background: $color-primary;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .posts-section {
+        padding: 90px 0;
         background: $color-bg;
 
         @include media-breakpoint-down(lg) {
@@ -1178,17 +1429,233 @@
         @include media-breakpoint-down(md) {
             padding: 40px 0;
         }
-    }
 
-    .posts-section {
-        padding: 90px 0;
+        &__list {
+            margin-top: 48px;
 
-        @include media-breakpoint-down(lg) {
-            padding: 60px 0;
+            @include media-breakpoint-up(lg) {
+                display: grid !important;
+                grid-template-columns: 1fr 1.2fr;
+                grid-template-rows: repeat(2, 1fr);
+                gap: 24px;
+                transform: none !important;
+            }
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 32px;
+            }
         }
 
-        @include media-breakpoint-down(md) {
-            padding: 40px 0;
+        &__cta {
+            margin-top: 32px;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 20px;
+            }
+
+        }
+
+        .post-card {
+            display: flex;
+            position: relative;
+            text-decoration: none;
+            overflow: hidden;
+            transition: $transition-base;
+
+            &__excerpt {
+                font-size: 14px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                margin-top: 16px;
+                color: $color-body;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            &__date-badge {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                background: $color-primary;
+                color: #fff;
+                border-radius: 8px;
+                padding: 6px 12px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 1.1;
+                z-index: 3;
+                font-family: $font-second;
+
+                .day {
+                    font-size: 22px;
+                    font-weight: 800;
+                }
+
+                .month {
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    margin-top: 2px;
+                }
+            }
+
+            &__author {
+                color: $color-secondary;
+                font-size: 15px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+            &__title {
+                color: $color-primary;
+                margin-bottom: 0;
+                transition: color 0.3s ease;
+            }
+
+            &--compact {
+                flex-direction: row;
+                gap: 16px;
+
+
+                @include media-breakpoint-down(lg) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 0;
+
+                    .post-card__thumb {
+                        width: 100%;
+                        padding-top: 35%;
+                        border-radius: 0;
+
+                        @include media-breakpoint-down(md) {
+                            padding-top: 65%;
+                        }
+
+                        img {
+                            position: absolute;
+                            inset: 0;
+                        }
+                    }
+
+                    .post-card__content {
+                        padding: 24px;
+                    }
+                }
+
+                .post-card__thumb {
+                    width: 140px;
+                    height: 100%;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    flex-shrink: 0;
+                    position: relative;
+
+                    @include media-breakpoint-down(lg) {
+                        width: 100%;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.4s ease;
+                    }
+                }
+
+                .post-card__content {
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    padding-right: 60px;
+                    background: #ffff;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+                    padding: 16px;
+
+                    @include media-breakpoint-down(lg) {
+                        padding-right: 24px;
+                    }
+                }
+
+                .post-card__title {
+                    padding-right: 60px;
+                }
+
+                @include media-breakpoint-up(lg) {
+                    grid-column: 1 / 2;
+                }
+            }
+
+            &--featured {
+                flex-direction: column;
+                justify-content: flex-end;
+                min-height: 400px;
+                padding: 40px;
+
+                @include media-breakpoint-up(lg) {
+                    grid-column: 2 / 3;
+                    grid-row: 1 / span 2; // Span across the 2 small posts
+                    height: 100%;
+                }
+
+                .post-card__bg {
+                    position: absolute;
+                    inset: 0;
+                    background-size: cover;
+                    background-position: center;
+                    transition: transform 0.5s ease;
+                    z-index: 1;
+                    border-radius: 12px;
+                }
+
+                .post-card__overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+                    z-index: 2;
+                    border-radius: 12px;
+                }
+
+                .post-card__content {
+                    position: relative;
+                    z-index: 3;
+
+                    .post-card__title {
+                        color: #fff;
+                    }
+                }
+
+                .post-card__author {
+                    color: #fff;
+                }
+
+                .post-card__date-badge {
+                    background: rgba(255, 255, 255, 0.9);
+                    color: $color-primary;
+                }
+            }
+        }
+
+        .swiper-action {
+            position: relative;
+            margin-top: 10px;
+            gap: 10px;
+
+            >div {
+                position: inherit;
+                top: inherit;
+                left: inherit;
+                right: inherit;
+                transform: translate(0, 0);
+                margin: 0;
+            }
         }
     }
 }
