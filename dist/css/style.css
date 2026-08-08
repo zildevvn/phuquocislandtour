@@ -8563,6 +8563,272 @@ body.offcanvas-open {
 .page-template-front-page .about-section__desc .h6 strong {
   color: #19232B;
 }
+.page-template-front-page .about-section__map {
+  margin-top: 48px;
+}
+@media (min-width: 1024px) {
+  .page-template-front-page .about-section__map {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+}
+@media (max-width: 1023.98px) {
+  .page-template-front-page .about-section__map {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 32px;
+  }
+}
+.page-template-front-page .about-section__map .map-locations {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 1024px) {
+  .page-template-front-page .about-section__map .map-locations {
+    height: 0;
+    min-height: 100%;
+    overflow-y: auto;
+    padding-right: 12px;
+  }
+  .page-template-front-page .about-section__map .map-locations::-webkit-scrollbar {
+    width: 6px;
+  }
+  .page-template-front-page .about-section__map .map-locations::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+  }
+  .page-template-front-page .about-section__map .map-locations::-webkit-scrollbar-thumb {
+    background: rgba(6, 97, 104, 0.5);
+    border-radius: 10px;
+  }
+  .page-template-front-page .about-section__map .map-locations::-webkit-scrollbar-thumb:hover {
+    background: #0C2C7A;
+  }
+}
+.page-template-front-page .about-section__map .map-locations .location {
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .about-section__map .map-locations .location {
+    border-radius: 20px;
+  }
+}
+.page-template-front-page .about-section__map .map-locations .location-content {
+  padding: 16px 16px 24px 16px;
+}
+.page-template-front-page .about-section__map .map-locations .location__name {
+  gap: 5px;
+  color: #0C2C7A;
+}
+.page-template-front-page .about-section__map .map-locations .location__name svg {
+  width: 100%;
+  height: auto;
+  max-width: 18px;
+  stroke: #00656D;
+  flex-shrink: 0;
+}
+.page-template-front-page .about-section__map .map-locations .location__desc {
+  margin-top: 16px;
+  font-size: 14px;
+}
+.page-template-front-page .about-section__map .map-locations .location__image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+  clip-path: polygon(100% 0%, 0% 0%, 0% 95.83%, 4% 95.71%, 8% 95.37%, 12% 94.84%, 16% 94.17%, 20% 93.45%, 24% 92.74%, 28% 92.12%, 32% 91.65%, 36% 91.39%, 40% 91.36%, 44% 91.57%, 48% 91.99%, 52% 92.58%, 56% 93.28%, 60% 94.01%, 64% 94.7%, 68% 95.26%, 72% 95.65%, 76% 95.83%, 80% 95.76%, 84% 95.47%, 88% 94.98%, 92% 94.34%, 96% 93.62%, 100% 92.9%);
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .about-section__map .map-locations .location__image {
+    border-radius: 20px 20px 0 0;
+  }
+}
+.page-template-front-page .about-section__map .map-locations .location__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-template-front-page .about-section__map .map-images {
+  position: relative;
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  background: #93d6e7;
+  padding: 20px 0;
+}
+@media (min-width: 1024px) {
+  .page-template-front-page .about-section__map .map-images {
+    height: 100%;
+  }
+}
+.page-template-front-page .about-section__map .map-images__bg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  max-width: 75%;
+  margin: 0 auto;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #0C2C7A;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, z-index 0s;
+  position: absolute;
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .about-section__map .map-images__list .map-item {
+    width: 28px;
+    height: 28px;
+  }
+}
+.page-template-front-page .about-section__map .map-images__list .map-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 12px;
+  border-radius: 4px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(6, 97, 104, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  white-space: nowrap;
+  text-align: center;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.95);
+}
+.page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip__name {
+  font-size: 12px;
+  color: #19232B;
+  display: block;
+  font-weight: 500;
+  font-family: "Afacad", sans-serif;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip__desc {
+  font-size: 12px;
+  color: rgba(25, 35, 43, 0.85);
+  line-height: 1.4;
+  margin-top: 4px;
+  display: block;
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip {
+    padding: 8px 12px;
+    border-radius: 8px;
+    bottom: calc(100% + 8px);
+  }
+  .page-template-front-page .about-section__map .map-images__list .map-item .map-tooltip__name {
+    font-size: 13px;
+  }
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-dinh-cau {
+  left: 48%;
+  top: 44%;
+  translate: 0 -50%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-duong-dong-night-market {
+  left: 55%;
+  top: 44%;
+  translate: 0 -50%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-gam-ghi-island {
+  bottom: 1%;
+  left: 67%;
+  translate: -50% 0;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-grand-world {
+  left: 20%;
+  top: 22%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-ho-quoc-temple {
+  top: 62%;
+  translate: 0 -50%;
+  right: 26%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-hon-thom-cable-car {
+  right: 33%;
+  bottom: 21%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-kiss-bridge {
+  right: 42%;
+  bottom: 22%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-may-rut-ngoai-island {
+  bottom: 1%;
+  left: 60%;
+  translate: -50% 0;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-may-rut-trong-island {
+  bottom: 2%;
+  left: 63%;
+  translate: -50% 0;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-mong-tay-island {
+  bottom: 5px;
+  right: 26%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-starfish-beach {
+  translate: -50% 0;
+  left: 44%;
+  top: 14%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-sunset-town {
+  right: 30%;
+  bottom: 20%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-vinpearl-safari {
+  left: 25%;
+  top: 21%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item#map-vinwonders {
+  left: 16%;
+  top: 20%;
+}
+.page-template-front-page .about-section__map .map-images__list .map-item:hover {
+  z-index: 101 !important;
+  border-color: #0C2C7A;
+}
+@media (hover: hover) and (pointer: fine) {
+  .page-template-front-page .about-section__map .map-images__list .map-item:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+.page-template-front-page .about-section__map .map-images__list .map-item:hover .map-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
 .page-template-front-page .counters-section {
   background: #fff;
   padding: 60px 0;

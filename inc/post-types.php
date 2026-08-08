@@ -103,6 +103,28 @@ if (!function_exists('vm_create_custom_taxonomy')) {
 			'show_in_rest' => true,
 		));
 
+		register_taxonomy('tour_locations', array('tours'), array(
+			'labels' => array(
+				'name' => 'Locations',
+				'singular_name' => 'Location',
+				'search_items' => 'Search Locations',
+				'all_items' => 'All Locations',
+				'edit_item' => 'Edit Location',
+				'update_item' => 'Update Location',
+				'add_new_item' => 'Add New Location',
+				'new_item_name' => 'New Location Name',
+				'menu_name' => 'Locations',
+			),
+			'rewrite' => false,
+			'hierarchical' => true,
+			'public' => false,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => true,
+			'show_tagcloud' => true,
+			'show_in_rest' => true,
+		));
+
 		register_taxonomy('car_category', array('cars'), array(
 			'labels' => array(
 				'name' => 'Categories',

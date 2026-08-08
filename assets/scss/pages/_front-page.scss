@@ -272,6 +272,310 @@
                 }
             }
         }
+
+        &__map {
+            margin-top: 48px;
+
+            @include media-breakpoint-up(lg) {
+                display: grid;
+                grid-template-columns: 3fr 7fr;
+                gap: 24px;
+                align-items: stretch;
+            }
+
+            @include media-breakpoint-down(lg) {
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 32px;
+            }
+
+            .map-locations {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                @include media-breakpoint-up(lg) {
+                    height: 0;
+                    min-height: 100%;
+                    overflow-y: auto;
+                    padding-right: 12px;
+
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background: rgba(0, 0, 0, 0.03);
+                        border-radius: 10px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background: rgba(6, 97, 104, 0.5); // Using exact primary hex approximation or variable if compiled
+                        border-radius: 10px;
+
+                        &:hover {
+                            background: $color-primary;
+                        }
+                    }
+                }
+
+                .location {
+                    background: #fff;
+                    border-radius: 24px;
+                    border: 1px solid rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+                    transition: $transition-base;
+
+                    @include media-breakpoint-down(md) {
+                        border-radius: 20px;
+                    }
+
+                    // &:hover {
+                    //     transform: translateY(-4px);
+                    //     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+                    //     border-color: $color-primary;
+                    // }
+
+                    &-content {
+                        padding: 16px 16px 24px 16px;
+                    }
+
+                    &__name {
+                        gap: 5px;
+                        color: $color-primary;
+
+                        svg {
+                            width: 100%;
+                            height: auto;
+                            max-width: 18px;
+                            stroke: $color-secondary;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    &__desc {
+                        margin-top: 16px;
+                        font-size: 14px;
+                    }
+
+                    &__image {
+                        width: 100%;
+                        aspect-ratio: 16 / 9;
+                        border-radius: 24px 24px 0 0;
+                        overflow: hidden;
+                        clip-path: polygon(100% 0%, 0% 0%, 0% 95.83%, 4% 95.71%, 8% 95.37%, 12% 94.84%, 16% 94.17%, 20% 93.45%, 24% 92.74%, 28% 92.12%, 32% 91.65%, 36% 91.39%, 40% 91.36%, 44% 91.57%, 48% 91.99%, 52% 92.58%, 56% 93.28%, 60% 94.01%, 64% 94.7%, 68% 95.26%, 72% 95.65%, 76% 95.83%, 80% 95.76%, 84% 95.47%, 88% 94.98%, 92% 94.34%, 96% 93.62%, 100% 92.9%);
+
+                        @include media-breakpoint-down(md) {
+                            border-radius: 20px 20px 0 0;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+
+            .map-images {
+                position: relative;
+                border-radius: 32px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+                background: #93d6e7;
+                padding: 20px 0;
+
+                @include media-breakpoint-up(lg) {
+                    height: 100%;
+                }
+
+                &__bg {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    display: block;
+
+                    max-width: 75%;
+                    margin: 0 auto;
+                }
+
+                &__list {
+                    .map-item {
+                        display: flex;
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        border: 1px solid $color-primary;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        flex-shrink: 0;
+                        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, z-index 0s;
+                        position: absolute;
+
+                        @include media-breakpoint-down(md) {
+                            width: 28px;
+                            height: 28px;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+
+                        .map-tooltip {
+                            position: absolute;
+                            bottom: calc(100% + 12px);
+                            left: 50%;
+                            transform: translateX(-50%) translateY(10px);
+                            background: rgba(255, 255, 255, 0.95);
+                            backdrop-filter: blur(8px);
+                            -webkit-backdrop-filter: blur(8px);
+                            padding: 3px 12px;
+                            border-radius: 4px;
+                            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+                            border: 1px solid rgba(6, 97, 104, 0.15); // primary color
+                            opacity: 0;
+                            visibility: hidden;
+                            pointer-events: none;
+                            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                            z-index: 100;
+                            white-space: nowrap;
+                            text-align: center;
+
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 100%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                border: 4px solid transparent;
+                                border-top-color: rgba(255, 255, 255, 0.95);
+                            }
+
+                            &__name {
+                                font-size: 12px;
+                                color: $color-text;
+                                display: block;
+                                font-weight: 500;
+                                font-family: $font-second;
+                            }
+
+                            &__desc {
+                                font-size: 12px;
+                                color: rgba($color-text, 0.85);
+                                line-height: 1.4;
+                                margin-top: 4px;
+                                display: block;
+                            }
+
+                            @include media-breakpoint-down(md) {
+                                padding: 8px 12px;
+                                border-radius: 8px;
+                                bottom: calc(100% + 8px);
+
+                                &__name {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+
+                        &#map-dinh-cau {
+                            left: 48%;
+                            top: 44%;
+                            translate: 0 -50%;
+                        }
+
+                        &#map-duong-dong-night-market {
+                            left: 55%;
+                            top: 44%;
+                            translate: 0 -50%;
+                        }
+
+                        &#map-gam-ghi-island {
+                            bottom: 1%;
+                            left: 67%;
+                            translate: -50% 0;
+                        }
+
+                        &#map-grand-world {
+                            left: 20%;
+                            top: 22%;
+                        }
+
+                        &#map-ho-quoc-temple {
+                            top: 62%;
+                            translate: 0 -50%;
+                            right: 26%;
+                        }
+
+                        &#map-hon-thom-cable-car {
+                            right: 33%;
+                            bottom: 21%;
+                        }
+
+                        &#map-kiss-bridge {
+                            right: 42%;
+                            bottom: 22%;
+                        }
+
+                        &#map-may-rut-ngoai-island {
+                            bottom: 1%;
+                            left: 60%;
+                            translate: -50% 0;
+                        }
+
+                        &#map-may-rut-trong-island {
+                            bottom: 2%;
+                            left: 63%;
+                            translate: -50% 0;
+                        }
+
+                        &#map-mong-tay-island {
+                            bottom: 5px;
+                            right: 26%;
+                        }
+
+                        &#map-starfish-beach {
+                            translate: -50% 0;
+                            left: 44%;
+                            top: 14%;
+                        }
+
+                        &#map-sunset-town {
+                            right: 30%;
+                            bottom: 20%;
+                        }
+
+                        &#map-vinpearl-safari {
+                            left: 25%;
+                            top: 21%;
+                        }
+
+                        &#map-vinwonders {
+                            left: 16%;
+                            top: 20%;
+                        }
+
+                        &:hover {
+                            z-index: 101 !important;
+                            border-color: $color-primary;
+
+                            @media (hover: hover) and (pointer: fine) {
+                                transform: scale(1.12);
+                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+                            }
+
+                            .map-tooltip {
+                                opacity: 1;
+                                visibility: visible;
+                                transform: translateX(-50%) translateY(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .counters-section {
