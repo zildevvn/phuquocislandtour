@@ -8,8 +8,6 @@ $terms = get_terms([
 ]);
 ?>
 
-
-
 <section class="vm-section about-section">
     <div class="container">
         <?php vm_icon_heading() ?>
@@ -32,9 +30,17 @@ $terms = get_terms([
         <?php if (!is_wp_error($terms)): ?>
             <div class="about-section__map">
                 <div class="map-locations">
+
                     <?php foreach ($terms as $term): ?>
-                        <?php $image = get_field('image', $term); ?>
-                        <div id="location-<?= $term->slug ?>" class="location">
+                        <?php
+                        $image = get_field('image', $term);
+                        $custom_link = get_field('custom_link_page', $term);
+
+                        $term_link = !empty($custom_link)
+                            ? $custom_link
+                            : get_term_link($term);
+                        ?>
+                        <a href="<?php echo esc_url($term_link); ?>" id="location-<?= $term->slug ?>" class="location">
                             <div class="location__image">
                                 <img src="<?= $image ?>" alt="image for location <?= $term->name ?> " />
                             </div>
@@ -55,25 +61,26 @@ $terms = get_terms([
 
                                 <div class="location__desc"> <?= $term->description ?> </div>
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
 
                 <div class="map-images">
-                    <img class="map-images__bg" src="http://localhost:10040/wp-content/uploads/2026/08/img-test.png"
+                    <img class="map-images__bg"
+                        src="<?= get_template_directory_uri(); ?>/assets/images/img-map-phu-quoc.jpg"
                         alt="image map phu quoc" />
 
                     <div class="map-images__list">
                         <?php foreach ($terms as $key => $term): ?>
                             <?php $image = get_field('image', $term); ?>
-                            <a id="map-<?= $term->slug ?>" href="#location-<?= $term->slug ?>" class="map-item"
+                            <div id="map-<?= $term->slug ?>" data-location="#location-<?= $term->slug ?>" class="map-item"
                                 aria-label="Go to <?= $term->name ?>" style="z-index:<?= $key + 1 ?>">
                                 <img src="<?= $image ?>" alt="image for map <?= $term->name ?> " />
 
                                 <div class="map-tooltip">
                                     <span class="map-tooltip__name"><?= $term->name ?></span>
                                 </div>
-                            </a>
+                            </div>
                         <?php endforeach; ?>
                     </div>
                 </div>

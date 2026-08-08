@@ -392,6 +392,50 @@ import { CountUp } from 'countup.js';
             });
         });
     };
+    const hleInitMapLocationsScroll = () => {
+        $('.map-images__list').on('click', '.map-item', function(e) {
+            e.preventDefault();
+            const $this = $(this);
+            const targetId = $this.data('location');
+            
+            if (!targetId) return;
+            
+            const $target = $(targetId);
+            const $container = $('.map-locations');
+            
+            if ($target.length && $container.length) {
+                // Update active state
+                $('.map-images__list .map-item').removeClass('is-active');
+                $this.addClass('is-active');
+
+                // Calculate scroll position to center the target in the container
+                const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
+                const scrollTo = targetPositionInContainer - ($container.height() / 2) + ($target.outerHeight() / 2);
+                
+                // Smooth scroll the container
+                $container.animate({
+                    scrollTop: scrollTo
+                }, 400);
+            }
+        });
+    };
+
+    const hleInitMapLocationsHover = () => {
+        $('.map-locations').on('mouseenter', '.location', function() {
+            const locationId = $(this).attr('id');
+            if (!locationId) return;
+            
+            const targetData = '#' + locationId;
+            const $mapItem = $('.map-images__list .map-item[data-location="' + targetData + '"]');
+            
+            if ($mapItem.length) {
+                $('.map-images__list .map-item').removeClass('is-hovered');
+                $mapItem.addClass('is-hovered');
+            }
+        }).on('mouseleave', '.location', function() {
+            $('.map-images__list .map-item').removeClass('is-hovered');
+        });
+    };
 
     $(document).ready(function () {
         vmHeroSliders()
@@ -402,5 +446,7 @@ import { CountUp } from 'countup.js';
         hleInitCarToursSwiper()
         hleInitPostsSwiper()
         hleInitFaqsAccordion()
+        hleInitMapLocationsScroll()
+        hleInitMapLocationsHover()
     });
 })(jQuery);

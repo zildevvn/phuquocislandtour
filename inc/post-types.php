@@ -115,13 +115,19 @@ if (!function_exists('vm_create_custom_taxonomy')) {
 				'new_item_name' => 'New Location Name',
 				'menu_name' => 'Locations',
 			),
-			'rewrite' => false,
+
+			'rewrite' => array(
+				'slug' => 'locations',
+				'with_front' => false,
+				'hierarchical' => true,
+			),
+
 			'hierarchical' => true,
-			'public' => false,
+			'public' => true,
 			'show_ui' => true,
 			'show_admin_column' => true,
 			'show_in_nav_menus' => true,
-			'show_tagcloud' => true,
+			'show_tagcloud' => false,
 			'show_in_rest' => true,
 		));
 

@@ -8614,6 +8614,7 @@ body.offcanvas-open {
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .about-section__map .map-locations .location {
@@ -8636,7 +8637,7 @@ body.offcanvas-open {
 }
 .page-template-front-page .about-section__map .map-locations .location__desc {
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 13px;
 }
 .page-template-front-page .about-section__map .map-locations .location__image {
   width: 100%;
@@ -8659,7 +8660,7 @@ body.offcanvas-open {
   position: relative;
   border-radius: 32px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  background: #93d6e7;
+  background: #8dd2eb;
   padding: 20px 0;
 }
 @media (min-width: 1024px) {
@@ -8685,6 +8686,7 @@ body.offcanvas-open {
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, z-index 0s;
   position: absolute;
+  cursor: pointer;
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .about-section__map .map-images__list .map-item {
@@ -8814,17 +8816,17 @@ body.offcanvas-open {
   left: 16%;
   top: 20%;
 }
-.page-template-front-page .about-section__map .map-images__list .map-item:hover {
+.page-template-front-page .about-section__map .map-images__list .map-item:hover, .page-template-front-page .about-section__map .map-images__list .map-item.is-active, .page-template-front-page .about-section__map .map-images__list .map-item.is-hovered {
   z-index: 101 !important;
   border-color: #0C2C7A;
 }
 @media (hover: hover) and (pointer: fine) {
-  .page-template-front-page .about-section__map .map-images__list .map-item:hover {
+  .page-template-front-page .about-section__map .map-images__list .map-item:hover, .page-template-front-page .about-section__map .map-images__list .map-item.is-active, .page-template-front-page .about-section__map .map-images__list .map-item.is-hovered {
     transform: scale(1.12);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 }
-.page-template-front-page .about-section__map .map-images__list .map-item:hover .map-tooltip {
+.page-template-front-page .about-section__map .map-images__list .map-item:hover .map-tooltip, .page-template-front-page .about-section__map .map-images__list .map-item.is-active .map-tooltip, .page-template-front-page .about-section__map .map-images__list .map-item.is-hovered .map-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
