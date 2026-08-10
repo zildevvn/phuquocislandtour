@@ -234,54 +234,69 @@
     }
 
     .about-section {
+        position: relative;
         padding: 90px 0;
+        overflow: hidden;
+        background: #fff;
+        padding: 90px 0 250px 0;
 
-        @include media-breakpoint-down(lg) {
-            padding: 60px 0;
-        }
-
-        @include media-breakpoint-down(md) {
-            padding: 40px 0;
-        }
-
-        .vm-heading {
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        &__image {
-            margin-top: 32px;
+        &__graphic {
+            position: absolute;
+            top: 40px;
+            right: -4%;
+            z-index: 0;
+            opacity: 0.5;
+            max-width: 300px;
+            pointer-events: none;
 
             @include media-breakpoint-down(lg) {
-                margin-top: 24px;
+                max-width: 150px;
+                top: 20px;
             }
 
             @include media-breakpoint-down(md) {
-                margin-top: 20px;
+                max-width: 100px;
+                top: 10px;
+                right: -5%;
             }
 
             img {
                 width: 100%;
                 height: auto;
-                max-width: fit-content;
-                border-radius: $border-radius;
+                object-fit: contain;
             }
         }
 
-        &__desc {
-            margin-top: 20px;
 
-            @include media-breakpoint-down(md) {
-                margin-top: 16px;
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0 250px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0 210px 0;
+        }
+
+        .vm-heading {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        &__desc {
+            @include media-breakpoint-up(xl) {
+                margin-top: -3.5%;
             }
 
             p,
             h1,
             h2,
+            h3,
             h4,
             h5,
             h6 {
+                margin-bottom: 16px;
+
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -291,10 +306,142 @@
                     color: $color-text;
                 }
             }
+
+            h1,
+            h2,
+            h4,
+            h5,
+            h3,
+            h6 {
+                color: $color-primary;
+
+            }
+        }
+
+
+        &__content {
+            gap: 48px;
+            margin-top: 24px;
+
+            @include media-breakpoint-down(xl) {
+                gap: 32px;
+            }
+
+            @include media-breakpoint-down(lg) {
+                flex-wrap: wrap;
+            }
+
+            @include media-breakpoint-down(md) {
+                gap: 24px;
+                margin-top: 20px;
+            }
+        }
+
+        &__license_image {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            flex-shrink: 0;
+
+            @include media-breakpoint-down(xl) {
+                width: 35%;
+            }
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
+
+
+            img {
+                background: #fff;
+                padding: 12px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                border-radius: 12px;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                max-width: 100%;
+                width: 100%;
+                max-width: 450px;
+                height: auto;
+                object-fit: contain;
+                transition: $transition-base;
+
+                @media (hover: hover) {
+                    &:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+                        border-color: rgba(0, 0, 0, 0.08);
+                    }
+                }
+            }
+
+            &__caption {
+                margin-top: 12px;
+                font-size: 14px;
+                color: $color-primary;
+                font-weight: 500;
+                display: block;
+                font-family: $font-second;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 32px;
+
+                img {
+                    max-width: 350px;
+                    padding: 8px;
+                    border-radius: 10px;
+                }
+
+                &__caption {
+                    margin-top: 12px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .map-section {
+        background: $color-bg;
+        padding: 60px 0;
+        position: relative;
+
+        &__graphic {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            z-index: 1;
+            opacity: 0.8;
+            max-width: 280px;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                max-width: 200px;
+                opacity: 0.6;
+            }
+
+            @include media-breakpoint-down(md) {
+                max-width: 140px;
+                opacity: 0.5;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
         }
 
         &__map {
-            margin-top: 48px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px 10px;
+            margin-top: -300px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
 
             @include media-breakpoint-up(lg) {
                 display: grid;
@@ -307,6 +454,10 @@
                 display: flex;
                 flex-direction: column-reverse;
                 gap: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: -210px;
             }
 
             .map-locations {
@@ -438,6 +589,10 @@
                     display: block;
                     max-width: 60%;
                     margin: 0 auto;
+
+                    @include media-breakpoint-down(md) {
+                        max-width: 90%;
+                    }
                 }
 
                 &__list {
@@ -624,7 +779,7 @@
     }
 
     .counters-section {
-        background: #fff;
+        background: $color-bg;
         padding: 60px 0;
 
         @include media-breakpoint-down(md) {
@@ -1005,9 +1160,14 @@
 
     .daily-tour-section,
     .package-tours-section {
-        background-color: $color-primary;
+        overflow: hidden;
         padding: 90px 0;
-        background-image: url('../../images/patern.png');
+
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
 
         @include media-breakpoint-down(lg) {
             padding: 60px 0;
@@ -1017,27 +1177,24 @@
             padding: 40px 0;
         }
 
-        &::before {
-            content: " ";
-            display: inline-block;
-            width: 100%;
-            height: 60%;
-            left: 0px;
-            top: 0px;
-            position: absolute;
-            background: $color-bg;
-            z-index: -1;
+        .container {
+            overflow: hidden;
         }
 
-        @include media-breakpoint-down(lg) {
-            padding: 60px 0;
-        }
+        &__actions {
+            margin-top: 48px;
 
-        @include media-breakpoint-down(md) {
-            padding: 40px 0;
+            @include media-breakpoint-down(lg) {
+                margin-top: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+            }
         }
 
         &__carousel {
+            overflow: inherit;
             margin-top: 48px;
 
             @include media-breakpoint-down(lg) {
@@ -1064,6 +1221,62 @@
                     right: inherit;
                     transform: translate(0, 0);
                     margin: 0;
+
+
+                    svg {
+                        width: 100%;
+                        height: auto;
+                        max-width: 24px;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .package-tours-section {
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                url('../../images/tropical-background.jpg') center bottom / cover no-repeat;
+
+            opacity: 0.65;
+            pointer-events: none;
+        }
+    }
+
+    .daily-tour-section {
+        background-color: $color-primary;
+        background-image: url('../../images/patern.png');
+
+        &::before {
+            content: " ";
+            display: inline-block;
+            width: 100%;
+            height: 60%;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            background: #ffff;
+            z-index: -1;
+        }
+
+        &__carousel {
+            margin-top: 48px;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+            }
+
+            .swiper-action {
+                >div {
                     background: #fff;
 
                     &:hover {
@@ -1071,10 +1284,6 @@
                     }
 
                     svg {
-                        width: 100%;
-                        height: auto;
-                        max-width: 24px;
-
                         path {
                             stroke: $color-primary;
                         }
@@ -1087,6 +1296,7 @@
     .testimonials-section {
         overflow: hidden;
         padding: 90px 0;
+        background: $color-bg;
 
         @include media-breakpoint-down(lg) {
             padding: 60px 0;
@@ -1359,6 +1569,8 @@
     .car-tour-section {
         background: $color-bg;
         padding: 90px 0;
+        position: relative;
+        overflow: hidden;
 
         @include media-breakpoint-down(lg) {
             padding: 60px 0;
@@ -1367,6 +1579,49 @@
         @include media-breakpoint-down(md) {
             padding: 40px 0;
         }
+
+
+        &__graphic {
+            position: absolute;
+            bottom: -1%;
+            right: -1%;
+            z-index: 1;
+            opacity: 0.8;
+            max-width: 280px;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                max-width: 200px;
+                opacity: 0.6;
+            }
+
+            @include media-breakpoint-down(md) {
+                max-width: 140px;
+                opacity: 0.5;
+                bottom: 0;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+        }
+
+
+        &__actions {
+            margin-top: 48px;
+
+            @include media-breakpoint-down(lg) {
+                margin-top: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+            }
+        }
+
 
         &__grid {
             margin-top: 48px;

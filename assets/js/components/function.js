@@ -157,12 +157,12 @@ import { CountUp } from 'countup.js';
                 speed: 600,
                 observer: true,
                 observeParents: true,
-                // autoplay: {
-                //     delay: 3000,
-                //     disableOnInteraction: false,
-                //     pauseOnMouseEnter: true,
-                // },
-                autoplay: false,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                // autoplay: false,
                 navigation: {
                     nextEl: $carousel.find('.swiper-button-next')[0],
                     prevEl: $carousel.find('.swiper-button-prev')[0],
@@ -265,12 +265,12 @@ import { CountUp } from 'countup.js';
                             loop: $slides.length > 2,
                             grabCursor: true,
                             speed: 600,
-                            // autoplay: {
-                            //     delay: 3000,
-                            //     disableOnInteraction: false,
-                            //     pauseOnMouseEnter: true,
-                            // },
-                            autoplay: false,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+                            // autoplay: false,
                             navigation: {
                                 nextEl: $carousel.find('.swiper-button-next')[0],
                                 prevEl: $carousel.find('.swiper-button-prev')[0],

@@ -30,7 +30,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "40",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -51,7 +51,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "40",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -61,23 +61,6 @@
             "rows": 4,
             "placeholder": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_6a686b519ebfd",
-            "label": "Button",
-            "name": "btn_hero_hp",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "20",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "allow_in_bindings": 0
         },
         {
             "key": "field_6a68202fc40fc",
@@ -177,7 +160,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "100",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -187,6 +170,32 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_6a798e1bada13",
+            "label": "License Image",
+            "name": "license_image_ab",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         },
         {
             "key": "field_6a4dc1b77028f",
@@ -1277,5 +1286,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786327946
+    "modified": 1786351195
 }

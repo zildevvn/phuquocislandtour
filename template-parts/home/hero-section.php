@@ -2,7 +2,6 @@
 $gallerys = get_field('gallerys_hero_hp');
 $hd = get_field('hd_hero_home');
 $desc = get_field('desc_hero_home');
-$btn = get_field('btn_hero_hp');
 
 $whatsapp_display = get_field('phone', 'option');
 $whatsapp_number = get_field('whatsapp', 'option');

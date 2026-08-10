@@ -11,6 +11,10 @@ $query = new WP_Query($args);
 ?>
 <?php if ($query->have_posts()): ?>
     <section class="vm-section car-tour-section">
+        <div class="car-tour-section__graphic">
+            <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-003.png"
+                alt="image graphic phu quoc island tour" />
+        </div>
         <div class="container">
             <?php vm_icon_heading() ?>
             <?php if (!empty($heading)): ?>
@@ -153,6 +157,10 @@ $query = new WP_Query($args);
                         </svg>
                     </div>
                 </div>
+            </div>
+
+            <div class="car-tour-section__actions d-flex align-items-center justify-content-center">
+                <?php vm_load_button('/car-rental-in-phu-quoc', 'View All', '', 'View All car rental Tours') ?>
             </div>
         </div>
     </section>

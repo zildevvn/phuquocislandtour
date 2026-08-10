@@ -60,6 +60,10 @@ $query = new WP_Query($args);
                     </div>
                 </div>
             </div>
+
+            <div class="daily-tour-section__actions d-flex align-items-center justify-content-center">
+                <?php vm_load_button('/phu-quoc-tours', 'View All', '', 'View All Daily Tours') ?>
+            </div>
         </div>
     </section>
 <?php endif; ?>
