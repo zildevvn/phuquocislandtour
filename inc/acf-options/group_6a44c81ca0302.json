@@ -509,24 +509,6 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6a701b31e0985",
-            "label": "Map Section",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a701b47e0986",
             "label": "Steps Booking",
             "name": "",
@@ -1295,5 +1277,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786088094
+    "modified": 1786327946
 }

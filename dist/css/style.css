@@ -8998,7 +8998,7 @@ body.offcanvas-open {
 }
 .page-template-front-page .services-section__right h2, .page-template-front-page .services-section__right .h2 {
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 16px !important;
 }
 .page-template-front-page .services-section__list {
   display: grid;

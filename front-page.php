@@ -10,7 +10,6 @@ get_header();
     <?php get_template_part('template-parts/home/hero-section'); ?>
     <?php get_template_part('template-parts/home/about-section'); ?>
     <?php get_template_part('template-parts/home/services-section'); ?>
-    <?php get_template_part('template-parts/home/map-section'); ?>
     <?php get_template_part('template-parts/home/steps-booking-section'); ?>
     <?php get_template_part('template-parts/home/daily-tours-section'); ?>
     <?php get_template_part('template-parts/home/testimonials-section'); ?>
