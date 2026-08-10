@@ -137,7 +137,7 @@ import { CountUp } from 'countup.js';
 
     }
 
-    const hleInitToursSwiper = () => {
+    const vmInitToursSwiper = () => {
         const $carousels = $('.tours-carousel');
         if (!$carousels.length) return;
 
@@ -184,7 +184,7 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const hleInitCarToursSwiper = () => {
+    const vmInitCarToursSwiper = () => {
         const $carousels = $('.car-tours-swiper');
         if (!$carousels.length) return;
 
@@ -237,7 +237,7 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const hleInitPostsSwiper = () => {
+    const vmInitPostsSwiper = () => {
         const $carousels = $('.posts-swiper');
         if (!$carousels.length) return;
 
@@ -290,7 +290,7 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const hleInitTestimonialsSwiper = () => {
+    const vmInitTestimonialsSwiper = () => {
         const $section = $('.testimonials-section');
         if (!$section.length) return;
 
@@ -363,18 +363,18 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const hleInitFaqsAccordion = () => {
-        $('.faqs-section__list').each(function() {
+    const vmInitFaqsAccordion = () => {
+        $('.faqs-section__list').each(function () {
             const $list = $(this);
-            
+
             // Initialize active items
             $list.find('.faq-item.is-active .faq-item__answer').show();
 
-            $list.on('click', '.faq-item__question', function() {
+            $list.on('click', '.faq-item__question', function () {
                 const $question = $(this);
                 const $item = $question.closest('.faq-item');
                 const $answer = $item.find('.faq-item__answer');
-                
+
                 if ($item.hasClass('is-active')) {
                     // Close this item
                     $item.removeClass('is-active');
@@ -384,7 +384,7 @@ import { CountUp } from 'countup.js';
                     const $activeItems = $list.find('.faq-item.is-active');
                     $activeItems.removeClass('is-active');
                     $activeItems.find('.faq-item__answer').slideUp(300);
-                    
+
                     // Open this item
                     $item.addClass('is-active');
                     $answer.slideDown(300);
@@ -392,26 +392,33 @@ import { CountUp } from 'countup.js';
             });
         });
     };
-    const hleInitMapLocationsScroll = () => {
-        $('.map-images__list').on('click', '.map-item', function(e) {
+    const vmInitMapLocationsScroll = () => {
+        $('.map-images__list').on('click', '.map-item', function (e) {
             e.preventDefault();
             const $this = $(this);
             const targetId = $this.data('location');
-            
+
             if (!targetId) return;
-            
+
             const $target = $(targetId);
             const $container = $('.map-locations');
-            
+
             if ($target.length && $container.length) {
                 // Update active state
                 $('.map-images__list .map-item').removeClass('is-active');
                 $this.addClass('is-active');
 
-                // Calculate scroll position to center the target in the container
+                // Calculate dynamic header height offset
+                const $header = $('header, .header, #masthead, .site-header').first();
+                const headerHeight = $header.length ? $header.outerHeight() : 0;
+                const scrollOffset = headerHeight + 20;
+
+                // Calculate the absolute position of the target within the container
                 const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
-                const scrollTo = targetPositionInContainer - ($container.height() / 2) + ($target.outerHeight() / 2);
-                
+
+                // Set the scroll position so the target is offset from the top, not hidden by the header
+                const scrollTo = targetPositionInContainer - scrollOffset;
+
                 // Smooth scroll the container
                 $container.animate({
                     scrollTop: scrollTo
@@ -420,19 +427,19 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const hleInitMapLocationsHover = () => {
-        $('.map-locations').on('mouseenter', '.location', function() {
+    const vmInitMapLocationsHover = () => {
+        $('.map-locations').on('mouseenter', '.location', function () {
             const locationId = $(this).attr('id');
             if (!locationId) return;
-            
+
             const targetData = '#' + locationId;
             const $mapItem = $('.map-images__list .map-item[data-location="' + targetData + '"]');
-            
+
             if ($mapItem.length) {
                 $('.map-images__list .map-item').removeClass('is-hovered');
                 $mapItem.addClass('is-hovered');
             }
-        }).on('mouseleave', '.location', function() {
+        }).on('mouseleave', '.location', function () {
             $('.map-images__list .map-item').removeClass('is-hovered');
         });
     };
@@ -441,12 +448,12 @@ import { CountUp } from 'countup.js';
         vmHeroSliders()
         vmCounters()
         vmIconHeading()
-        hleInitToursSwiper()
-        hleInitTestimonialsSwiper()
-        hleInitCarToursSwiper()
-        hleInitPostsSwiper()
-        hleInitFaqsAccordion()
-        hleInitMapLocationsScroll()
-        hleInitMapLocationsHover()
+        vmInitToursSwiper()
+        vmInitTestimonialsSwiper()
+        vmInitCarToursSwiper()
+        vmInitPostsSwiper()
+        vmInitFaqsAccordion()
+        vmInitMapLocationsScroll()
+        vmInitMapLocationsHover()
     });
 })(jQuery);

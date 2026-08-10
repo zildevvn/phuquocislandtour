@@ -8673,7 +8673,7 @@ body.offcanvas-open {
   height: auto;
   object-fit: cover;
   display: block;
-  max-width: 75%;
+  max-width: 60%;
   margin: 0 auto;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item {
@@ -8754,50 +8754,51 @@ body.offcanvas-open {
   }
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-dinh-cau {
-  left: 48%;
+  left: 44%;
   top: 44%;
   translate: 0 -50%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-duong-dong-night-market {
-  left: 55%;
-  top: 44%;
+  left: 50%;
+  top: 46%;
   translate: 0 -50%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-gam-ghi-island {
-  bottom: 1%;
-  left: 67%;
+  bottom: 2%;
+  left: 56%;
   translate: -50% 0;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-grand-world {
-  left: 20%;
+  left: 30%;
   top: 22%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-ho-quoc-temple {
   top: 62%;
   translate: 0 -50%;
-  right: 26%;
+  right: 40%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-hon-thom-cable-car {
-  right: 33%;
-  bottom: 21%;
-}
-.page-template-front-page .about-section__map .map-images__list .map-item#map-kiss-bridge {
-  right: 42%;
+  right: 43%;
   bottom: 22%;
 }
+.page-template-front-page .about-section__map .map-images__list .map-item#map-kiss-bridge {
+  right: 50%;
+  bottom: 24%;
+}
 .page-template-front-page .about-section__map .map-images__list .map-item#map-may-rut-ngoai-island {
-  bottom: 1%;
-  left: 60%;
+  bottom: 1.5%;
+  left: 52%;
   translate: -50% 0;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-may-rut-trong-island {
-  bottom: 2%;
-  left: 63%;
+  bottom: 4%;
+  left: 54%;
   translate: -50% 0;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-mong-tay-island {
-  bottom: 5px;
-  right: 26%;
+  bottom: 1.2%;
+  left: 58%;
+  translate: -50% 0;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-starfish-beach {
   translate: -50% 0;
@@ -8805,15 +8806,15 @@ body.offcanvas-open {
   top: 14%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-sunset-town {
-  right: 30%;
-  bottom: 20%;
+  right: 41%;
+  bottom: 21%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-vinpearl-safari {
-  left: 25%;
-  top: 21%;
+  left: 34%;
+  top: 20%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item#map-vinwonders {
-  left: 16%;
+  left: 29%;
   top: 20%;
 }
 .page-template-front-page .about-section__map .map-images__list .map-item:hover, .page-template-front-page .about-section__map .map-images__list .map-item.is-active, .page-template-front-page .about-section__map .map-images__list .map-item.is-hovered {
