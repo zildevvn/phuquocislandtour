@@ -142,54 +142,54 @@ add_filter('comment_post_redirect', function ($location, $comment) {
 
 
 
-// function custom_google_reviews_shortcode($atts)
-// {
-// 	$transient_key = 'google_reviews_cache';
-// 	$data = get_transient($transient_key);
+function custom_google_reviews_shortcode($atts)
+{
+	$transient_key = 'google_reviews_cache';
+	$data = get_transient($transient_key);
 
-// 	if (false === $data) {
-// 		$place_id = 'ChIJecSedmEZQjERbcFwrNOhTA4';
-// 		$api_key = 'AIzaSyCsyqhpCTfEsE3NOipTKwZ2PwYwQ_dyDi4';
+	if (false === $data) {
+		$place_id = 'ChIJecSedmEZQjERbcFwrNOhTA4';
+		$api_key = 'AIzaSyCsyqhpCTfEsE3NOipTKwZ2PwYwQ_dyDi4';
 
-// 		$url = "https://places.googleapis.com/v1/places/{$place_id}?fields=rating,userRatingCount&key={$api_key}";
+		$url = "https://places.googleapis.com/v1/places/{$place_id}?fields=rating,userRatingCount&key={$api_key}";
 
-// 		$response = wp_remote_get($url);
+		$response = wp_remote_get($url);
 
-// 		if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-// 			$body = wp_remote_retrieve_body($response);
-// 			$json = json_decode($body, true);
+		if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+			$body = wp_remote_retrieve_body($response);
+			$json = json_decode($body, true);
 
-// 			if (isset($json['rating'])) {
-// 				$data = [
-// 					'rating' => $json['rating'],
-// 					'count' => $json['userRatingCount']
-// 				];
-// 				set_transient($transient_key, $data, 24 * HOUR_IN_SECONDS);
-// 			}
-// 		}
-// 	}
+			if (isset($json['rating'])) {
+				$data = [
+					'rating' => $json['rating'],
+					'count' => $json['userRatingCount']
+				];
+				set_transient($transient_key, $data, 24 * HOUR_IN_SECONDS);
+			}
+		}
+	}
 
-// 	if (!$data) {
-// 		$data = ['rating' => '4.8', 'count' => '121'];
-// 	}
+	if (!$data) {
+		$data = ['rating' => '4.8', 'count' => '121'];
+	}
 
-// 	ob_start();
-// 	 ?>
-// <a href="https://maps.app.goo.gl/A8FAitnbGFDk3ntM9" target="_blank" class="vm-custom-review-badge">
-	// <img src="https://danangcarrental.vn/wp-content/uploads/2026/07/gg-review.svg" alt="Google Reviews" //
-		class="badge-icon">
-	// <span class="badge-stars" style="color: #fbbc04;">★★★★★</span>
-	// <span class="badge-score">
-		// <?php echo esc_html($data['rating']); ?>
-		// </span>
-	// <span class="badge-divider">|</span>
-	// <span class="badge-count">
-		// <?php echo number_format($data['count']); ?> reviews
-		// </span>
-	// </a>
-// <?php
-// 	return ob_get_clean();
-// }
+	ob_start();
+	?>
+	<a href="https://maps.app.goo.gl/A8FAitnbGFDk3ntM9" target="_blank" class="vm-custom-review-badge">
+		<img src="https://danangcarrental.vn/wp-content/uploads/2026/07/gg-review.svg" alt="Google Reviews"
+			class="badge-icon">
+		<span class="badge-stars" style="color: #fbbc04;">★★★★★</span>
+		<span class="badge-score">
+			<?php echo esc_html($data['rating']); ?>
+		</span>
+		<span class="badge-divider">|</span>
+		<span class="badge-count">
+			<?php echo number_format($data['count']); ?> reviews
+		</span>
+	</a>
+	<?php
+	return ob_get_clean();
+}
 // add_shortcode('google_badge', 'custom_google_reviews_shortcode');
 
 

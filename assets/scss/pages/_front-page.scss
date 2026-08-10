@@ -4,7 +4,7 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
-            height: 760px;
+            height: 660px;
 
             @include media-breakpoint-down(md) {
                 height: auto;
@@ -51,9 +51,9 @@
                     object-position: center;
                     width: 100%;
 
-                    @include media-breakpoint-down(lg) {
-                        height: 560px;
-                    }
+                    // @include media-breakpoint-down(lg) {
+                    //     height: 560px;
+                    // }
 
                     @include media-breakpoint-down(md) {
                         height: 330px;
@@ -157,16 +157,21 @@
             }
         }
 
-        &__leaf-top {
+        &__watercolor-top {
             position: absolute;
             z-index: 6;
-            top: -90px;
-            left: 870px;
-            animation: vm_swing 4s ease-in-out infinite alternate;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 160px;
 
-            @media (max-width: 1440px) {
-                left: 650px;
-                width: 190px;
+            @include media-breakpoint-down(xl) {
+                max-width: 130px;
+                left: 60%;
+            }
+
+            img {
+                animation: vm_watercolor_top 3.5s ease-in-out infinite alternate;
             }
         }
 
@@ -174,40 +179,55 @@
         &__baloon-top {
             position: absolute;
             z-index: 6;
-            top: 50px;
-            left: 740px;
-            opacity: 0.5;
-            animation: vm_sld_20 2s linear infinite alternate-reverse;
+            top: 150px;
+            left: 42%;
+            transform: translateX(-50%);
+            max-width: 150px;
 
-            @media (max-width: 1440px) {
-                max-width: 100px;
-                left: 500px
+
+            @include media-breakpoint-down(xl) {
+                max-width: 120px;
+                top: 120px;
+            }
+
+            img {
+                animation: tropicalIsland 4s ease-in-out infinite;
             }
         }
 
-        &__leaf-bottom {
+        &__watercolor-bottom {
             position: absolute;
             z-index: 6;
             bottom: -60px;
             left: -20px;
-            animation: vm_swing 5s ease-in-out infinite alternate;
+            animation: vm_watercolor_bottom 6s ease-in-out infinite alternate;
 
             @media (max-width: 1440px) {
-                bottom: -30px;
-                width: 190px;
+                bottom: 0px;
+                width: 220px;
+            }
+
+            @include media-breakpoint-down(md) {
+                width: 180px;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
             }
         }
 
         &__baloon-bottom {
+            display: none;
             position: absolute;
             z-index: 6;
             bottom: 30px;
             left: 800px;
-            opacity: 0.5;
-            animation: vm_sld_30 2s linear infinite alternate-reverse;
+            animation: tropicalIsland 4s ease-in-out infinite;
+            max-width: 120px;
 
             @media (max-width: 1440px) {
-                max-width: 130px;
+                max-width: 150px;
                 left: 600px;
             }
         }

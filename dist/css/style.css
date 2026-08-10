@@ -6200,12 +6200,45 @@ progress {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(30px);
+    transform: translateY(16px);
   }
 }
 @keyframes vm-draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+@keyframes vm_watercolor_top {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(-15px, -8px) rotate(-1.5deg) scale(1.03);
+  }
+}
+@keyframes vm_watercolor_bottom {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(18px, 6px) rotate(1deg) scale(1.02);
+  }
+}
+@keyframes tropicalIsland {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(4px, -3px, 0) rotate(0.3deg);
+  }
+  50% {
+    transform: translate3d(7px, -6px, 0) rotate(0.5deg);
+  }
+  75% {
+    transform: translate3d(-3px, -3px, 0) rotate(-0.2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
 * {
@@ -8396,7 +8429,7 @@ body.offcanvas-open {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  height: 760px;
+  height: 660px;
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .hero-section-inner {
@@ -8439,11 +8472,6 @@ body.offcanvas-open {
   -o-object-position: center;
   object-position: center;
   width: 100%;
-}
-@media (max-width: 1023.98px) {
-  .page-template-front-page .hero-section-gallery .gallery-item img {
-    height: 560px;
-  }
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .hero-section-gallery .gallery-item img {
@@ -8541,57 +8569,74 @@ body.offcanvas-open {
   color: #0C2C7A;
   letter-spacing: 0.048em;
 }
-.page-template-front-page .hero-section__leaf-top {
+.page-template-front-page .hero-section__watercolor-top {
   position: absolute;
   z-index: 6;
-  top: -90px;
-  left: 870px;
-  animation: vm_swing 4s ease-in-out infinite alternate;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 160px;
 }
-@media (max-width: 1440px) {
-  .page-template-front-page .hero-section__leaf-top {
-    left: 650px;
-    width: 190px;
+@media (max-width: 1199.98px) {
+  .page-template-front-page .hero-section__watercolor-top {
+    max-width: 130px;
+    left: 60%;
   }
+}
+.page-template-front-page .hero-section__watercolor-top img {
+  animation: vm_watercolor_top 3.5s ease-in-out infinite alternate;
 }
 .page-template-front-page .hero-section__baloon-top {
   position: absolute;
   z-index: 6;
-  top: 50px;
-  left: 740px;
-  opacity: 0.5;
-  animation: vm_sld_20 2s linear infinite alternate-reverse;
+  top: 150px;
+  left: 42%;
+  transform: translateX(-50%);
+  max-width: 150px;
 }
-@media (max-width: 1440px) {
+@media (max-width: 1199.98px) {
   .page-template-front-page .hero-section__baloon-top {
-    max-width: 100px;
-    left: 500px;
+    max-width: 120px;
+    top: 120px;
   }
 }
-.page-template-front-page .hero-section__leaf-bottom {
+.page-template-front-page .hero-section__baloon-top img {
+  animation: tropicalIsland 4s ease-in-out infinite;
+}
+.page-template-front-page .hero-section__watercolor-bottom {
   position: absolute;
   z-index: 6;
   bottom: -60px;
   left: -20px;
-  animation: vm_swing 5s ease-in-out infinite alternate;
+  animation: vm_watercolor_bottom 6s ease-in-out infinite alternate;
 }
 @media (max-width: 1440px) {
-  .page-template-front-page .hero-section__leaf-bottom {
-    bottom: -30px;
-    width: 190px;
+  .page-template-front-page .hero-section__watercolor-bottom {
+    bottom: 0px;
+    width: 220px;
   }
 }
+@media (max-width: 767.98px) {
+  .page-template-front-page .hero-section__watercolor-bottom {
+    width: 180px;
+  }
+}
+.page-template-front-page .hero-section__watercolor-bottom img {
+  width: 100%;
+  height: auto;
+}
 .page-template-front-page .hero-section__baloon-bottom {
+  display: none;
   position: absolute;
   z-index: 6;
   bottom: 30px;
   left: 800px;
-  opacity: 0.5;
-  animation: vm_sld_30 2s linear infinite alternate-reverse;
+  animation: tropicalIsland 4s ease-in-out infinite;
+  max-width: 120px;
 }
 @media (max-width: 1440px) {
   .page-template-front-page .hero-section__baloon-bottom {
-    max-width: 130px;
+    max-width: 150px;
     left: 600px;
   }
 }

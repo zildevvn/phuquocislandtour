@@ -73,23 +73,23 @@ if (!empty($whatsapp_number)) {
             </div>
         <?php endif; ?>
 
-        <div class="hero-section__leaf-top">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/leaf-1.png"
+        <div class="hero-section__watercolor-top">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image_wave_top.png"
                 alt="image leaf top for hero section" />
         </div>
 
         <div class="hero-section__baloon-top">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bln-top.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.png"
                 alt="image baloon top for hero section" />
         </div>
 
-        <div class="hero-section__leaf-bottom">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/leaf-2.png"
+        <div class="hero-section__watercolor-bottom">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_shell_wave.png"
                 alt="image leaf bottom for hero section" />
         </div>
 
         <div class="hero-section__baloon-bottom">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bln-bot.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.png"
                 alt="image baloon bottom for hero section" />
         </div>
     </div>

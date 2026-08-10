@@ -34,6 +34,7 @@ import { CountUp } from 'countup.js';
                 },
                 pagination: false,
                 navigation: false,
+                // autoplay: false,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
