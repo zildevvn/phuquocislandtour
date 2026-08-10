@@ -114,6 +114,92 @@ h6 {
 }
 
 
+.vm-custom-review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    font-family: $font-second;
+    color: $color-text;
+    transition: $transition-base;
+    width: fit-content;
+
+    @include media-breakpoint-down(md) {
+        padding: 8px 16px;
+        gap: 8px;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .badge-icon {
+        width: 100%;
+        height: auto !important;
+        max-width: 22px !important;
+        flex-shrink: 0;
+        
+        @include media-breakpoint-down(md) {
+            max-width: 20px !important;
+        }
+    }
+
+    .badge-stars {
+        font-size: 16px;
+        line-height: 1;
+        letter-spacing: 2px;
+        padding-bottom: 2px;
+    }
+
+    .badge-circles {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 14px;
+            
+            @include media-breakpoint-down(md) {
+                max-width: 12px;
+            }
+        }
+    }
+
+    .badge-score {
+        font-weight: 700;
+        font-size: 16px;
+        color: $color-primary;
+
+        @include media-breakpoint-down(md) {
+            font-size: 15px;
+        }
+    }
+
+    .badge-divider {
+        color: rgba(0, 0, 0, 0.15);
+        font-size: 14px;
+    }
+
+    .badge-count {
+        font-weight: 500;
+        font-size: 14px;
+        color: $color-body;
+
+        @include media-breakpoint-down(md) {
+            font-size: 13px;
+        }
+    }
+}
+
 
 // .wave-svg {}
 

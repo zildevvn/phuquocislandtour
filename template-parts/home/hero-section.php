@@ -36,9 +36,7 @@ if (!empty($whatsapp_number)) {
                 <?php endif; ?>
 
                 <div class="hero-section__contact gap-3 d-flex align-items-center">
-                    <?php if (!empty($btn)): ?>
-                        <?= vm_load_button($btn['url'], $btn['title'], $btn['target'], 'button to contact') ?>
-                    <?php endif; ?>
+                    <?php echo do_shortcode('[tripadvisor_badge]'); ?>
 
                     <?php if (!empty($whatsapp_url) && !empty($whatsapp_display)): ?>
                         <a href="<?= esc_url($whatsapp_url) ?>" target="_blank" rel="noopener noreferrer"
