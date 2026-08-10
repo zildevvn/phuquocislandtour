@@ -7530,19 +7530,6 @@ body.logged-in #car-review {
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
-.header-main.is-fixed {
-  position: fixed;
-  z-index: 999;
-  left: 0px;
-  right: 0px;
-  animation: 0.95s ease 0s normal forwards 1 running vm_scroll_animation;
-  border-radius: 20px;
-  top: 10px;
-  background: transparent;
-}
-.header-main.is-fixed .header-main-inner {
-  border: 1px solid rgba(6, 97, 104, 0.14);
-}
 .header-main-inner {
   background-color: #fff;
   border-radius: 20px;
@@ -8197,6 +8184,50 @@ body.offcanvas-open {
 }
 .main-footer__socials .item-social:nth-child(2) img {
   min-width: 27px;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: #00656D;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+@media (max-width: 767.98px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+@media (hover: hover) {
+  .back-to-top:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
 }
 
 .hero-section {

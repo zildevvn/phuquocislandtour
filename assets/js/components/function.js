@@ -444,6 +444,24 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitBackToTop = () => {
+        const $btn = $('.back-to-top');
+        if (!$btn.length) return;
+
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 300) {
+                $btn.addClass('is-visible');
+            } else {
+                $btn.removeClass('is-visible');
+            }
+        });
+
+        $btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -455,5 +473,6 @@ import { CountUp } from 'countup.js';
         vmInitFaqsAccordion()
         vmInitMapLocationsScroll()
         vmInitMapLocationsHover()
+        vmInitBackToTop()
     });
 })(jQuery);

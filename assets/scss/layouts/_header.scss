@@ -5,20 +5,20 @@
     box-sizing: border-box;
     transition: $transition-base;
 
-    &.is-fixed {
-        position: fixed;
-        z-index: 999;
-        left: 0px;
-        right: 0px;
-        animation: 0.95s ease 0s normal forwards 1 running vm_scroll_animation;
-        border-radius: 20px;
-        top: 10px;
-        background: transparent;
+    // &.is-fixed {
+    //     position: fixed;
+    //     z-index: 999;
+    //     left: 0px;
+    //     right: 0px;
+    //     animation: 0.95s ease 0s normal forwards 1 running vm_scroll_animation;
+    //     border-radius: 20px;
+    //     top: 10px;
+    //     background: transparent;
 
-        .header-main-inner {
-            border: 1px solid rgba(6, 97, 104, 0.14);
-        }
-    }
+    //     .header-main-inner {
+    //         border: 1px solid rgba(6, 97, 104, 0.14);
+    //     }
+    // }
 
     &-inner {
         background-color: #fff;
