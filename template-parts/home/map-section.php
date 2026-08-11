@@ -1,7 +1,7 @@
 <?php
 $terms = get_terms([
     'taxonomy' => 'tour_locations',
-    'hide_empty' => false,
+    'hide_empty' => true,
 ]);
 ?>
 
@@ -25,7 +25,7 @@ $terms = get_terms([
                         ?>
                         <a href="<?php echo esc_url($term_link); ?>" id="location-<?= $term->slug ?>" class="location">
                             <div class="location__image">
-                                <img src="<?= $image ?>" alt="image for location <?= $term->name ?> " />
+                                <img src="<?= $image['sizes']['large'] ?>" alt="image for location <?= $term->name ?> " />
                             </div>
 
                             <div class="location-content">
@@ -58,7 +58,7 @@ $terms = get_terms([
                             <?php $image = get_field('image', $term); ?>
                             <div id="map-<?= $term->slug ?>" data-location="#location-<?= $term->slug ?>" class="map-item"
                                 aria-label="Go to <?= $term->name ?>" style="z-index:<?= $key + 1 ?>">
-                                <img src="<?= $image ?>" alt="image for map <?= $term->name ?> " />
+                                <img src="<?= $image['sizes']['thumbnail'] ?>" alt="image for map <?= $term->name ?> " />
 
                                 <div class="map-tooltip">
                                     <span class="map-tooltip__name"><?= $term->name ?></span>

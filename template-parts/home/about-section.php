@@ -11,7 +11,7 @@ $terms = get_terms([
 <section class="vm-section about-section">
     <div class="about-section__graphic">
         <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
-            alt="image graphic phu quoc island tour" />
+            alt="image graphic phu quoc island tours" />
     </div>
 
     <div class="container">

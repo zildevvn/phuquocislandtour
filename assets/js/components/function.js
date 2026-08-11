@@ -27,7 +27,7 @@ import { CountUp } from 'countup.js';
                 modules: [Autoplay, EffectFade],
                 slidesPerView: 1,
                 loop: true,
-                speed: 800,
+                speed: 400,
                 effect: 'fade',
                 fadeEffect: {
                     crossFade: true
@@ -157,12 +157,12 @@ import { CountUp } from 'countup.js';
                 speed: 600,
                 observer: true,
                 observeParents: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                // autoplay: false,
+                // autoplay: {
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // },
+                autoplay: false,
                 navigation: {
                     nextEl: $carousel.find('.swiper-button-next')[0],
                     prevEl: $carousel.find('.swiper-button-prev')[0],

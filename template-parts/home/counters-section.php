@@ -14,7 +14,7 @@ $counters = get_field('counters_list_hp');
 
                         <div class="counter-item-content">
                             <h2 class="h6"> <?= $counter['label'] ?> </h2>
-                            <p class="vm-counter mb-0 h3">
+                            <p class="vm-counter mb-0 h2">
                                 <?= $counter['number'] ?>
                             </p>
                         </div>

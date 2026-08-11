@@ -8,6 +8,11 @@ $faqs = get_field('faqs_list_hp');
 
 <?php if (!empty($faqs)): ?>
     <section class="vm-section faqs-section">
+        <div class="faqs-section__graphic">
+            <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
+                alt="image graphic for FAQs phu quoc island tours" />
+        </div>
+
         <div class="container">
             <div class="faqs-section-inner d-flex">
                 <div class="faqs-section__left">

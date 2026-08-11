@@ -4,6 +4,11 @@ $sub_heading = get_field('sub_heading_steps_bk_hp');
 $steps = get_field('steps_list_hp');
 ?>
 <section class="vm-section steps-booking-section">
+    <div class="steps-booking-section__graphic">
+        <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
+            alt="image graphic steps booking phu quoc island tours" />
+    </div>
+
     <div class="container">
         <?php vm_icon_heading() ?>
         <?php if (!empty($heading)): ?>

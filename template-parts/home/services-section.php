@@ -51,9 +51,8 @@ $img_left = get_field('img_left_sr_hp');
 
                                 <div class="service-item__step">
                                     <div class="step-corner">
-                                        <span>Step</span>
-
-                                        <p class="number">0<?= $key + 1 ?></p>
+                                        <span></span>
+                                        <p class="number h4">0<?= $key + 1 ?></p>
                                     </div>
                                 </div>
                             </div>
