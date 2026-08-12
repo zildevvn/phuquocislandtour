@@ -173,8 +173,8 @@
         },
         {
             "key": "field_6a798e1bada13",
-            "label": "License Image",
-            "name": "license_image_ab",
+            "label": "Image",
+            "name": "image_ab",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -1286,5 +1286,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786419084
+    "modified": 1786502026
 }

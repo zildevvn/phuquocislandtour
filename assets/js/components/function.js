@@ -463,6 +463,88 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmParallaxGraphics = () => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        const graphics = document.querySelectorAll('[class*="-section__graphic"] img');
+        if (!graphics.length) return;
+
+        graphics.forEach((img, index) => {
+            // Assign slightly different speeds (e.g. 0.05, 0.1, 0.15)
+            const speed = 0.05 + (index % 3) * 0.03;
+            img.dataset.parallaxSpeed = speed;
+            img.style.willChange = 'transform';
+        });
+
+        const onScroll = () => {
+            const windowHeight = window.innerHeight;
+
+            graphics.forEach(img => {
+                const container = img.parentElement;
+                const rect = container.getBoundingClientRect();
+                
+                // Only animate if container is in viewport (with a small buffer)
+                if (rect.top <= windowHeight + 100 && rect.bottom >= -100) {
+                    const speed = parseFloat(img.dataset.parallaxSpeed);
+                    const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
+                    const yPos = centerOffset * speed;
+                    
+                    img.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                }
+            });
+        };
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    onScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        onScroll();
+    };
+
+    const vmInitLicenseModal = () => {
+        const $btn = $('.btn-view-license');
+        const $modal = $('#licenseModal');
+        const $close = $modal.find('.vm-license-modal__close');
+        const $overlay = $modal.find('.vm-license-modal__overlay');
+
+        if (!$btn.length || !$modal.length) return;
+
+        $btn.on('click', function(e) {
+            e.preventDefault();
+            $modal.addClass('is-active');
+            $('body').css('overflow', 'hidden');
+        });
+
+        const closeModal = () => {
+            $modal.removeClass('is-active');
+            $('body').css('overflow', '');
+        };
+
+        $close.on('click', function(e) {
+            e.preventDefault();
+            closeModal();
+        });
+
+        $overlay.on('click', function() {
+            closeModal();
+        });
+        
+        $(document).on('keydown', function(e) {
+            if (e.key === "Escape" && $modal.hasClass('is-active')) {
+                closeModal();
+            }
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -475,5 +557,7 @@ import { CountUp } from 'countup.js';
         vmInitMapLocationsScroll()
         vmInitMapLocationsHover()
         vmInitBackToTop()
+        vmParallaxGraphics()
+        vmInitLicenseModal()
     });
 })(jQuery);
