@@ -34,12 +34,12 @@ import { CountUp } from 'countup.js';
                 },
                 pagination: false,
                 navigation: false,
-                // autoplay: false,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                }
+                autoplay: false,
+                // autoplay: {
+                //     delay: 5000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // }
             });
         });
     }
@@ -484,13 +484,13 @@ import { CountUp } from 'countup.js';
             graphics.forEach(img => {
                 const container = img.parentElement;
                 const rect = container.getBoundingClientRect();
-                
+
                 // Only animate if container is in viewport (with a small buffer)
                 if (rect.top <= windowHeight + 100 && rect.bottom >= -100) {
                     const speed = parseFloat(img.dataset.parallaxSpeed);
                     const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
                     const yPos = centerOffset * speed;
-                    
+
                     img.style.transform = `translate3d(0, ${yPos}px, 0)`;
                 }
             });
@@ -506,7 +506,7 @@ import { CountUp } from 'countup.js';
                 ticking = true;
             }
         }, { passive: true });
-        
+
         onScroll();
     };
 
@@ -518,7 +518,7 @@ import { CountUp } from 'countup.js';
 
         if (!$btn.length || !$modal.length) return;
 
-        $btn.on('click', function(e) {
+        $btn.on('click', function (e) {
             e.preventDefault();
             $modal.addClass('is-active');
             $('body').css('overflow', 'hidden');
@@ -529,16 +529,16 @@ import { CountUp } from 'countup.js';
             $('body').css('overflow', '');
         };
 
-        $close.on('click', function(e) {
+        $close.on('click', function (e) {
             e.preventDefault();
             closeModal();
         });
 
-        $overlay.on('click', function() {
+        $overlay.on('click', function () {
             closeModal();
         });
-        
-        $(document).on('keydown', function(e) {
+
+        $(document).on('keydown', function (e) {
             if (e.key === "Escape" && $modal.hasClass('is-active')) {
                 closeModal();
             }

@@ -61,6 +61,15 @@ if (!empty($whatsapp_number)) {
         <?php if (!empty($gallerys)): ?>
             <div class="hero-section-gallery swiper">
                 <div class="swiper-wrapper">
+                    <div class="swiper-slide gallery-item">
+                        <div class="gallery-item__media">
+                            <video class="gallery-item__video" autoplay muted loop playsinline preload="auto">
+                                <source src="http://localhost:10040/wp-content/uploads/2026/08/video-hero.mov"
+                                    type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ phát video.
+                            </video>
+                        </div>
+                    </div>
                     <?php foreach ($gallerys as $gallery): ?>
                         <div class="swiper-slide gallery-item">
                             <div class="gallery-item__media">

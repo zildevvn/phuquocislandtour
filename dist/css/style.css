@@ -8622,7 +8622,8 @@ body.offcanvas-open {
   display: flex;
   justify-content: end;
 }
-.page-template-front-page .hero-section-gallery .gallery-item img {
+.page-template-front-page .hero-section-gallery .gallery-item img,
+.page-template-front-page .hero-section-gallery .gallery-item video {
   height: 760px;
   -o-object-fit: cover;
   object-fit: cover;
@@ -8632,17 +8633,20 @@ body.offcanvas-open {
   max-width: 50%;
 }
 @media (max-width: 1199.98px) {
-  .page-template-front-page .hero-section-gallery .gallery-item img {
+  .page-template-front-page .hero-section-gallery .gallery-item img,
+  .page-template-front-page .hero-section-gallery .gallery-item video {
     max-width: 70%;
   }
 }
 @media (max-width: 1023.98px) {
-  .page-template-front-page .hero-section-gallery .gallery-item img {
+  .page-template-front-page .hero-section-gallery .gallery-item img,
+  .page-template-front-page .hero-section-gallery .gallery-item video {
     max-width: 85%;
   }
 }
 @media (max-width: 767.98px) {
-  .page-template-front-page .hero-section-gallery .gallery-item img {
+  .page-template-front-page .hero-section-gallery .gallery-item img,
+  .page-template-front-page .hero-section-gallery .gallery-item video {
     height: 330px;
     max-width: 100%;
   }

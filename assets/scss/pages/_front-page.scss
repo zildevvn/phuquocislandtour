@@ -48,7 +48,8 @@
                     justify-content: end;
                 }
 
-                img {
+                img,
+                video {
                     height: 760px;
                     -o-object-fit: cover;
                     object-fit: cover;
