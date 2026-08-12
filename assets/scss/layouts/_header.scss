@@ -1,7 +1,7 @@
 .header-main {
     background: $color-primary;
     position: static;
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     transition: $transition-base;
 
@@ -37,13 +37,6 @@
 
         @include media-breakpoint-down(md) {
             display: none !important;
-        }
-
-
-        &__cta {
-            @include media-breakpoint-down(md) {
-                display: none;
-            }
         }
 
         &__sologan {
@@ -93,6 +86,76 @@
                 &:nth-child(3) {
                     img {
                         min-width: 32px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__translate {
+        .gtranslate_wrapper {
+
+            &:hover {
+                .gt_switcher .gt_option {
+                    display: block !important;
+                    height: auto !important;
+                }
+            }
+
+            .gt_switcher {
+                position: relative;
+                overflow: inherit;
+
+                .gt_option {
+                    position: absolute;
+                }
+            }
+
+            .gt_selected {
+                background: #fff !important;
+                border-color: $color-secondary;
+
+                >a {
+                    border-color: $color-secondary !important;
+                    border-radius: 8px !important;
+                    border-width: 1.5px !important;
+                    font-family: $font-second !important;
+                    color: $color-text !important;
+                    font-size: 16px !important;
+                    font-weight: 700;
+
+                    img {
+                        margin-right: 4px !important;
+                    }
+                }
+            }
+
+            .gt_option {
+                background: #fff !important;
+                border-radius: 8px !important;
+                padding: 10px 8px !important;
+
+                a {
+                    font-family: $font-second !important;
+                    color: $color-text !important;
+                    font-size: 14px !important;
+                    font-weight: 700;
+                    padding: 0 !important;
+
+                    &:not(:last-child) {
+                        padding-bottom: 6px !important;
+                        border-bottom: 1px solid rgba($color-primary, 0.1) !important;
+                    }
+
+                    &:not(:first-child) {
+                        padding-top: 6px !important;
+                    }
+
+                    img {
+                        width: 100% !important;
+                        height: auto !important;
+                        max-width: 20px !important;
+                        margin-right: 4px !important;
                     }
                 }
             }

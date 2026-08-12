@@ -7792,7 +7792,7 @@ body.logged-in #car-review {
 .header-main {
   background: #0C2C7A;
   position: static;
-  padding: 20px 20px 0px 20px;
+  padding: 20px 20px 20px 20px;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -7810,11 +7810,6 @@ body.logged-in #car-review {
 @media (max-width: 767.98px) {
   .header-main .header-top {
     display: none !important;
-  }
-}
-@media (max-width: 767.98px) {
-  .header-main .header-top__cta {
-    display: none;
   }
 }
 .header-main .header-top__sologan {
@@ -7849,6 +7844,58 @@ body.logged-in #car-review {
 }
 .header-main .header-top__socials .item-social:nth-child(3) img {
   min-width: 32px;
+}
+.header-main__translate .gtranslate_wrapper:hover .gt_switcher .gt_option {
+  display: block !important;
+  height: auto !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_switcher {
+  position: relative;
+  overflow: inherit;
+}
+.header-main__translate .gtranslate_wrapper .gt_switcher .gt_option {
+  position: absolute;
+}
+.header-main__translate .gtranslate_wrapper .gt_selected {
+  background: #fff !important;
+  border-color: #00656D;
+}
+.header-main__translate .gtranslate_wrapper .gt_selected > a {
+  border-color: #00656D !important;
+  border-radius: 8px !important;
+  border-width: 1.5px !important;
+  font-family: "Afacad", sans-serif !important;
+  color: #19232B !important;
+  font-size: 16px !important;
+  font-weight: 700;
+}
+.header-main__translate .gtranslate_wrapper .gt_selected > a img {
+  margin-right: 4px !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_option {
+  background: #fff !important;
+  border-radius: 8px !important;
+  padding: 10px 8px !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_option a {
+  font-family: "Afacad", sans-serif !important;
+  color: #19232B !important;
+  font-size: 14px !important;
+  font-weight: 700;
+  padding: 0 !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_option a:not(:last-child) {
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid rgba(12, 44, 122, 0.1) !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_option a:not(:first-child) {
+  padding-top: 6px !important;
+}
+.header-main__translate .gtranslate_wrapper .gt_option a img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 20px !important;
+  margin-right: 4px !important;
 }
 .header-main__logo img {
   width: 100%;
@@ -8578,6 +8625,9 @@ body.offcanvas-open {
   margin-top: 4px;
 }
 
+.page-template-front-page .hero-section {
+  background: #fff;
+}
 .page-template-front-page .hero-section-inner {
   border-radius: 20px;
   overflow: hidden;
@@ -8602,13 +8652,12 @@ body.offcanvas-open {
   top: 0px;
   right: 0px;
   z-index: 5;
-  background-image: url(../images/overlay-shape.png);
+  background-image: url(../images/overlay-shape-green.png);
   display: flex;
   align-items: center;
 }
 @media (max-width: 1440px) {
   .page-template-front-page .hero-section__bg {
-    max-width: 1300px;
     background-position: top center;
   }
 }
@@ -8618,35 +8667,39 @@ body.offcanvas-open {
     background-position: left;
   }
 }
-.page-template-front-page .hero-section-gallery .gallery-item__media {
+.page-template-front-page .hero-section-gallery .gallery-item__media, .page-template-front-page .hero-section-video .gallery-item__media {
   display: flex;
   justify-content: end;
 }
 .page-template-front-page .hero-section-gallery .gallery-item img,
-.page-template-front-page .hero-section-gallery .gallery-item video {
+.page-template-front-page .hero-section-gallery .gallery-item video, .page-template-front-page .hero-section-video .gallery-item img,
+.page-template-front-page .hero-section-video .gallery-item video {
   height: 760px;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
   width: 100%;
-  max-width: 50%;
+  max-width: 60%;
 }
 @media (max-width: 1199.98px) {
   .page-template-front-page .hero-section-gallery .gallery-item img,
-  .page-template-front-page .hero-section-gallery .gallery-item video {
-    max-width: 70%;
+  .page-template-front-page .hero-section-gallery .gallery-item video, .page-template-front-page .hero-section-video .gallery-item img,
+  .page-template-front-page .hero-section-video .gallery-item video {
+    max-width: 75%;
   }
 }
 @media (max-width: 1023.98px) {
   .page-template-front-page .hero-section-gallery .gallery-item img,
-  .page-template-front-page .hero-section-gallery .gallery-item video {
+  .page-template-front-page .hero-section-gallery .gallery-item video, .page-template-front-page .hero-section-video .gallery-item img,
+  .page-template-front-page .hero-section-video .gallery-item video {
     max-width: 85%;
   }
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .hero-section-gallery .gallery-item img,
-  .page-template-front-page .hero-section-gallery .gallery-item video {
+  .page-template-front-page .hero-section-gallery .gallery-item video, .page-template-front-page .hero-section-video .gallery-item img,
+  .page-template-front-page .hero-section-video .gallery-item video {
     height: 330px;
     max-width: 100%;
   }
@@ -8684,6 +8737,7 @@ body.offcanvas-open {
 .page-template-front-page .hero-section-content h1, .page-template-front-page .hero-section-content .h1 {
   line-height: 90%;
   margin: 0;
+  color: #fff;
 }
 .page-template-front-page .hero-section-content h1 span, .page-template-front-page .hero-section-content .h1 span {
   width: 100%;
@@ -8696,11 +8750,12 @@ body.offcanvas-open {
   }
 }
 .page-template-front-page .hero-section-content h1 b, .page-template-front-page .hero-section-content .h1 b {
-  color: #0C2C7A;
+  color: #FF9900;
 }
 .page-template-front-page .hero-section__desc {
   margin-top: 24px;
   font-size: 18px;
+  color: #fff;
 }
 @media (min-width: 1200px) {
   .page-template-front-page .hero-section__desc {
@@ -8723,6 +8778,7 @@ body.offcanvas-open {
 }
 .page-template-front-page .hero-section__whatsapp {
   text-decoration: none;
+  color: #fff;
 }
 .page-template-front-page .hero-section__whatsapp svg {
   width: 100%;
@@ -8731,15 +8787,16 @@ body.offcanvas-open {
   flex-shrink: 0;
 }
 .page-template-front-page .hero-section__whatsapp svg path {
-  fill: #0C2C7A;
+  fill: #FF9900;
 }
 .page-template-front-page .hero-section__whatsapp .content {
   width: 100%;
   display: inline-block;
   min-width: fit-content;
+  color: #FF9900;
 }
 .page-template-front-page .hero-section__whatsapp .content p {
-  color: #0C2C7A;
+  color: #fff;
   letter-spacing: 0.048em;
 }
 .page-template-front-page .hero-section__watercolor-top {
@@ -8767,15 +8824,15 @@ body.offcanvas-open {
 .page-template-front-page .hero-section__baloon-top {
   position: absolute;
   z-index: 6;
-  top: 150px;
-  left: 42%;
+  top: 120px;
+  left: 35%;
   transform: translateX(-50%);
   max-width: 150px;
 }
 @media (max-width: 1199.98px) {
   .page-template-front-page .hero-section__baloon-top {
     max-width: 120px;
-    top: 120px;
+    top: 100px;
   }
 }
 @media (max-width: 767.98px) {

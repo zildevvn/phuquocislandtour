@@ -63,6 +63,27 @@
             "new_lines": ""
         },
         {
+            "key": "field_6a7c41109ffed",
+            "label": "Show Video",
+            "name": "show_vd_hero_home",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hidden",
+            "ui": 1
+        },
+        {
             "key": "field_6a68202fc40fc",
             "label": "Gallerys",
             "name": "gallerys_hero_hp",
@@ -70,7 +91,15 @@
             "type": "gallery",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a7c41109ffed",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "100",
                 "class": "",
@@ -89,6 +118,35 @@
             "mime_types": "",
             "insert": "append",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_6a7c4049d72fc",
+            "label": "Video",
+            "name": "video_hero_hp",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a7c41109ffed",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ".mp4, .mov",
+            "allow_in_bindings": 0
         },
         {
             "key": "field_6a743a2673339",
@@ -1286,5 +1344,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786502026
+    "modified": 1786528092
 }

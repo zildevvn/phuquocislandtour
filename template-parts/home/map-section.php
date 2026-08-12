@@ -19,6 +19,11 @@ $terms = get_terms([
                         $image = get_field('image', $term);
                         $custom_link = get_field('custom_link_page', $term);
 
+
+                        echo "<pre>";
+                        echo print_r($image);
+                        echo "</pre>";
+
                         $term_link = !empty($custom_link)
                             ? $custom_link
                             : get_term_link($term);

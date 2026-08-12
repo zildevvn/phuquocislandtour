@@ -1,7 +1,10 @@
 <?php
-$gallerys = get_field('gallerys_hero_hp');
+
 $hd = get_field('hd_hero_home');
 $desc = get_field('desc_hero_home');
+$show_vd = get_field('show_vd_hero_home');
+$gallerys = get_field('gallerys_hero_hp');
+$video = get_field('video_hero_hp');
 
 $whatsapp_display = get_field('phone', 'option');
 $whatsapp_number = get_field('whatsapp', 'option');
@@ -58,18 +61,22 @@ if (!empty($whatsapp_number)) {
             </div>
         </div>
 
-        <?php if (!empty($gallerys)): ?>
+        <?php if ($show_vd && !empty($video)): ?>
+            <div class="hero-section-video">
+                <div class="gallery-item">
+                    <div class="gallery-item__media">
+                        <video class="gallery-item__video" autoplay muted loop playsinline preload="auto">
+                            <source src="http://localhost:10040/wp-content/uploads/2026/08/video-hero.mov" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ phát video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!$show_vd && !empty($gallerys)): ?>
             <div class="hero-section-gallery swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide gallery-item">
-                        <div class="gallery-item__media">
-                            <video class="gallery-item__video" autoplay muted loop playsinline preload="auto">
-                                <source src="http://localhost:10040/wp-content/uploads/2026/08/video-hero.mov"
-                                    type="video/mp4">
-                                Trình duyệt của bạn không hỗ trợ phát video.
-                            </video>
-                        </div>
-                    </div>
                     <?php foreach ($gallerys as $gallery): ?>
                         <div class="swiper-slide gallery-item">
                             <div class="gallery-item__media">
@@ -82,17 +89,17 @@ if (!empty($whatsapp_number)) {
         <?php endif; ?>
 
         <div class="hero-section__watercolor-top">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image_wave_top.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image_wave_top_new.webp"
                 alt="image leaf top for hero section" />
         </div>
 
         <div class="hero-section__baloon-top">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.webp"
                 alt="image baloon top for hero section" />
         </div>
 
         <div class="hero-section__watercolor-bottom">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_shell_wave.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-seashells-starfish-waves.webp"
                 alt="image leaf bottom for hero section" />
         </div>
 

@@ -1,7 +1,6 @@
 <?php
 $custom_logo_id = get_theme_mod('custom_logo');
 $logo_url = wp_get_attachment_url($custom_logo_id);
-$cta_header = get_field('cta_header', 'option');
 $socials = get_field('socials', 'option');
 $sologan = get_field('sologan_hd_top', 'option');
 $email = get_field('email', 'option');
@@ -62,7 +61,7 @@ $email = get_field('email', 'option');
                 <?php endif; ?>
             </div>
 
-            <div class=" header-main__actions d-flex align-items-center justify-content-end gap-3">
+            <div class="header-main__actions d-flex align-items-center justify-content-end gap-3">
                 <button class="header-main__search d-flex align-items-center justify-content-center"
                     aria-label="<?php esc_attr_e('Open search', 'hle'); ?>" type="button">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
@@ -76,15 +75,12 @@ $email = get_field('email', 'option');
                     </svg>
                 </button>
 
-                <div class="header-top__cta ">
-                    <?php if (!empty($cta_header)): ?>
-                        <?php vm_load_button($cta_header['url'], $cta_header['title']) ?>
-                    <?php endif; ?>
+                <div class="header-main__translate">
+                    <?php echo do_shortcode('[gtranslate]'); ?>
                 </div>
 
-
-                <button id="mobile-side-drawer" data-target="#offcanvas-menu" type="button"
-                    class="d-xl-none d-block" aria-expanded="false" aria-controls="offcanvas-menu">
+                <button id="mobile-side-drawer" data-target="#offcanvas-menu" type="button" class="d-xl-none d-block"
+                    aria-expanded="false" aria-controls="offcanvas-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar icon-bar-first"></span>
                     <span class="icon-bar icon-bar-two"></span>
@@ -104,8 +100,10 @@ $email = get_field('email', 'option');
                 <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
             </a>
         </div>
-        <button class="offcanvas-menu__close d-flex align-items-center justify-content-center" aria-label="<?php esc_attr_e('Close menu', 'hle'); ?>" type="button">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="offcanvas-menu__close d-flex align-items-center justify-content-center"
+            aria-label="<?php esc_attr_e('Close menu', 'hle'); ?>" type="button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
