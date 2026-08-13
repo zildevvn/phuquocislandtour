@@ -97,3 +97,30 @@
         }
     }
 }
+
+
+.hero-section-shared {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+
+    .vm-section__bg {
+        &::before {
+            content: " ";
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            background: rgba($color: $color-secondary, $alpha: 0.5);
+        }
+    }
+
+    >.container {
+        position: relative;
+
+        h1 {
+            color: #fff;
+        }
+    }
+}

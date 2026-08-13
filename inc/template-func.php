@@ -252,7 +252,7 @@ function vm_hero_section_shared($title = '', $image = '')
 
         <div class="container">
             <div class="hero-section-shared__box">
-                <h1 class="vm-heading-animation"><?= $title ?></h1>
+                <h1 class="vm-heading"><?= $title ?></h1>
                 <?php vm_breadcrumbs($title) ?>
             </div>
         </div>

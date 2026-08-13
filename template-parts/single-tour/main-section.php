@@ -103,7 +103,7 @@ $price_private = get_field('price_for_private_tour');
                                         if (empty($text))
                                             continue;
                                         ?>
-                                        <li data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
+                                        <li>
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -132,7 +132,7 @@ $price_private = get_field('price_for_private_tour');
                                         if (empty($text))
                                             continue;
                                         ?>
-                                        <li data-aos="fade-up" data-aos-delay="<?php echo $index * 100; ?>">
+                                        <li data-aos-delay="<?php echo $index * 100; ?>">
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -235,7 +235,7 @@ $price_private = get_field('price_for_private_tour');
                                 $image = $item['image'];
                                 $desc = $item['desc'];
                                 ?>
-                                <div class="accordion-item" data-aos="fade-up" data-aos-delay="<?= $key * 100 ?>">
+                                <div class="accordion-item" data-aos-delay="<?= $key * 100 ?>">
                                     <h3 class="accordion-question h6 d-flex align-items-center" tabindex="0" role="button"
                                         aria-expanded="false">
                                         <div class="icon d-flex align-items-center align-content-center justify-content-center">

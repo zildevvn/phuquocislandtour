@@ -8625,6 +8625,27 @@ body.offcanvas-open {
   margin-top: 4px;
 }
 
+.hero-section-shared {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.hero-section-shared .vm-section__bg::before {
+  content: " ";
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 101, 109, 0.5);
+}
+.hero-section-shared > .container {
+  position: relative;
+}
+.hero-section-shared > .container h1, .hero-section-shared > .container .h1 {
+  color: #fff;
+}
+
 .page-template-front-page .hero-section {
   background: #fff;
 }
