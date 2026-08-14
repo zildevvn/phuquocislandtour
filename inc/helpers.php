@@ -125,3 +125,102 @@ if (!function_exists('vm_load_button')) {
 		</a>
 	<?php }
 }
+
+// Helper function to safely extract image data
+if (!function_exists('vm_extract_gallery_image_data')) {
+	function vm_extract_gallery_image_data($image)
+	{
+		$data = [
+			'url' => '',
+			'thumb' => '',
+			'alt' => get_the_title() . ' - Gallery',
+			'title' => ''
+		];
+
+		if (is_array($image)) {
+			$data['url'] = !empty($image['url']) ? $image['url'] : '';
+			$data['thumb'] = isset($image['sizes']['large']) ? $image['sizes']['large'] : $data['url'];
+			if (!empty($image['alt'])) {
+				$data['alt'] = $image['alt'];
+			} elseif (!empty($image['title'])) {
+				$data['alt'] = $image['title'];
+			}
+			$data['title'] = !empty($image['title']) ? $image['title'] : '';
+		} elseif (is_numeric($image)) {
+			$data['url'] = wp_get_attachment_url($image);
+			$img_src_large = wp_get_attachment_image_src($image, 'large');
+			$data['thumb'] = $img_src_large ? $img_src_large[0] : $data['url'];
+			$alt = get_post_meta($image, '_wp_attachment_image_alt', true);
+			if (!empty($alt)) {
+				$data['alt'] = $alt;
+			} else {
+				$data['alt'] = get_the_title($image);
+			}
+			$data['title'] = get_the_title($image);
+		} elseif (is_string($image)) {
+			$data['url'] = $image;
+			$data['thumb'] = $image;
+		}
+
+		return $data;
+	}
+}
+
+if (!function_exists('vm_calculate_tour_price')) {
+    /**
+     * Calculate tour price based on option and pax
+     * 
+     * @param array $selected_option
+     * @param int $total_pax
+     * @return array
+     */
+    function vm_calculate_tour_price($selected_option, $total_pax) {
+        if ($total_pax < 1) {
+            $total_pax = 1;
+        }
+
+        $private_tour = $selected_option['private_tour'] ?? false;
+        $price_group = $selected_option['price_group'] ?? 0;
+        $price_private = $selected_option['price_private'] ?? [];
+
+        $price_per_person = 0.0;
+
+        if (empty($private_tour)) {
+            $group_price_val = is_array($price_group) && isset($price_group['price']) ? $price_group['price'] : (is_scalar($price_group) ? $price_group : 0);
+            $price_per_person = floatval(str_replace(['₫', '$', ',', ' '], '', $group_price_val));
+        } else {
+            $private_price_val = 0;
+            if (is_array($price_private) && !empty($price_private)) {
+                $available_pax = [];
+                foreach ($price_private as $p_key => $p_val) {
+                    $num = intval($p_key);
+                    if ($num > 0 && $p_val !== '') {
+                        $available_pax[$num] = $p_val;
+                    }
+                }
+                if (!empty($available_pax)) {
+                    ksort($available_pax);
+                    $found_price = null;
+                    $max_pax_price = 0;
+                    foreach ($available_pax as $p_num => $p_val) {
+                        $max_pax_price = $p_val;
+                        if ($p_num >= $total_pax && $found_price === null) {
+                            $found_price = $p_val;
+                        }
+                    }
+                    $private_price_val = $found_price ?? $max_pax_price;
+                }
+            }
+            $price_per_person = floatval(str_replace(['₫', '$', ',', ' '], '', $private_price_val));
+        }
+
+        $is_price_available = ($price_per_person !== 0.0);
+        $total_price = $price_per_person * $total_pax;
+
+        return [
+            'price_per_person' => $price_per_person,
+            'total_price' => $total_price,
+            'is_price_available' => $is_price_available
+        ];
+    }
+}

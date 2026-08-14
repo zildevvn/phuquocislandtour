@@ -545,6 +545,405 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitTourGallery = () => {
+        const $dataElement = $('#tourGalleryData');
+        if (!$dataElement.length) return;
+
+        let galleryData = [];
+        try {
+            galleryData = JSON.parse($dataElement.text());
+        } catch (e) {
+            console.error('Failed to parse gallery data');
+            return;
+        }
+
+        if (galleryData.length === 0) return;
+
+        const $lightbox = $('#tourGalleryLightbox');
+        if (!$lightbox.length) return;
+
+        const $lightboxImg = $('#tourGalleryLightboxImg');
+        const $counter = $('#tourGalleryLightboxCounter');
+
+        let currentIndex = 0;
+        let isOpen = false;
+
+        const updateLightbox = () => {
+            if (galleryData[currentIndex]) {
+                $lightboxImg.attr('src', galleryData[currentIndex].url);
+                $lightboxImg.attr('alt', galleryData[currentIndex].alt);
+                $counter.text(`${currentIndex + 1} / ${galleryData.length}`);
+            }
+        };
+
+        const openLightbox = (index) => {
+            currentIndex = index;
+            updateLightbox();
+            $lightbox.addClass('is-active').attr('aria-hidden', 'false');
+            $('body').css('overflow', 'hidden');
+            isOpen = true;
+        };
+
+        const closeLightbox = () => {
+            $lightbox.removeClass('is-active').attr('aria-hidden', 'true');
+            $('body').css('overflow', '');
+            isOpen = false;
+        };
+
+        const nextImage = () => {
+            currentIndex = (currentIndex + 1) % galleryData.length;
+            updateLightbox();
+        };
+
+        const prevImage = () => {
+            currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+            updateLightbox();
+        };
+
+        // Event Listeners for visible gallery items
+        $('.tour-gallery').on('click', '.tour-gallery__item', function () {
+            const index = parseInt($(this).data('index'), 10);
+            if (!isNaN(index)) {
+                openLightbox(index);
+            }
+        });
+
+        // Lightbox controls
+        $lightbox.on('click', '.tour-gallery__lightbox-close', function (e) {
+            e.preventDefault();
+            closeLightbox();
+        });
+
+        $lightbox.on('click', '.tour-gallery__lightbox-next', function (e) {
+            e.preventDefault();
+            nextImage();
+        });
+
+        $lightbox.on('click', '.tour-gallery__lightbox-prev', function (e) {
+            e.preventDefault();
+            prevImage();
+        });
+
+        // Close on overlay click
+        $lightbox.on('click', function (e) {
+            const $target = $(e.target);
+            if ($target.hasClass('tour-gallery__lightbox-overlay') || $target.hasClass('tour-gallery__lightbox-image-container')) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard controls
+        $(document).on('keydown', function (e) {
+            if (!isOpen) return;
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+        });
+    };
+
+    const vmInitQuantitySelectors = () => {
+        $('.quantity-selector').on('click', '.qty-btn', function (e) {
+            e.preventDefault();
+            const $btn = $(this);
+            const $input = $btn.siblings('input[type="number"]');
+            let val = parseInt($input.val());
+            if (isNaN(val)) val = 0;
+
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            let max = parseInt($input.attr('max'));
+            if (isNaN(max)) max = 999;
+
+            if ($btn.text().trim() === '+') {
+                if (val < max) val++;
+            } else if ($btn.text().trim() === '-') {
+                if (val > min) val--;
+            }
+
+            $input.val(val).trigger('change');
+        });
+
+        $('.quantity-selector input[type="number"]').on('change input', function () {
+            const $input = $(this);
+            let val = parseInt($input.val());
+            if (isNaN(val)) return; // Allow empty while typing, format on blur if needed
+
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            let max = parseInt($input.attr('max'));
+            if (isNaN(max)) max = 999;
+
+            if (val < min) $input.val(min);
+            if (val > max) $input.val(max);
+        });
+
+        $('.quantity-selector input[type="number"]').on('blur', function () {
+            const $input = $(this);
+            let val = parseInt($input.val());
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            if (isNaN(val)) $input.val(min);
+        });
+    };
+
+    const vmInitAjaxTourOptions = () => {
+        const $form = $('.vm-form-booking');
+        const $btn = $form.find('.btn-book-demo');
+        const $container = $('#vm-tour-options-container');
+
+        if (!$form.length || !$btn.length || !$container.length) return;
+
+        $container.hide();
+
+        $btn.on('click', function (e) {
+            e.preventDefault();
+
+            const date = $form.find('input[type="date"]').val();
+            const $error = $form.find('.vm-form-error');
+
+            $error.hide().text('');
+
+            if (!date) {
+                $error.text('Please select a tour date.').slideDown(200);
+                return;
+            }
+
+            const adults = parseInt($form.find('.quantity-selector input').eq(0).val()) || 0;
+            const children = parseInt($form.find('.quantity-selector input').eq(1).val()) || 0;
+
+            if ($btn.hasClass('is-loading')) return;
+
+            const originalText = $btn.text();
+            $btn.addClass('is-loading').text('CHECKING...');
+            $btn.prop('disabled', true);
+
+            const postId = $container.data('post-id');
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'vm_ajax_check_availability',
+                    nonce: php_data.tour_options_nonce,
+                    post_id: postId,
+                    date: date,
+                    adults: adults,
+                    children: children
+                },
+                success: function (response) {
+                    $btn.removeClass('is-loading').text(originalText);
+                    $btn.prop('disabled', false);
+
+                    if (response.success) {
+                        if (response.data.count > 0) {
+                            $container.html(response.data.html);
+                            $container.slideDown(400, function () {
+                                $('html, body').animate({
+                                    scrollTop: $container.offset().top - 120
+                                }, 600);
+                            });
+                        } else {
+                            $container.html('<div class="container"><div class="vm-tour-options-empty" style="padding:40px 20px;text-align:center;background:#fff;border-radius:12px;margin:30px 0;border:1px solid #eaeaea;">No available tour options found for the selected date. Please try another date.</div></div>');
+                            $container.slideDown(400);
+                        }
+                    } else {
+                        alert(response.data.message || 'An error occurred.');
+                    }
+                },
+                error: function () {
+                    $btn.removeClass('is-loading').text(originalText);
+                    $btn.prop('disabled', false);
+                    alert('Server error. Please try again later.');
+                }
+            });
+        });
+
+        $container.on('click', '.option-item', function (e) {
+            // Do not trigger selection logic if clicking the active button itself
+            if ($(e.target).hasClass('btn-select--active')) return;
+
+            $container.find('.option-item').removeClass('is-selected');
+            $container.find('.btn-select').removeClass('btn-select--active').text('Select');
+
+            $(this).addClass('is-selected');
+            $(this).find('.btn-select').addClass('btn-select--active').text('Continue');
+        });
+
+        $container.on('click', '.btn-select.btn-select--active', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const $thisBtn = $(this);
+            if ($thisBtn.hasClass('is-loading')) return;
+
+            const originalText = $thisBtn.text();
+            $thisBtn.addClass('is-loading').text('Processing...');
+            $thisBtn.prop('disabled', true);
+
+            const $tourItem = $thisBtn.closest('.option-item');
+            const optionId = $tourItem.data('key');
+            const postId = $container.data('post-id');
+            const date = $form.find('input[type="date"]').val();
+            const adults = parseInt($form.find('.quantity-selector input').eq(0).val()) || 0;
+            const children = parseInt($form.find('.quantity-selector input').eq(1).val()) || 0;
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'vm_ajax_process_booking',
+                    nonce: php_data.tour_options_nonce,
+                    post_id: postId,
+                    option_id: optionId,
+                    date: date,
+                    adults: adults,
+                    children: children
+                },
+                success: function (response) {
+                    if (response.success && response.data.redirect_url) {
+                        window.location.href = response.data.redirect_url;
+                    } else {
+                        $thisBtn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                        alert(response.data.message || 'An error occurred.');
+                    }
+                },
+                error: function () {
+                    $thisBtn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                    alert('Server error. Please try again later.');
+                }
+            });
+        });
+    };
+
+    const vmInitCheckoutForm = () => {
+        const $form = $('#vm-checkout-form');
+        if (!$form.length) return;
+
+        // Clear error on input
+        $form.find('input, textarea').on('input change', function () {
+            const $this = $(this);
+            $this.closest('.form-group').find('.invalid-feedback').slideUp(200, function () { $(this).text(''); });
+        });
+
+        $form.on('submit', function (e) {
+            e.preventDefault();
+
+            const $btn = $form.find('button[type="submit"]');
+            if ($btn.hasClass('is-loading')) return;
+
+            // Reset errors
+            $form.find('.invalid-feedback').hide().text('');
+
+            let isValid = true;
+
+            // Validate Name
+            const name = $form.find('input[name="customer_name"]').val().trim();
+            if (!name) {
+                isValid = false;
+                $form.find('input[name="customer_name"]').siblings('.invalid-feedback').text('Full name is required.').slideDown(200);
+            }
+
+            // Validate Email
+            const email = $form.find('input[name="customer_email"]').val().trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                isValid = false;
+                $form.find('input[name="customer_email"]').siblings('.invalid-feedback').text('A valid email address is required.').slideDown(200);
+            }
+
+            // Validate Phone
+            const phone = $form.find('input[name="customer_phone"]').val().trim();
+            if (!phone) {
+                isValid = false;
+                $form.find('input[name="customer_phone"]').siblings('.invalid-feedback').text('Phone number is required.').slideDown(200);
+            }
+
+            // Validate Pick-up
+            const pickup = $form.find('input[name="customer_pickup"]').val().trim();
+            if (!pickup) {
+                isValid = false;
+                $form.find('input[name="customer_pickup"]').siblings('.invalid-feedback').text('Pick-up location is required.').slideDown(200);
+            }
+
+            // Validate Drop-off
+            const dropoff = $form.find('input[name="customer_dropoff"]').val().trim();
+            if (!dropoff) {
+                isValid = false;
+                $form.find('input[name="customer_dropoff"]').siblings('.invalid-feedback').text('Drop-off location is required.').slideDown(200);
+            }
+
+            // Validate T&C
+            const terms = $form.find('input[name="terms_conditions"]').is(':checked');
+            if (!terms) {
+                isValid = false;
+                $form.find('input[name="terms_conditions"]').closest('.form-group').find('.invalid-feedback').text('You must accept the terms and conditions.').slideDown(200);
+            }
+
+            if (!isValid) return;
+
+            const originalText = $btn.text();
+            $btn.addClass('is-loading').text('SUBMITTING...');
+            $btn.prop('disabled', true);
+
+            // Prepare Data
+            const formData = {
+                action: 'vm_ajax_submit_checkout',
+                nonce: php_data.tour_options_nonce,
+                booking_token: $form.find('input[name="booking_token"]').val(),
+                customer_name: name,
+                customer_email: email,
+                customer_phone: phone,
+                customer_pickup: pickup,
+                customer_dropoff: dropoff,
+                customer_address: $form.find('input[name="customer_address"]').val().trim(),
+                customer_messages: $form.find('textarea[name="customer_messages"]').val().trim(),
+                payment_method: $form.find('input[name="payment_method"]:checked').val()
+            };
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        $form.fadeOut(400, function () {
+                            $('#vm-booking-success').fadeIn(400);
+                            $('html, body').animate({
+                                scrollTop: $('#vm-booking-success').offset().top - 150
+                            }, 600);
+                        });
+                    } else {
+                        $btn.removeClass('is-loading').text(originalText).prop('disabled', false);
+
+                        let $errorBox = $form.find('.server-error');
+                        if (!$errorBox.length) {
+                            $form.append('<div class="server-error invalid-feedback" style="display:none; color:#dc3545; font-size:14px; margin-top:15px; text-align:center;"></div>');
+                            $errorBox = $form.find('.server-error');
+                        }
+                        $errorBox.text(response.data.message || 'An error occurred during booking.').slideDown();
+                    }
+                },
+                error: function () {
+                    $btn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                    let $errorBox = $form.find('.server-error');
+                    if (!$errorBox.length) {
+                        $form.append('<div class="server-error invalid-feedback" style="display:none; color:#dc3545; font-size:14px; margin-top:15px; text-align:center;"></div>');
+                        $errorBox = $form.find('.server-error');
+                    }
+                    $errorBox.text('Server error. Please try again later.').slideDown();
+                }
+            });
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -559,5 +958,9 @@ import { CountUp } from 'countup.js';
         vmInitBackToTop()
         vmParallaxGraphics()
         vmInitLicenseModal()
+        vmInitTourGallery()
+        vmInitQuantitySelectors()
+        vmInitAjaxTourOptions()
+        vmInitCheckoutForm()
     });
 })(jQuery);

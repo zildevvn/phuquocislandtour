@@ -428,37 +428,16 @@
             "preview_size": "thumbnail"
         },
         {
-            "key": "field_6a58460a5c0e5",
-            "label": "Form Tour Booking",
-            "name": "form_booking",
+            "key": "field_6a7ecc4b8ab94",
+            "label": "Booking Notification Email",
+            "name": "booking_notification_email",
             "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6a602ca999612",
-            "label": "Form Car Booking",
-            "name": "form_car_booking",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -491,5 +470,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1786501943
+    "modified": 1786695941
 }
