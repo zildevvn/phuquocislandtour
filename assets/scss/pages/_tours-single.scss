@@ -978,12 +978,9 @@ body.single-tours {
                 align-items: flex-start;
                 margin-bottom: 12px;
 
-                .h4 {
+                h3 {
                     margin: 0;
-                    color: #333;
-                    font-size: 18px;
-                    font-weight: 700;
-                    line-height: 1.3;
+                    color: $color-text;
                     padding-right: 12px;
                 }
 
@@ -1090,13 +1087,10 @@ body.single-tours {
                 border-top: 1px solid #eaeaea;
                 margin-bottom: 20px;
 
-                .option-item__price-total {
-                    font-size: 24px;
-                    font-weight: 700;
-                    color: #d97706;
-                    /* Accent color */
-                    margin-bottom: 6px;
-                }
+                // .option-item__price-total {
+                //     /* Accent color */
+                //     margin-bottom: 6px;
+                // }
 
                 .option-item__price-calc {
                     display: flex;
@@ -1548,8 +1542,12 @@ body.single-tours {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: sticky;
-    top: 110px;
+    top: 30px;
     z-index: 100;
+
+    body.logged-in & {
+        top: 62px;
+    }
 
     .vm-form-booking__header {
         display: flex;

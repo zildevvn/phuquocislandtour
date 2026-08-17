@@ -6,7 +6,7 @@ $tour_options = get_field('tour_options');
 <?php if (!empty($tour_options)): ?>
     <section class="vm-section vm-tour-options">
         <div class="container">
-            <h2 class="h5"> Choose from
+            <h2 class="h4"> Choose from
                 <?php echo count($tour_options); ?> available options
             </h2>
 
@@ -35,7 +35,7 @@ $tour_options = get_field('tour_options');
                     <div class="option-item <?= $is_selected_class ?>" data-key="<?= esc_attr($key) ?>">
                         <!-- Header -->
                         <div class="option-item__header">
-                            <h3 class="h4"> <?= esc_html($option['name']) ?> </h3>
+                            <h3 class="h5"> <?= esc_html($option['name']) ?> </h3>
                             <div class="option-item__radio">
                                 <div class="option-item__radio-inner"></div>
                             </div>
@@ -96,7 +96,9 @@ $tour_options = get_field('tour_options');
                             <?php if (!$is_price_available): ?>
                                 <div class="option-item__price-total">Liên hệ để biết giá</div>
                             <?php else: ?>
-                                <div class="option-item__price-total"><?= number_format($total_price, 0, '.', ',') ?> VND</div>
+                                <h4 class="option-item__price-total h5">
+                                    <?= number_format($total_price, 0, '.', ',') ?> VND
+                                </h4>
                                 <div class="option-item__price-calc">
                                     <span>Participants × <?= esc_html($total_pax) ?></span>
                                     <span><?= number_format($price_per_person, 0, '.', ',') ?> VND</span>

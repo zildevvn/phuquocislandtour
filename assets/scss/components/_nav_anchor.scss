@@ -1,7 +1,7 @@
 /* Anchor Navigation Bar */
 .anchor-nav {
     position: sticky;
-    top: 105px;
+    top: 30px;
     /* Right below the fixed main header */
     z-index: 99;
     background: rgba(255, 255, 255, 0.95);
@@ -19,11 +19,11 @@
     }
 
     body.logged-in & {
-        top: 140px;
+        top: 62px;
 
-        @include media-breakpoint-down(md) {
-            top: 60px;
-        }
+        // @include media-breakpoint-down(md) {
+        //     top: 60px;
+        // }
     }
 
     &__inner {
