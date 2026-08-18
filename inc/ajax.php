@@ -230,6 +230,7 @@ function vm_ajax_check_availability()
         wp_send_json_error(['message' => 'Vui lòng chọn ngày hiện tại hoặc tương lai.']);
     }
 
+
     $total_pax = $adults + $children;
     if ($total_pax < 1 || $total_pax > 50) {
         wp_send_json_error(['message' => 'Tổng số lượng người phải từ 1 đến 50.']);
@@ -336,7 +337,7 @@ function vm_ajax_submit_checkout()
     if (!$booking_data) {
         wp_send_json_error(['message' => 'Your booking session has expired or is invalid.']);
     }
-    
+
     // Delete transient immediately to prevent double submission
     delete_transient('vm_booking_' . $token);
 
@@ -372,11 +373,11 @@ function vm_ajax_submit_checkout()
     }
 
     $selected_option = $tour_options[$option_id];
-    
+
     if (isset($booking_data['option_name']) && $booking_data['option_name'] !== ($selected_option['name'] ?? '')) {
         wp_send_json_error(['message' => 'Tour option đã thay đổi, vui lòng chọn lại.']);
     }
-    
+
     // Recalculate price server-side
     $adults = intval($booking_data['adults']);
     $children = intval($booking_data['children']);
@@ -392,9 +393,9 @@ function vm_ajax_submit_checkout()
 
     // Save Booking to Database (Custom Post Type)
     $booking_post_id = wp_insert_post([
-        'post_title'  => $booking_ref,
+        'post_title' => $booking_ref,
         'post_status' => 'publish',
-        'post_type'   => 'tour_booking',
+        'post_type' => 'tour_booking',
     ]);
 
     if ($booking_post_id && !is_wp_error($booking_post_id)) {
@@ -407,7 +408,7 @@ function vm_ajax_submit_checkout()
         update_post_meta($booking_post_id, 'customer_address', $customer_address);
         update_post_meta($booking_post_id, 'customer_messages', $customer_messages);
         update_post_meta($booking_post_id, 'payment_method', $payment_method);
-        
+
         // Tour/Car Info
         $booking_type = get_post_type($tour_id); // 'tours' or 'cars'
         update_post_meta($booking_post_id, 'booking_type', $booking_type);
@@ -428,14 +429,14 @@ function vm_ajax_submit_checkout()
     $td_style = 'padding: 12px; border: 1px solid #e0e0e0; color: #555; text-align: left;';
     $h2_style = 'color: #0C2C7A; font-family: Arial, sans-serif; font-size: 24px; border-bottom: 2px solid #00656D; padding-bottom: 10px; margin-bottom: 20px;';
     $h3_style = 'color: #00656D; font-family: Arial, sans-serif; font-size: 18px; margin-top: 30px; margin-bottom: 15px;';
-    
+
     // --- 1. Admin Email ---
     $admin_email = get_field('booking_notification_email', 'option') ?: get_option('admin_email');
     $subject_admin = 'New Booking Request: ' . $booking_ref;
-    
+
     $message_admin = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;'>";
     $message_admin .= "<h2 style='{$h2_style}'>New Booking Request: {$booking_ref}</h2>";
-    
+
     $message_admin .= "<h3 style='{$h3_style}'>Customer Information</h3>";
     $message_admin .= "<table style='{$table_style}'>";
     $message_admin .= "<tr><th style='{$th_style}'>Name</th><td style='{$td_style}'>{$customer_name}</td></tr>";
@@ -443,11 +444,13 @@ function vm_ajax_submit_checkout()
     $message_admin .= "<tr><th style='{$th_style}'>Phone</th><td style='{$td_style}'>{$customer_phone}</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Pick-up</th><td style='{$td_style}'>{$customer_pickup}</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Drop-off</th><td style='{$td_style}'>{$customer_dropoff}</td></tr>";
-    if (!empty($customer_address)) $message_admin .= "<tr><th style='{$th_style}'>Address</th><td style='{$td_style}'>{$customer_address}</td></tr>";
-    if (!empty($customer_messages)) $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br($customer_messages) . "</td></tr>";
+    if (!empty($customer_address))
+        $message_admin .= "<tr><th style='{$th_style}'>Address</th><td style='{$td_style}'>{$customer_address}</td></tr>";
+    if (!empty($customer_messages))
+        $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br($customer_messages) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>{$payment_method}</td></tr>";
     $message_admin .= "</table>";
-    
+
     $message_admin .= "<h3 style='{$h3_style}'>Booking Information</h3>";
     $message_admin .= "<table style='{$table_style}'>";
     $message_admin .= "<tr><th style='{$th_style}'>Tour</th><td style='{$td_style}'><strong>" . esc_html($tour->post_title) . "</strong></td></tr>";
@@ -456,24 +459,24 @@ function vm_ajax_submit_checkout()
     $message_admin .= "<tr><th style='{$th_style}'>Starting Time</th><td style='{$td_style}'>" . esc_html($selected_option['starting_time']) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Participants</th><td style='{$td_style}'>{$total_pax} ({$adults} Adults, {$children} Children)</td></tr>";
     $formatted_price = number_format($total_price, 0, '.', ',');
-    $message_admin .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} VND</strong></td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
     $message_admin .= "</table>";
     $message_admin .= "</div>";
-    
+
     $headers = array('Content-Type: text/html; charset=UTF-8');
-    
+
     // Send to Admin
     wp_mail($admin_email, $subject_admin, $message_admin, $headers);
 
     // --- 2. Customer Confirmation Email ---
     if (is_email($customer_email)) {
         $subject_customer = 'Booking Confirmation: ' . $booking_ref;
-        
+
         $message_customer = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;'>";
         $message_customer .= "<h2 style='{$h2_style}'>Booking Confirmation: {$booking_ref}</h2>";
         $message_customer .= "<p style='font-size: 15px; line-height: 1.6; color: #555;'>Dear <strong>{$customer_name}</strong>,</p>";
         $message_customer .= "<p style='font-size: 15px; line-height: 1.6; color: #555;'>Thank you for your booking request! We have received your details and our team will contact you shortly to confirm everything.</p>";
-        
+
         $message_customer .= "<h3 style='{$h3_style}'>Your Booking Details</h3>";
         $message_customer .= "<table style='{$table_style}'>";
         $message_customer .= "<tr><th style='{$th_style}'>Tour</th><td style='{$td_style}'><strong>" . esc_html($tour->post_title) . "</strong></td></tr>";
@@ -482,13 +485,13 @@ function vm_ajax_submit_checkout()
         $message_customer .= "<tr><th style='{$th_style}'>Starting Time</th><td style='{$td_style}'>" . esc_html($selected_option['starting_time']) . "</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Participants</th><td style='{$td_style}'>{$total_pax} ({$adults} Adults, {$children} Children)</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Pick-up Location</th><td style='{$td_style}'>{$customer_pickup}</td></tr>";
-        $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} VND</strong></td></tr>";
+        $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>{$payment_method}</td></tr>";
         $message_customer .= "</table>";
-        
+
         $message_customer .= "<p style='font-size: 14px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;'>If you have any questions, simply reply to this email.</p>";
         $message_customer .= "</div>";
-        
+
         // Send to Customer
         wp_mail($customer_email, $subject_customer, $message_customer, $headers);
     }

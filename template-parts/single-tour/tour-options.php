@@ -97,11 +97,11 @@ $tour_options = get_field('tour_options');
                                 <div class="option-item__price-total">Liên hệ để biết giá</div>
                             <?php else: ?>
                                 <h4 class="option-item__price-total h5">
-                                    <?= number_format($total_price, 0, '.', ',') ?> VND
+                                    <?= number_format($total_price, 0, '.', ',') ?> $
                                 </h4>
                                 <div class="option-item__price-calc">
                                     <span>Participants × <?= esc_html($total_pax) ?></span>
-                                    <span><?= number_format($price_per_person, 0, '.', ',') ?> VND</span>
+                                    <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
                                 </div>
                                 <div class="option-item__price-tax">All taxes and fees included</div>
                             <?php endif; ?>

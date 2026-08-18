@@ -58,26 +58,6 @@ if (!$booking_data) {
             </div>
         <?php else: ?>
             <div class="vm-checkout-wrap">
-                <!-- Progress Indicator -->
-                <div class="checkout-progress">
-                    <div class="step is-completed">
-                        <div class="step-circle">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="step-label">Select Tour</div>
-                    </div>
-                    <div class="step is-active">
-                        <div class="step-circle">2</div>
-                        <div class="step-label">Your Details</div>
-                    </div>
-                    <div class="step">
-                        <div class="step-circle">3</div>
-                        <div class="step-label">Confirmation</div>
-                    </div>
-                </div>
-
                 <div class="container">
                     <div class="row">
                         <!-- Left Column: Customer Form -->
@@ -242,7 +222,7 @@ if (!$booking_data) {
                                         <ul class="price-list">
                                             <li>
                                                 Price per person
-                                                <strong><?= number_format($price_per_person, 0, '.', ',') ?> VND</strong>
+                                                <strong><?= number_format($price_per_person, 0, '.', ',') ?> $</strong>
                                             </li>
                                             <li>
                                                 Total Participants
@@ -251,7 +231,7 @@ if (!$booking_data) {
                                         </ul>
                                         <div class="total-price-box">
                                             <span>Total Price</span>
-                                            <strong class="total-amount"><?= number_format($total_price, 0, '.', ',') ?> VND</strong>
+                                            <strong class="total-amount"><?= number_format($total_price, 0, '.', ',') ?> $</strong>
                                         </div>
                                     <?php endif; ?>
                                 </div>

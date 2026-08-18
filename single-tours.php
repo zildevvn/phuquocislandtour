@@ -14,7 +14,6 @@ get_header();
     <div id="vm-tour-options-container" data-post-id="<?php echo get_the_ID(); ?>"></div>
     <?php get_template_part('template-parts/single-tour/main-section'); ?>
     <?php get_template_part('template-parts/single-tour/related-tour'); ?>
-    <?php get_template_part('template-parts/shared/team-section'); ?>
 </main>
 
 <?php

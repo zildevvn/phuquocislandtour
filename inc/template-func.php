@@ -187,7 +187,7 @@ function vm_post_item()
 function vm_breadcrumbs($title)
 {
     ?>
-    <p class="vm-breadcrumbs d-flex align-items-center justify-content-center mb-0">
+    <p class="vm-breadcrumbs d-flex align-items-center mb-0">
         <a href="<?= home_url() ?>">Home</a>
         <span>
             <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
@@ -200,7 +200,7 @@ function vm_breadcrumbs($title)
         </span>
 
         <?php if (is_singular('tours')): ?>
-            <a href="<?= home_url('/hue-experience-all-tour') ?>">Tours</a>
+            <a href="<?= home_url('/phu-quoc-tours') ?>">Tours</a>
             <span>
                 <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
                     xmlns="http://www.w3.org/2000/svg" color="#000000">

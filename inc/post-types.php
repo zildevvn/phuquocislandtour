@@ -7,7 +7,6 @@ if (!function_exists('vm_create_custom_post_type')) {
 	// Register Custom Post Type
 	function vm_create_custom_post_type()
 	{
-
 		register_post_type('tours', array(
 			'labels' => array(
 				'name' => __('Tours'),
@@ -24,7 +23,17 @@ if (!function_exists('vm_create_custom_post_type')) {
 				'menu_name' => __('Tours'),
 			),
 			'label' => __('Tours', 'vm'),
-			'supports' => array('title', 'editor', 'thumbnail', 'revisions', 'page-attributes', 'comments'),
+
+			'supports' => array(
+				'title',
+				'editor',
+				'excerpt',
+				'thumbnail',
+				'revisions',
+				'page-attributes',
+				'comments'
+			),
+
 			'menu_icon' => 'dashicons-admin-generic',
 			'hierarchical' => false,
 			'public' => true,
@@ -40,6 +49,7 @@ if (!function_exists('vm_create_custom_post_type')) {
 			'show_in_rest' => true,
 			'rewrite' => array('slug' => 'phu-quoc-tour'),
 		));
+
 
 		register_post_type('cars', array(
 			'labels' => array(

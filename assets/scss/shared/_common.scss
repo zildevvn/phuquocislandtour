@@ -18,6 +18,57 @@ html {
     }
 }
 
+body {
+    figure {
+        max-width: fit-content;
+    }
+
+    .wp-caption-text {
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 12px;
+        font-style: italic;
+        font-family: $font-second;
+        color: $color-primary;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0 0 24px 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            margin: 0 0 10px 0;
+            padding: 0 0 0 25px;
+            transition: $transition-base;
+
+            &::before {
+                content: "";
+                border: 5px solid $color-primary;
+                background-color: #fff;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                border-radius: 50%;
+                position: absolute;
+                left: 0;
+                top: 6px;
+            }
+        }
+    }
+
+}
 
 h1,
 h2,
@@ -211,17 +262,6 @@ h6 {
 }
 
 
-// .wave-svg {}
-
-// .wave-svg path {}
-
-// .wave-svg.is-visible path {}
-
-// .elementor-editor-active .wave-svg path {
-//     stroke-dashoffset: 0 !important;
-// }
-
-// Modal Styling
 .vm-license-modal {
     position: fixed;
     top: 0;
@@ -240,7 +280,7 @@ h6 {
     &.is-active {
         opacity: 1;
         visibility: visible;
-        
+
         .vm-license-modal__content {
             transform: translateY(0) scale(1);
             opacity: 1;
@@ -305,7 +345,7 @@ h6 {
 
     &__body {
         padding: 40px;
-        
+
         @include media-breakpoint-down(md) {
             padding: 32px 20px;
         }
@@ -339,7 +379,7 @@ h6 {
 
     &__image {
         position: relative;
-        
+
         img {
             max-width: 100%;
             height: auto;
@@ -365,7 +405,7 @@ h6 {
         color: $color-body;
         font-size: 16px;
         line-height: 1.6;
-        
+
         p {
             margin-bottom: 16px;
 
@@ -374,4 +414,33 @@ h6 {
             }
         }
     }
+}
+
+.vm-breadcrumbs {
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 500;
+
+    a,
+    span {
+        color: #fff;
+
+        // font-family: $font-second;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        max-width: 16px;
+        color: #fff;
+
+        path {
+            stroke: #fff;
+        }
+    }
+}
+
+p>b,
+p>strong {
+    color: $color-text;
 }

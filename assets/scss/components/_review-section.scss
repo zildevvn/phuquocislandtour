@@ -498,40 +498,15 @@
     }
 
     &__submit {
-        align-self: flex-start;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: $color-primary;
-        color: #fff;
-        border: none;
-        border-radius: 40px 40px 40px 0;
-        padding: 16px 36px;
-        font-size: 16px;
-        font-weight: 700;
-        font-family: inherit;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 12px rgba($color-primary, 0.15);
-
         svg {
-            stroke: #fff;
-            flex-shrink: 0;
+            max-width: 15px;
+            transform: rotate(0deg);
         }
 
         &:hover {
-            background: darken(#9615b5, 8%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba($color-primary, 0.25);
-        }
-
-        &:active {
-            transform: translateY(0);
-        }
-
-        @include media-breakpoint-down(sm) {
-            align-self: stretch;
-            justify-content: center;
+            svg {
+                transform: rotate(45deg);
+            }
         }
     }
 }

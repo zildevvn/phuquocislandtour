@@ -696,7 +696,7 @@ import { CountUp } from 'countup.js';
 
     const vmInitAjaxTourOptions = () => {
         const $form = $('.vm-form-booking');
-        const $btn = $form.find('.btn-book-demo');
+        const $btn = $form.find('#vm-btn-check-availability');
         const $container = $('#vm-tour-options-container');
 
         if (!$form.length || !$btn.length || !$container.length) return;

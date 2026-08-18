@@ -126,6 +126,7 @@
 
                     img {
                         margin-right: 4px !important;
+                        border-radius: 0;
                     }
                 }
             }
@@ -190,6 +191,12 @@
             li {
                 list-style-type: none;
                 position: relative;
+                margin: 0;
+                padding: 0;
+
+                &::before {
+                    content: none;
+                }
 
                 a {
                     text-decoration: none;

@@ -97,7 +97,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
-        <?php esc_html_e('Guest Reviews', 'hue-local-experience'); ?>
+        <?php esc_html_e('Guest Reviews', 'vm'); ?>
     </h2>
 
     <?php if ($total_reviews > 0 || $unapproved_comment): ?>
@@ -113,7 +113,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                     <span class="vm-reviews__total-count">
                         <?php
                         printf(
-                            _n('%s Review', '%s Reviews', $total_reviews, 'hue-local-experience'),
+                            _n('%s Review', '%s Reviews', $total_reviews, 'vm'),
                             number_format_i18n($total_reviews)
                         );
                         ?>
@@ -128,7 +128,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                         ?>
                         <div class="vm-reviews__breakdown-row">
                             <span
-                                class="vm-reviews__breakdown-label"><?php printf(esc_html__('%d star', 'hue-local-experience'), $star); ?></span>
+                                class="vm-reviews__breakdown-label"><?php printf(esc_html__('%d star', 'vm'), $star); ?></span>
                             <div class="vm-reviews__progress">
                                 <div class="vm-reviews__progress-bar" style="width: <?php echo esc_attr($pct); ?>%"></div>
                             </div>
@@ -170,7 +170,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                                         <line x1="12" y1="8" x2="12" y2="12" />
                                         <line x1="12" y1="16" x2="12.01" y2="16" />
                                     </svg>
-                                    <em><?php esc_html_e('Your review is awaiting moderation.', 'hue-local-experience'); ?></em>
+                                    <em><?php esc_html_e('Your review is awaiting moderation.', 'vm'); ?></em>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -209,7 +209,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
     <!-- Review Form -->
     <?php if (comments_open($post_id)): ?>
         <div class="vm-reviews__form-container">
-            <h3 class="vm-reviews__form-title"><?php esc_html_e('Write a Review', 'hue-local-experience'); ?></h3>
+            <h3 class="vm-reviews__form-title"><?php esc_html_e('Write a Review', 'vm'); ?></h3>
 
             <?php if (isset($_GET['unapproved'])): ?>
                 <div class="vm-reviews__notice vm-reviews__notice--pending">
@@ -218,7 +218,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                         <line x1="12" y1="8" x2="12" y2="12" />
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
-                    <?php esc_html_e('Your review has been submitted and is awaiting moderation. Thank you!', 'hue-local-experience'); ?>
+                    <?php esc_html_e('Your review has been submitted and is awaiting moderation. Thank you!', 'vm'); ?>
                 </div>
             <?php elseif (isset($_GET['approved'])): ?>
                 <div class="vm-reviews__notice vm-reviews__notice--success">
@@ -226,7 +226,7 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
-                    <?php esc_html_e('Your review has been published. Thank you!', 'hue-local-experience'); ?>
+                    <?php esc_html_e('Your review has been published. Thank you!', 'vm'); ?>
                 </div>
             <?php endif; ?>
 
@@ -235,13 +235,13 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
 
                 <!-- Star Rating Picker -->
                 <div class="vm-reviews__field vm-reviews__field--rating">
-                    <label class="vm-reviews__label"><?php esc_html_e('Your Rating', 'hue-local-experience'); ?> <span
+                    <label class="vm-reviews__label"><?php esc_html_e('Your Rating', 'vm'); ?> <span
                             class="required">*</span></label>
                     <div class="star-picker" id="star-picker" role="radiogroup"
-                        aria-label="<?php esc_attr_e('Rating', 'hue-local-experience'); ?>">
+                        aria-label="<?php esc_attr_e('Rating', 'vm'); ?>">
                         <?php for ($s = 1; $s <= 5; $s++): ?>
                             <label class="star-picker__label" for="star-<?php echo esc_attr($s); ?>"
-                                title="<?php printf(esc_attr__('%d star%s', 'hue-local-experience'), $s, $s > 1 ? 's' : ''); ?>">
+                                title="<?php printf(esc_attr__('%d star%s', 'vm'), $s, $s > 1 ? 's' : ''); ?>">
                                 <input type="radio" class="star-picker__input" name="vm_tour_rating"
                                     id="star-<?php echo esc_attr($s); ?>" value="<?php echo esc_attr($s); ?>" required>
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -251,38 +251,35 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                             </label>
                         <?php endfor; ?>
                         <span class="star-picker__text" id="star-picker-text"
-                            aria-live="polite"><?php esc_html_e('Select a rating', 'hue-local-experience'); ?></span>
+                            aria-live="polite"><?php esc_html_e('Select a rating', 'vm'); ?></span>
                     </div>
                 </div>
 
                 <div class="vm-reviews__form-row">
                     <!-- Name -->
                     <div class="vm-reviews__field">
-                        <label class="vm-reviews__label"
-                            for="vm-author"><?php esc_html_e('Name', 'hue-local-experience'); ?> <span
+                        <label class="vm-reviews__label" for="vm-author"><?php esc_html_e('Name', 'vm'); ?> <span
                                 class="required">*</span></label>
                         <input type="text" id="vm-author" name="author" class="vm-reviews__input"
-                            placeholder="<?php esc_attr_e('Your full name', 'hue-local-experience'); ?>" required
-                            maxlength="245"
+                            placeholder="<?php esc_attr_e('Your full name', 'vm'); ?>" required maxlength="245"
                             value="<?php echo esc_attr(isset($_POST['author']) ? $_POST['author'] : ''); ?>">
                     </div>
                     <!-- Email -->
                     <div class="vm-reviews__field">
-                        <label class="vm-reviews__label"
-                            for="vm-email"><?php esc_html_e('Email', 'hue-local-experience'); ?> <span
+                        <label class="vm-reviews__label" for="vm-email"><?php esc_html_e('Email', 'vm'); ?> <span
                                 class="required">*</span></label>
                         <input type="email" id="vm-email" name="email" class="vm-reviews__input"
-                            placeholder="<?php esc_attr_e('your@email.com', 'hue-local-experience'); ?>" required
-                            maxlength="100" value="<?php echo esc_attr(isset($_POST['email']) ? $_POST['email'] : ''); ?>">
+                            placeholder="<?php esc_attr_e('your@email.com', 'vm'); ?>" required maxlength="100"
+                            value="<?php echo esc_attr(isset($_POST['email']) ? $_POST['email'] : ''); ?>">
                     </div>
                 </div>
 
                 <!-- Review Content -->
                 <div class="vm-reviews__field">
-                    <label class="vm-reviews__label" for="vm-comment"><?php esc_html_e('Review', 'hue-local-experience'); ?>
+                    <label class="vm-reviews__label" for="vm-comment"><?php esc_html_e('Review', 'vm'); ?>
                         <span class="required">*</span></label>
                     <textarea id="vm-comment" name="comment" class="vm-reviews__textarea"
-                        placeholder="<?php printf(esc_attr__('Share your experience with this %s...', 'hue-local-experience'), $post_type_label); ?>"
+                        placeholder="<?php printf(esc_attr__('Share your experience with this %s...', 'vm'), $post_type_label); ?>"
                         required rows="5" maxlength="65525"></textarea>
                 </div>
 
@@ -291,13 +288,13 @@ $empty_message = ($post_type === 'cars') ? 'Be the first to leave a review for t
                 <input type="hidden" name="comment_post_ID" value="<?php echo esc_attr($post_id); ?>">
                 <input type="hidden" name="comment_parent" value="0">
 
-                <button type="submit" class="vm-reviews__submit">
+                <button type="submit" class="vm-reviews__submit vm-button d-flex align-items-center justify-content-center">
+                    <?php esc_html_e('Submit Review', 'vm'); ?>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <line x1="22" y1="2" x2="11" y2="13" />
                         <polygon points="22 2 15 22 11 13 2 9 22 2" />
                     </svg>
-                    <?php esc_html_e('Submit Review', 'hue-local-experience'); ?>
                 </button>
             </form>
         </div>

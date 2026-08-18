@@ -12,91 +12,85 @@ $price_tour = get_field('price_tour');
 $paxs_tours = get_field('paxs_tours');
 $min_pax = isset($paxs_tours['min']) ? $paxs_tours['min'] : '';
 $max_pax = isset($paxs_tours['max']) ? $paxs_tours['max'] : '';
+$features = get_field('features_tour');
 
 // Taxonomy for Type/Badge (assume 'tour_category' or similar, we'll use a generic placeholder or try to fetch it if exists)
 $tour_types = get_the_terms(get_the_ID(), 'tour_category');
 $tour_type_name = ($tour_types && !is_wp_error($tour_types)) ? $tour_types[0]->name : 'Daily Tour';
 ?>
-<section class="single-tour__hero" style="background-image: url('<?php echo esc_url($image); ?>');">
-    <div class="single-tour__hero-overlay"></div>
+<section class="hero-section" style="background-image: url('<?php echo esc_url($image); ?>');">
+    <div class="hero-section-overlay"></div>
     <div class="container">
-        <div class="single-tour__hero-content">
-            
-            <div class="single-tour__breadcrumbs">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> &gt; 
-                <a href="<?php echo esc_url(get_post_type_archive_link('tours')); ?>">Tours</a> &gt; 
-                <span><?php echo esc_html($title); ?></span>
-            </div>
+        <div class="hero-section-content">
 
-            <span class="single-tour__badge"><?php echo esc_html($tour_type_name); ?></span>
+            <?php vm_breadcrumbs($title); ?>
 
-            <h1 class="single-tour__title"><?php echo esc_html($title); ?></h1>
+            <span class="hero-section__badge">
+                <?php echo esc_html($tour_type_name); ?>
+            </span>
 
-            <p class="single-tour__subtitle">
-                Discover authentic flavors, local culture, and unforgettable culinary experiences across Phu Quoc Island.
-            </p>
+            <h1 class="hero-section__title"><?php echo esc_html($title); ?></h1>
 
-            <div class="single-tour__metadata">
-                <?php if ($time_tour): ?>
-                <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span><?php echo esc_html($time_tour); ?></span>
+            <?php if (has_excerpt()): ?>
+                <div class="hero-section__excerpt">
+                    <?php the_excerpt(); ?>
                 </div>
+            <?php endif; ?>
+
+            <div class="hero-section__metadata d-flex align-items-center">
+                <?php if ($time_tour): ?>
+                    <div class="meta-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-clock-check-icon lucide-clock-check">
+                            <path d="M12 6v6l4 2"></path>
+                            <path d="M22 12a10 10 0 1 0-11 9.95"></path>
+                            <path d="m22 16-5.5 5.5L14 19"></path>
+                        </svg>
+                        <span><?php echo esc_html($time_tour); ?></span>
+                    </div>
                 <?php endif; ?>
 
                 <?php if ($min_pax && $max_pax): ?>
-                <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                    <span><?php echo esc_html($min_pax) . ' - ' . esc_html($max_pax); ?> guests</span>
-                </div>
+                    <div class="meta-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span><?php echo esc_html($min_pax) . ' - ' . esc_html($max_pax); ?> guests</span>
+                    </div>
                 <?php endif; ?>
-
-                <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    <span><?php echo esc_html($tour_type_name); ?></span>
-                </div>
 
                 <?php if ($price_tour): ?>
-                <div class="meta-item">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    <span>From $<?php echo number_format((float) $price_tour, 2); ?></span>
-                </div>
+                    <div class="meta-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span>From $<?php echo number_format((float) $price_tour, 2); ?></span>
+                    </div>
                 <?php endif; ?>
             </div>
 
-            <div class="single-tour__features">
-                <span class="feature-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Local Food Experience
-                </span>
-                <span class="feature-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    English Speaking Guide
-                </span>
-                <span class="feature-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Hotel Pick-up
-                </span>
-                <span class="feature-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Free Cancellation
-                </span>
-            </div>
-
+            <?php if (!empty($features)): ?>
+                <div class="hero-section__features">
+                    <?php foreach ($features as $feature): ?>
+                        <span class="feature-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-check-check-icon lucide-check-check">
+                                <path d="M18 6 7 17l-5-5" />
+                                <path d="m22 10-7.5 7.5L13 16" />
+                            </svg>
+                            <?= $feature['item'] ?>
+                        </span>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
