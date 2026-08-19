@@ -87,6 +87,16 @@
     }
 }
 
+@keyframes tours-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 // .tropical-island {
 //     animation: tropicalIsland 7s ease-in-out infinite;
 // }

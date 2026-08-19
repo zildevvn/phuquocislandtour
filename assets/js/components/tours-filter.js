@@ -9,7 +9,7 @@
         const $pagination = $('#vm-tours-pagination');
         const $count = $('#vm-tours-count');
         const $emptyState = $('#vm-tours-empty');
-        const $loading = $('.tours-loading-overlay');
+        const $loadingContainer = $('.tours-content');
 
         const $searchInput = $('#vm-tours-search-input');
         const $sortSelect = $('#vm-tours-sort');
@@ -157,9 +157,7 @@
 
             const state = getFilterState();
 
-            loadingTimeout = setTimeout(() => {
-                $loading.addClass('active');
-            }, 150);
+            $loadingContainer.addClass('is-loading');
 
             if (state.search || state.tour_cat !== 'all' || state.sort !== 'default' || state.pax_min > 1 || state.pax_max < 50 || state.price_min > 0 || state.price_max < 1000) {
                 $('#vm-clear-filters').show();
@@ -208,12 +206,30 @@
                             clearTimeout(loadingTimeout);
                             loadingTimeout = null;
                         }
-                        $loading.removeClass('active');
+                        $loadingContainer.removeClass('is-loading');
                     }
                 }
             });
             ajaxRequest = currentAjax;
         };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlTourCat = urlParams.get('tour_cat');
+
+        if (urlTourCat) {
+            const $matchedRadio = $(`input[name="tour_cat"][data-slug="${urlTourCat}"]`);
+            if ($matchedRadio.length) {
+                $matchedRadio.prop('checked', true);
+                currentPage = 1;
+                fetchTours();
+
+                setTimeout(() => {
+                    $('html, body').animate({
+                        scrollTop: $('.tours-sidebar').offset().top - 100
+                    }, 400);
+                }, 100);
+            }
+        }
 
     }
 

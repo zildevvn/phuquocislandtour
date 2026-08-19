@@ -86,7 +86,8 @@ $query = new WP_Query($args);
                             <?php if (!empty($tour_cats) && !is_wp_error($tour_cats)): ?>
                                 <?php foreach ($tour_cats as $cat): ?>
                                     <label class="tours-category-item">
-                                        <input type="radio" name="tour_cat" value="<?php echo esc_attr($cat->term_id); ?>">
+                                        <input type="radio" name="tour_cat" value="<?php echo esc_attr($cat->term_id); ?>"
+                                            data-slug="<?php echo esc_attr($cat->slug); ?>">
                                         <span class="custom-radio"></span>
                                         <span class="tours-category-name">
                                             <?php echo esc_html($cat->name); ?>
@@ -103,7 +104,6 @@ $query = new WP_Query($args);
                         <div class="tours-loading-spinner">
                             <div class="spinner-dot"></div>
                         </div>
-                        <span class="tours-loading-text">Finding the best tours...</span>
                     </div>
 
                     <div class="tours-main">
