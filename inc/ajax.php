@@ -3,150 +3,161 @@ add_action('wp_ajax_vm_ajax_filter_tours', 'vm_ajax_filter_tours');
 add_action('wp_ajax_nopriv_vm_ajax_filter_tours', 'vm_ajax_filter_tours');
 function vm_ajax_filter_tours()
 {
-    $idCate = isset($_POST['idCate']) ? $_POST['idCate'] : [];
-    $tour_cat = isset($_POST['tour_cat']) ? $_POST['tour_cat'] : '';
-    $keySeach = isset($_POST['keySeach']) ? $_POST['keySeach'] : [];
-    $query = isset($_POST['query']) ? $_POST['query'] : [];
-    $currentpage = isset($_POST['currentpage']) ? $_POST['currentpage'] : 1;
+    // Nonce check
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'vm_filter_tours')) {
+        wp_send_json_error(['message' => 'Security check failed.']);
+    }
+
+    $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
     $pax_min = isset($_POST['pax_min']) && $_POST['pax_min'] !== '' ? intval($_POST['pax_min']) : null;
     $pax_max = isset($_POST['pax_max']) && $_POST['pax_max'] !== '' ? intval($_POST['pax_max']) : null;
-    $price_min = isset($_POST['price_min']) && $_POST['price_min'] !== '' ? intval($_POST['price_min']) : null;
-    $price_max = isset($_POST['price_max']) && $_POST['price_max'] !== '' ? intval($_POST['price_max']) : null;
-    $sort = isset($_POST['sort']) ? $_POST['sort'] : 'default';
-    $searchHd = '';
+    $price_min = isset($_POST['price_min']) && $_POST['price_min'] !== '' ? floatval($_POST['price_min']) : null;
+    $price_max = isset($_POST['price_max']) && $_POST['price_max'] !== '' ? floatval($_POST['price_max']) : null;
+    $tour_cat = isset($_POST['tour_cat']) && $_POST['tour_cat'] !== 'all' ? absint($_POST['tour_cat']) : null;
 
-    if (!empty($keySeach)) {
-        $query['s'] = $keySeach;
+    $allowed_sort = ['default', 'price_low', 'price_high', 'newest', 'title_az'];
+    $sort = isset($_POST['sort']) && in_array($_POST['sort'], $allowed_sort) ? $_POST['sort'] : 'default';
+
+    $page = isset($_POST['page']) ? max(1, absint($_POST['page'])) : 1;
+
+    $args = [
+        'post_type' => 'tours',
+        'post_status' => 'publish',
+        'posts_per_page' => 12,
+        'paged' => $page,
+    ];
+
+    if (!empty($search)) {
+        $args['s'] = $search;
     }
 
-    if (!empty($idCate) && $idCate != 'all') {
-        $query['cat'] = explode(",", $idCate);
-    }
-
-    if (!empty($tour_cat) && $tour_cat != 'all') {
-        if (!isset($query['tax_query'])) {
-            $query['tax_query'] = ['relation' => 'AND'];
-        }
-        $query['tax_query'][] = [
-            'taxonomy' => 'tour_cats',
-            'field' => 'term_id',
-            'terms' => intval($tour_cat),
+    if ($tour_cat) {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'tour_cats',
+                'field' => 'term_id',
+                'terms' => $tour_cat,
+            ]
         ];
     }
 
-    if (($pax_min !== null && $pax_max !== null) || ($price_min !== null && $price_max !== null) || $sort === 'price_low' || $sort === 'price_high') {
-        if (!isset($query['meta_query'])) {
-            $query['meta_query'] = ['relation' => 'AND'];
-        }
+    $meta_query = ['relation' => 'AND'];
 
-        if ($pax_min !== null && $pax_max !== null) {
-            $query['meta_query'][] = [
-                'key' => 'paxs_tours_max',
-                'value' => $pax_min,
-                'compare' => '>=',
-                'type' => 'NUMERIC'
-            ];
-            $query['meta_query'][] = [
-                'key' => 'paxs_tours_min',
-                'value' => $pax_max,
-                'compare' => '<=',
-                'type' => 'NUMERIC'
-            ];
-        }
+    if ($pax_min !== null && $pax_max !== null) {
+        $meta_query[] = [
+            'key' => 'paxs_tours_max',
+            'value' => $pax_min,
+            'compare' => '>=',
+            'type' => 'NUMERIC'
+        ];
+        $meta_query[] = [
+            'key' => 'paxs_tours_min',
+            'value' => $pax_max,
+            'compare' => '<=',
+            'type' => 'NUMERIC'
+        ];
+    }
 
-        if ($price_min !== null && $price_max !== null) {
-            $query['meta_query'][] = [
-                'key' => 'price_tour',
-                'value' => [$price_min, $price_max],
-                'compare' => 'BETWEEN',
-                'type' => 'NUMERIC'
-            ];
-        }
+    if ($price_min !== null && $price_max !== null) {
+        $meta_query[] = [
+            'key' => 'price_tour',
+            'value' => [$price_min, $price_max],
+            'compare' => 'BETWEEN',
+            'type' => 'NUMERIC'
+        ];
+    }
 
-        if (($sort === 'price_low' || $sort === 'price_high') && ($price_min === null || $price_max === null)) {
-            // Ensures price_tour meta is joined if not already filtered
-            $query['meta_query'][] = [
-                'key' => 'price_tour',
-                'compare' => 'EXISTS'
-            ];
-        }
+    // Always ensure price is joined if sorting by price but no price filter is active
+    if (($sort === 'price_low' || $sort === 'price_high') && empty($price_min)) {
+        $meta_query[] = [
+            'key' => 'price_tour',
+            'compare' => 'EXISTS'
+        ];
+    }
+
+    if (count($meta_query) > 1) {
+        $args['meta_query'] = $meta_query;
     }
 
     if ($sort === 'price_low') {
-        $query['meta_key'] = 'price_tour';
-        $query['orderby'] = 'meta_value_num';
-        $query['order'] = 'ASC';
+        $args['meta_key'] = 'price_tour';
+        $args['orderby'] = 'meta_value_num';
+        $args['order'] = 'ASC';
     } elseif ($sort === 'price_high') {
-        $query['meta_key'] = 'price_tour';
-        $query['orderby'] = 'meta_value_num';
-        $query['order'] = 'DESC';
+        $args['meta_key'] = 'price_tour';
+        $args['orderby'] = 'meta_value_num';
+        $args['order'] = 'DESC';
     } elseif ($sort === 'newest') {
-        $query['orderby'] = 'date';
-        $query['order'] = 'DESC';
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';
     } elseif ($sort === 'title_az') {
-        $query['orderby'] = 'title';
-        $query['order'] = 'ASC';
+        $args['orderby'] = 'title';
+        $args['order'] = 'ASC';
     }
 
-    $query['paged'] = $currentpage;
+    ob_start();
+    $query = new WP_Query($args);
+
+    // echo "<pre>";
+    // echo print_r($args);
+    // echo "</pre>";
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            vm_item_daily_tour();
+        }
+    }
+    $html = ob_get_clean();
 
     ob_start();
-    $the_query = new WP_Query($query);
-    $count = $the_query->found_posts;
-
-    if ($the_query->have_posts()) {
-
-        if (!empty($keySeach)) {
-            $searchHd = $the_query->found_posts;
-        }
-
-        while ($the_query->have_posts()) {
-            $the_query->the_post();
-            vm_tour_item();
-        }
-
-    } else { ?>
-        <div class="sm-filter-posts-block--not-found"> Sorry, no posts matched your criteria.</div>
-    <?php }
-
-    $items = ob_get_clean();
-
-    ob_start();
-    vm_pagination($currentpage, $the_query->max_num_pages);
+    if ($query->max_num_pages > 1) {
+        vm_pagination($page, $query->max_num_pages);
+    }
     $pagination = ob_get_clean();
 
+    $count = $query->found_posts;
     wp_reset_postdata();
-    wp_send_json([
-        'items' => $items,
-        'searchHd' => $searchHd,
+
+    wp_send_json_success([
+        'html' => $html,
         'pagination' => $pagination,
         'count' => $count
     ]);
-    wp_die();
 }
 
 add_action('wp_ajax_vm_ajax_filter_posts', 'vm_ajax_filter_posts');
 add_action('wp_ajax_nopriv_vm_ajax_filter_posts', 'vm_ajax_filter_posts');
 function vm_ajax_filter_posts()
 {
+    // Nonce check
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'vm_filter_posts')) {
+        wp_send_json_error(['message' => 'Security check failed.']);
+    }
+
     $post_cat = isset($_POST['post_cat']) ? $_POST['post_cat'] : '';
     $keySeach = isset($_POST['keySeach']) ? sanitize_text_field($_POST['keySeach']) : '';
-    $query = isset($_POST['query']) ? $_POST['query'] : [];
-    $currentpage = isset($_POST['currentpage']) ? intval($_POST['currentpage']) : 1;
+    $currentpage = isset($_POST['currentpage']) ? max(1, absint($_POST['currentpage'])) : 1;
+
+    $args = [
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 12,
+        'paged' => $currentpage,
+    ];
+
     $searchHd = '';
 
     if (!empty($keySeach)) {
-        $query['s'] = $keySeach;
+        $args['s'] = $keySeach;
     }
 
     if (!empty($post_cat) && $post_cat != 'all') {
-        $query['cat'] = intval($post_cat);
+        $args['cat'] = absint($post_cat);
     }
 
-    $query['paged'] = $currentpage;
-
     ob_start();
-    $the_query = new WP_Query($query);
+    $the_query = new WP_Query($args);
     $count = $the_query->found_posts;
 
     if ($the_query->have_posts()) {
@@ -168,7 +179,7 @@ function vm_ajax_filter_posts()
     $pagination = ob_get_clean();
 
     wp_reset_postdata();
-    wp_send_json([
+    wp_send_json_success([
         'items' => $items,
         'searchHd' => $searchHd,
         'pagination' => $pagination,
@@ -181,13 +192,24 @@ add_action('wp_ajax_vm_ajax_filter_cars', 'vm_ajax_filter_cars');
 add_action('wp_ajax_nopriv_vm_ajax_filter_cars', 'vm_ajax_filter_cars');
 function vm_ajax_filter_cars()
 {
-    $query = isset($_POST['query']) ? $_POST['query'] : [];
-    $currentpage = isset($_POST['currentpage']) ? intval($_POST['currentpage']) : 1;
+    // Nonce check
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'vm_filter_cars')) {
+        wp_send_json_error(['message' => 'Security check failed.']);
+    }
 
-    $query['paged'] = $currentpage;
+    $currentpage = isset($_POST['currentpage']) ? max(1, absint($_POST['currentpage'])) : 1;
+    // Assuming cars use keySearch and cat similarly based on UI typical needs, 
+    // but if it's strictly what was there, just currentpage and basic args.
+
+    $args = [
+        'post_type' => 'cars',
+        'post_status' => 'publish',
+        'posts_per_page' => 12,
+        'paged' => $currentpage,
+    ];
 
     ob_start();
-    $the_query = new WP_Query($query);
+    $the_query = new WP_Query($args);
 
     if ($the_query->have_posts()) {
         while ($the_query->have_posts()) {
@@ -202,7 +224,7 @@ function vm_ajax_filter_cars()
     $pagination = ob_get_clean();
 
     wp_reset_postdata();
-    wp_send_json([
+    wp_send_json_success([
         'items' => $items,
         'pagination' => $pagination,
     ]);
@@ -231,6 +253,9 @@ function vm_ajax_check_availability()
     }
 
 
+    if ($adults < 0 || $children < 0) {
+        wp_send_json_error(['message' => 'Invalid participant count.']);
+    }
     $total_pax = $adults + $children;
     if ($total_pax < 1 || $total_pax > 50) {
         wp_send_json_error(['message' => 'Tổng số lượng người phải từ 1 đến 50.']);
@@ -288,6 +313,9 @@ function vm_ajax_process_booking()
         wp_send_json_error(['message' => 'Vui lòng chọn ngày hiện tại hoặc tương lai.']);
     }
 
+    if ($adults < 0 || $children < 0) {
+        wp_send_json_error(['message' => 'Invalid participant count.']);
+    }
     $total_pax = $adults + $children;
     if ($total_pax < 1 || $total_pax > 50) {
         wp_send_json_error(['message' => 'Tổng số lượng người phải từ 1 đến 50.']);
@@ -439,16 +467,16 @@ function vm_ajax_submit_checkout()
 
     $message_admin .= "<h3 style='{$h3_style}'>Customer Information</h3>";
     $message_admin .= "<table style='{$table_style}'>";
-    $message_admin .= "<tr><th style='{$th_style}'>Name</th><td style='{$td_style}'>{$customer_name}</td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Email</th><td style='{$td_style}'><a href='mailto:{$customer_email}'>{$customer_email}</a></td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Phone</th><td style='{$td_style}'>{$customer_phone}</td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Pick-up</th><td style='{$td_style}'>{$customer_pickup}</td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Drop-off</th><td style='{$td_style}'>{$customer_dropoff}</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Name</th><td style='{$td_style}'>" . esc_html($customer_name) . "</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Email</th><td style='{$td_style}'><a href='mailto:" . esc_attr($customer_email) . "'>" . esc_html($customer_email) . "</a></td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Phone</th><td style='{$td_style}'>" . esc_html($customer_phone) . "</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Pick-up</th><td style='{$td_style}'>" . esc_html($customer_pickup) . "</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Drop-off</th><td style='{$td_style}'>" . esc_html($customer_dropoff) . "</td></tr>";
     if (!empty($customer_address))
-        $message_admin .= "<tr><th style='{$th_style}'>Address</th><td style='{$td_style}'>{$customer_address}</td></tr>";
+        $message_admin .= "<tr><th style='{$th_style}'>Address</th><td style='{$td_style}'>" . esc_html($customer_address) . "</td></tr>";
     if (!empty($customer_messages))
-        $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br($customer_messages) . "</td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>{$payment_method}</td></tr>";
+        $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br(esc_html($customer_messages)) . "</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
     $message_admin .= "</table>";
 
     $message_admin .= "<h3 style='{$h3_style}'>Booking Information</h3>";
@@ -474,7 +502,7 @@ function vm_ajax_submit_checkout()
 
         $message_customer = "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;'>";
         $message_customer .= "<h2 style='{$h2_style}'>Booking Confirmation: {$booking_ref}</h2>";
-        $message_customer .= "<p style='font-size: 15px; line-height: 1.6; color: #555;'>Dear <strong>{$customer_name}</strong>,</p>";
+        $message_customer .= "<p style='font-size: 15px; line-height: 1.6; color: #555;'>Dear <strong>" . esc_html($customer_name) . "</strong>,</p>";
         $message_customer .= "<p style='font-size: 15px; line-height: 1.6; color: #555;'>Thank you for your booking request! We have received your details and our team will contact you shortly to confirm everything.</p>";
 
         $message_customer .= "<h3 style='{$h3_style}'>Your Booking Details</h3>";
@@ -484,9 +512,9 @@ function vm_ajax_submit_checkout()
         $message_customer .= "<tr><th style='{$th_style}'>Date</th><td style='{$td_style}'>{$booking_data['date']}</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Starting Time</th><td style='{$td_style}'>" . esc_html($selected_option['starting_time']) . "</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Participants</th><td style='{$td_style}'>{$total_pax} ({$adults} Adults, {$children} Children)</td></tr>";
-        $message_customer .= "<tr><th style='{$th_style}'>Pick-up Location</th><td style='{$td_style}'>{$customer_pickup}</td></tr>";
+        $message_customer .= "<tr><th style='{$th_style}'>Pick-up Location</th><td style='{$td_style}'>" . esc_html($customer_pickup) . "</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
-        $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>{$payment_method}</td></tr>";
+        $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
         $message_customer .= "</table>";
 
         $message_customer .= "<p style='font-size: 14px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;'>If you have any questions, simply reply to this email.</p>";

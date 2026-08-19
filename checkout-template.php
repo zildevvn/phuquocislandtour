@@ -72,7 +72,10 @@ if (!$booking_data) {
                                 </div>
                                 <h2>Booking Successful!</h2>
                                 <p>Thank you! Your booking request has been received. We will contact you shortly to confirm your booking.</p>
-                                <a href="<?= site_url('/tours') ?>" class="vm-button">Browse More Tours</a>
+                                <?php 
+                                     vm_load_button(site_url('/phu-quoc-tours'), 'Browse More Tours')
+                                ?>
+                              
                             </div>
 
                             <div class="checkout-form-box" id="vm-checkout-form-wrapper">

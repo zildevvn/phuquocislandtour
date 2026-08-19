@@ -66,11 +66,17 @@ $query = new WP_Query($args);
                     <?php
                     $tour_cats = get_terms(array(
                         'taxonomy' => 'tour_cats',
-                        'hide_empty' => false,
+                        'hide_empty' => true,
                     ));
                     ?>
                     <div class="tours-sidebar__widget tours-sidebar__cats">
                         <h4 class="form-label">Categories</h4>
+                        <?php
+
+                        // echo "<pre>";
+                        // echo print_r($tour_cats);
+                        // echo "</pre>";
+                        ?>
                         <div class="tours-category-list">
                             <label class="tours-category-item">
                                 <input type="radio" name="tour_cat" value="all" checked>

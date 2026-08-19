@@ -944,64 +944,7 @@ import { CountUp } from 'countup.js';
         });
     };
 
-    const vmInitTourFilters = () => {
-        const paxSlider = document.getElementById('vm-tours-pax-slider');
-        if (paxSlider) {
-            const paxMin = document.getElementById('vm-tours-pax-min');
-            const paxMax = document.getElementById('vm-tours-pax-max');
-            const paxDisplay = document.getElementById('vm-tours-pax-display');
 
-            noUiSlider.create(paxSlider, {
-                start: [parseInt(paxMin.value) || 1, parseInt(paxMax.value) || 50],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 1,
-                    'max': 50
-                }
-            });
-
-            paxSlider.noUiSlider.on('update', function (values, handle) {
-                const min = Math.round(values[0]);
-                const max = Math.round(values[1]);
-                paxMin.value = min;
-                paxMax.value = max;
-                if (paxDisplay) {
-                    paxDisplay.innerHTML = `${min} &ndash; ${max} Guests`;
-                }
-            });
-        }
-
-        const priceSlider = document.getElementById('vm-tours-price-slider');
-        if (priceSlider) {
-            const priceMin = document.getElementById('vm-tours-price-min');
-            const priceMax = document.getElementById('vm-tours-price-max');
-            const priceDisplay = document.getElementById('vm-tours-price-display');
-
-            noUiSlider.create(priceSlider, {
-                start: [parseInt(priceMin.value) || 0, parseInt(priceMax.value) || 1000],
-                connect: true,
-                step: 10,
-                range: {
-                    'min': 0,
-                    'max': 1000
-                }
-            });
-
-            priceSlider.noUiSlider.on('update', function (values, handle) {
-                const min = Math.round(values[0]);
-                const max = Math.round(values[1]);
-                priceMin.value = min;
-                priceMax.value = max;
-                if (priceDisplay) {
-                    const formatUSD = (val) => {
-                        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(val);
-                    };
-                    priceDisplay.innerHTML = `${formatUSD(min)} &mdash; ${formatUSD(max)}`;
-                }
-            });
-        }
-    };
 
     $(document).ready(function () {
         vmHeroSliders()
@@ -1021,6 +964,6 @@ import { CountUp } from 'countup.js';
         vmInitQuantitySelectors()
         vmInitAjaxTourOptions()
         vmInitCheckoutForm()
-        vmInitTourFilters()
+
     });
 })(jQuery);
