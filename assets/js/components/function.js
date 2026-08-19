@@ -944,7 +944,47 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitOurTeamSwiper = () => {
+        const $carousels = $('.our-team-carousel');
+        if (!$carousels.length) return;
 
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length <= 1) return;
+
+            new Swiper(this, {
+                modules: [Navigation, Autoplay],
+                slidesPerView: 1,
+                spaceBetween: 16,
+                speed: 600,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                navigation: {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                },
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                    }
+                }
+            });
+        });
+    };
 
     $(document).ready(function () {
         vmHeroSliders()
@@ -957,6 +997,7 @@ import { CountUp } from 'countup.js';
         vmInitFaqsAccordion()
         vmInitMapLocationsScroll()
         vmInitMapLocationsHover()
+        vmInitOurTeamSwiper()
         vmInitBackToTop()
         vmParallaxGraphics()
         vmInitLicenseModal()

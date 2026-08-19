@@ -19,6 +19,10 @@ html {
 }
 
 body {
+    @include media-breakpoint-down(md) {
+        font-size: 14px;
+    }
+
     figure {
         max-width: fit-content;
     }

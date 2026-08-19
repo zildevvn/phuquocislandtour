@@ -12,12 +12,21 @@
     text-decoration: none;
     border: none;
 
+    @include media-breakpoint-down(md) {
+        height: 46px;
+        padding: 0 18px;
+    }
+
     svg {
         width: 100%;
         height: auto;
         max-width: 18px;
         transform: rotate(45deg);
         transition: $transition-base;
+
+        @include media-breakpoint-down(md) {
+            max-width: 16px;
+        }
 
         path {
             stroke: #fff;
