@@ -903,7 +903,7 @@ import { CountUp } from 'countup.js';
                 customer_phone: phone,
                 customer_pickup: pickup,
                 customer_dropoff: dropoff,
-                customer_address: $form.find('input[name="customer_address"]').val().trim(),
+                customer_country: $form.find('input[name="customer_country"]').val().trim(),
                 customer_messages: $form.find('textarea[name="customer_messages"]').val().trim(),
                 payment_method: $form.find('input[name="payment_method"]:checked').val()
             };
@@ -914,7 +914,21 @@ import { CountUp } from 'countup.js';
                 data: formData,
                 success: function (response) {
                     if (response.success) {
-                        $form.fadeOut(400, function () {
+                        $('#booking-ref').text(response.data.reference || '');
+                        $('#booking-date').text(response.data.date || '');
+                        $('#booking-payment').text(response.data.payment_method || '');
+
+                        if (response.data.country) {
+                            $('#booking-country').text(response.data.country);
+                            $('#summary-item-country').css('display', 'flex');
+                        } else {
+                            $('#summary-item-country').hide();
+                        }
+
+                        $('#booking-status').text(response.data.status || 'Pending Confirmation');
+                        $('#booking-email').text(email);
+
+                        $('#vm-checkout-form-wrapper').fadeOut(300, function () {
                             $('#vm-booking-success').fadeIn(400);
                             $('html, body').animate({
                                 scrollTop: $('#vm-booking-success').offset().top - 150

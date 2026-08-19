@@ -70,12 +70,39 @@ if (!$booking_data) {
                                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                     </svg>
                                 </div>
-                                <h2>Booking Successful!</h2>
-                                <p>Thank you! Your booking request has been received. We will contact you shortly to confirm your booking.</p>
-                                <?php 
-                                     vm_load_button(site_url('/phu-quoc-tours'), 'Browse More Tours')
-                                ?>
-                              
+                                <h2>Your order was submitted successfully !</h2>
+                                <p class="booking-email-notice">Booking details have been sent to: <b id="booking-email"></b></p>
+                                
+                                <div class="booking-confirmation-summary">
+                                    <div class="summary-item">
+                                        <span class="label">Booking Number</span>
+                                        <strong class="value" id="booking-ref"></strong>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Booking Date</span>
+                                        <strong class="value" id="booking-date"></strong>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Payment Method</span>
+                                        <strong class="value" id="booking-payment"></strong>
+                                    </div>
+                                    <div class="summary-item" id="summary-item-country" style="display: none;">
+                                        <span class="label">Country</span>
+                                        <strong class="value" id="booking-country"></strong>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="label">Status</span>
+                                        <strong class="value" id="booking-status"></strong>
+                                    </div>
+                                </div>
+
+
+                                
+                                <div style="margin-top: 32px;">
+                                    <?php 
+                                        vm_load_button(site_url('/phu-quoc-tours'), 'Browse More Tours')
+                                    ?>
+                                </div>
                             </div>
 
                             <div class="checkout-form-box" id="vm-checkout-form-wrapper">
@@ -123,13 +150,13 @@ if (!$booking_data) {
                                             <div class="invalid-feedback"></div>
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label>Home Address (Optional)</label>
-                                            <input type="text" name="customer_address" placeholder="Enter your address">
+                                            <label>Country</label>
+                                            <input type="text" name="customer_country" placeholder="Enter your country">
                                         </div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label>Special Requests / Messages (Optional)</label>
+                                        <label>Special Requests / Messages</label>
                                         <textarea name="customer_messages" placeholder="Any dietary requirements or special notes?"></textarea>
                                     </div>
                                     
@@ -162,11 +189,10 @@ if (!$booking_data) {
                                         <div class="invalid-feedback"></div>
                                     </div>
                                     
-                                    <button type="submit" class="btn-submit-booking">
+                                    <button type="submit" class="btn-submit-booking vm-button btn-view-license">
                                         CONFIRM BOOKING
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                                            <path d="M12 21L12 3M12 3L20.5 11.5M12 3L3.5 11.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg>
                                     </button>
                                 </form>

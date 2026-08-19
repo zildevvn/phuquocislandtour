@@ -375,7 +375,7 @@ function vm_ajax_submit_checkout()
     $customer_phone = isset($_POST['customer_phone']) ? sanitize_text_field($_POST['customer_phone']) : '';
     $customer_pickup = isset($_POST['customer_pickup']) ? sanitize_text_field($_POST['customer_pickup']) : '';
     $customer_dropoff = isset($_POST['customer_dropoff']) ? sanitize_text_field($_POST['customer_dropoff']) : '';
-    $customer_address = isset($_POST['customer_address']) ? sanitize_text_field($_POST['customer_address']) : '';
+    $customer_country = isset($_POST['customer_country']) ? sanitize_text_field($_POST['customer_country']) : '';
     $customer_messages = isset($_POST['customer_messages']) ? sanitize_textarea_field($_POST['customer_messages']) : '';
     $payment_method = isset($_POST['payment_method']) ? sanitize_text_field($_POST['payment_method']) : '';
 
@@ -433,7 +433,7 @@ function vm_ajax_submit_checkout()
         update_post_meta($booking_post_id, 'customer_phone', $customer_phone);
         update_post_meta($booking_post_id, 'customer_pickup', $customer_pickup);
         update_post_meta($booking_post_id, 'customer_dropoff', $customer_dropoff);
-        update_post_meta($booking_post_id, 'customer_address', $customer_address);
+        update_post_meta($booking_post_id, 'customer_country', $customer_country);
         update_post_meta($booking_post_id, 'customer_messages', $customer_messages);
         update_post_meta($booking_post_id, 'payment_method', $payment_method);
 
@@ -472,8 +472,8 @@ function vm_ajax_submit_checkout()
     $message_admin .= "<tr><th style='{$th_style}'>Phone</th><td style='{$td_style}'>" . esc_html($customer_phone) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Pick-up</th><td style='{$td_style}'>" . esc_html($customer_pickup) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Drop-off</th><td style='{$td_style}'>" . esc_html($customer_dropoff) . "</td></tr>";
-    if (!empty($customer_address))
-        $message_admin .= "<tr><th style='{$th_style}'>Address</th><td style='{$td_style}'>" . esc_html($customer_address) . "</td></tr>";
+    if (!empty($customer_country))
+        $message_admin .= "<tr><th style='{$th_style}'>Country</th><td style='{$td_style}'>" . esc_html($customer_country) . "</td></tr>";
     if (!empty($customer_messages))
         $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br(esc_html($customer_messages)) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
@@ -513,6 +513,9 @@ function vm_ajax_submit_checkout()
         $message_customer .= "<tr><th style='{$th_style}'>Starting Time</th><td style='{$td_style}'>" . esc_html($selected_option['starting_time']) . "</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Participants</th><td style='{$td_style}'>{$total_pax} ({$adults} Adults, {$children} Children)</td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Pick-up Location</th><td style='{$td_style}'>" . esc_html($customer_pickup) . "</td></tr>";
+        if (!empty($customer_country)) {
+            $message_customer .= "<tr><th style='{$th_style}'>Country</th><td style='{$td_style}'>" . esc_html($customer_country) . "</td></tr>";
+        }
         $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
         $message_customer .= "</table>";
@@ -524,8 +527,15 @@ function vm_ajax_submit_checkout()
         wp_mail($customer_email, $subject_customer, $message_customer, $headers);
     }
 
+    $formatted_date = date('F j, Y', strtotime($booking_data['date']));
+    $payment_method_label = $payment_method === 'bank_transfer' ? 'Bank Transfer' : 'Pay on Arrival';
+
     wp_send_json_success([
         'message' => 'Booking successful.',
-        'reference' => $booking_ref
+        'reference' => $booking_ref,
+        'date' => $formatted_date,
+        'payment_method' => $payment_method_label,
+        'status' => 'Pending Confirmation',
+        'country' => $customer_country
     ]);
 }
