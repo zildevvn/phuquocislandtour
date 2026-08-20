@@ -18,6 +18,10 @@
         nf-field {
             padding: 0 !important;
             margin-bottom: 0 !important;
+
+            >.nf-field-container {
+                margin: 0;
+            }
         }
 
         .nf-field-label {
@@ -121,27 +125,22 @@
         /* Submit Button */
         input[type="button"],
         input[type="submit"] {
-            background: $color-primary !important;
-            color: #fff !important;
-            border: none !important;
-            border-radius: 40px 40px 40px 0 !important;
-            padding: 14px 32px !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            width: 100% !important;
-            height: auto !important;
-            font-family: inherit !important;
+            border-radius: $border-radius;
+            overflow: hidden;
+            background: $color-secondary;
+            color: #fff;
+            height: 50px;
+            padding: 0 20px;
+            transition: $transition-base;
+            gap: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            width: 100%;
 
-            &:hover {
-                background: darken(#9615b5, 10%) !important; // $color-primary dark
-                transform: translateY(-2px);
-                box-shadow: 0 10px 20px rgba(150, 21, 181, 0.2) !important;
-            }
-
-            &:active {
-                transform: translateY(0);
+            @include media-breakpoint-down(md) {
+                height: 46px;
+                padding: 0 18px;
             }
         }
 

@@ -1250,7 +1250,7 @@ body.single-tours {
                     svg {
                         width: 100%;
                         height: auto;
-                        stroke: $color-primary;
+                        stroke: $color-secondary;
                     }
 
                     ul {
@@ -1275,6 +1275,12 @@ body.single-tours {
                         svg {
                             max-width: 20px;
                             stroke: $color-primary;
+                        }
+                    }
+
+                    &.card-excluded {
+                        svg {
+                            stroke: red;
                         }
                     }
                 }

@@ -54,6 +54,7 @@ $image = get_the_post_thumbnail_url();
                 </div>
 
                 <div class="main-section-left__content">
+                    <div id="vm-table-of-content"> </div>
                     <?php
                     the_content();
                     ?>
