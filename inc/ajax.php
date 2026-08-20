@@ -105,7 +105,7 @@ function vm_ajax_filter_tours()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            vm_item_daily_tour();
+            vm_item_tour();
         }
     }
     $html = ob_get_clean();

@@ -100,8 +100,8 @@ $query = new WP_Query($args);
                 </div>
 
                 <div class="tours-content position-relative">
-                    <div class="tours-loading-overlay">
-                        <div class="tours-loading-spinner">
+                    <div class="vm-loading-overlay">
+                        <div class="vm-loading-spinner">
                             <div class="spinner-dot"></div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@ $query = new WP_Query($args);
                         <div id="vm-tours-results" data-query='<?= json_encode($args) ?>' data-currentpage="1">
                             <?php while ($query->have_posts()):
                                 $query->the_post();
-                                vm_item_daily_tour();
+                                vm_item_tour();
                                 ?>
                             <?php endwhile; ?>
                             <?php wp_reset_postdata(); ?>

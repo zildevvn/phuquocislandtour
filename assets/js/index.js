@@ -1,3 +1,4 @@
 import './components/header'
 import './components/function'
 import './components/tours-filter'
+import './components/posts-filter'

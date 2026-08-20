@@ -451,3 +451,104 @@ b,
 strong {
     color: $color-text;
 }
+
+// Global AJAX Loading Spinner
+.vm-loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-radius: inherit;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    .vm-loading-spinner {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 20px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba($color-secondary, 0.35);
+            animation: vm-spin 8s linear infinite;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: $color-primary;
+            border-bottom-color: $color-primary;
+            box-shadow: 0 0 12px rgba($color-primary, 0.2);
+            animation: vm-spin 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .spinner-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background-color: $color-primary;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba($color-primary, 0.4);
+            animation: vm-pulse-dot 2s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            &::before,
+            &::after,
+            .spinner-dot {
+                animation: none;
+            }
+
+            &::after {
+                border-color: $color-primary;
+                border-style: solid;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.is-loading .vm-loading-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes vm-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes vm-pulse-dot {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.6;
+    }
+}

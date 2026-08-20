@@ -35,7 +35,7 @@ $query = new WP_Query($args);
                 <div class=" swiper-wrapper">
                     <?php while ($query->have_posts()):
                         $query->the_post();
-                        vm_item_daily_tour('swiper-slide');
+                        vm_item_tour('swiper-slide');
                     endwhile;
                     wp_reset_postdata();
                     ?>

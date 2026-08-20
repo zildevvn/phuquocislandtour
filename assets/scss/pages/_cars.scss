@@ -314,12 +314,12 @@ body.page-template-cars-template {
                             }
 
                             td {
-                                font-size: 16px;
+                                font-size: 15px;
                                 color: $color-text;
                                 border-right: 1px dashed rgba(#000, 0.05);
 
                                 @include media-breakpoint-down(lg) {
-                                    font-size: 14px;
+                                    font-size: 13px;
                                 }
 
                                 @include media-breakpoint-down(md) {

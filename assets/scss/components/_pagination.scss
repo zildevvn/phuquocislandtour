@@ -21,6 +21,11 @@
 
     li {
         display: flex;
+        padding: 0;
+
+        &::before {
+            content: none;
+        }
     }
 
     // Shared token for every link / span
@@ -34,6 +39,7 @@
         min-width: 44px;
         height: 44px;
         padding: 0 14px;
+        max-width: 44px;
         border-radius: 10px;
         font-family: $font-primary;
         font-size: 0.9375rem;
@@ -52,6 +58,8 @@
         }
 
         svg {
+            width: 100%;
+            height: auto;
             flex-shrink: 0;
             transition: transform 0.2s ease;
 
@@ -102,7 +110,7 @@
     button.page-numbers.prev,
     a.page-numbers.next,
     button.page-numbers.next {
-        padding: 0 18px;
+
 
         &:hover:not(:disabled) svg,
         &:focus-visible:not(:disabled) svg {

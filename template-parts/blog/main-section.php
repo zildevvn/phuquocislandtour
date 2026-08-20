@@ -1,14 +1,29 @@
 <?php
 $args = array(
     'post_type' => 'post',
-    'posts_per_page' => 12,
+    'posts_per_page' => 4,
     'post_status' => 'publish',
 );
 $query = new WP_Query($args);
+
+$heading = get_field('hd_blog_tpl');
+$sub_hd = get_field('sub_hd_blog_tpl');
 ?>
 <?php if ($query->have_posts()): ?>
     <section class="posts-list-section vm-section main-section">
         <div class="container">
+            <?php vm_icon_heading() ?>
+            <?php if (!empty($heading)): ?>
+                <h2 class="vm-heading">
+                    <?= $heading ?>
+                </h2>
+            <?php endif; ?>
+
+            <?php if (!empty($sub_hd)): ?>
+                <p class="vm-sub-heading">
+                    <?= $sub_hd ?>
+                </p>
+            <?php endif; ?>
             <div class="posts-filter-bar">
                 <div class="posts-filter-bar__search">
                     <div class="search-input-wrapper">
@@ -26,7 +41,7 @@ $query = new WP_Query($args);
                 <?php
                 $blog_cats = get_terms(array(
                     'taxonomy' => 'category',
-                    'hide_empty' => false,
+                    'hide_empty' => true,
                 ));
                 ?>
                 <div class="posts-filter-bar__cats">
@@ -69,8 +84,8 @@ $query = new WP_Query($args);
             </div>
 
             <div class="posts-list-wrapper position-relative">
-                <div class="tours-loading-overlay">
-                    <div class="tours-loading-spinner">
+                <div class="vm-loading-overlay">
+                    <div class="vm-loading-spinner">
                         <div class="spinner-dot"></div>
                     </div>
                 </div>

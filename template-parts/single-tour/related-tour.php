@@ -62,7 +62,7 @@ if (!is_wp_error($current_tour_cats) && !empty($current_tour_cats)) {
                 <?php
                 while ($the_query->have_posts()):
                     $the_query->the_post();
-                    vm_item_daily_tour();
+                    vm_item_tour();
                 endwhile;
 
                 wp_reset_postdata();

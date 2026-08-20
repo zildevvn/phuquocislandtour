@@ -1,7 +1,38 @@
 body.page-template-blog-template {
+    .about-section {
+        padding: 60px 0;
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 999;
+        }
+
+        &-media {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            >div {
+                width: 50%;
+            }
+        }
+    }
+
     .posts-list-section {
         background-color: #F8F9FA; // Subtle background for the blog section
-        padding: 60px;
+        padding: 90px;
+
+        @include media-breakpoint-down(xl) {
+            padding: 60px 0;
+        }
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
@@ -19,6 +50,7 @@ body.page-template-blog-template {
             gap: 24px;
             position: relative;
             z-index: 10;
+            margin-top: 32px;
 
             @include media-breakpoint-down(lg) {
                 padding: 24px;
@@ -34,6 +66,7 @@ body.page-template-blog-template {
                 border-radius: 24px;
                 gap: 20px;
                 margin-bottom: 20px;
+                margin-top: 28px;
             }
 
             &__search {
@@ -238,24 +271,6 @@ body.page-template-blog-template {
         .posts-list-wrapper {
             position: relative;
 
-            .tours-loading-overlay {
-                position: absolute;
-                inset: 0;
-                background: rgba(248, 249, 250, 0.8);
-                z-index: 20;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 20px;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-
-            &.is-loading .tours-loading-overlay {
-                opacity: 1;
-                visibility: visible;
-            }
         }
 
         .posts-main__header {
@@ -305,6 +320,180 @@ body.page-template-blog-template {
                     max-width: 400px;
                     margin: 0 auto;
                 }
+            }
+        }
+    }
+}
+
+// Blog Post Card Styles
+.post-item-card {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+        .post-item-card__thumbnail {
+            img {
+                transform: scale(1.05);
+            }
+
+            .post-item-card__overlay {
+                opacity: 1;
+            }
+        }
+
+        .post-item-card__title {
+            color: $color-secondary;
+        }
+
+        .read-more-link {
+            color: $color-primary;
+
+            svg {
+                transform: translateX(6px);
+            }
+        }
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-decoration: none !important;
+        color: inherit;
+    }
+
+    &__thumbnail {
+        position: relative;
+        padding-top: 66%; // 3:2 Aspect Ratio
+        overflow: hidden;
+        border-radius: 24px 24px 0 0;
+        background-color: #f5f5f5;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-radius: 0; // reset global img radius
+        }
+
+        .post-item-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(#000, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+
+            .vm-button {
+                transform: translateY(10px);
+                transition: transform 0.4s ease;
+            }
+        }
+
+        &:hover .post-item-card__overlay .vm-button {
+            transform: translateY(0);
+        }
+
+        .post-item-card__category {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: $color-secondary;
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &__body {
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        @include media-breakpoint-down(md) {
+            padding: 24px 20px;
+        }
+    }
+
+    &__meta {
+        margin-bottom: 16px;
+
+        .meta-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #6B7280;
+            font-size: 14px;
+            font-weight: 500;
+
+            svg {
+                color: $color-primary;
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 700;
+        color: $color-primary;
+        margin-bottom: 16px;
+        line-height: 1.4;
+        transition: color 0.3s ease;
+
+        @include media-breakpoint-down(md) {
+            font-size: 20px;
+        }
+    }
+
+    &__excerpt {
+        font-size: 15px;
+        color: #4B5563;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__footer {
+        margin-top: auto;
+        padding-top: 24px;
+        border-top: 1px solid #F3F4F6;
+
+        .read-more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: $color-secondary;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+
+            svg {
+                transition: transform 0.3s ease;
             }
         }
     }

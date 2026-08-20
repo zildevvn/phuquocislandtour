@@ -67,7 +67,7 @@ function vm_rating()
     </div>
 <?php }
 
-function vm_item_daily_tour($class = '')
+function vm_item_tour($class = '')
 {
     $time = get_field('time_tour');
     $price = get_field('price_tour');
@@ -152,36 +152,57 @@ function vm_item_daily_tour($class = '')
 
 function vm_post_item()
 { ?>
-    <a href="<?= the_permalink(); ?>" class="post-item" aria-label="read more <?= the_title(); ?>">
-        <div class="post-item__thumb">
-            <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>">
-        </div>
-        <div class="post-item__date d-flex align-items-center gap-2">
-            <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
-                xmlns="http://www.w3.org/2000/svg" color="#000000">
-                <path d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z"
-                    stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M3 10V6C3 4.89543 3.89543 4 5 4H7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-                <path d="M7 2V6" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                </path>
-                <path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-            </svg>
-            <?= get_the_date('F j, Y'); ?>
-        </div>
-        <div class="post-item__content">
-            <h3 class="post-item__title h4">
-                <?= the_title(); ?>
-            </h3>
+    <article class="post-item-card">
+        <a href="<?= the_permalink(); ?>" class="post-item-card__link" aria-label="read more <?= the_title(); ?>">
+            <div class="post-item-card__thumbnail">
+                <img src="<?= get_the_post_thumbnail_url(); ?>" alt="<?= esc_attr(get_the_title()); ?>" loading="lazy">
+                <div class="post-item-card__overlay">
 
-            <div class="post-item__excerpt">
-                <?= the_excerpt(); ?>
+                </div>
+                <?php
+                $categories = get_the_category();
+                if (!empty($categories)): ?>
+                    <div class="post-item-card__category">
+                        <?= esc_html($categories[0]->name); ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
-            <button class="vm-button" aria-label="read more <?= the_title(); ?>"> Read More </button>
-        </div>
-    </a>
+            <div class="post-item-card__body">
+                <div class="post-item-card__meta">
+                    <span class="meta-date">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <?= get_the_date('F j, Y'); ?>
+                    </span>
+                </div>
+
+                <h3 class="post-item-card__title">
+                    <?= the_title(); ?>
+                </h3>
+
+                <div class="post-item-card__excerpt">
+                    <?= wp_trim_words(get_the_excerpt(), 18, '...'); ?>
+                </div>
+
+                <div class="post-item-card__footer">
+                    <span class="read-more-link">
+                        Continue Reading
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </a>
+    </article>
 <?php }
 
 function vm_breadcrumbs($title)
@@ -226,7 +247,7 @@ function vm_breadcrumbs($title)
         <?php endif; ?>
 
         <?php if (is_singular('post')): ?>
-            <a href="<?= home_url('hue-travel-guide') ?>">Blog</a>
+            <a href="<?= home_url('phu-quoc-island-travel-guide') ?>">Blog</a>
             <span>
                 <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
                     xmlns="http://www.w3.org/2000/svg" color="#000000">
