@@ -958,6 +958,51 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitAboutCarGallerySwiper = () => {
+        const $carousels = $('.about-section-media__gallery');
+        if (!$carousels.length) return;
+
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length === 0) return;
+
+            const isLoop = $slides.length > 1;
+            const hasNavigation = $carousel.find('.swiper-button-next').length > 0;
+            const hasPagination = $carousel.find('.swiper-pagination').length > 0;
+
+            let modules = [Autoplay, EffectFade];
+            if (hasNavigation) modules.push(Navigation);
+            if (hasPagination) modules.push(Pagination);
+
+            new Swiper(this, {
+                modules: modules,
+                slidesPerView: 1.2,
+                spaceBetween: 16,
+                loop: isLoop,
+                speed: 600,
+                autoplay: isLoop ? {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                } : false,
+                navigation: isLoop && hasNavigation ? {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                } : false,
+                pagination: isLoop && hasPagination ? {
+                    el: $carousel.find('.swiper-pagination')[0],
+                    clickable: true,
+                } : false,
+                breakpoints: {
+                    768: { spaceBetween: 24 },
+                    1024: { spaceBetween: 24 }
+                }
+            });
+        });
+    };
+
     const vmInitOurTeamSwiper = () => {
         const $carousels = $('.our-team-carousel');
         if (!$carousels.length) return;
@@ -1019,6 +1064,7 @@ import { CountUp } from 'countup.js';
         vmInitQuantitySelectors()
         vmInitAjaxTourOptions()
         vmInitCheckoutForm()
+        vmInitAboutCarGallerySwiper()
 
     });
 })(jQuery);
