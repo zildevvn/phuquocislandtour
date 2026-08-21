@@ -42,16 +42,18 @@
         }
     }
 
-    // &:hover {
-    //     background-color: #fff;
-    //     color: $color-primary;
-    // }
+    &.vm-button-secondary {
+        background-color: $color-primary;
+        color: #ffffff;
 
-    // @include media-breakpoint-down(md) {
-    //     font-size: 14px;
-    //     height: 40px;
-    //     padding: 0 16px;
-    // }
+        path {
+            stroke: #ffffff;
+        }
+
+        &:hover {
+            background-color: darken($color-primary, 5%);
+        }
+    }
 }
 
 // Global Swiper Navigation Buttons
