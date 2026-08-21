@@ -46,90 +46,122 @@ $phone = get_field('phone', 'option');
                     return '<span class="price-amount">$ ' . number_format((float) $val, 0) . '</span>';
                 };
                 ?>
-                <div class="popular-table-wrapper">
-                    <div class="table-responsive">
-                        <table class="vm-popular-table single-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-area-name">Area / Service</th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['sedan'] ?></div>
-                                            <div class="car-label">Sedan</div>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['suv'] ?></div>
-                                            <div class="car-label">SUV</div>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['van'] ?></div>
-                                            <div class="car-label">Van</div>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['29_seats'] ?></div>
-                                            <div class="car-label">29 Seats</div>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['35_seats'] ?></div>
-                                            <div class="car-label">35 Seats</div>
-                                        </div>
-                                    </th>
-                                    <th>
-                                        <div class="car-header">
-                                            <div class="car-icon"><?= $svgs['45_seats'] ?></div>
-                                            <div class="car-label">45 Seats</div>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <?php foreach ($popular_options as $popular_option): ?>
-                                <?php
-                                $hotel_area = $popular_option['hotel_area'];
-                                $hotel_area_name = $hotel_area['name'];
-                                $services = $hotel_area['services'];
-                                ?>
-                                <tbody class="popular-price-table__group">
-                                    <tr class="popular-price-table__group-header">
-                                        <th colspan="7">
-                                            <div class="group-header-inner">
-                                                <div class="group-badge"><?= $svgs['pin'] ?></div>
-                                                <h3 class="h6 mb-0"><?= esc_html($hotel_area_name) ?></h3>
-                                            </div>
-                                        </th>
-                                    </tr>
-                                    <?php if (!empty($services)): ?>
-                                        <?php foreach ($services as $service): ?>
-                                            <tr>
-                                                <td class="col-service-name"><?= esc_html($service['service_name']) ?></td>
-                                                <td><?= $format_price($service['sedan']) ?></td>
-                                                <td><?= $format_price($service['suv']) ?></td>
-                                                <td><?= $format_price($service['van']) ?></td>
-                                                <td><?= $format_price($service['29_seats']) ?></td>
-                                                <td><?= $format_price($service['35_seats']) ?></td>
-                                                <td><?= $format_price($service['45_seats']) ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="7" style="text-align:center;">No services available</td>
-                                        </tr>
-                                    <?php endif; ?>
-                                </tbody>
-                            <?php endforeach; ?>
-                        </table>
+                <div class="hotel-area-tabs-container">
+                    <?php
+                    // Generate a unique ID for this section instance to ensure unique tab/panel IDs
+                    $section_uid = uniqid('ha-');
+                    ?>
+                    
+                    <?php if (count($popular_options) > 1): ?>
+                    <div class="hotel-area-tabs" role="tablist" aria-label="Hotel Areas">
+                        <?php foreach ($popular_options as $index => $popular_option): ?>
+                            <?php 
+                            $hotel_area_name = $popular_option['hotel_area']['name'];
+                            $tab_id = 'tab-' . $section_uid . '-' . $index;
+                            $panel_id = 'panel-' . $section_uid . '-' . $index;
+                            $is_active = $index === 0;
+                            ?>
+                            <button role="tab" 
+                                    aria-selected="<?= $is_active ? 'true' : 'false' ?>" 
+                                    aria-controls="<?= $panel_id ?>" 
+                                    id="<?= $tab_id ?>" 
+                                    class="hotel-area-tab <?= $is_active ? 'is-active' : '' ?>">
+                                <?= esc_html($hotel_area_name) ?>
+                            </button>
+                        <?php endforeach; ?>
                     </div>
-                    <div class="popular-table-footer">
-                        <span class="footer-icon"><?= $svgs['info'] ?></span>
-                        <span class="footer-text">All prices are in USD and for reference only. Please contact us for more
-                            details.</span>
+                    <?php endif; ?>
+
+                    <div class="hotel-area-panels">
+                        <?php foreach ($popular_options as $index => $popular_option): ?>
+                            <?php 
+                            $hotel_area = $popular_option['hotel_area'];
+                            $hotel_area_name = $hotel_area['name'];
+                            $services = $hotel_area['services'];
+                            $tab_id = 'tab-' . $section_uid . '-' . $index;
+                            $panel_id = 'panel-' . $section_uid . '-' . $index;
+                            $is_active = $index === 0;
+                            ?>
+                            <div id="<?= $panel_id ?>" 
+                                 role="tabpanel" 
+                                 aria-labelledby="<?= $tab_id ?>" 
+                                 class="hotel-area-panel" 
+                                 <?= $is_active ? '' : 'hidden' ?>>
+                                
+                                <div class="popular-table-wrapper">
+                                    <div class="table-responsive">
+                                        <table class="vm-popular-table single-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-area-name">Area / Service</th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['sedan'] ?></div>
+                                                            <div class="car-label">Sedan</div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['suv'] ?></div>
+                                                            <div class="car-label">SUV</div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['van'] ?></div>
+                                                            <div class="car-label">Van</div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['29_seats'] ?></div>
+                                                            <div class="car-label">29 Seats</div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['35_seats'] ?></div>
+                                                            <div class="car-label">35 Seats</div>
+                                                        </div>
+                                                    </th>
+                                                    <th>
+                                                        <div class="car-header">
+                                                            <div class="car-icon"><?= $svgs['45_seats'] ?></div>
+                                                            <div class="car-label">45 Seats</div>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="popular-price-table__group">
+                                                <?php if (!empty($services)): ?>
+                                                    <?php foreach ($services as $service): ?>
+                                                        <tr>
+                                                            <td class="col-service-name"><?= esc_html($service['service_name']) ?></td>
+                                                            <td><?= $format_price($service['sedan']) ?></td>
+                                                            <td><?= $format_price($service['suv']) ?></td>
+                                                            <td><?= $format_price($service['van']) ?></td>
+                                                            <td><?= $format_price($service['29_seats']) ?></td>
+                                                            <td><?= $format_price($service['35_seats']) ?></td>
+                                                            <td><?= $format_price($service['45_seats']) ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                <?php else: ?>
+                                                    <tr>
+                                                        <td colspan="7" style="text-align:center;">No services available</td>
+                                                    </tr>
+                                                <?php endif; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="popular-table-footer">
+                                        <span class="footer-icon"><?= $svgs['info'] ?></span>
+                                        <span class="footer-text">All prices are in USD and for reference only. Please contact us for more
+                                            details.</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

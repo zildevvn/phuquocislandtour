@@ -9637,6 +9637,163 @@ body.offcanvas-open {
   transition: transform 0.3s ease;
 }
 
+.faqs-list {
+  border-radius: 30px;
+  padding: 30px;
+  background: #F2F3F5;
+  box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
+  border: 5px solid #0C2C7A;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (max-width: 1023.98px) {
+  .faqs-list {
+    padding: 24px;
+  }
+}
+@media (max-width: 767.98px) {
+  .faqs-list {
+    padding: 16px;
+    gap: 12px;
+    border-width: 3px;
+  }
+}
+.faqs-list .faq-item {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.faqs-list .faq-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+.faqs-list .faq-item__question {
+  padding: 24px;
+  cursor: pointer;
+  align-items: center;
+}
+@media (max-width: 1199.98px) {
+  .faqs-list .faq-item__question {
+    padding: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .faqs-list .faq-item__question {
+    padding: 16px;
+  }
+}
+.faqs-list .faq-item__question h3, .faqs-list .faq-item__question .h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #19232B;
+  transition: color 0.3s ease;
+}
+@media (max-width: 767.98px) {
+  .faqs-list .faq-item__question h3, .faqs-list .faq-item__question .h3 {
+    font-size: 16px;
+  }
+}
+.faqs-list .faq-item__question svg {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 50%;
+  color: #19232B;
+  transition: all 0.3s ease;
+}
+@media (max-width: 767.98px) {
+  .faqs-list .faq-item__question svg {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+}
+.faqs-list .faq-item__question:hover h3, .faqs-list .faq-item__question:hover .h3 {
+  color: #0C2C7A;
+}
+.faqs-list .faq-item__question:hover svg {
+  background: rgba(6, 97, 104, 0.1);
+  color: #0C2C7A;
+}
+.faqs-list .faq-item__answer {
+  display: none;
+  padding: 0 24px 24px 24px;
+  font-size: 14px;
+}
+@media (max-width: 1199.98px) {
+  .faqs-list .faq-item__answer {
+    padding: 0 20px 20px 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .faqs-list .faq-item__answer {
+    padding: 0 16px 16px 16px;
+  }
+}
+.faqs-list .faq-item__answer p,
+.faqs-list .faq-item__answer h1,
+.faqs-list .faq-item__answer .h1,
+.faqs-list .faq-item__answer h2,
+.faqs-list .faq-item__answer .h2,
+.faqs-list .faq-item__answer h3,
+.faqs-list .faq-item__answer .h3,
+.faqs-list .faq-item__answer h4,
+.faqs-list .faq-item__answer .h4,
+.faqs-list .faq-item__answer h5,
+.faqs-list .faq-item__answer .h5,
+.faqs-list .faq-item__answer h6,
+.faqs-list .faq-item__answer .h6 {
+  color: rgba(25, 35, 43, 0.85);
+  line-height: 1.6;
+}
+.faqs-list .faq-item__answer p b,
+.faqs-list .faq-item__answer h1 b,
+.faqs-list .faq-item__answer .h1 b,
+.faqs-list .faq-item__answer h2 b,
+.faqs-list .faq-item__answer .h2 b,
+.faqs-list .faq-item__answer h3 b,
+.faqs-list .faq-item__answer .h3 b,
+.faqs-list .faq-item__answer h4 b,
+.faqs-list .faq-item__answer .h4 b,
+.faqs-list .faq-item__answer h5 b,
+.faqs-list .faq-item__answer .h5 b,
+.faqs-list .faq-item__answer h6 b,
+.faqs-list .faq-item__answer .h6 b {
+  color: #19232B;
+}
+.faqs-list .faq-item__answer p:last-child,
+.faqs-list .faq-item__answer h1:last-child,
+.faqs-list .faq-item__answer .h1:last-child,
+.faqs-list .faq-item__answer h2:last-child,
+.faqs-list .faq-item__answer .h2:last-child,
+.faqs-list .faq-item__answer h3:last-child,
+.faqs-list .faq-item__answer .h3:last-child,
+.faqs-list .faq-item__answer h4:last-child,
+.faqs-list .faq-item__answer .h4:last-child,
+.faqs-list .faq-item__answer h5:last-child,
+.faqs-list .faq-item__answer .h5:last-child,
+.faqs-list .faq-item__answer h6:last-child,
+.faqs-list .faq-item__answer .h6:last-child {
+  margin-bottom: 0;
+}
+.faqs-list .faq-item.is-active {
+  border-color: #0C2C7A;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+.faqs-list .faq-item.is-active .faq-item__question h3, .faqs-list .faq-item.is-active .faq-item__question .h3 {
+  color: #0C2C7A;
+}
+.faqs-list .faq-item.is-active .faq-item__question svg {
+  transform: rotate(180deg);
+  background: #0C2C7A;
+  color: #fff;
+}
+
 .page-template-front-page .hero-section {
   background: #fff;
 }
@@ -10882,162 +11039,6 @@ body.offcanvas-open {
 .page-template-front-page .faqs-section__img p {
   /* w-11/12 */
 }
-.page-template-front-page .faqs-section__list {
-  border-radius: 30px;
-  padding: 30px;
-  background: #F2F3F5;
-  box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
-  border: 5px solid #0C2C7A;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-@media (max-width: 1023.98px) {
-  .page-template-front-page .faqs-section__list {
-    padding: 24px;
-  }
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__list {
-    padding: 16px;
-    gap: 12px;
-    border-width: 3px;
-  }
-}
-.page-template-front-page .faqs-section__list .faq-item {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-.page-template-front-page .faqs-section__list .faq-item:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-}
-.page-template-front-page .faqs-section__list .faq-item__question {
-  padding: 24px;
-  cursor: pointer;
-  align-items: center;
-}
-@media (max-width: 1199.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__question {
-    padding: 20px;
-  }
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__question {
-    padding: 16px;
-  }
-}
-.page-template-front-page .faqs-section__list .faq-item__question h3, .page-template-front-page .faqs-section__list .faq-item__question .h3 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #19232B;
-  transition: color 0.3s ease;
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__question h3, .page-template-front-page .faqs-section__list .faq-item__question .h3 {
-    font-size: 16px;
-  }
-}
-.page-template-front-page .faqs-section__list .faq-item__question svg {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 50%;
-  color: #19232B;
-  transition: all 0.3s ease;
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__question svg {
-    width: 32px;
-    height: 32px;
-    padding: 6px;
-  }
-}
-.page-template-front-page .faqs-section__list .faq-item__question:hover h3, .page-template-front-page .faqs-section__list .faq-item__question:hover .h3 {
-  color: #0C2C7A;
-}
-.page-template-front-page .faqs-section__list .faq-item__question:hover svg {
-  background: rgba(6, 97, 104, 0.1);
-  color: #0C2C7A;
-}
-.page-template-front-page .faqs-section__list .faq-item__answer {
-  display: none;
-  padding: 0 24px 24px 24px;
-  font-size: 14px;
-}
-@media (max-width: 1199.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__answer {
-    padding: 0 20px 20px 20px;
-  }
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__list .faq-item__answer {
-    padding: 0 16px 16px 16px;
-  }
-}
-.page-template-front-page .faqs-section__list .faq-item__answer p,
-.page-template-front-page .faqs-section__list .faq-item__answer h1,
-.page-template-front-page .faqs-section__list .faq-item__answer .h1,
-.page-template-front-page .faqs-section__list .faq-item__answer h2,
-.page-template-front-page .faqs-section__list .faq-item__answer .h2,
-.page-template-front-page .faqs-section__list .faq-item__answer h3,
-.page-template-front-page .faqs-section__list .faq-item__answer .h3,
-.page-template-front-page .faqs-section__list .faq-item__answer h4,
-.page-template-front-page .faqs-section__list .faq-item__answer .h4,
-.page-template-front-page .faqs-section__list .faq-item__answer h5,
-.page-template-front-page .faqs-section__list .faq-item__answer .h5,
-.page-template-front-page .faqs-section__list .faq-item__answer h6,
-.page-template-front-page .faqs-section__list .faq-item__answer .h6 {
-  color: rgba(25, 35, 43, 0.85);
-  line-height: 1.6;
-}
-.page-template-front-page .faqs-section__list .faq-item__answer p b,
-.page-template-front-page .faqs-section__list .faq-item__answer h1 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h1 b,
-.page-template-front-page .faqs-section__list .faq-item__answer h2 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h2 b,
-.page-template-front-page .faqs-section__list .faq-item__answer h3 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h3 b,
-.page-template-front-page .faqs-section__list .faq-item__answer h4 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h4 b,
-.page-template-front-page .faqs-section__list .faq-item__answer h5 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h5 b,
-.page-template-front-page .faqs-section__list .faq-item__answer h6 b,
-.page-template-front-page .faqs-section__list .faq-item__answer .h6 b {
-  color: #19232B;
-}
-.page-template-front-page .faqs-section__list .faq-item__answer p:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h1:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h1:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h2:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h2:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h3:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h3:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h4:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h4:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h5:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h5:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer h6:last-child,
-.page-template-front-page .faqs-section__list .faq-item__answer .h6:last-child {
-  margin-bottom: 0;
-}
-.page-template-front-page .faqs-section__list .faq-item.is-active {
-  border-color: #0C2C7A;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-}
-.page-template-front-page .faqs-section__list .faq-item.is-active .faq-item__question h3, .page-template-front-page .faqs-section__list .faq-item.is-active .faq-item__question .h3 {
-  color: #0C2C7A;
-}
-.page-template-front-page .faqs-section__list .faq-item.is-active .faq-item__question svg {
-  transform: rotate(180deg);
-  background: #0C2C7A;
-  color: #fff;
-}
 .page-template-front-page .posts-section {
   padding: 90px 0;
   background: #F2F3F5;
@@ -11412,6 +11413,75 @@ body.page-template-cars-template .popular-section .vm-button {
 @media (max-width: 767.98px) {
   body.page-template-cars-template .popular-section .vm-button {
     margin-top: 20px;
+  }
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-cars-template .popular-section .hotel-area-tabs-container {
+    gap: 16px;
+  }
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px;
+  padding-bottom: 4px; /* Space for scroll if any, but hidden below */
+  /* Hide scrollbar for a cleaner look but keep it scrollable */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs::-webkit-scrollbar {
+  display: none;
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs .hotel-area-tab {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  color: #555555;
+  font-family: "Afacad", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+@media (max-width: 767.98px) {
+  body.page-template-cars-template .popular-section .hotel-area-tabs .hotel-area-tab {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs .hotel-area-tab:hover {
+  border-color: #0C2C7A;
+  color: #0C2C7A;
+}
+body.page-template-cars-template .popular-section .hotel-area-tabs .hotel-area-tab.is-active {
+  background-color: #0C2C7A;
+  color: #ffffff;
+  border-color: #0C2C7A;
+  box-shadow: 0 4px 12px rgba(12, 44, 122, 0.2);
+}
+body.page-template-cars-template .popular-section .hotel-area-panel[hidden] {
+  display: none !important;
+}
+body.page-template-cars-template .popular-section .hotel-area-panel {
+  animation: fadeInTab 0.3s ease-in-out;
+}
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 body.page-template-cars-template .popular-section .popular-table-wrapper {
@@ -17131,4 +17201,511 @@ body.page-template-checkout-template .checkout-summary-box .summary-pricing .pri
   display: block;
   margin-bottom: 4px;
   color: rgb(60%, 36%, 0%);
+}
+
+body.page-template-tickets-template .about-section {
+  padding: 90px 0;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .about-section {
+    padding: 40px 0;
+  }
+}
+body.page-template-tickets-template .about-section-media {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section-media {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .about-section-media {
+    margin-top: 28px;
+    gap: 24px;
+  }
+}
+body.page-template-tickets-template .about-section-media > div {
+  width: 50%;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section-media > div {
+    width: 100%;
+  }
+}
+body.page-template-tickets-template .about-section-media__content h3, body.page-template-tickets-template .about-section-media__content .h3,
+body.page-template-tickets-template .about-section-media__content h4,
+body.page-template-tickets-template .about-section-media__content .h4,
+body.page-template-tickets-template .about-section-media__content h5,
+body.page-template-tickets-template .about-section-media__content .h5,
+body.page-template-tickets-template .about-section-media__content h6,
+body.page-template-tickets-template .about-section-media__content .h6 {
+  margin-bottom: 24px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .about-section-media__content h3, body.page-template-tickets-template .about-section-media__content .h3,
+  body.page-template-tickets-template .about-section-media__content h4,
+  body.page-template-tickets-template .about-section-media__content .h4,
+  body.page-template-tickets-template .about-section-media__content h5,
+  body.page-template-tickets-template .about-section-media__content .h5,
+  body.page-template-tickets-template .about-section-media__content h6,
+  body.page-template-tickets-template .about-section-media__content .h6 {
+    margin-bottom: 20px;
+  }
+}
+body.page-template-tickets-template .about-section-media__content h3:last-child, body.page-template-tickets-template .about-section-media__content .h3:last-child,
+body.page-template-tickets-template .about-section-media__content h4:last-child,
+body.page-template-tickets-template .about-section-media__content .h4:last-child,
+body.page-template-tickets-template .about-section-media__content h5:last-child,
+body.page-template-tickets-template .about-section-media__content .h5:last-child,
+body.page-template-tickets-template .about-section-media__content h6:last-child,
+body.page-template-tickets-template .about-section-media__content .h6:last-child,
+body.page-template-tickets-template .about-section-media__content ul:last-child,
+body.page-template-tickets-template .about-section-media__content p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section-media__gallery {
+    margin-right: -20px;
+  }
+}
+body.page-template-tickets-template .about-section-media__gallery .gallery-item {
+  height: auto;
+}
+body.page-template-tickets-template .about-section-media__gallery .gallery-item img {
+  height: 100%;
+  object-fit: cover;
+}
+body.page-template-tickets-template .popular-section {
+  position: relative;
+  padding: 90px 0;
+  overflow: hidden;
+  background: #F2F3F5;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section {
+    padding: 40px 0;
+  }
+}
+body.page-template-tickets-template .popular-section__graphic {
+  position: absolute;
+  top: 40px;
+  right: -4%;
+  z-index: 0;
+  opacity: 0.5;
+  max-width: 300px;
+  pointer-events: none;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section__graphic {
+    max-width: 150px;
+    top: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section__graphic {
+    max-width: 100px;
+    top: 10px;
+    right: -5%;
+  }
+}
+body.page-template-tickets-template .popular-section__graphic img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+body.page-template-tickets-template .popular-section .vm-heading {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 1199.98px) {
+  body.page-template-tickets-template .popular-section .vm-heading {
+    max-width: 500px;
+  }
+}
+body.page-template-tickets-template .popular-section-tables {
+  margin-top: 32px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section-tables {
+    margin-top: 28px;
+  }
+}
+body.page-template-tickets-template .popular-section .vm-button {
+  margin: 24px auto 0 auto;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .vm-button {
+    margin-top: 20px;
+  }
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .hotel-area-tabs-container {
+    gap: 16px;
+  }
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 12px;
+  padding-bottom: 4px;
+  /* Space for scroll if any, but hidden below */
+  /* Hide scrollbar for a cleaner look but keep it scrollable */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs::-webkit-scrollbar {
+  display: none;
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs .hotel-area-tab {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background-color: #ffffff;
+  color: #555555;
+  font-family: "Afacad", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .hotel-area-tabs .hotel-area-tab {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs .hotel-area-tab:hover {
+  border-color: #0C2C7A;
+  color: #0C2C7A;
+}
+body.page-template-tickets-template .popular-section .hotel-area-tabs .hotel-area-tab.is-active {
+  background-color: #0C2C7A;
+  color: #ffffff;
+  border-color: #0C2C7A;
+  box-shadow: 0 4px 12px rgba(12, 44, 122, 0.2);
+}
+body.page-template-tickets-template .popular-section .hotel-area-panel[hidden] {
+  display: none !important;
+}
+body.page-template-tickets-template .popular-section .hotel-area-panel {
+  animation: fadeInTab 0.3s ease-in-out;
+}
+@keyframes fadeInTab {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body.page-template-tickets-template .popular-section .popular-table-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+body.page-template-tickets-template .popular-section .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(to right, white 30%, rgba(255, 255, 255, 0)), linear-gradient(to left, white 30%, rgba(255, 255, 255, 0)) 100% 0, radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0)) 100% 0;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+body.page-template-tickets-template .popular-section .table-responsive table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: center;
+}
+body.page-template-tickets-template .popular-section .table-responsive table th,
+body.page-template-tickets-template .popular-section .table-responsive table td {
+  padding: 20px 16px;
+  vertical-align: middle;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table th,
+  body.page-template-tickets-template .popular-section .table-responsive table td {
+    padding: 16px 10px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th {
+  font-family: "Afacad", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555555;
+  border-bottom: 2px solid #eaeaea;
+  white-space: nowrap;
+  width: 12.5%;
+  border-right: 1px dashed rgba(0, 0, 0, 0.05);
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th:last-child {
+  border-right: none;
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th.col-area-name {
+  text-align: left;
+  width: 10%;
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header .tickets-icon {
+  display: flex;
+  justify-content: center;
+  color: #0C2C7A;
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header .tickets-icon svg {
+  width: 24px;
+  height: auto;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header .tickets-icon svg {
+    width: 20px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header .tickets-label {
+  font-size: 12px;
+  color: #0C2C7A;
+  font-family: "Google Sans", sans-serif;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table thead th .tickets-header .tickets-label {
+    font-size: 11px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th {
+  background-color: rgba(12, 44, 122, 0.04);
+  border-top: 2px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  padding: 16px 20px;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th {
+    padding: 12px 10px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner {
+    gap: 10px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner {
+    gap: 8px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner .group-badge {
+  background-color: #0C2C7A;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner .group-badge svg {
+  width: 16px;
+  height: 16px;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner h3, body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner .h3 {
+  color: #0C2C7A;
+  text-align: left;
+  margin: 0;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner h3, body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group-header th .group-header-inner .h3 {
+    font-size: 14px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) {
+  border-bottom: 1px dashed #eaeaea;
+  transition: all 0.3s ease;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header):last-child {
+  border-bottom: none;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header):hover {
+  background-color: #fafafa;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td {
+  font-size: 15px;
+  color: #19232B;
+  border-right: 1px dashed rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td {
+    font-size: 11px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td:last-child {
+  border-right: none;
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td.col-service-name {
+  text-align: left;
+  font-weight: 600;
+  color: #19232B;
+  padding-left: 24px;
+  white-space: normal;
+  min-width: 220px;
+  line-height: 1.5;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td.col-service-name {
+    padding-left: 16px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td.col-service-name {
+    padding-left: 10px;
+    min-width: 200px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td .price-amount {
+  font-weight: 700;
+  font-size: 17px;
+  color: #19232B;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td .price-amount {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td .price-amount {
+    font-size: 13px;
+  }
+}
+body.page-template-tickets-template .popular-section .table-responsive table .popular-price-table__group tr:not(.popular-price-table__group-header) td .price-contact {
+  font-style: italic;
+  color: #fff;
+  font-size: 14px;
+  background: #00656D;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+body.page-template-tickets-template .popular-section .popular-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background-color: #fbfbfb;
+  border-top: 1px solid #eaeaea;
+  color: #555555;
+}
+body.page-template-tickets-template .popular-section .popular-table-footer .footer-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+}
+body.page-template-tickets-template .popular-section .popular-table-footer .footer-icon svg {
+  width: 16px;
+  height: 16px;
+}
+body.page-template-tickets-template .popular-section .popular-table-footer .footer-text {
+  font-size: 13px;
+  opacity: 0.8;
+}
+body.page-template-tickets-template .tips-section {
+  padding: 90px 0;
+  overflow: hidden;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .tips-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .tips-section {
+    padding: 40px 0;
+  }
+}
+body.page-template-tickets-template .tips-section__graphic {
+  position: absolute;
+  top: 40px;
+  right: -4%;
+  z-index: 0;
+  opacity: 0.5;
+  max-width: 300px;
+  pointer-events: none;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .tips-section__graphic {
+    max-width: 150px;
+    top: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .tips-section__graphic {
+    max-width: 100px;
+    top: 10px;
+    right: -5%;
+  }
+}
+body.page-template-tickets-template .tips-section__graphic img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+body.page-template-tickets-template .tips-section > .container {
+  position: relative;
+  z-index: 2;
+}
+body.page-template-tickets-template .tips-section .faqs-list {
+  max-width: 1100px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 767.98px) {
+  body.page-template-tickets-template .tips-section .faqs-list {
+    margin-top: 28px;
+  }
 }

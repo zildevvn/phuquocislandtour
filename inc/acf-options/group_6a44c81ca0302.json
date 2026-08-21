@@ -968,6 +968,27 @@
             ]
         },
         {
+            "key": "field_6a7403ff8e6ef",
+            "label": "Heading",
+            "name": "heading_car_tours",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6a73f991a90e0",
             "label": "Package Tours Section",
             "name": "",
@@ -1007,9 +1028,9 @@
             "append": ""
         },
         {
-            "key": "field_6a73f9dca90e2",
-            "label": "Sub Heading Package Tours",
-            "name": "sub_hd_package_tours",
+            "key": "field_6a71979007fb9",
+            "label": "Heading",
+            "name": "hd_faq_hp",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -1028,27 +1049,9 @@
             "append": ""
         },
         {
-            "key": "field_6a7403e98e6ee",
-            "label": "Car Tours Section",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6a7403ff8e6ef",
-            "label": "Heading",
-            "name": "heading_car_tours",
+            "key": "field_6a73f9dca90e2",
+            "label": "Sub Heading Package Tours",
+            "name": "sub_hd_package_tours",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -1088,8 +1091,8 @@
             "append": ""
         },
         {
-            "key": "field_6a71977f07fb8",
-            "label": "FAQs Section",
+            "key": "field_6a7403e98e6ee",
+            "label": "Car Tours Section",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -1104,27 +1107,6 @@
             "placement": "left",
             "endpoint": 0,
             "selected": 0
-        },
-        {
-            "key": "field_6a71979007fb9",
-            "label": "Heading",
-            "name": "hd_faq_hp",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_6a7197a407fba",
@@ -1146,6 +1128,24 @@
             "rows": "",
             "placeholder": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_6a71977f07fb8",
+            "label": "FAQs Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6a7541f827dc1",
@@ -1344,5 +1344,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787114538
+    "modified": 1787298520
 }

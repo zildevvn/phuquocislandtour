@@ -365,7 +365,7 @@ import { CountUp } from 'countup.js';
     };
 
     const vmInitFaqsAccordion = () => {
-        $('.faqs-section__list').each(function () {
+        $('.faqs-list').each(function () {
             const $list = $(this);
 
             // Initialize active items
@@ -1045,6 +1045,63 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitHotelAreaTabs = () => {
+        const containers = document.querySelectorAll('.hotel-area-tabs-container');
+        if (!containers.length) return;
+
+        containers.forEach(container => {
+            const tabs = container.querySelectorAll('.hotel-area-tab');
+            const panels = container.querySelectorAll('.hotel-area-panel');
+
+            if (!tabs.length || !panels.length) return;
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('aria-controls');
+
+                    // Remove active state from all tabs
+                    tabs.forEach(t => {
+                        t.setAttribute('aria-selected', 'false');
+                        t.classList.remove('is-active');
+                    });
+
+                    // Hide all panels
+                    panels.forEach(p => {
+                        p.setAttribute('hidden', '');
+                    });
+
+                    // Set clicked tab to active
+                    tab.setAttribute('aria-selected', 'true');
+                    tab.classList.add('is-active');
+
+                    // Show corresponding panel
+                    const targetPanel = container.querySelector('#' + targetId);
+                    if (targetPanel) {
+                        targetPanel.removeAttribute('hidden');
+                    }
+                });
+
+                // Basic keyboard accessibility (Arrow keys to navigate)
+                tab.addEventListener('keydown', (e) => {
+                    let focusTab = null;
+                    const index = Array.from(tabs).indexOf(tab);
+
+                    if (e.key === 'ArrowRight') {
+                        focusTab = tabs[(index + 1) % tabs.length];
+                    } else if (e.key === 'ArrowLeft') {
+                        focusTab = tabs[(index - 1 + tabs.length) % tabs.length];
+                    }
+
+                    if (focusTab) {
+                        e.preventDefault();
+                        focusTab.focus();
+                        focusTab.click();
+                    }
+                });
+            });
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -1065,6 +1122,6 @@ import { CountUp } from 'countup.js';
         vmInitAjaxTourOptions()
         vmInitCheckoutForm()
         vmInitAboutCarGallerySwiper()
-
+        vmInitHotelAreaTabs()
     });
 })(jQuery);

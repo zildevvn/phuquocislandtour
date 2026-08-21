@@ -53,7 +53,7 @@ $faqs = get_field('faqs_list_hp');
                 </div>
 
                 <div class="faqs-section__right">
-                    <div class="faqs-section__list">
+                    <div class="faqs-section__list faqs-list">
                         <?php foreach ($faqs as $key => $item): ?>
                             <?php $classActive = $key == 0 ? 'is-active' : '' ?>
                             <div class="faq-item <?= $classActive ?>">

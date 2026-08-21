@@ -1,4 +1,4 @@
-body.page-template-cars-template {
+body.page-template-tickets-template {
     .about-section {
         padding: 90px 0;
 
@@ -161,11 +161,15 @@ body.page-template-cars-template {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             gap: 12px;
-            padding-bottom: 4px; /* Space for scroll if any, but hidden below */
-            
+            padding-bottom: 4px;
+            /* Space for scroll if any, but hidden below */
+
             /* Hide scrollbar for a cleaner look but keep it scrollable */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+
+            /* Firefox */
             &::-webkit-scrollbar {
                 display: none;
             }
@@ -207,6 +211,7 @@ body.page-template-cars-template {
             &[hidden] {
                 display: none !important;
             }
+
             animation: fadeInTab 0.3s ease-in-out;
         }
 
@@ -215,6 +220,7 @@ body.page-template-cars-template {
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -276,35 +282,31 @@ body.page-template-cars-template {
 
                         &.col-area-name {
                             text-align: left;
-                            width: 25%;
+                            width: 10%;
                         }
 
-                        .car-header {
+                        .tickets-header {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            gap: 12px;
+                            gap: 8px;
 
-                            @include media-breakpoint-down(md) {
-                                gap: 8px;
-                            }
-
-                            .car-icon {
+                            .tickets-icon {
                                 display: flex;
                                 justify-content: center;
                                 color: $color-primary;
 
                                 svg {
-                                    width: 48px;
+                                    width: 24px;
                                     height: auto;
 
                                     @include media-breakpoint-down(lg) {
-                                        width: 32px;
+                                        width: 20px;
                                     }
                                 }
                             }
 
-                            .car-label {
+                            .tickets-label {
                                 font-size: 12px;
                                 color: $color-primary;
                                 font-family: $font-primary;
@@ -477,6 +479,63 @@ body.page-template-cars-template {
             .footer-text {
                 font-size: 13px;
                 opacity: 0.8;
+            }
+        }
+    }
+
+
+    .tips-section {
+        padding: 90px 0;
+        overflow: hidden;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        &__graphic {
+            position: absolute;
+            top: 40px;
+            right: -4%;
+            z-index: 0;
+            opacity: 0.5;
+            max-width: 300px;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                max-width: 150px;
+                top: 20px;
+            }
+
+            @include media-breakpoint-down(md) {
+                max-width: 100px;
+                top: 10px;
+                right: -5%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+
+        >.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faqs-list {
+            max-width: 1100px;
+            margin-top: 32px;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
             }
         }
     }
