@@ -11288,6 +11288,30 @@ body.page-template-cars-template .about-section {
     padding: 40px 0;
   }
 }
+body.page-template-cars-template .about-section > .container {
+  max-width: 100%;
+  padding-right: 0;
+}
+@media (min-width: 1200px) {
+  body.page-template-cars-template .about-section > .container {
+    padding-left: calc((100% - 1230px) / 2 + 20px);
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-cars-template .about-section .vm-heading,
+  body.page-template-cars-template .about-section .vm-sub-heading {
+    padding-right: 20px;
+  }
+}
+body.page-template-cars-template .about-section .vm-sub-heading {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  body.page-template-cars-template .about-section .vm-sub-heading {
+    max-width: 930px;
+  }
+}
 body.page-template-cars-template .about-section-media {
   display: flex;
   gap: 48px;
@@ -11312,6 +11336,11 @@ body.page-template-cars-template .about-section-media > div {
 @media (max-width: 1023.98px) {
   body.page-template-cars-template .about-section-media > div {
     width: 100%;
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-cars-template .about-section-media__content {
+    padding-right: 20px;
   }
 }
 body.page-template-cars-template .about-section-media__content h3, body.page-template-cars-template .about-section-media__content .h3,
@@ -11344,11 +11373,6 @@ body.page-template-cars-template .about-section-media__content .h6:last-child,
 body.page-template-cars-template .about-section-media__content ul:last-child,
 body.page-template-cars-template .about-section-media__content p:last-child {
   margin-bottom: 0;
-}
-@media (max-width: 1023.98px) {
-  body.page-template-cars-template .about-section-media__gallery {
-    margin-right: -20px;
-  }
 }
 body.page-template-cars-template .about-section-media__gallery .gallery-item {
   height: auto;
@@ -11441,10 +11465,13 @@ body.page-template-cars-template .popular-section .hotel-area-tabs {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   gap: 12px;
-  padding-bottom: 4px; /* Space for scroll if any, but hidden below */
+  padding-bottom: 4px;
+  /* Space for scroll if any, but hidden below */
   /* Hide scrollbar for a cleaner look but keep it scrollable */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 body.page-template-cars-template .popular-section .hotel-area-tabs::-webkit-scrollbar {
   display: none;
@@ -17227,6 +17254,21 @@ body.page-template-tickets-template .about-section {
     padding: 40px 0;
   }
 }
+body.page-template-tickets-template .about-section > .container {
+  max-width: 100%;
+  padding-right: 0;
+}
+@media (min-width: 1200px) {
+  body.page-template-tickets-template .about-section > .container {
+    padding-left: calc((100% - 1230px) / 2 + 20px);
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section .vm-heading,
+  body.page-template-tickets-template .about-section .vm-sub-heading {
+    padding-right: 20px;
+  }
+}
 body.page-template-tickets-template .about-section-media {
   display: flex;
   gap: 48px;
@@ -17251,6 +17293,11 @@ body.page-template-tickets-template .about-section-media > div {
 @media (max-width: 1023.98px) {
   body.page-template-tickets-template .about-section-media > div {
     width: 100%;
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-tickets-template .about-section-media__content {
+    padding-right: 20px;
   }
 }
 body.page-template-tickets-template .about-section-media__content h3, body.page-template-tickets-template .about-section-media__content .h3,
@@ -17283,11 +17330,6 @@ body.page-template-tickets-template .about-section-media__content .h6:last-child
 body.page-template-tickets-template .about-section-media__content ul:last-child,
 body.page-template-tickets-template .about-section-media__content p:last-child {
   margin-bottom: 0;
-}
-@media (max-width: 1023.98px) {
-  body.page-template-tickets-template .about-section-media__gallery {
-    margin-right: -20px;
-  }
 }
 body.page-template-tickets-template .about-section-media__gallery .gallery-item {
   height: auto;

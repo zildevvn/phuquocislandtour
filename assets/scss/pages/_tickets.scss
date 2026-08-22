@@ -10,6 +10,22 @@ body.page-template-tickets-template {
             padding: 40px 0;
         }
 
+        >.container {
+            max-width: 100%;
+            padding-right: 0;
+
+            @media (min-width: 1200px) {
+                padding-left: calc(((100% - 1230px) / 2) + 20px);
+            }
+        }
+
+        .vm-heading,
+        .vm-sub-heading {
+            @include media-breakpoint-down(lg) {
+                padding-right: 20px;
+            }
+        }
+
         &-media {
             display: flex;
             gap: 48px;
@@ -36,6 +52,9 @@ body.page-template-tickets-template {
 
             &__content {
 
+                @include media-breakpoint-down(lg) {
+                    padding-right: 20px;
+                }
 
                 h3,
                 h4,
@@ -62,9 +81,7 @@ body.page-template-tickets-template {
             }
 
             &__gallery {
-                @include media-breakpoint-down(lg) {
-                    margin-right: -20px;
-                }
+
 
                 .gallery-item {
                     height: auto;

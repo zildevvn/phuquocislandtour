@@ -10,6 +10,33 @@ body.page-template-cars-template {
             padding: 40px 0;
         }
 
+
+        >.container {
+            max-width: 100%;
+            padding-right: 0;
+
+            @media (min-width: 1200px) {
+                padding-left: calc(((100% - 1230px) / 2) + 20px);
+            }
+        }
+
+        .vm-heading,
+        .vm-sub-heading {
+            @include media-breakpoint-down(lg) {
+                padding-right: 20px;
+            }
+        }
+
+        .vm-sub-heading {
+            margin-left: auto;
+            margin-right: auto;
+
+            @media(min-width: 1200px) {
+                max-width: 930px;
+            }
+        }
+
+
         &-media {
             display: flex;
             gap: 48px;
@@ -36,6 +63,9 @@ body.page-template-cars-template {
 
             &__content {
 
+                @include media-breakpoint-down(lg) {
+                    padding-right: 20px;
+                }
 
                 h3,
                 h4,
@@ -62,9 +92,6 @@ body.page-template-cars-template {
             }
 
             &__gallery {
-                @include media-breakpoint-down(lg) {
-                    margin-right: -20px;
-                }
 
                 .gallery-item {
                     height: auto;
@@ -161,11 +188,15 @@ body.page-template-cars-template {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             gap: 12px;
-            padding-bottom: 4px; /* Space for scroll if any, but hidden below */
-            
+            padding-bottom: 4px;
+            /* Space for scroll if any, but hidden below */
+
             /* Hide scrollbar for a cleaner look but keep it scrollable */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+
+            /* Firefox */
             &::-webkit-scrollbar {
                 display: none;
             }
@@ -207,6 +238,7 @@ body.page-template-cars-template {
             &[hidden] {
                 display: none !important;
             }
+
             animation: fadeInTab 0.3s ease-in-out;
         }
 
@@ -215,6 +247,7 @@ body.page-template-cars-template {
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
