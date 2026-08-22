@@ -1,0 +1,559 @@
+body.page-template-tickets-template {
+    .about-section {
+        padding: 90px 0;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        >.container {
+            max-width: 100%;
+            padding-right: 0;
+
+            @media (min-width: 1200px) {
+                padding-left: calc(((100% - 1230px) / 2) + 20px);
+            }
+        }
+
+        .vm-heading,
+        .vm-sub-heading {
+            @include media-breakpoint-down(lg) {
+                padding-right: 20px;
+            }
+        }
+
+        &-media {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            margin-top: 32px;
+
+            @include media-breakpoint-down(lg) {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+                gap: 24px;
+            }
+
+            >div {
+                width: 50%;
+
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                }
+            }
+
+            &__content {
+
+                @include media-breakpoint-down(lg) {
+                    padding-right: 20px;
+                }
+
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-bottom: 24px;
+
+                    @include media-breakpoint-down(md) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                h3,
+                h4,
+                h5,
+                h6,
+                ul,
+                p {
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+            }
+
+            &__gallery {
+
+
+                .gallery-item {
+                    height: auto;
+
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .popular-section {
+        position: relative;
+        padding: 90px 0;
+        overflow: hidden;
+        background: $color-bg;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        &__graphic {
+            position: absolute;
+            top: 40px;
+            right: -4%;
+            z-index: 0;
+            opacity: 0.5;
+            max-width: 300px;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                max-width: 150px;
+                top: 20px;
+            }
+
+            @include media-breakpoint-down(md) {
+                max-width: 100px;
+                top: 10px;
+                right: -5%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+
+        .vm-heading {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include media-breakpoint-down(xl) {
+                max-width: 500px;
+            }
+        }
+
+        &-tables {
+            margin-top: 32px;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+            }
+        }
+
+        .vm-button {
+            margin: 24px auto 0 auto;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 20px;
+            }
+        }
+
+        .hotel-area-tabs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include media-breakpoint-down(md) {
+                gap: 16px;
+            }
+        }
+
+        .hotel-area-tabs {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            gap: 12px;
+            padding-bottom: 4px;
+            /* Space for scroll if any, but hidden below */
+
+            /* Hide scrollbar for a cleaner look but keep it scrollable */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+
+            /* Firefox */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .hotel-area-tab {
+                padding: 12px 24px;
+                border-radius: 30px;
+                background-color: #ffffff;
+                color: $color-body;
+                font-family: $font-second;
+                font-weight: 600;
+                font-size: 15px;
+                border: 1px solid #eaeaea;
+                cursor: pointer;
+                white-space: nowrap;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+                @include media-breakpoint-down(md) {
+                    padding: 10px 20px;
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    border-color: $color-primary;
+                    color: $color-primary;
+                }
+
+                &.is-active {
+                    background-color: $color-primary;
+                    color: #ffffff;
+                    border-color: $color-primary;
+                    box-shadow: 0 4px 12px rgba($color-primary, 0.2);
+                }
+            }
+        }
+
+        .hotel-area-panel {
+            &[hidden] {
+                display: none !important;
+            }
+
+            animation: fadeInTab 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInTab {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .popular-table-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            background: linear-gradient(to right, white 30%, rgba(255, 255, 255, 0)),
+                linear-gradient(to left, white 30%, rgba(255, 255, 255, 0)) 100% 0,
+                radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0)),
+                radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0)) 100% 0;
+            background-repeat: no-repeat;
+            background-color: white;
+            background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+            background-attachment: local, local, scroll, scroll;
+
+            table {
+                width: 100%;
+                min-width: 850px;
+                border-collapse: collapse;
+                text-align: center;
+
+                th,
+                td {
+                    padding: 20px 16px;
+                    vertical-align: middle;
+
+                    @include media-breakpoint-down(md) {
+                        padding: 16px 10px;
+                    }
+                }
+
+                thead {
+                    th {
+                        font-family: $font-second;
+                        font-weight: 700;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.05em;
+                        color: $color-body;
+                        border-bottom: 2px solid #eaeaea;
+                        white-space: nowrap;
+                        width: 12.5%;
+                        border-right: 1px dashed rgba(#000, 0.05);
+
+                        &:last-child {
+                            border-right: none;
+                        }
+
+                        &.col-area-name {
+                            text-align: left;
+                            width: 10%;
+                        }
+
+                        .tickets-header {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 8px;
+
+                            .tickets-icon {
+                                display: flex;
+                                justify-content: center;
+                                color: $color-primary;
+
+                                svg {
+                                    width: 24px;
+                                    height: auto;
+
+                                    @include media-breakpoint-down(lg) {
+                                        width: 20px;
+                                    }
+                                }
+                            }
+
+                            .tickets-label {
+                                font-size: 12px;
+                                color: $color-primary;
+                                font-family: $font-primary;
+
+                                @include media-breakpoint-down(md) {
+                                    font-size: 11px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .popular-price-table {
+                    &__group {
+                        &-header {
+                            th {
+                                background-color: rgba($color-primary, 0.04);
+                                border-top: 2px solid #eaeaea;
+                                border-bottom: 1px solid #eaeaea;
+                                padding: 16px 20px;
+
+                                @include media-breakpoint-down(lg) {
+                                    padding: 12px 10px;
+                                }
+
+                                .group-header-inner {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 16px;
+
+                                    @include media-breakpoint-down(lg) {
+                                        gap: 10px;
+                                    }
+
+                                    @include media-breakpoint-down(md) {
+                                        gap: 8px;
+                                    }
+
+                                    .group-badge {
+                                        background-color: $color-primary;
+                                        color: #ffffff;
+                                        width: 32px;
+                                        height: 32px;
+                                        border-radius: 50%;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        flex-shrink: 0;
+
+
+
+                                        svg {
+                                            width: 16px;
+                                            height: 16px;
+                                        }
+                                    }
+
+                                    h3 {
+                                        color: $color-primary;
+                                        text-align: left;
+                                        margin: 0;
+
+                                        @include media-breakpoint-down(md) {
+                                            font-size: 14px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+
+                        tr:not(.popular-price-table__group-header) {
+                            border-bottom: 1px dashed #eaeaea;
+                            transition: $transition-base;
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+
+                            &:hover {
+                                background-color: #fafafa;
+                            }
+
+                            td {
+                                font-size: 15px;
+                                color: $color-text;
+                                border-right: 1px dashed rgba(#000, 0.05);
+
+                                @include media-breakpoint-down(lg) {
+                                    font-size: 13px;
+                                }
+
+                                @include media-breakpoint-down(md) {
+                                    font-size: 11px;
+                                }
+
+                                &:last-child {
+                                    border-right: none;
+                                }
+
+                                &.col-service-name {
+                                    text-align: left;
+                                    font-weight: 600;
+                                    color: $color-text;
+                                    padding-left: 24px;
+                                    white-space: normal;
+                                    min-width: 220px;
+                                    line-height: 1.5;
+
+                                    @include media-breakpoint-down(lg) {
+                                        padding-left: 16px;
+                                    }
+
+                                    @include media-breakpoint-down(md) {
+                                        padding-left: 10px;
+                                        min-width: 200px;
+                                    }
+                                }
+
+                                .price-amount {
+                                    font-weight: 700;
+                                    font-size: 17px;
+                                    color: $color-text;
+
+                                    @include media-breakpoint-down(lg) {
+                                        font-size: 15px;
+                                    }
+
+                                    @include media-breakpoint-down(md) {
+                                        font-size: 13px;
+                                    }
+                                }
+
+                                .price-contact {
+                                    font-style: italic;
+                                    color: #fff;
+                                    font-size: 14px;
+                                    background: $color-secondary;
+                                    padding: 4px 10px;
+                                    border-radius: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .popular-table-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            background-color: #fbfbfb;
+            border-top: 1px solid #eaeaea;
+            color: $color-body;
+
+            .footer-icon {
+                display: flex;
+                align-items: center;
+                opacity: 0.6;
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            .footer-text {
+                font-size: 13px;
+                opacity: 0.8;
+            }
+        }
+    }
+
+
+    .tips-section {
+        padding: 90px 0;
+        overflow: hidden;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        &__graphic {
+            position: absolute;
+            top: 40px;
+            right: -4%;
+            z-index: 0;
+            opacity: 0.5;
+            max-width: 300px;
+            pointer-events: none;
+
+            @include media-breakpoint-down(lg) {
+                max-width: 150px;
+                top: 20px;
+            }
+
+            @include media-breakpoint-down(md) {
+                max-width: 100px;
+                top: 10px;
+                right: -5%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+
+        >.container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .faqs-list {
+            max-width: 1100px;
+            margin-top: 32px;
+            margin-left: auto;
+            margin-right: auto;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+            }
+        }
+    }
+}

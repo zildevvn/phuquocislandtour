@@ -9,5 +9,5 @@ get_header();
     <?php get_template_part('template-parts/contact/main-section'); ?>
     <?php get_template_part('template-parts/contact/map-section'); ?>
     <?php get_template_part('template-parts/shared/team-section'); ?>
-</main>
+    </main>
 <?php get_footer(); ?>

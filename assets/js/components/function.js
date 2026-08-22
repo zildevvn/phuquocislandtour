@@ -1,7 +1,7 @@
 
 
 import Swiper from 'swiper';
-import { Pagination, Navigation, Autoplay, EffectFade, Keyboard } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay, EffectFade, Keyboard, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -11,8 +11,9 @@ import { CountUp } from 'countup.js';
 
 (function ($) {
     "use strict";
+
     const vmHeroSliders = () => {
-        const $sliders = $('.hero-section-sliders');
+        const $sliders = $('.hero-section-gallery');
         if ($sliders.length === 0) return;
 
         $sliders.each(function () {
@@ -23,61 +24,27 @@ import { CountUp } from 'countup.js';
             }
 
             new Swiper(this, {
-                modules: [Pagination, Navigation, Autoplay, EffectFade],
+                modules: [Autoplay, EffectFade],
                 slidesPerView: 1,
                 loop: true,
-                speed: 800,
+                speed: 400,
                 effect: 'fade',
                 fadeEffect: {
                     crossFade: true
                 },
-                pagination: {
-                    el: $this.find('.swiper-pagination')[0],
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: $this.find('.swiper-button-next')[0],
-                    prevEl: $this.find('.swiper-button-prev')[0],
-                    enabled: false
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                breakpoints: {
-                    768: {
-                        navigation: {
-                            enabled: true
-                        }
-                    }
-                }
+                pagination: false,
+                navigation: false,
+                autoplay: false,
+                // autoplay: {
+                //     delay: 5000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // }
             });
         });
     }
 
-
-    const initBackToTop = () => {
-        const $backToTop = $('#backToTop');
-        if (!$backToTop.length) return;
-        $(window).on('scroll', function () {
-            if ($(this).scrollTop() > 300) {
-                $backToTop.addClass('show');
-            } else {
-                $backToTop.removeClass('show');
-            }
-        });
-
-        $backToTop.on('click', function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    function vmInitCounters() {
+    const vmCounters = () => {
         const counters = document.querySelectorAll('.vm-counter');
         if (!counters.length) return;
 
@@ -128,1198 +95,1033 @@ import { CountUp } from 'countup.js';
         counters.forEach(counter => observer.observe(counter));
     }
 
+    const vmIconHeading = () => {
+        const waves = document.querySelectorAll('.wave-svg');
 
-    const vmInitParallax = () => {
-        const $section = $('.achievements-section');
+        const isElementorEdit =
+            window.elementorFrontend?.isEditMode?.() ||
+            document.body.classList.contains('elementor-editor-active');
+
+
+        if (isElementorEdit) {
+
+            waves.forEach((wave) => {
+                wave.classList.add('is-visible');
+            });
+
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    const wave = entry.target;
+
+                    setTimeout(() => {
+                        wave.classList.add('is-visible');
+                    }, 500);
+
+                    observer.unobserve(wave);
+                }
+            });
+
+        }, {
+            threshold: 0.3
+        });
+
+        waves.forEach((wave) => {
+            observer.observe(wave);
+        });
+
+    }
+
+    const vmInitToursSwiper = () => {
+        const $carousels = $('.tours-carousel');
+        if (!$carousels.length) return;
+
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length <= 1) return;
+
+            new Swiper(this, {
+                modules: [Navigation, Pagination, Autoplay],
+                slidesPerView: 1,
+                spaceBetween: 16,
+                loop: $slides.length > 3,
+                grabCursor: true,
+                speed: 600,
+                observer: true,
+                observeParents: true,
+                // autoplay: {
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // },
+                autoplay: false,
+                navigation: {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                },
+                pagination: {
+                    el: $carousel.find('.swiper-pagination')[0],
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    }
+                }
+            });
+        });
+    };
+
+    const vmInitCarToursSwiper = () => {
+        const $carousels = $('.car-tours-swiper');
+        if (!$carousels.length) return;
+
+        const initOrDestroySwiper = () => {
+            const isDesktop = window.innerWidth >= 1024;
+
+            $carousels.each(function () {
+                const $carousel = $(this);
+                let swiper = $carousel.data('swiper-instance');
+
+                if (isDesktop) {
+                    if (swiper) {
+                        swiper.destroy(true, true);
+                        $carousel.removeData('swiper-instance');
+                    }
+                } else {
+                    if (!swiper) {
+                        const $slides = $carousel.find('.swiper-slide');
+
+                        swiper = new Swiper(this, {
+                            modules: [Navigation, Pagination, Autoplay],
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            loop: $slides.length > 2,
+                            grabCursor: true,
+                            speed: 600,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+                            // autoplay: false,
+                            navigation: {
+                                nextEl: $carousel.find('.swiper-button-next')[0],
+                                prevEl: $carousel.find('.swiper-button-prev')[0],
+                            }
+                        });
+                        $carousel.data('swiper-instance', swiper);
+                    }
+                }
+            });
+        };
+
+        initOrDestroySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroySwiper, 150);
+        });
+    };
+
+    const vmInitPostsSwiper = () => {
+        const $carousels = $('.posts-swiper');
+        if (!$carousels.length) return;
+
+        const initOrDestroySwiper = () => {
+            const isDesktop = window.innerWidth >= 1024;
+
+            $carousels.each(function () {
+                const $carousel = $(this);
+                let swiper = $carousel.data('swiper-instance');
+
+                if (isDesktop) {
+                    if (swiper) {
+                        swiper.destroy(true, true);
+                        $carousel.removeData('swiper-instance');
+                    }
+                } else {
+                    if (!swiper) {
+                        const $slides = $carousel.find('.swiper-slide');
+
+                        swiper = new Swiper(this, {
+                            modules: [Navigation, Pagination, Autoplay],
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            loop: $slides.length > 2,
+                            grabCursor: true,
+                            speed: 600,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+                            // autoplay: false,
+                            navigation: {
+                                nextEl: $carousel.find('.swiper-button-next')[0],
+                                prevEl: $carousel.find('.swiper-button-prev')[0],
+                            },
+                        });
+                        $carousel.data('swiper-instance', swiper);
+                    }
+                }
+            });
+        };
+
+        initOrDestroySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroySwiper, 150);
+        });
+    };
+
+    const vmInitTestimonialsSwiper = () => {
+        const $section = $('.testimonials-section');
         if (!$section.length) return;
 
-        const $bgImage = $section.find('.vm-section__bg img');
-        const $items = $section.find('.achievement-item');
-        if (!$bgImage.length && !$items.length) return;
+        const $carousel = $section.find('.testimonials-carousel');
+        const $thumbs = $section.find('.testimonials-thumbs');
+        if (!$carousel.length || !$thumbs.length) return;
 
-        let inViewport = false;
-        let requestId = null;
+        const $slides = $carousel.find('.swiper-slide');
+        if ($slides.length <= 1) return;
 
-        // IntersectionObserver to detect when section is in viewport
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                inViewport = entry.isIntersecting;
-                if (inViewport) {
-                    scheduleUpdate();
-                } else {
-                    if (requestId) {
-                        cancelAnimationFrame(requestId);
-                        requestId = null;
-                    }
+        const thumbsSwiper = new Swiper($thumbs[0], {
+            modules: [Thumbs, Autoplay],
+            spaceBetween: 10,
+            slidesPerView: 3,
+            centeredSlides: true,
+            slideToClickedSlide: true,
+            watchSlidesProgress: true,
+            watchSlidesVisibility: true,
+            freeMode: true,
+            loop: true,
+            direction: 'horizontal',
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    direction: 'horizontal',
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    direction: 'vertical',
                 }
-            });
-        }, {
-            threshold: 0,
-            rootMargin: '100px 0px 100px 0px' // Start slightly before entering viewport
+            }
         });
 
-        observer.observe($section[0]);
-
-        function updateParallax() {
-            if (!inViewport) {
-                requestId = null;
-                return;
-            }
-
-            const isMobile = window.matchMedia('(max-width: 767px)').matches;
-
-            if (isMobile) {
-                if ($bgImage.length) $bgImage.css('transform', '');
-                if ($items.length) $items.css('transform', '');
-                requestId = null;
-                return;
-            }
-
-            const rect = $section[0].getBoundingClientRect();
-            const viewHeight = window.innerHeight;
-
-            // Calculate progress (0 = enters viewport bottom, 1 = leaves viewport top)
-            const totalScrollableDistance = viewHeight + rect.height;
-            const currentScrolledDistance = viewHeight - rect.top;
-
-            let progress = currentScrolledDistance / totalScrollableDistance;
-            progress = Math.max(0, Math.min(1, progress)); // Clamp [0, 1]
-            const normalizedProgress = progress - 0.5; // [-0.5, 0.5]
-
-            // Apply parallax to background image
-            if ($bgImage.length) {
-                // Background moves in same direction as scroll (slower relative to screen viewport)
-                const maxBgTranslate = rect.height * 0.15; // 15% of section height
-                const bgTranslateY = normalizedProgress * maxBgTranslate;
-                $bgImage.css('transform', `translate3d(0, ${bgTranslateY}px, 0)`);
-            }
-
-            // Apply parallax to achievements list items (subtle floating depth)
-            if ($items.length) {
-                $items.each(function (index) {
-                    // Alternate translate speeds for even/odd items to create independent layer depth
-                    const factor = (index % 2 === 0) ? -20 : -10;
-                    const itemTranslateY = normalizedProgress * factor;
-                    $(this).css('transform', `translate3d(0, ${itemTranslateY}px, 0)`);
-                });
-            }
-
-            requestId = null;
-        }
-
-        function scheduleUpdate() {
-            if (!requestId) {
-                requestId = requestAnimationFrame(updateParallax);
-            }
-        }
-
-        $(window).on('scroll resize', scheduleUpdate);
-    }
-
-
-    const vmInitCarsSlider = () => {
-        const container = document.querySelector('.cars-section__list');
-        if (!container) return null;
-
-        const swiper = new Swiper(container, {
-            modules: [Navigation, Pagination, Autoplay],
+        new Swiper($carousel[0], {
+            modules: [Navigation, Pagination, Autoplay, Thumbs, EffectFade],
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 24,
+            loop: true,
+            grabCursor: true,
+            speed: 600,
             observer: true,
             observeParents: true,
-            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
             autoplay: {
-                delay: 4000,
+                delay: 3000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
             navigation: {
-                nextEl: '.cars-section .swiper-button-next',
-                prevEl: '.cars-section .swiper-button-prev',
+                nextEl: '.testimonials-section .swiper-button-next',
+                prevEl: '.testimonials-section .swiper-button-prev',
             },
             pagination: {
-                el: '.cars-section .swiper-pagination',
+                el: '.testimonials-section .swiper-pagination',
                 clickable: true,
             },
-            breakpoints: {
-                1400: { slidesPerView: 3 },
-                1024: { slidesPerView: 3 },
-                767: { slidesPerView: 2 },
-            },
-        });
-
-        // [WHY] Return instance so caller can call swiper.destroy() if needed (e.g. SPA navigation)
-        return swiper;
-    }
-
-
-    const vmInitTestimonialsSlider = () => {
-        const testimonialsCarousel = document.querySelector('.testimonials-carousel')
-        if (!testimonialsCarousel) return;
-
-        const swiper = new Swiper(testimonialsCarousel, {
-            modules: [Navigation, Pagination, Autoplay],
-            slidesPerView: 1,
-            spaceBetween: 20,
-            // observer: true,
-            // observeParents: true,
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                1400: {
-                    slidesPerView: 4,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-                767: {
-                    slidesPerView: 2,
-                },
-            },
-            on: {
-                init: function () {
-                    setTimeout(() => {
-                        this.update();
-                    }, 50);
-                },
-                resize: function () {
-                    setTimeout(() => {
-                        this.update();
-                    }, 50);
-                }
+            thumbs: {
+                swiper: thumbsSwiper,
             }
         });
-    }
+    };
 
+    const vmInitFaqsAccordion = () => {
+        $('.faqs-list').each(function () {
+            const $list = $(this);
 
-    const vmInitFaqs = () => {
-        const $faqsList = $('.accordion-list');
-        if (!$faqsList.length) return;
+            // Initialize active items
+            $list.find('.faq-item.is-active .faq-item__answer').show();
 
-        // Prevent duplicate event binding
-        $faqsList.off('click keydown', '.accordion-question');
+            $list.on('click', '.faq-item__question', function () {
+                const $question = $(this);
+                const $item = $question.closest('.faq-item');
+                const $answer = $item.find('.faq-item__answer');
 
-        $faqsList.on('click keydown', '.accordion-question', function (e) {
-            // Handle keydown: only trigger for Enter (13) or Space (32) keys
-            if (e.type === 'keydown' && e.which !== 13 && e.which !== 32) {
-                return;
-            }
-
-            // Prevent default page scroll behavior on Space key
-            if (e.which === 32) {
-                e.preventDefault();
-            }
-
-            const $question = $(this);
-            const $item = $question.closest('.accordion-item');
-            const $answer = $item.find('.accordion-answer');
-            const isActive = $item.hasClass('is-active') || $item.hasClass('active');
-
-            // Find other active items and close them smoothly
-            const $otherItems = $faqsList.find('.accordion-item').not($item);
-            $otherItems.removeClass('is-active active');
-            $otherItems.find('.accordion-question').attr('aria-expanded', 'false');
-            $otherItems.find('.accordion-answer').slideUp(300);
-
-            if (isActive) {
-                // Toggle active class and slide up
-                $item.removeClass('is-active active');
-                $question.attr('aria-expanded', 'false');
-                $answer.slideUp(300);
-            } else {
-                // Toggle active class and slide down
-                $item.addClass('is-active active');
-                $question.attr('aria-expanded', 'true');
-                $answer.slideDown(300);
-            }
-        });
-    }
-
-    const vmVideoPopup = () => {
-        const $buttons = $('.btn-play-video');
-        if (!$buttons.length) return;
-
-        if ($('#vm-video-modal').length === 0) {
-            const modalHtml = `
-                <div id="vm-video-modal" class="vm-video-modal" aria-hidden="true">
-                    <div class="vm-video-modal__overlay"></div>
-                    <div class="vm-video-modal__content">
-                        <button class="vm-video-modal__close" aria-label="Close video">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                        <div class="vm-video-modal__iframe-container">
-                            <iframe id="vm-video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            `;
-            $('body').append(modalHtml);
-        }
-
-        const $modal = $('#vm-video-modal');
-        const $overlay = $modal.find('.vm-video-modal__overlay');
-        const $closeBtn = $modal.find('.vm-video-modal__close');
-        const $iframe = $('#vm-video-iframe');
-        const $body = $('body');
-
-        function openModal(videoUrl) {
-            let embedUrl = videoUrl;
-
-            if (videoUrl.includes('youtube.com/watch?v=')) {
-                const videoId = videoUrl.split('v=')[1].split('&')[0];
-                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            } else if (videoUrl.includes('youtu.be/')) {
-                const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            } else if (videoUrl.includes('vimeo.com/') && !videoUrl.includes('player.vimeo.com')) {
-                const videoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
-                embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
-            }
-
-            $iframe.attr('src', embedUrl);
-            $modal.addClass('is-active').attr('aria-hidden', 'false');
-            $body.css('overflow', 'hidden');
-        }
-
-        function closeModal() {
-            $modal.removeClass('is-active').attr('aria-hidden', 'true');
-            $body.css('overflow', '');
-            setTimeout(() => {
-                $iframe.attr('src', '');
-            }, 300);
-        }
-
-        $buttons.off('click.vmVideo').on('click.vmVideo', function (e) {
-            e.preventDefault();
-            const videoUrl = $(this).attr('data-video-url');
-            if (videoUrl) {
-                openModal(videoUrl);
-            }
-        });
-
-        $overlay.off('click.vmVideo').on('click.vmVideo', closeModal);
-        $closeBtn.off('click.vmVideo').on('click.vmVideo', closeModal);
-
-        $(document).off('keydown.vmVideo').on('keydown.vmVideo', function (e) {
-            if (e.key === 'Escape' && $modal.hasClass('is-active')) {
-                closeModal();
-            }
-        });
-    }
-
-    const vmInitImageParallax = () => {
-        const $parallaxElements = $('[data-parallax="true"]');
-        if (!$parallaxElements.length) return;
-
-        // Respect prefers-reduced-motion
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) return;
-
-        let requestId = null;
-
-        function updateParallax() {
-            const viewHeight = window.innerHeight;
-            const isMobile = window.matchMedia('(max-width: 767px)').matches;
-
-            $parallaxElements.each(function () {
-                const $el = $(this);
-                if (isMobile) {
-                    $el.css('transform', '');
-                    return;
-                }
-
-                const $container = $el.closest('.js-parallax-container');
-                if (!$container.length) return;
-
-                const rect = $container[0].getBoundingClientRect();
-
-                // Only calculate if in viewport
-                if (rect.top <= viewHeight && rect.bottom >= 0) {
-                    const speed = parseFloat($el.attr('data-parallax-speed')) || 0.15;
-                    const totalScrollableDistance = viewHeight + rect.height;
-                    const currentScrolledDistance = viewHeight - rect.top;
-
-                    let progress = currentScrolledDistance / totalScrollableDistance;
-                    progress = Math.max(0, Math.min(1, progress));
-                    const normalizedProgress = progress - 0.5;
-
-                    const maxTranslate = rect.height * speed;
-                    const translateY = normalizedProgress * maxTranslate;
-
-                    $el.css('transform', `translate3d(0, ${translateY}px, 0)`);
-                }
-            });
-
-            requestId = null;
-        }
-
-        function scheduleUpdate() {
-            if (!requestId) {
-                requestId = requestAnimationFrame(updateParallax);
-            }
-        }
-
-        if (window.vmImageParallaxObserver) {
-            window.vmImageParallaxObserver.disconnect();
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            let isAnyVisible = false;
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    $(entry.target).data('is-visible', true);
+                if ($item.hasClass('is-active')) {
+                    // Close this item
+                    $item.removeClass('is-active');
+                    $answer.slideUp(300);
                 } else {
-                    $(entry.target).data('is-visible', false);
-                }
-            });
+                    // Close other active items
+                    const $activeItems = $list.find('.faq-item.is-active');
+                    $activeItems.removeClass('is-active');
+                    $activeItems.find('.faq-item__answer').slideUp(300);
 
-            $parallaxElements.each(function () {
-                const $container = $(this).closest('.js-parallax-container');
-                if ($container.data('is-visible')) {
-                    isAnyVisible = true;
-                }
-            });
-
-            if (isAnyVisible) {
-                $(window).off('scroll.vmImgParallax resize.vmImgParallax').on('scroll.vmImgParallax resize.vmImgParallax', scheduleUpdate);
-                scheduleUpdate();
-            } else {
-                $(window).off('scroll.vmImgParallax resize.vmImgParallax');
-            }
-        }, {
-            threshold: 0,
-            rootMargin: '100px 0px 100px 0px'
-        });
-
-        window.vmImageParallaxObserver = observer;
-
-        $parallaxElements.each(function () {
-            const $container = $(this).closest('.js-parallax-container');
-            if ($container.length) {
-                observer.observe($container[0]);
-            }
-        });
-
-        scheduleUpdate();
-    }
-
-
-    const btAnimateText = (selector, direction = 'right') => {
-        const elements = document.querySelectorAll(selector);
-
-        elements.forEach(el => {
-            const originalText = el.textContent.trim();
-            let delay = 0;
-            const delayStep = 0.1;
-
-            el.setAttribute('aria-label', originalText);
-            el.classList.add('vm-animated', `vm-animation-${direction}`);
-
-            const words = originalText.split(' ');
-
-            const wordSpans = words.map(word => {
-                const letterSpans = word.split('').map(letter => {
-                    const span = document.createElement('span');
-                    span.className = 'vm-letter';
-                    // [WHY] Store delay in data attribute, apply only when in viewport
-                    span.dataset.delay = delay.toFixed(1);
-                    span.textContent = letter;
-                    delay += delayStep;
-                    return span;
-                });
-
-                const wordSpan = document.createElement('span');
-                wordSpan.className = 'vm-word';
-                wordSpan.setAttribute('aria-hidden', 'true');
-                letterSpans.forEach(ls => wordSpan.appendChild(ls));
-                return wordSpan;
-            });
-
-            el.textContent = '';
-            wordSpans.forEach((ws, i) => {
-                el.appendChild(ws);
-                if (i < wordSpans.length - 1) {
-                    el.appendChild(document.createTextNode(' '));
+                    // Open this item
+                    $item.addClass('is-active');
+                    $answer.slideDown(300);
                 }
             });
         });
-
-        /* -------------------------------------------------------------------------- */
-        /* SINGLE TOUR GALLERY LIGHTBOX (Fancybox)
-        /* -------------------------------------------------------------------------- */
-        if (typeof Fancybox !== "undefined") {
-            Fancybox.bind('[data-fancybox="tour-gallery"]', {
-                Thumbs: {
-                    type: "modern"
-                },
-                Toolbar: {
-                    display: {
-                        left: ["infobar"],
-                        middle: [],
-                        right: ["slideshow", "thumbs", "close"],
-                    },
-                },
-            });
-        }
-        /* -------------------------------------------------------------------------- */
-
-        // [WHY] IntersectionObserver triggers animation only when heading enters viewport
-        // — better than scroll event listener (no debounce needed, runs off main thread)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-
-                // Apply animation-delay to each letter now that element is visible
-                entry.target.querySelectorAll('.vm-letter').forEach(letter => {
-                    letter.style.animationDelay = `${letter.dataset.delay}s`;
-                });
-
-                entry.target.classList.add('vm-in-view');
-
-                // [WHY] Unobserve after triggered — animation should only play once
-                observer.unobserve(entry.target);
-            });
-        }, {
-            threshold: 0.2, // trigger khi 20% element visible
-            rootMargin: '0px 0px -50px 0px' // trigger sớm hơn 50px trước khi vào viewport
-        });
-
-        document.querySelectorAll(selector).forEach(el => observer.observe(el));
-    }
-
-
-    const vmFilterTours = () => {
-        const $isBlock = $('.tours-list-section ')
-        if (!$isBlock.length) return;
-
-        const resultsElement = $isBlock.find('#vm-tours-results'),
-            paginationElement = $isBlock.find('#vm-tours-pagination'),
-            query = resultsElement.data('query'),
-            fieldSearch = $isBlock.find('#vm-tours-search-input');
-
-        const paxSlider = document.getElementById('vm-tours-pax-slider');
-        const $paxDisplay = $('#vm-tours-pax-display');
-        const $paxMinInput = $('#vm-tours-pax-min');
-        const $paxMaxInput = $('#vm-tours-pax-max');
-
-        const priceSlider = document.getElementById('vm-tours-price-slider');
-        const $priceDisplay = $('#vm-tours-price-display');
-        const $priceMinInput = $('#vm-tours-price-min');
-        const $priceMaxInput = $('#vm-tours-price-max');
-
-        const $catRadios = $isBlock.find('input[name="tour_cat"]');
-
-        const $sortSelect = $('#vm-tours-sort');
-        const $clearFiltersBtn = $('#vm-clear-filters');
-        const $toursCount = $('#vm-tours-count');
-
-        let searchTimeout;
-        let currentAjaxRequest = null;
-        let currentPage = 1;
-
-        function updateClearFiltersVisibility(searchVal, paxMinVal, paxMaxVal, priceMinVal, priceMaxVal, catVal, sortVal) {
-            const isSearchActive = searchVal !== '';
-            const isPaxActive = parseInt(paxMinVal) !== 1 || parseInt(paxMaxVal) !== 50;
-            const isPriceActive = parseInt(priceMinVal) !== 0 || parseInt(priceMaxVal) !== 1000;
-            const isCatActive = catVal !== 'all';
-            const isSortActive = sortVal !== 'default';
-
-            if (isSearchActive || isPaxActive || isPriceActive || isCatActive || isSortActive) {
-                $clearFiltersBtn.show();
-            } else {
-                $clearFiltersBtn.hide();
-            }
-        }
-
-        function triggerSearch(resetPage = true) {
-            if (resetPage) {
-                currentPage = 1;
-            }
-
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(function () {
-                const searchVal = fieldSearch.val().trim();
-                const paxMinVal = $paxMinInput.val();
-                const paxMaxVal = $paxMaxInput.val();
-                const priceMinVal = $priceMinInput.val();
-                const priceMaxVal = $priceMaxInput.val();
-                const catVal = $isBlock.find('input[name="tour_cat"]:checked').val();
-                const sortVal = $sortSelect.val();
-
-                updateClearFiltersVisibility(searchVal, paxMinVal, paxMaxVal, priceMinVal, priceMaxVal, catVal, sortVal);
-
-                __ajax_filter({
-                    keySeach: searchVal,
-                    pax_min: paxMinVal,
-                    pax_max: paxMaxVal,
-                    price_min: priceMinVal,
-                    price_max: priceMaxVal,
-                    tour_cat: catVal,
-                    sort: sortVal,
-                    query: query,
-                    currentpage: currentPage
-                });
-            }, 500);
-        }
-
-        $catRadios.on('change', () => triggerSearch(true));
-        $sortSelect.on('change', () => triggerSearch(true));
-
-        $clearFiltersBtn.on('click', function (e) {
+    };
+    const vmInitMapLocationsScroll = () => {
+        $('.map-images__list').on('click', '.map-item', function (e) {
             e.preventDefault();
-            fieldSearch.val('');
+            const $this = $(this);
+            const targetId = $this.data('location');
 
-            // Reset categories
-            $isBlock.find('input[name="tour_cat"][value="all"]').prop('checked', true);
+            if (!targetId) return;
 
-            // Reset sort
-            $sortSelect.val('default');
+            const $target = $(targetId);
+            const $container = $('.map-locations');
 
-            // Reset sliders
-            if (paxSlider && paxSlider.noUiSlider) {
-                paxSlider.noUiSlider.set([1, 50]);
+            if ($target.length && $container.length) {
+                // Update active state
+                $('.map-images__list .map-item').removeClass('is-active');
+                $this.addClass('is-active');
+
+                // Calculate dynamic header height offset
+                const $header = $('header, .header, #masthead, .site-header').first();
+                const headerHeight = $header.length ? $header.outerHeight() : 0;
+                const scrollOffset = headerHeight + 20;
+
+                // Calculate the absolute position of the target within the container
+                const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
+
+                // Set the scroll position so the target is offset from the top, not hidden by the header
+                const scrollTo = targetPositionInContainer - scrollOffset;
+
+                // Smooth scroll the container
+                $container.animate({
+                    scrollTop: scrollTo
+                }, 400);
             }
-            if (priceSlider && priceSlider.noUiSlider) {
-                priceSlider.noUiSlider.set([0, 1000]);
-            }
+        });
+    };
 
-            triggerSearch(true);
+    const vmInitMapLocationsHover = () => {
+        $('.map-locations').on('mouseenter', '.location', function () {
+            const locationId = $(this).attr('id');
+            if (!locationId) return;
+
+            const targetData = '#' + locationId;
+            const $mapItem = $('.map-images__list .map-item[data-location="' + targetData + '"]');
+
+            if ($mapItem.length) {
+                $('.map-images__list .map-item').removeClass('is-hovered');
+                $mapItem.addClass('is-hovered');
+            }
+        }).on('mouseleave', '.location', function () {
+            $('.map-images__list .map-item').removeClass('is-hovered');
+        });
+    };
+
+    const vmInitBackToTop = () => {
+        const $btn = $('.back-to-top');
+        if (!$btn.length) return;
+
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 300) {
+                $btn.addClass('is-visible');
+            } else {
+                $btn.removeClass('is-visible');
+            }
         });
 
-        if (paxSlider && typeof noUiSlider !== 'undefined') {
-            noUiSlider.create(paxSlider, {
-                start: [1, 50],
-                connect: true,
-                step: 1,
-                range: {
-                    'min': 1,
-                    'max': 50
-                },
-                format: {
-                    to: value => Math.round(value),
-                    from: value => value
+        $btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 600);
+        });
+    };
+
+    const vmParallaxGraphics = () => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        const graphics = document.querySelectorAll('[class*="-section__graphic"] img');
+        if (!graphics.length) return;
+
+        graphics.forEach((img, index) => {
+            // Assign slightly different speeds (e.g. 0.05, 0.1, 0.15)
+            const speed = 0.05 + (index % 3) * 0.03;
+            img.dataset.parallaxSpeed = speed;
+            img.style.willChange = 'transform';
+        });
+
+        const onScroll = () => {
+            const windowHeight = window.innerHeight;
+
+            graphics.forEach(img => {
+                const container = img.parentElement;
+                const rect = container.getBoundingClientRect();
+
+                // Only animate if container is in viewport (with a small buffer)
+                if (rect.top <= windowHeight + 100 && rect.bottom >= -100) {
+                    const speed = parseFloat(img.dataset.parallaxSpeed);
+                    const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
+                    const yPos = centerOffset * speed;
+
+                    img.style.transform = `translate3d(0, ${yPos}px, 0)`;
                 }
             });
+        };
 
-            paxSlider.noUiSlider.on('update', function (values, handle) {
-                $paxDisplay.text(values[0] + ' \u2013 ' + values[1] + ' pax');
-                $paxMinInput.val(values[0]);
-                $paxMaxInput.val(values[1]);
-            });
-
-            paxSlider.noUiSlider.on('change', () => triggerSearch(true));
-        }
-
-        if (priceSlider && typeof noUiSlider !== 'undefined') {
-            noUiSlider.create(priceSlider, {
-                start: [0, 1000],
-                connect: true,
-                step: 10,
-                range: {
-                    'min': 0,
-                    'max': 1000
-                },
-                format: {
-                    to: value => Math.round(value),
-                    from: value => value
-                }
-            });
-
-            priceSlider.noUiSlider.on('update', function (values, handle) {
-                $priceDisplay.text('$' + values[0] + ' \u2013 $' + values[1]);
-                $priceMinInput.val(values[0]);
-                $priceMaxInput.val(values[1]);
-            });
-
-            priceSlider.noUiSlider.on('change', () => triggerSearch(true));
-        }
-
-        fieldSearch.on('input', () => triggerSearch(true));
-
-        paginationElement.on('click', '.page-numbers:not(.disabled):not(.current)', function (e) {
-            e.preventDefault();
-            const selectedPage = parseInt($(this).attr('data-page'));
-            if (!isNaN(selectedPage)) {
-                currentPage = selectedPage;
-                triggerSearch(false);
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    onScroll();
+                    ticking = false;
+                });
+                ticking = true;
             }
+        }, { passive: true });
+
+        onScroll();
+    };
+
+    const vmInitLicenseModal = () => {
+        const $btn = $('.btn-view-license');
+        const $modal = $('#licenseModal');
+        const $close = $modal.find('.vm-license-modal__close');
+        const $overlay = $modal.find('.vm-license-modal__overlay');
+
+        if (!$btn.length || !$modal.length) return;
+
+        $btn.on('click', function (e) {
+            e.preventDefault();
+            $modal.addClass('is-active');
+            $('body').css('overflow', 'hidden');
         });
 
-        function __ajax_filter(val = {}) {
-            if (currentAjaxRequest) {
-                currentAjaxRequest.abort();
-            }
+        const closeModal = () => {
+            $modal.removeClass('is-active');
+            $('body').css('overflow', '');
+        };
 
-            const $contentWrapper = $isBlock.find('.tours-content');
-            const $sidebarWrapper = $isBlock.find('.tours-sidebar');
-
-            try {
-                $contentWrapper.addClass('is-loading');
-                $sidebarWrapper.addClass('is-loading');
-
-                currentAjaxRequest = $.ajax({
-                    type: "post",
-                    url: php_data.ajax_url,
-                    dataType: "json",
-                    data: {
-                        ...{ action: "vm_ajax_filter_tours" },
-                        ...val,
-                    },
-                    success: function (data) {
-
-                        if (!resultsElement.hasClass("results-filter")) {
-                            resultsElement.addClass('results-filter')
-                        }
-
-                        if (data.count !== undefined) {
-                            $toursCount.text(data.count);
-                        }
-
-                        resultsElement.html(data.items);
-                        paginationElement.html(data.pagination);
-
-                        if (data.items.trim() === '') {
-                            $('#vm-tours-empty').show();
-                        } else {
-                            $('#vm-tours-empty').hide();
-                        }
-
-                        // Smooth scroll to top of listing section when changing pages
-                        if (val.currentpage > 1 || (val.currentpage === 1 && $(window).scrollTop() > $isBlock.offset().top)) {
-                            $('html, body').animate({
-                                scrollTop: $isBlock.offset().top - 80 // Adjust offset for sticky header if needed
-                            }, 600);
-                        }
-                    },
-
-                    complete: function () {
-                        currentAjaxRequest = null;
-                        $contentWrapper.removeClass('is-loading');
-                        $sidebarWrapper.removeClass('is-loading');
-                    }
-                });
-
-            } catch (e) {
-                console.log(e);
-                $contentWrapper.removeClass('is-loading');
-                $sidebarWrapper.removeClass('is-loading');
-            }
-        }
-
-    }
-
-    const vmFilterPosts = () => {
-        const $isBlock = $('.posts-list-section');
-        if (!$isBlock.length) return;
-
-        const resultsElement = $isBlock.find('#vm-posts-results'),
-            paginationElement = $isBlock.find('#vm-posts-pagination'),
-            query = resultsElement.data('query'),
-            fieldSearch = $isBlock.find('#vm-posts-search-input');
-
-        const $catRadios = $isBlock.find('input[name="post_cat"]');
-
-        const $clearFiltersBtn = $('#vm-posts-clear-filters');
-        const $postsCount = $('#vm-posts-count');
-
-        const $dropdown = $isBlock.find('.posts-category-dropdown');
-        const $trigger = $dropdown.find('.vm-dropdown-trigger');
-        const $menu = $dropdown.find('.vm-dropdown-menu');
-        const $label = $trigger.find('.vm-dropdown-label');
-
-        let searchTimeout;
-        let currentAjaxRequest = null;
-        let currentPage = 1;
-
-        function updateClearFiltersVisibility(searchVal, catVal) {
-            const isSearchActive = searchVal !== '';
-            const isCatActive = catVal !== 'all';
-
-            if (isSearchActive || isCatActive) {
-                $clearFiltersBtn.show();
-            } else {
-                $clearFiltersBtn.hide();
-            }
-        }
-
-        function triggerSearch(resetPage = true) {
-            if (resetPage) {
-                currentPage = 1;
-            }
-
-            clearTimeout(searchTimeout);
-
-            searchTimeout = setTimeout(() => {
-                const searchVal = fieldSearch.val().trim();
-                const catVal = $isBlock.find('input[name="post_cat"]:checked').val();
-
-                updateClearFiltersVisibility(searchVal, catVal);
-
-                __ajax_filter({
-                    keySeach: searchVal,
-                    post_cat: catVal,
-                    query: query,
-                    currentpage: currentPage
-                });
-            }, 500);
-        }
-
-        function updateDropdownLabel() {
-            const $checked = $catRadios.filter(':checked');
-            if ($checked.length) {
-                const labelText = $checked.attr('data-label') || $checked.siblings('.tours-category-name').text().trim();
-                $label.text(labelText);
-            }
-        }
-
-        function openDropdown() {
-            $menu.addClass('is-open');
-            $trigger.attr('aria-expanded', 'true');
-        }
-
-        function closeDropdown() {
-            $menu.removeClass('is-open');
-            $trigger.attr('aria-expanded', 'false');
-        }
-
-        $trigger.on('click', function (e) {
+        $close.on('click', function (e) {
             e.preventDefault();
-            const isOpen = $menu.hasClass('is-open');
-            if (isOpen) {
-                closeDropdown();
-            } else {
-                openDropdown();
-            }
+            closeModal();
         });
 
-        $(document).on('click', function (e) {
-            if ($dropdown.length && !$dropdown.is(e.target) && $dropdown.has(e.target).length === 0) {
-                closeDropdown();
-            }
+        $overlay.on('click', function () {
+            closeModal();
         });
 
         $(document).on('keydown', function (e) {
-            if (e.key === 'Escape' && $menu.hasClass('is-open')) {
-                closeDropdown();
+            if (e.key === "Escape" && $modal.hasClass('is-active')) {
+                closeModal();
             }
-        });
-
-        // Initialize label on load
-        updateDropdownLabel();
-
-        $catRadios.on('change', () => {
-            updateDropdownLabel();
-            closeDropdown();
-            triggerSearch(true);
-        });
-
-        $clearFiltersBtn.on('click', function (e) {
-            e.preventDefault();
-            fieldSearch.val('');
-
-            // Reset categories
-            $isBlock.find('input[name="post_cat"][value="all"]').prop('checked', true);
-            updateDropdownLabel();
-
-            triggerSearch(true);
-        });
-
-        fieldSearch.on('input', () => triggerSearch(true));
-
-        paginationElement.on('click', '.page-numbers:not(.disabled):not(.current)', function (e) {
-            e.preventDefault();
-            const selectedPage = parseInt($(this).attr('data-page'));
-            if (!isNaN(selectedPage)) {
-                currentPage = selectedPage;
-                triggerSearch(false);
-            }
-        });
-
-        function __ajax_filter(val = {}) {
-            if (currentAjaxRequest) {
-                currentAjaxRequest.abort();
-            }
-
-            const $contentWrapper = $isBlock.find('.posts-list-wrapper');
-
-            try {
-                $contentWrapper.addClass('is-loading');
-
-                currentAjaxRequest = $.ajax({
-                    type: "post",
-                    url: php_data.ajax_url,
-                    dataType: "json",
-                    data: {
-                        action: "vm_ajax_filter_posts",
-                        ...val
-                    },
-                    success: function (data) {
-                        if (data.count !== undefined) {
-                            $postsCount.text(data.count);
-                        }
-
-                        resultsElement.html(data.items);
-                        paginationElement.html(data.pagination);
-
-                        if (data.items.trim() === '') {
-                            $('#vm-posts-empty').show();
-                            $isBlock.find('.posts-main__header').hide();
-                        } else {
-                            $('#vm-posts-empty').hide();
-                            $isBlock.find('.posts-main__header').show();
-                        }
-
-                        // Smooth scroll to top of listing section when changing pages
-                        if (val.currentpage > 1 || (val.currentpage === 1 && $(window).scrollTop() > $isBlock.offset().top)) {
-                            $('html, body').animate({
-                                scrollTop: $isBlock.offset().top - 80 // Adjust offset for sticky header if needed
-                            }, 600);
-                        }
-                    },
-
-                    complete: function () {
-                        currentAjaxRequest = null;
-                        $contentWrapper.removeClass('is-loading');
-                    }
-                });
-
-            } catch (e) {
-                console.log(e);
-                $contentWrapper.removeClass('is-loading');
-            }
-        }
-    }
-
-    /**
-     * Tour Review — Interactive Star Picker
-     * Handles hover highlighting, click-to-select, and keyboard accessibility.
-     */
-
-    const vmInitStarPicker = () => {
-        const $picker = $('#star-picker');
-        if (!$picker.length) return;
-
-        const $labels = $picker.find('.star-picker__label');
-        const $inputs = $picker.find('.star-picker__input');
-        const $text = $('#star-picker-text');
-
-        const ratingLabels = ['', 'Terrible', 'Poor', 'Average', 'Good', 'Excellent'];
-
-        function setHighlight(upTo) {
-            $labels.each(function (i) {
-                $(this).toggleClass('is-hovered', i < upTo);
-            });
-        }
-
-        function setActive(value) {
-            $labels.each(function (i) {
-                $(this).toggleClass('is-active', i < value);
-            });
-            $text.text(value ? ratingLabels[value] + ' (' + value + '/5)' : 'Select a rating');
-        }
-
-        $labels.on('mouseenter', function () {
-            setHighlight($labels.index(this) + 1);
-        }).on('mouseleave', function () {
-            const selected = parseInt($inputs.filter(':checked').val()) || 0;
-            setHighlight(selected);
-        });
-
-        $inputs.on('change', function () {
-            const val = parseInt($(this).val());
-            setActive(val);
-            setHighlight(val);
-        });
-
-        $inputs.on('keydown', function (e) {
-            const currentVal = parseInt($(this).val());
-            if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                const next = $inputs.filter('[value="' + Math.min(5, currentVal + 1) + '"]');
-                if (next.length) { next.prop('checked', true).trigger('change'); next.focus(); }
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-                e.preventDefault();
-                const prev = $inputs.filter('[value="' + Math.max(1, currentVal - 1) + '"]');
-                if (prev.length) { prev.prop('checked', true).trigger('change'); prev.focus(); }
-            }
-        });
-
-        $('#vm-review-form').on('submit', function (e) {
-            if (!$inputs.filter(':checked').length) {
-                e.preventDefault();
-                $picker.addClass('star-picker--error');
-                $text.text('Please select a rating!').css('color', '#dc3545');
-                $picker[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        });
-
-        $inputs.on('change', function () {
-            $picker.removeClass('star-picker--error');
-            $text.css('color', '');
-        });
-    }
-
-    /**
-     * Single Tour Anchor Navigation Bar
-     * Smooth scrolling, active highlighting with IntersectionObserver,
-     * and horizontal mobile auto-scroll.
-     */
-    function vmInitTourAnchorNav() {
-        const $nav = $('#vm-anchor-nav');
-        if (!$nav.length) return;
-
-        const $links = $nav.find('.anchor-nav__link');
-        const $list = $nav.find('.anchor-nav__list');
-
-        // Map IDs to section elements that actually exist in DOM
-        const sections = [];
-        $links.each(function () {
-            const id = $(this).attr('href');
-            const $sec = $(id);
-            if ($sec.length) {
-                sections.push($sec[0]);
-            }
-        });
-
-        if (!sections.length) return;
-
-        // Active link helper
-        function makeActive(id) {
-            $links.removeClass('is-active');
-            const $activeLink = $links.filter(`[href="#${id}"]`);
-            $activeLink.addClass('is-active');
-
-            // Automatically scroll the active mobile menu item into view
-            if ($activeLink.length) {
-                const listWidth = $list.outerWidth();
-                const listScrollLeft = $list.scrollLeft();
-                const linkOffsetLeft = $activeLink.position().left;
-                const linkWidth = $activeLink.outerWidth();
-
-                // Scroll if link is partially or fully out of view
-                if (linkOffsetLeft < 0 || (linkOffsetLeft + linkWidth) > listWidth) {
-                    $list.animate({
-                        scrollLeft: listScrollLeft + linkOffsetLeft - (listWidth / 2) + (linkWidth / 2)
-                    }, 300);
-                }
-            }
-        }
-
-        // Smooth scroll click handler
-        $links.on('click', function (e) {
-            e.preventDefault();
-            const targetId = $(this).attr('href');
-            const $targetSec = $(targetId);
-            if ($targetSec.length) {
-                const offset = $('body').hasClass('logged-in') ? 182 : 150;
-                const targetScrollTop = $targetSec.offset().top - offset + 2;
-
-                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-                if (prefersReducedMotion) {
-                    window.scrollTo(0, targetScrollTop);
-                    makeActive(targetId.replace('#', ''));
-                    // Update hash without scrolling
-                    history.pushState(null, null, targetId);
-                } else {
-                    $('html, body').stop().animate({
-                        scrollTop: targetScrollTop
-                    }, 500, function () {
-                        makeActive(targetId.replace('#', ''));
-                        history.pushState(null, null, targetId);
-                    });
-                }
-            }
-        });
-
-        // IntersectionObserver logic
-        const observerOptions = {
-            root: null,
-            rootMargin: '-160px 0px -60% 0px',
-            threshold: [0, 0.1, 0.2]
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    makeActive(entry.target.id);
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(sec => observer.observe(sec));
-
-        // Backup logic: fallback if scrolled to the very bottom
-        $(window).on('scroll', function () {
-            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 50) {
-                const lastId = sections[sections.length - 1].id;
-                makeActive(lastId);
-            }
-        });
-
-        // Handle initial URL hash on load
-        const initialHash = window.location.hash;
-        if (initialHash) {
-            const $targetSec = $(initialHash);
-            if ($targetSec.length && $links.filter(`[href="${initialHash}"]`).length) {
-                setTimeout(() => {
-                    const offset = $('body').hasClass('logged-in') ? 182 : 150;
-                    const targetScrollTop = $targetSec.offset().top - offset + 2;
-                    $('html, body').scrollTop(targetScrollTop);
-                    makeActive(initialHash.replace('#', ''));
-                }, 150);
-            }
-        }
-    }
-
-
-    const vmHeaderTopMobile = () => {
-
-        if ($(window).width() >= 768) return;
-
-        const headerTop = $('#header-booking-top');
-        if (!headerTop.length) return;
-
-        $(window).on('scroll', function () {
-            if ($(this).scrollTop() > 100) {
-                headerTop.addClass('is-active');
-            } else {
-                headerTop.removeClass('is-active');
-            }
-        });
-    }
-
-    const vmFilterCars = () => {
-        const $isBlock = $('.list-cars-section');
-        if (!$isBlock.length) return;
-
-        const resultsElement = $isBlock.find('#vm-cars-results'),
-            paginationElement = $isBlock.find('#vm-cars-pagination'),
-            query = resultsElement.data('query');
-
-        let currentAjaxRequest = null;
-        let currentPage = resultsElement.data('currentpage') || 1;
-
-        paginationElement.on('click', '.page-numbers:not(.disabled):not(.current)', function (e) {
-            e.preventDefault();
-            const selectedPage = parseInt($(this).attr('data-page'));
-            if (!isNaN(selectedPage)) {
-                currentPage = selectedPage;
-                __ajax_filter({
-                    query: query,
-                    currentpage: currentPage
-                });
-            }
-        });
-
-        function __ajax_filter(val = {}) {
-            if (currentAjaxRequest) {
-                currentAjaxRequest.abort();
-            }
-
-            const $contentWrapper = $isBlock.find('.list-cars-wrapper');
-
-            try {
-                $contentWrapper.addClass('is-loading');
-
-                currentAjaxRequest = $.ajax({
-                    type: "post",
-                    url: php_data.ajax_url,
-                    dataType: "json",
-                    data: {
-                        ...{ action: "vm_ajax_filter_cars" },
-                        ...val,
-                    },
-                    success: function (data) {
-                        resultsElement.html(data.items);
-                        paginationElement.html(data.pagination);
-
-                        // Smooth scroll to top of listing section when changing pages
-                        if (val.currentpage > 1 || (val.currentpage === 1 && $(window).scrollTop() > $isBlock.offset().top)) {
-                            $('html, body').animate({
-                                scrollTop: $isBlock.offset().top - 80 // Adjust offset for sticky header if needed
-                            }, 600);
-                        }
-                    },
-                    complete: function () {
-                        currentAjaxRequest = null;
-                        $contentWrapper.removeClass('is-loading');
-                    }
-                });
-
-            } catch (e) {
-                console.log(e);
-                $contentWrapper.removeClass('is-loading');
-            }
-        }
-    }
-
-    const vmInitSearchFormInterceptor = () => {
-        $(document).on('submit', 'form[role="search"]', function (e) {
-            e.preventDefault();
-            const $form = $(this);
-            const action = $form.attr('action') || window.location.origin + '/';
-            const keyword = $form.find('input[name="s"]').val() || '';
-
-            const url = new URL(action, window.location.origin);
-            url.searchParams.set('s', keyword);
-            url.hash = 'search-results';
-            window.location.href = url.toString();
         });
     };
 
-    const vmInitSearchScroll = () => {
-        const isSearchPage = document.body.classList.contains('search-results') || document.body.classList.contains('search');
-        if (!isSearchPage || window.location.hash !== '#search-results') return;
+    const vmInitTourGallery = () => {
+        const $dataElement = $('#tourGalleryData');
+        if (!$dataElement.length) return;
 
-        const searchResults = document.getElementById('search-results');
-        if (!searchResults) return;
+        let galleryData = [];
+        try {
+            galleryData = JSON.parse($dataElement.text());
+        } catch (e) {
+            console.error('Failed to parse gallery data');
+            return;
+        }
 
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const headerOffset = 80;
+        if (galleryData.length === 0) return;
 
-        setTimeout(() => {
-            const elementPosition = searchResults.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const $lightbox = $('#tourGalleryLightbox');
+        if (!$lightbox.length) return;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+        const $lightboxImg = $('#tourGalleryLightboxImg');
+        const $counter = $('#tourGalleryLightboxCounter');
+
+        let currentIndex = 0;
+        let isOpen = false;
+
+        const updateLightbox = () => {
+            if (galleryData[currentIndex]) {
+                $lightboxImg.attr('src', galleryData[currentIndex].url);
+                $lightboxImg.attr('alt', galleryData[currentIndex].alt);
+                $counter.text(`${currentIndex + 1} / ${galleryData.length}`);
+            }
+        };
+
+        const openLightbox = (index) => {
+            currentIndex = index;
+            updateLightbox();
+            $lightbox.addClass('is-active').attr('aria-hidden', 'false');
+            $('body').css('overflow', 'hidden');
+            isOpen = true;
+        };
+
+        const closeLightbox = () => {
+            $lightbox.removeClass('is-active').attr('aria-hidden', 'true');
+            $('body').css('overflow', '');
+            isOpen = false;
+        };
+
+        const nextImage = () => {
+            currentIndex = (currentIndex + 1) % galleryData.length;
+            updateLightbox();
+        };
+
+        const prevImage = () => {
+            currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+            updateLightbox();
+        };
+
+        // Event Listeners for visible gallery items
+        $('.tour-gallery').on('click', '.tour-gallery__item', function () {
+            const index = parseInt($(this).data('index'), 10);
+            if (!isNaN(index)) {
+                openLightbox(index);
+            }
+        });
+
+        // Lightbox controls
+        $lightbox.on('click', '.tour-gallery__lightbox-close', function (e) {
+            e.preventDefault();
+            closeLightbox();
+        });
+
+        $lightbox.on('click', '.tour-gallery__lightbox-next', function (e) {
+            e.preventDefault();
+            nextImage();
+        });
+
+        $lightbox.on('click', '.tour-gallery__lightbox-prev', function (e) {
+            e.preventDefault();
+            prevImage();
+        });
+
+        // Close on overlay click
+        $lightbox.on('click', function (e) {
+            const $target = $(e.target);
+            if ($target.hasClass('tour-gallery__lightbox-overlay') || $target.hasClass('tour-gallery__lightbox-image-container')) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard controls
+        $(document).on('keydown', function (e) {
+            if (!isOpen) return;
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+        });
+    };
+
+    const vmInitQuantitySelectors = () => {
+        $('.quantity-selector').on('click', '.qty-btn', function (e) {
+            e.preventDefault();
+            const $btn = $(this);
+            const $input = $btn.siblings('input[type="number"]');
+            let val = parseInt($input.val());
+            if (isNaN(val)) val = 0;
+
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            let max = parseInt($input.attr('max'));
+            if (isNaN(max)) max = 999;
+
+            if ($btn.text().trim() === '+') {
+                if (val < max) val++;
+            } else if ($btn.text().trim() === '-') {
+                if (val > min) val--;
+            }
+
+            $input.val(val).trigger('change');
+        });
+
+        $('.quantity-selector input[type="number"]').on('change input', function () {
+            const $input = $(this);
+            let val = parseInt($input.val());
+            if (isNaN(val)) return; // Allow empty while typing, format on blur if needed
+
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            let max = parseInt($input.attr('max'));
+            if (isNaN(max)) max = 999;
+
+            if (val < min) $input.val(min);
+            if (val > max) $input.val(max);
+        });
+
+        $('.quantity-selector input[type="number"]').on('blur', function () {
+            const $input = $(this);
+            let val = parseInt($input.val());
+            let min = parseInt($input.attr('min'));
+            if (isNaN(min)) min = 0;
+
+            if (isNaN(val)) $input.val(min);
+        });
+    };
+
+    const vmInitAjaxTourOptions = () => {
+        const $form = $('.vm-form-booking');
+        const $btn = $form.find('#vm-btn-check-availability');
+        const $container = $('#vm-tour-options-container');
+
+        if (!$form.length || !$btn.length || !$container.length) return;
+
+        $container.hide();
+
+        $btn.on('click', function (e) {
+            e.preventDefault();
+
+            const date = $form.find('input[type="date"]').val();
+            const $error = $form.find('.vm-form-error');
+
+            $error.hide().text('');
+
+            if (!date) {
+                $error.text('Please select a tour date.').slideDown(200);
+                return;
+            }
+
+            const adults = parseInt($form.find('.quantity-selector input').eq(0).val()) || 0;
+            const children = parseInt($form.find('.quantity-selector input').eq(1).val()) || 0;
+
+            if ($btn.hasClass('is-loading')) return;
+
+            const originalText = $btn.text();
+            $btn.addClass('is-loading').text('CHECKING...');
+            $btn.prop('disabled', true);
+
+            const postId = $container.data('post-id');
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'vm_ajax_check_availability',
+                    nonce: php_data.tour_options_nonce,
+                    post_id: postId,
+                    date: date,
+                    adults: adults,
+                    children: children
+                },
+                success: function (response) {
+                    $btn.removeClass('is-loading').text(originalText);
+                    $btn.prop('disabled', false);
+
+                    if (response.success) {
+                        if (response.data.count > 0) {
+                            $container.html(response.data.html);
+                            $container.slideDown(400, function () {
+                                $('html, body').animate({
+                                    scrollTop: $container.offset().top - 120
+                                }, 600);
+                            });
+                        } else {
+                            $container.html('<div class="container"><div class="vm-tour-options-empty" style="padding:40px 20px;text-align:center;background:#fff;border-radius:12px;margin:30px 0;border:1px solid #eaeaea;">No available tour options found for the selected date. Please try another date.</div></div>');
+                            $container.slideDown(400);
+                        }
+                    } else {
+                        alert(response.data.message || 'An error occurred.');
+                    }
+                },
+                error: function () {
+                    $btn.removeClass('is-loading').text(originalText);
+                    $btn.prop('disabled', false);
+                    alert('Server error. Please try again later.');
+                }
             });
-        }, 100);
+        });
+
+        $container.on('click', '.option-item', function (e) {
+            // Do not trigger selection logic if clicking the active button itself
+            if ($(e.target).hasClass('btn-select--active')) return;
+
+            $container.find('.option-item').removeClass('is-selected');
+            $container.find('.btn-select').removeClass('btn-select--active').text('Select');
+
+            $(this).addClass('is-selected');
+            $(this).find('.btn-select').addClass('btn-select--active').text('Continue');
+        });
+
+        $container.on('click', '.btn-select.btn-select--active', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const $thisBtn = $(this);
+            if ($thisBtn.hasClass('is-loading')) return;
+
+            const originalText = $thisBtn.text();
+            $thisBtn.addClass('is-loading').text('Processing...');
+            $thisBtn.prop('disabled', true);
+
+            const $tourItem = $thisBtn.closest('.option-item');
+            const optionId = $tourItem.data('key');
+            const postId = $container.data('post-id');
+            const date = $form.find('input[type="date"]').val();
+            const adults = parseInt($form.find('.quantity-selector input').eq(0).val()) || 0;
+            const children = parseInt($form.find('.quantity-selector input').eq(1).val()) || 0;
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'vm_ajax_process_booking',
+                    nonce: php_data.tour_options_nonce,
+                    post_id: postId,
+                    option_id: optionId,
+                    date: date,
+                    adults: adults,
+                    children: children
+                },
+                success: function (response) {
+                    if (response.success && response.data.redirect_url) {
+                        window.location.href = response.data.redirect_url;
+                    } else {
+                        $thisBtn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                        alert(response.data.message || 'An error occurred.');
+                    }
+                },
+                error: function () {
+                    $thisBtn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                    alert('Server error. Please try again later.');
+                }
+            });
+        });
+    };
+
+    const vmInitCheckoutForm = () => {
+        const $form = $('#vm-checkout-form');
+        if (!$form.length) return;
+
+        // Clear error on input
+        $form.find('input, textarea').on('input change', function () {
+            const $this = $(this);
+            $this.closest('.form-group').find('.invalid-feedback').slideUp(200, function () { $(this).text(''); });
+        });
+
+        $form.on('submit', function (e) {
+            e.preventDefault();
+
+            const $btn = $form.find('button[type="submit"]');
+            if ($btn.hasClass('is-loading')) return;
+
+            // Reset errors
+            $form.find('.invalid-feedback').hide().text('');
+
+            let isValid = true;
+
+            // Validate Name
+            const name = $form.find('input[name="customer_name"]').val().trim();
+            if (!name) {
+                isValid = false;
+                $form.find('input[name="customer_name"]').siblings('.invalid-feedback').text('Full name is required.').slideDown(200);
+            }
+
+            // Validate Email
+            const email = $form.find('input[name="customer_email"]').val().trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                isValid = false;
+                $form.find('input[name="customer_email"]').siblings('.invalid-feedback').text('A valid email address is required.').slideDown(200);
+            }
+
+            // Validate Phone
+            const phone = $form.find('input[name="customer_phone"]').val().trim();
+            if (!phone) {
+                isValid = false;
+                $form.find('input[name="customer_phone"]').siblings('.invalid-feedback').text('Phone number is required.').slideDown(200);
+            }
+
+            // Validate Pick-up
+            const pickup = $form.find('input[name="customer_pickup"]').val().trim();
+            if (!pickup) {
+                isValid = false;
+                $form.find('input[name="customer_pickup"]').siblings('.invalid-feedback').text('Pick-up location is required.').slideDown(200);
+            }
+
+            // Validate Drop-off
+            const dropoff = $form.find('input[name="customer_dropoff"]').val().trim();
+            if (!dropoff) {
+                isValid = false;
+                $form.find('input[name="customer_dropoff"]').siblings('.invalid-feedback').text('Drop-off location is required.').slideDown(200);
+            }
+
+            // Validate T&C
+            const terms = $form.find('input[name="terms_conditions"]').is(':checked');
+            if (!terms) {
+                isValid = false;
+                $form.find('input[name="terms_conditions"]').closest('.form-group').find('.invalid-feedback').text('You must accept the terms and conditions.').slideDown(200);
+            }
+
+            if (!isValid) return;
+
+            const originalText = $btn.text();
+            $btn.addClass('is-loading').text('SUBMITTING...');
+            $btn.prop('disabled', true);
+
+            // Prepare Data
+            const formData = {
+                action: 'vm_ajax_submit_checkout',
+                nonce: php_data.tour_options_nonce,
+                booking_token: $form.find('input[name="booking_token"]').val(),
+                customer_name: name,
+                customer_email: email,
+                customer_phone: phone,
+                customer_pickup: pickup,
+                customer_dropoff: dropoff,
+                customer_country: $form.find('input[name="customer_country"]').val().trim(),
+                customer_messages: $form.find('textarea[name="customer_messages"]').val().trim(),
+                payment_method: $form.find('input[name="payment_method"]:checked').val()
+            };
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        $('#booking-ref').text(response.data.reference || '');
+                        $('#booking-date').text(response.data.date || '');
+                        $('#booking-payment').text(response.data.payment_method || '');
+
+                        if (response.data.country) {
+                            $('#booking-country').text(response.data.country);
+                            $('#summary-item-country').css('display', 'flex');
+                        } else {
+                            $('#summary-item-country').hide();
+                        }
+
+                        $('#booking-status').text(response.data.status || 'Pending Confirmation');
+                        $('#booking-email').text(email);
+
+                        $('#vm-checkout-form-wrapper').fadeOut(300, function () {
+                            $('#vm-booking-success').fadeIn(400);
+                            $('html, body').animate({
+                                scrollTop: $('#vm-booking-success').offset().top - 150
+                            }, 600);
+                        });
+                    } else {
+                        $btn.removeClass('is-loading').text(originalText).prop('disabled', false);
+
+                        let $errorBox = $form.find('.server-error');
+                        if (!$errorBox.length) {
+                            $form.append('<div class="server-error invalid-feedback" style="display:none; color:#dc3545; font-size:14px; margin-top:15px; text-align:center;"></div>');
+                            $errorBox = $form.find('.server-error');
+                        }
+                        $errorBox.text(response.data.message || 'An error occurred during booking.').slideDown();
+                    }
+                },
+                error: function () {
+                    $btn.removeClass('is-loading').text(originalText).prop('disabled', false);
+                    let $errorBox = $form.find('.server-error');
+                    if (!$errorBox.length) {
+                        $form.append('<div class="server-error invalid-feedback" style="display:none; color:#dc3545; font-size:14px; margin-top:15px; text-align:center;"></div>');
+                        $errorBox = $form.find('.server-error');
+                    }
+                    $errorBox.text('Server error. Please try again later.').slideDown();
+                }
+            });
+        });
+    };
+
+    const vmInitAboutCarGallerySwiper = () => {
+        const $carousels = $('.about-section-media__gallery');
+        if (!$carousels.length) return;
+
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length === 0) return;
+
+            const isLoop = $slides.length > 1;
+            const hasNavigation = $carousel.find('.swiper-button-next').length > 0;
+            const hasPagination = $carousel.find('.swiper-pagination').length > 0;
+
+            let modules = [Autoplay, EffectFade];
+            if (hasNavigation) modules.push(Navigation);
+            if (hasPagination) modules.push(Pagination);
+
+            new Swiper(this, {
+                modules: modules,
+                slidesPerView: 1.2,
+                spaceBetween: 16,
+                loop: isLoop,
+                speed: 600,
+                autoplay: isLoop ? {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                } : false,
+                navigation: isLoop && hasNavigation ? {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                } : false,
+                pagination: isLoop && hasPagination ? {
+                    el: $carousel.find('.swiper-pagination')[0],
+                    clickable: true,
+                } : false,
+                breakpoints: {
+                    768: { spaceBetween: 24 },
+                    1024: { spaceBetween: 24 }
+                }
+            });
+        });
+    };
+
+    const vmInitOurTeamSwiper = () => {
+        const $carousels = $('.our-team-carousel');
+        if (!$carousels.length) return;
+
+        $carousels.each(function () {
+            const $carousel = $(this);
+            const $slides = $carousel.find('.swiper-slide');
+
+            if ($slides.length <= 1) return;
+
+            new Swiper(this, {
+                modules: [Navigation, Autoplay],
+                slidesPerView: 1,
+                spaceBetween: 16,
+                speed: 600,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                navigation: {
+                    nextEl: $carousel.find('.swiper-button-next')[0],
+                    prevEl: $carousel.find('.swiper-button-prev')[0],
+                },
+                breakpoints: {
+                    576: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 24,
+                    }
+                }
+            });
+        });
+    };
+
+    const vmInitHotelAreaTabs = () => {
+        const containers = document.querySelectorAll('.hotel-area-tabs-container');
+        if (!containers.length) return;
+
+        containers.forEach(container => {
+            const tabs = container.querySelectorAll('.hotel-area-tab');
+            const panels = container.querySelectorAll('.hotel-area-panel');
+
+            if (!tabs.length || !panels.length) return;
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('aria-controls');
+
+                    // Remove active state from all tabs
+                    tabs.forEach(t => {
+                        t.setAttribute('aria-selected', 'false');
+                        t.classList.remove('is-active');
+                    });
+
+                    // Hide all panels
+                    panels.forEach(p => {
+                        p.setAttribute('hidden', '');
+                    });
+
+                    // Set clicked tab to active
+                    tab.setAttribute('aria-selected', 'true');
+                    tab.classList.add('is-active');
+
+                    // Show corresponding panel
+                    const targetPanel = container.querySelector('#' + targetId);
+                    if (targetPanel) {
+                        targetPanel.removeAttribute('hidden');
+                    }
+                });
+
+                // Basic keyboard accessibility (Arrow keys to navigate)
+                tab.addEventListener('keydown', (e) => {
+                    let focusTab = null;
+                    const index = Array.from(tabs).indexOf(tab);
+
+                    if (e.key === 'ArrowRight') {
+                        focusTab = tabs[(index + 1) % tabs.length];
+                    } else if (e.key === 'ArrowLeft') {
+                        focusTab = tabs[(index - 1 + tabs.length) % tabs.length];
+                    }
+
+                    if (focusTab) {
+                        e.preventDefault();
+                        focusTab.focus();
+                        focusTab.click();
+                    }
+                });
+            });
+        });
     };
 
     $(document).ready(function () {
-        btAnimateText('.vm-heading-animation', 'right');
-        initBackToTop()
         vmHeroSliders()
-        vmInitCounters()
-        vmInitParallax()
-        vmInitImageParallax()
-        vmInitCarsSlider()
-        vmInitTestimonialsSlider()
-        vmInitFaqs()
-        vmVideoPopup()
-        vmFilterTours()
-        vmFilterPosts()
-        vmFilterCars()
-        vmInitStarPicker()
-        vmInitTourAnchorNav()
-        AOS.init();
-        vmHeaderTopMobile()
-        vmInitSearchFormInterceptor()
-        vmInitSearchScroll()
+        vmCounters()
+        vmIconHeading()
+        vmInitToursSwiper()
+        vmInitTestimonialsSwiper()
+        vmInitCarToursSwiper()
+        vmInitPostsSwiper()
+        vmInitFaqsAccordion()
+        vmInitMapLocationsScroll()
+        vmInitMapLocationsHover()
+        vmInitOurTeamSwiper()
+        vmInitBackToTop()
+        vmParallaxGraphics()
+        vmInitLicenseModal()
+        vmInitTourGallery()
+        vmInitQuantitySelectors()
+        vmInitAjaxTourOptions()
+        vmInitCheckoutForm()
+        vmInitAboutCarGallerySwiper()
+        vmInitHotelAreaTabs()
     });
 })(jQuery);

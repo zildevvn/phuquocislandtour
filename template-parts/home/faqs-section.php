@@ -1,57 +1,81 @@
 <?php
-$heading = get_field('hd_faqs_hp');
-$description = get_field('desc_faqs_hp');
+$heading = get_field('hd_faq_hp');
+$sub_hd = get_field('sub_hd_faq_hp');
+$img = get_field('img_faq_hp');
+$hd_img = get_field('hd_img_faq_hp');
 $faqs = get_field('faqs_list_hp');
 ?>
-<section class="vm-section faqs-section">
-    <div class="container">
-        <div class="faqs-section-inner d-flex ">
-            <div class="faqs-section-left">
-                <?php if (!empty($heading)): ?>
-                    <h2 class="vm-heading vm-heading-animation"><?php echo esc_html($heading); ?></h2>
-                <?php endif; ?>
 
-                <?php if (!empty($description)): ?>
-                    <div class="vm-sub-heading"><?php echo $description; ?></div>
-                <?php endif; ?>
-            </div>
-            <div class="faqs-section-right">
-                <?php if (!empty($faqs)): ?>
-                    <div class="faqs-list accordion-list">
-                        <?php foreach ($faqs as $key => $faq): ?>
-                            <div class="faq-item accordion-item" data-aos="fade-up" data-aos-delay="<?= $key * 100 ?>">
-                                <h3 class="faq-question accordion-question h6 d-flex align-items-center" tabindex="0"
-                                    role="button" aria-expanded="false">
-                                    <div class="icon d-flex align-items-center align-content-center justify-content-center">
-                                        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" color="#000000">
-                                            <path
-                                                d="M7.90039 8.07954C7.90039 3.30678 15.4004 3.30682 15.4004 8.07955C15.4004 11.4886 11.9913 10.8067 11.9913 14.8976"
-                                                stroke="#000000" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                            <path d="M12 19.01L12.01 18.9989" stroke="#000000" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </div>
+<?php if (!empty($faqs)): ?>
+    <section class="vm-section faqs-section">
+        <div class="faqs-section__graphic">
+            <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
+                alt="image graphic for FAQs phu quoc island tours" />
+        </div>
 
-                                    <?= $faq['question'] ?>
+        <div class="container">
+            <div class="faqs-section-inner d-flex">
+                <div class="faqs-section__left">
+                    <?php vm_icon_heading() ?>
 
-                                    <div class="arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="plus" width="18" height="18"
-                                            viewBox="0 0 160 160">
-                                            <rect class="vertical-line" x="70" width="15" height="160" rx="7" ry="7"></rect>
-                                            <rect class="horizontal-line" y="70" width="160" height="15" rx="7" ry="7"></rect>
-                                        </svg>
-                                    </div>
-                                </h3>
-                                <div class="faq-answer accordion-answer">
-                                    <?= $faq['answer'] ?>
+                    <?php if (!empty($heading)): ?>
+                        <h2 class="vm-heading">
+                            <?= $heading ?>
+                        </h2>
+                    <?php endif; ?>
+
+                    <?php if (!empty($sub_hd)): ?>
+                        <p class="vm-sub-heading">
+                            <?= $sub_hd ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if (!empty($img)): ?>
+                        <div class="faqs-section__img">
+                            <img src="<?= $img ?>" alt="image for <?= $heading ?>" />
+                            <?php if (!empty($hd_img)): ?>
+                                <p class="mb-0 h5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="lucide lucide-quote-icon lucide-quote">
+                                        <path
+                                            d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                                        </path>
+                                        <path
+                                            d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                                        </path>
+                                    </svg>
+                                    <?= $hd_img ?>
+                                </p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="faqs-section__right">
+                    <div class="faqs-section__list faqs-list">
+                        <?php foreach ($faqs as $key => $item): ?>
+                            <?php $classActive = $key == 0 ? 'is-active' : '' ?>
+                            <div class="faq-item <?= $classActive ?>">
+                                <div class="faq-item__question d-flex justify-content-between gap-2">
+                                    <h3 class="h6 mb-0">
+                                        0<?= $key + 1 ?> - <?= $item['question'] ?>
+                                    </h3>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                                        <path d="m6 9 6 6 6-6" />
+                                    </svg>
+                                </div>
+                                <div class="faq-item__answer">
+                                    <?= $item['answer'] ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+<?php endif; ?>

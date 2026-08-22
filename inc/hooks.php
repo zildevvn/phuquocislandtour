@@ -139,3 +139,146 @@ add_filter('comment_post_redirect', function ($location, $comment) {
 	return $location;
 }, 10, 2);
 
+
+
+
+function custom_google_reviews_shortcode($atts)
+{
+	$transient_key = 'google_reviews_cache';
+	$data = get_transient($transient_key);
+
+	if (false === $data) {
+		$place_id = 'ChIJecSedmEZQjERbcFwrNOhTA4';
+		$api_key = 'AIzaSyCsyqhpCTfEsE3NOipTKwZ2PwYwQ_dyDi4';
+
+		$url = "https://places.googleapis.com/v1/places/{$place_id}?fields=rating,userRatingCount&key={$api_key}";
+
+		$response = wp_remote_get($url);
+
+		if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+			$body = wp_remote_retrieve_body($response);
+			$json = json_decode($body, true);
+
+			if (isset($json['rating'])) {
+				$data = [
+					'rating' => $json['rating'],
+					'count' => $json['userRatingCount']
+				];
+				set_transient($transient_key, $data, 24 * HOUR_IN_SECONDS);
+			}
+		}
+	}
+
+	if (!$data) {
+		$data = ['rating' => '4.8', 'count' => '121'];
+	}
+
+	ob_start();
+	?>
+	<a href="https://maps.app.goo.gl/A8FAitnbGFDk3ntM9" target="_blank" class="vm-custom-review-badge">
+		<img src="https://danangcarrental.vn/wp-content/uploads/2026/07/gg-review.svg" alt="Google Reviews"
+			class="badge-icon">
+		<span class="badge-stars" style="color: #fbbc04;">★★★★★</span>
+		<span class="badge-score">
+			<?php echo esc_html($data['rating']); ?>
+		</span>
+		<span class="badge-divider">|</span>
+		<span class="badge-count">
+			<?php echo number_format($data['count']); ?> reviews
+		</span>
+	</a>
+	<?php
+	return ob_get_clean();
+}
+// add_shortcode('google_badge', 'custom_google_reviews_shortcode');
+
+
+// 2. SHORTCODE TRIPADVISOR: [tripadvisor_badge]
+function custom_tripadvisor_reviews_shortcode($atts)
+{
+	$transient_key = 'tripadvisor_reviews_cache';
+	$data = get_transient($transient_key);
+
+	if (false === $data) {
+		$url = 'https://www.tripadvisor.com/Attraction_Review-g293926-d5569598-Reviews-VM_Travel-Hue_Thua_Thien_Hue_Province.html';
+
+		$response = wp_remote_get($url, [
+			'headers' => ['User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)']
+		]);
+
+		if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+			$body = wp_remote_retrieve_body($response);
+
+			preg_match('/"ratingValue":\s*"([0-9.]+)"/', $body, $rating_matches);
+			preg_match('/"reviewCount":\s*"([0-9]+)"/', $body, $count_matches);
+
+			if (!empty($rating_matches[1]) && !empty($count_matches[1])) {
+				$data = [
+					'rating' => $rating_matches[1],
+					'count' => $count_matches[1]
+				];
+				set_transient($transient_key, $data, 24 * HOUR_IN_SECONDS);
+			}
+		}
+	}
+
+	if (!$data) {
+		$data = ['rating' => '4.9', 'count' => '2678'];
+	}
+
+	ob_start();
+
+	// var_dump($data);
+
+	// echo "<pre>";
+	// echo print_r($data);
+	// echo "</pre>";
+	?>
+	<a href="https://www.tripadvisor.com/Attraction_Review-g293926-d5569598-Reviews-VM_Travel-Hue_Thua_Thien_Hue_Province.html"
+		target="_blank" class="vm-custom-review-badge">
+		<img src="https://danangcarrental.vn/wp-content/uploads/2026/07/trip-review.svg" alt="Tripadvisor Reviews"
+			class="badge-icon">
+		<span class="badge-circles" style="color: #11AD87; font-size: 13px;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="lucide lucide-circle-dot-icon lucide-circle-dot">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="1" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="lucide lucide-circle-dot-icon lucide-circle-dot">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="1" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="lucide lucide-circle-dot-icon lucide-circle-dot">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="1" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="lucide lucide-circle-dot-icon lucide-circle-dot">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="1" />
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="lucide lucide-circle-dot-icon lucide-circle-dot">
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="12" r="1" />
+			</svg>
+		</span>
+		<span class="badge-score">
+			<?php echo esc_html($data['rating']); ?>
+		</span>
+		<span class="badge-divider">|</span>
+		<span class="badge-count">
+			<?php echo number_format($data['count']); ?> reviews
+		</span>
+	</a>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode('tripadvisor_badge', 'custom_tripadvisor_reviews_shortcode');

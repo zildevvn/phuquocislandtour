@@ -1,5 +1,6 @@
 <?php
-
+$heading = get_field('hd_list_tours') ?? '';
+$desc = get_field('desc_list_tours') ?? '';
 $args = array(
     'post_type' => 'tours',
     'posts_per_page' => 12,
@@ -11,7 +12,18 @@ $query = new WP_Query($args);
 <?php if ($query->have_posts()): ?>
     <section class="tours-list-section vm-section">
         <div class="container">
-            <h2 class="vm-heading vm-heading-animation">Tours List</h2>
+            <?php vm_icon_heading() ?>
+            <?php if ($heading): ?>
+                <h2 class="vm-heading">
+                    <?= $heading ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ($desc): ?>
+                <p class="vm-sub-heading">
+                    <?= $desc ?>
+                </p>
+            <?php endif; ?>
+
 
             <div class="tours-list-wrapper">
                 <div class="tours-sidebar">
@@ -30,7 +42,7 @@ $query = new WP_Query($args);
                     <div class="tours-sidebar__widget tours-sidebar__pax">
                         <div class="range-header">
                             <label class="form-label">Number of Pax</label>
-                            <span class="range-value"><span id="vm-tours-pax-display">1 &ndash; 20</span> pax</span>
+                            <span class="range-value" id="vm-tours-pax-display">1 &ndash; 20 Guests</span>
                         </div>
                         <div class="range-slider-container">
                             <div id="vm-tours-pax-slider"></div>
@@ -42,7 +54,7 @@ $query = new WP_Query($args);
                     <div class="tours-sidebar__widget tours-sidebar__price">
                         <div class="range-header">
                             <label class="form-label">Price Range</label>
-                            <span class="range-value"><span id="vm-tours-price-display">$0 &ndash; $1000</span></span>
+                            <span class="range-value" id="vm-tours-price-display">$0 &mdash; $1,000</span>
                         </div>
                         <div class="range-slider-container">
                             <div id="vm-tours-price-slider"></div>
@@ -54,13 +66,17 @@ $query = new WP_Query($args);
                     <?php
                     $tour_cats = get_terms(array(
                         'taxonomy' => 'tour_cats',
-                        'hide_empty' => false,
+                        'hide_empty' => true,
                     ));
                     ?>
                     <div class="tours-sidebar__widget tours-sidebar__cats">
-                        <h4 class="form-label"
-                            style="font-weight: 600; margin-bottom: 16px; display: block; font-size: 15px; color: #333;">
-                            Categories</h4>
+                        <h4 class="form-label">Categories</h4>
+                        <?php
+
+                        // echo "<pre>";
+                        // echo print_r($tour_cats);
+                        // echo "</pre>";
+                        ?>
                         <div class="tours-category-list">
                             <label class="tours-category-item">
                                 <input type="radio" name="tour_cat" value="all" checked>
@@ -70,7 +86,8 @@ $query = new WP_Query($args);
                             <?php if (!empty($tour_cats) && !is_wp_error($tour_cats)): ?>
                                 <?php foreach ($tour_cats as $cat): ?>
                                     <label class="tours-category-item">
-                                        <input type="radio" name="tour_cat" value="<?php echo esc_attr($cat->term_id); ?>">
+                                        <input type="radio" name="tour_cat" value="<?php echo esc_attr($cat->term_id); ?>"
+                                            data-slug="<?php echo esc_attr($cat->slug); ?>">
                                         <span class="custom-radio"></span>
                                         <span class="tours-category-name">
                                             <?php echo esc_html($cat->name); ?>
@@ -83,11 +100,10 @@ $query = new WP_Query($args);
                 </div>
 
                 <div class="tours-content position-relative">
-                    <div class="tours-loading-overlay">
-                        <div class="tours-loading-spinner">
+                    <div class="vm-loading-overlay">
+                        <div class="vm-loading-spinner">
                             <div class="spinner-dot"></div>
                         </div>
-                        <span class="tours-loading-text">Finding the best tours...</span>
                     </div>
 
                     <div class="tours-main">
@@ -115,7 +131,7 @@ $query = new WP_Query($args);
                         <div id="vm-tours-results" data-query='<?= json_encode($args) ?>' data-currentpage="1">
                             <?php while ($query->have_posts()):
                                 $query->the_post();
-                                vm_tour_item();
+                                vm_item_tour();
                                 ?>
                             <?php endwhile; ?>
                             <?php wp_reset_postdata(); ?>

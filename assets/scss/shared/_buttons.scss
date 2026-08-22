@@ -1,35 +1,118 @@
 .vm-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    gap: 8px;
-    padding: 0px 24px;
-    background-color: $color-primary;
+    max-width: fit-content;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background: $color-secondary;
     color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
+    height: 50px;
+    padding: 0 20px;
     transition: $transition-base;
-    border: 2px solid $color-primary;
-    font-weight: 500;
-    border-radius: 40px 40px 40px 0;
-
-    &:hover {
-        background-color: #fff;
-        color: $color-primary;
-    }
+    gap: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
 
     @include media-breakpoint-down(md) {
-        font-size: 14px;
-        height: 40px;
-        padding: 0 16px;
+        height: 46px;
+        padding: 0 18px;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+        max-width: 18px;
+        transform: rotate(45deg);
+        transition: $transition-base;
+
+        @include media-breakpoint-down(md) {
+            max-width: 16px;
+        }
+
+        path {
+            stroke: #fff;
+            stroke-width: 2.5;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-1px);
+
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+    &.vm-button-secondary {
+        background-color: $color-primary;
+        color: #ffffff;
+
+        path {
+            stroke: #ffffff;
+        }
+
+        &:hover {
+            background-color: darken($color-primary, 5%);
+        }
     }
 }
 
-.vm-button-container {
-    margin-top: 32px;
+// Global Swiper Navigation Buttons
+.swiper {
 
-    @include media-breakpoint-down(md) {
-        margin-top: 24px;
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 48px;
+        height: 48px;
+        background-color: $color-secondary;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: $transition-base;
+        z-index: 10;
+        margin-top: -24px; // Center vertically perfectly based on custom height
+
+        // Hide default Swiper font icons as we use custom SVGs
+        &::after {
+            display: none;
+        }
+
+        svg {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 20px !important;
+            stroke-width: 2;
+
+            path {
+                stroke: #fff;
+                transition: $transition-base;
+            }
+        }
+
+        &:hover {
+            background-color: $color-primary;
+            transform: scale(1.05);
+
+            svg path {
+                stroke: #ffffff;
+            }
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @include media-breakpoint-down(md) {
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 }
