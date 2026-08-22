@@ -66,7 +66,7 @@ if (!empty($whatsapp_number)) {
                 <div class="gallery-item">
                     <div class="gallery-item__media">
                         <video class="gallery-item__video" autoplay muted loop playsinline preload="auto">
-                            <source src="http://localhost:10040/wp-content/uploads/2026/08/video-hero.mov" type="video/mp4">
+                            <source src="<?= $video ?>" type="video/mp4">
                             Trình duyệt của bạn không hỗ trợ phát video.
                         </video>
                     </div>
