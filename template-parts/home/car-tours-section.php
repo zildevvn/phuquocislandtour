@@ -3,10 +3,18 @@ $heading = get_field('heading_car_tours');
 $sub_heading = get_field('sub_hd_car_tours');
 
 $args = array(
-    'post_type' => 'cars',
+    'post_type' => 'tours',
     'posts_per_page' => 4,
     'post_status' => 'publish',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'tour_cats',
+            'field' => 'slug',
+            'terms' => 'car-tours',
+        ),
+    ),
 );
+
 $query = new WP_Query($args);
 ?>
 <?php if ($query->have_posts()): ?>
@@ -160,7 +168,7 @@ $query = new WP_Query($args);
             </div>
 
             <div class="car-tour-section__actions d-flex align-items-center justify-content-center">
-                <?php vm_load_button('/car-rental-in-phu-quoc', 'View All', '', 'View All car rental Tours') ?>
+                <?php vm_load_button('/phu-quoc-tours/?tour_cat=car-tours', 'View All', '', 'View All car rental Tours') ?>
             </div>
         </div>
     </section>
