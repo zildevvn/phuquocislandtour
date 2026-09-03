@@ -5,9 +5,17 @@ $args = array(
     'post_type' => 'tours',
     'posts_per_page' => 12,
     'post_status' => 'publish',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'tour_cats',
+            'field' => 'slug',
+            'terms' => array('car-tours'),
+            'operator' => 'NOT IN',
+        ),
+    ),
 );
-$query = new WP_Query($args);
 
+$query = new WP_Query($args);
 ?>
 <?php if ($query->have_posts()): ?>
     <section class="tours-list-section vm-section">
@@ -71,12 +79,6 @@ $query = new WP_Query($args);
                     ?>
                     <div class="tours-sidebar__widget tours-sidebar__cats">
                         <h4 class="form-label">Categories</h4>
-                        <?php
-
-                        // echo "<pre>";
-                        // echo print_r($tour_cats);
-                        // echo "</pre>";
-                        ?>
                         <div class="tours-category-list">
                             <label class="tours-category-item">
                                 <input type="radio" name="tour_cat" value="all" checked>
@@ -85,7 +87,7 @@ $query = new WP_Query($args);
                             </label>
                             <?php if (!empty($tour_cats) && !is_wp_error($tour_cats)): ?>
                                 <?php foreach ($tour_cats as $cat): ?>
-                                    <label class="tours-category-item">
+                                    <label class="tours-category-item <?php echo esc_attr($cat->slug); ?>">
                                         <input type="radio" name="tour_cat" value="<?php echo esc_attr($cat->term_id); ?>"
                                             data-slug="<?php echo esc_attr($cat->slug); ?>">
                                         <span class="custom-radio"></span>

@@ -8538,7 +8538,7 @@ body.offcanvas-open {
   }
 }
 .main-footer-warp {
-  background: #0C2C7A;
+  background: #00656D;
   width: 100%;
   border-radius: 30px;
   padding: 60px 0;
@@ -8565,6 +8565,11 @@ body.offcanvas-open {
 }
 .main-footer-warp ul li {
   list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.main-footer-warp ul li::before {
+  content: none;
 }
 .main-footer-warp ul li:not(:last-child) {
   margin-bottom: 10px;
@@ -12413,7 +12418,10 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
   padding: 10px 14px;
   border-radius: 10px;
   background-color: transparent;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+}
+.tours-list-section .tours-sidebar__cats .tours-category-item.car-tours {
+  display: none;
 }
 .tours-list-section .tours-sidebar__cats .tours-category-item input[type=radio] {
   position: absolute;

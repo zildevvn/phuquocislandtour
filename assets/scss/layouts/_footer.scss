@@ -8,7 +8,7 @@
     }
 
     &-warp {
-        background: $color-primary;
+        background: $color-secondary;
         width: 100%;
         border-radius: $border-radius;
         padding: 60px 0;
@@ -35,6 +35,12 @@
 
             li {
                 list-style-type: none;
+                padding-left: 0;
+                margin-left: 0;
+
+                &::before {
+                    content: none;
+                }
 
                 &:not(:last-child) {
                     margin-bottom: 10px;
