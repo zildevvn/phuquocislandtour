@@ -102,7 +102,7 @@ $query = new WP_Query($args);
             </div>
 
             <div class="posts-section__cta d-flex justify-content-center">
-                <?php vm_load_button('#!', 'View All', '', 'view all posts') ?>
+                <?php vm_load_button('/phu-quoc-island-travel-guide', 'View All', '', 'view all posts') ?>
             </div>
         </div>
     </section>
