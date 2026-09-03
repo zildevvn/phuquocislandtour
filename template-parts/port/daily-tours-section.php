@@ -24,10 +24,9 @@ $query = new WP_Query($args);
 
 
             <p class="vm-sub-heading">
-                Explore our curated Phu Quoc port tours and discover top island attractions directly from your harbor
-                arrival point.
+                Discover our curated port tours and explore the island’s top attractions with convenient transportation and
+                flexible itineraries.
             </p>
-
 
             <div id="daily-tours-section" class="daily-tour-section__carousel swiper tours-carousel">
                 <div class=" swiper-wrapper">

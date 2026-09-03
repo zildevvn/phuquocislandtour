@@ -6333,6 +6333,10 @@ h6,
   font-variation-settings: normal;
 }
 
+a {
+  color: #0C2C7A;
+}
+
 .vm-section {
   width: 100%;
   height: auto;
@@ -17867,6 +17871,9 @@ body.page-template-port-template .about-section-media__content .content .h6:last
 body.page-template-port-template .about-section-media__content .content ul:last-child,
 body.page-template-port-template .about-section-media__content .content p:last-child {
   margin-bottom: 0;
+}
+body.page-template-port-template .about-section-media__content .content a {
+  font-weight: 500;
 }
 body.page-template-port-template .about-section-media__gallery .gallery-item {
   height: auto;

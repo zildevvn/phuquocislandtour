@@ -83,6 +83,10 @@ h6 {
     font-variation-settings: normal;
 }
 
+a {
+    color: $color-primary;
+}
+
 
 .vm-section {
     width: 100%;
@@ -513,6 +517,7 @@ strong {
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             &::before,
             &::after,
             .spinner-dot {
@@ -537,16 +542,20 @@ strong {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes vm-pulse-dot {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
     }
+
     50% {
         transform: translate(-50%, -50%) scale(1.5);
         opacity: 0.6;
