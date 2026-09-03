@@ -10018,6 +10018,9 @@ body.offcanvas-open {
 }
 .page-template-front-page .hero-section-content h1 b, .page-template-front-page .hero-section-content .h1 b {
   color: #FF9900;
+  display: inline-block;
+  width: 100%;
+  line-height: 150%;
 }
 .page-template-front-page .hero-section__desc {
   margin-top: 24px;
