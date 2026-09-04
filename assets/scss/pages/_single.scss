@@ -713,12 +713,13 @@ body.single-post {
 
             .toc-item {
                 a {
-                    color: #4B5563;
+                    color: $color-text;
                     text-decoration: none;
                     font-size: 15px;
                     line-height: 1.5;
                     transition: all 0.2s ease;
                     display: inline-block;
+                    font-weight: 500;
 
                     &:hover {
                         color: $color-primary;

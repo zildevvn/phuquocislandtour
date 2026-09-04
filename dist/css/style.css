@@ -13672,12 +13672,13 @@ body.single-post .main-section #vm-table-of-content .toc-nested-list li {
   margin-bottom: 8px;
 }
 body.single-post .main-section #vm-table-of-content .toc-item a {
-  color: #4B5563;
+  color: #19232B;
   text-decoration: none;
   font-size: 15px;
   line-height: 1.5;
   transition: all 0.2s ease;
   display: inline-block;
+  font-weight: 500;
 }
 body.single-post .main-section #vm-table-of-content .toc-item a:hover {
   color: #0C2C7A;
