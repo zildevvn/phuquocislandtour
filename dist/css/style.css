@@ -13149,6 +13149,7 @@ body.single-post .main-section img {
   width: 100%;
   height: auto;
   border-radius: 12px;
+  aspect-ratio: 16/9;
 }
 body.single-post .main-section figure {
   max-width: 100%;
