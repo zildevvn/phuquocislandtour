@@ -13278,6 +13278,7 @@ body.single-post .main-section .main-section-left__thumb img {
   height: auto;
   object-fit: cover;
   border-radius: 30px;
+  aspect-ratio: 16/9;
 }
 body.single-post .main-section .main-section-left__info.post-meta {
   margin-bottom: 40px;
@@ -13590,6 +13591,7 @@ body.single-post .main-section .main-section-right .widget-recent-posts .recent-
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  aspect-ratio: 16/9;
 }
 body.single-post .main-section .main-section-right .widget-recent-posts .recent-post-item__thumb .placeholder-thumb {
   width: 100%;

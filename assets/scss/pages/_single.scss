@@ -234,6 +234,7 @@ body.single-post {
                     height: auto;
                     object-fit: cover;
                     border-radius: 30px;
+                    aspect-ratio: 16 / 9;
                 }
             }
 
@@ -613,6 +614,7 @@ body.single-post {
                             height: 100%;
                             object-fit: cover;
                             transition: transform 0.3s ease;
+                            aspect-ratio: 16 / 9;
                         }
 
                         .placeholder-thumb {
