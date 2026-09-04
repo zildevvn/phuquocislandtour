@@ -13150,6 +13150,7 @@ body.single-post .main-section img {
   height: auto;
   border-radius: 12px;
   aspect-ratio: 16/9;
+  object-fit: cover;
 }
 body.single-post .main-section figure {
   max-width: 100%;
@@ -13280,6 +13281,7 @@ body.single-post .main-section .main-section-left__thumb img {
   object-fit: cover;
   border-radius: 30px;
   aspect-ratio: 16/9;
+  object-fit: cover;
 }
 body.single-post .main-section .main-section-left__info.post-meta {
   margin-bottom: 40px;
@@ -13593,6 +13595,7 @@ body.single-post .main-section .main-section-right .widget-recent-posts .recent-
   object-fit: cover;
   transition: transform 0.3s ease;
   aspect-ratio: 16/9;
+  object-fit: cover;
 }
 body.single-post .main-section .main-section-right .widget-recent-posts .recent-post-item__thumb .placeholder-thumb {
   width: 100%;
