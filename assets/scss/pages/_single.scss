@@ -139,21 +139,21 @@ body.single-post {
                 }
             }
 
-            @include media-breakpoint-down(md) {
-                li {
-                    padding-left: 24px;
+            // @include media-breakpoint-down(md) {
+            //     li {
+            //         padding-left: 24px;
 
-                    &::before {
-                        width: 10px;
-                        height: 10px;
-                        top: 8px;
-                    }
+            //         &::before {
+            //             width: 10px;
+            //             height: 10px;
+            //             top: 8px;
+            //         }
 
-                    ul li {
-                        padding-left: 16px;
-                    }
-                }
-            }
+            //         ul li {
+            //             padding-left: 16px;
+            //         }
+            //     }
+            // }
         }
 
         blockquote {
