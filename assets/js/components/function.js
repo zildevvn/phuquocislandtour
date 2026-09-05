@@ -393,7 +393,46 @@ import { CountUp } from 'countup.js';
             });
         });
     };
+
+    // const vmInitMapLocationsScroll = () => {
+    //     $('.map-images__list').on('click', '.map-item', function (e) {
+    //         e.preventDefault();
+    //         const $this = $(this);
+    //         const targetId = $this.data('location');
+
+    //         if (!targetId) return;
+
+    //         const $target = $(targetId);
+    //         const $container = $('.map-locations');
+
+    //         if ($target.length && $container.length) {
+    //             // Update active state
+    //             $('.map-images__list .map-item').removeClass('is-active');
+    //             $this.addClass('is-active');
+
+    //             // Calculate dynamic header height offset
+    //             const $header = $('header, .header, #masthead, .site-header').first();
+    //             const headerHeight = $header.length ? $header.outerHeight() : 0;
+    //             const scrollOffset = headerHeight + 20;
+
+    //             // Calculate the absolute position of the target within the container
+    //             const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
+
+    //             // Set the scroll position so the target is offset from the top, not hidden by the header
+    //             const scrollTo = targetPositionInContainer - scrollOffset;
+
+    //             // Smooth scroll the container
+    //             $container.animate({
+    //                 scrollTop: scrollTo
+    //             }, 400);
+    //         }
+    //     });
+    // };
+
     const vmInitMapLocationsScroll = () => {
+        // Đồng bộ breakpoint với CSS: @media (max-width: 1023.98px)
+        const mobileMediaQuery = window.matchMedia('(max-width: 1023.98px)');
+
         $('.map-images__list').on('click', '.map-item', function (e) {
             e.preventDefault();
             const $this = $(this);
@@ -401,32 +440,49 @@ import { CountUp } from 'countup.js';
 
             if (!targetId) return;
 
-            const $target = $(targetId);
+            const selector = targetId.toString().startsWith('#') ? targetId : `#${targetId}`;
+            const $target = $(selector);
             const $container = $('.map-locations');
 
-            if ($target.length && $container.length) {
-                // Update active state
-                $('.map-images__list .map-item').removeClass('is-active');
-                $this.addClass('is-active');
+            if (!$target.length || !$container.length) return;
 
-                // Calculate dynamic header height offset
+            // Update active state
+            $('.map-images__list .map-item').removeClass('is-active');
+            $this.addClass('is-active');
+
+            $container.stop(true);
+
+            if (mobileMediaQuery.matches) {
+                // ===== MOBILE/TABLET: container scroll NGANG (row) =====
+                const containerPaddingLeft = parseFloat($container.css('padding-left')) || 0;
+
+                const targetPositionInContainer =
+                    $target.offset().left - $container.offset().left + $container.scrollLeft();
+
+                // Căn giữa item trong viewport container (thay vì offset trừ header như bản dọc)
+                const scrollTo = targetPositionInContainer
+                    - (containerPaddingLeft)
+                    - ($container.outerWidth() / 2)
+                    + ($target.outerWidth() / 2);
+
+                $container.animate({ scrollLeft: scrollTo }, 400);
+
+            } else {
+                // ===== DESKTOP: container scroll DỌC (giữ nguyên logic cũ) =====
                 const $header = $('header, .header, #masthead, .site-header').first();
                 const headerHeight = $header.length ? $header.outerHeight() : 0;
                 const scrollOffset = headerHeight + 20;
 
-                // Calculate the absolute position of the target within the container
-                const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
+                const targetPositionInContainer =
+                    $target.offset().top - $container.offset().top + $container.scrollTop();
 
-                // Set the scroll position so the target is offset from the top, not hidden by the header
                 const scrollTo = targetPositionInContainer - scrollOffset;
 
-                // Smooth scroll the container
-                $container.animate({
-                    scrollTop: scrollTo
-                }, 400);
+                $container.animate({ scrollTop: scrollTo }, 400);
             }
         });
     };
+
 
     const vmInitMapLocationsHover = () => {
         $('.map-locations').on('mouseenter', '.location', function () {
@@ -653,7 +709,7 @@ import { CountUp } from 'countup.js';
             } else if (e.key === 'Tab') {
                 const focusableElements = $lightbox.find('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
                 if (focusableElements.length === 0) return;
-                
+
                 const firstElement = focusableElements[0];
                 const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -1134,13 +1190,13 @@ import { CountUp } from 'countup.js';
 
         const initOrDestroyGallerySwiper = () => {
             const isMobile = window.innerWidth < 768;
-            
+
             $gallery.each(function () {
                 const $section = $(this);
                 const $mainContainer = $section.find('.tour-gallery__main-container');
                 const $grid = $section.find('.tour-gallery__grid');
                 const $items = $grid.find('.tour-gallery__item');
-                
+
                 const $thumbsContainer = $section.find('.tour-gallery__thumbs-container');
                 const $thumbsGrid = $section.find('.tour-gallery__thumbs-grid');
                 const $thumbItems = $thumbsGrid.find('.tour-gallery__thumb-item');
@@ -1161,11 +1217,11 @@ import { CountUp } from 'countup.js';
                         thumbsSwiper.destroy(true, true);
                         $thumbsContainer.removeData('swiper-instance');
                     }
-                    
+
                     $mainContainer.removeClass('swiper');
                     $grid.removeClass('swiper-wrapper');
                     $items.removeClass('swiper-slide');
-                    
+
                     if ($thumbsContainer.length) {
                         $thumbsContainer.removeClass('swiper');
                         $thumbsGrid.removeClass('swiper-wrapper');
@@ -1173,7 +1229,7 @@ import { CountUp } from 'countup.js';
                         $thumbsGrid.removeAttr('style');
                         $thumbItems.removeAttr('style');
                     }
-                    
+
                     $grid.removeAttr('style');
                     $items.removeAttr('style');
                 } else {
@@ -1181,7 +1237,7 @@ import { CountUp } from 'countup.js';
                         $mainContainer.addClass('swiper');
                         $grid.addClass('swiper-wrapper');
                         $items.addClass('swiper-slide');
-                        
+
                         // Initialize thumbs swiper only if we have more than 1 image and the container exists
                         if ($items.length > 1 && $thumbsContainer.length) {
                             $thumbsContainer.addClass('swiper');
