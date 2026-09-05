@@ -203,7 +203,7 @@ $price_tour = get_field('price_tour'); // For demo sticky
 
                     <div class="vm-form-booking__body">
                         <div class="form-group">
-                            <label>Tour Date</label>
+                            <label>Date Visit</label>
                             <input type="date" class="form-control" placeholder="Select date">
                         </div>
 
@@ -231,7 +231,7 @@ $price_tour = get_field('price_tour'); // For demo sticky
                         </div>
                         <button id="vm-btn-check-availability"
                             class="vm-button d-flex align-items-center justify-content-center">
-                            CHECK AVAILABILITY
+                            Check Availability
 
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" color="#000000">

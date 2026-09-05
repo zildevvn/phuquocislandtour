@@ -15193,6 +15193,46 @@ body.logged-in .vm-form-booking {
   color: #555;
   margin: 0;
 }
+.tour-gallery .tour-gallery__main-container {
+  position: relative;
+  overflow: hidden;
+}
+.tour-gallery .tour-gallery__main-container .swiper-button-prev,
+.tour-gallery .tour-gallery__main-container .swiper-button-next {
+  border: none;
+  outline: none;
+}
+.tour-gallery .tour-gallery__thumbs-container {
+  display: none;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.tour-gallery .tour-gallery__thumbs-container.swiper {
+  display: block;
+}
+.tour-gallery .tour-gallery__thumb-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  height: 60px;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+.tour-gallery .tour-gallery__thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tour-gallery .tour-gallery__thumb-item.swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px solid #00656D;
+}
 .tour-gallery .tour-gallery__grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -15219,14 +15259,31 @@ body.logged-in .vm-form-booking {
     grid-template-rows: 220px 120px 120px;
   }
 }
+.tour-gallery .tour-gallery__grid.swiper-wrapper {
+  display: flex;
+  gap: 0;
+  grid-template-columns: none;
+  grid-template-rows: none;
+}
 .tour-gallery .tour-gallery__item {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  display: block;
 }
 .tour-gallery .tour-gallery__item--featured {
   grid-row: span 2;
+}
+.tour-gallery .tour-gallery__item.swiper-slide {
+  grid-row: auto !important;
+  grid-column: auto !important;
+  height: 250px;
 }
 .tour-gallery .tour-gallery__item img {
   width: 100%;

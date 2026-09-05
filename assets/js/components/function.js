@@ -567,6 +567,7 @@ import { CountUp } from 'countup.js';
 
         let currentIndex = 0;
         let isOpen = false;
+        let $lastFocusedElement = null;
 
         const updateLightbox = () => {
             if (galleryData[currentIndex]) {
@@ -576,18 +577,25 @@ import { CountUp } from 'countup.js';
             }
         };
 
-        const openLightbox = (index) => {
+        const openLightbox = (index, opener) => {
+            if (opener) $lastFocusedElement = $(opener);
             currentIndex = index;
             updateLightbox();
             $lightbox.addClass('is-active').attr('aria-hidden', 'false');
             $('body').css('overflow', 'hidden');
             isOpen = true;
+            setTimeout(() => {
+                $lightbox.find('.tour-gallery__lightbox-close').focus();
+            }, 50);
         };
 
         const closeLightbox = () => {
             $lightbox.removeClass('is-active').attr('aria-hidden', 'true');
             $('body').css('overflow', '');
             isOpen = false;
+            if ($lastFocusedElement && $lastFocusedElement.length) {
+                $lastFocusedElement.focus();
+            }
         };
 
         const nextImage = () => {
@@ -604,7 +612,7 @@ import { CountUp } from 'countup.js';
         $('.tour-gallery').on('click', '.tour-gallery__item', function () {
             const index = parseInt($(this).data('index'), 10);
             if (!isNaN(index)) {
-                openLightbox(index);
+                openLightbox(index, this);
             }
         });
 
@@ -642,6 +650,24 @@ import { CountUp } from 'countup.js';
                 nextImage();
             } else if (e.key === 'ArrowLeft') {
                 prevImage();
+            } else if (e.key === 'Tab') {
+                const focusableElements = $lightbox.find('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                if (focusableElements.length === 0) return;
+                
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
             }
         });
     };
@@ -1102,6 +1128,108 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitMobileGallerySwiper = () => {
+        const $gallery = $('.tour-gallery');
+        if (!$gallery.length) return;
+
+        const initOrDestroyGallerySwiper = () => {
+            const isMobile = window.innerWidth < 768;
+            
+            $gallery.each(function () {
+                const $section = $(this);
+                const $mainContainer = $section.find('.tour-gallery__main-container');
+                const $grid = $section.find('.tour-gallery__grid');
+                const $items = $grid.find('.tour-gallery__item');
+                
+                const $thumbsContainer = $section.find('.tour-gallery__thumbs-container');
+                const $thumbsGrid = $section.find('.tour-gallery__thumbs-grid');
+                const $thumbItems = $thumbsGrid.find('.tour-gallery__thumb-item');
+
+                if (!$mainContainer.length || !$grid.length || $items.length === 0) {
+                    return;
+                }
+
+                let mainSwiper = $mainContainer.data('swiper-instance');
+                let thumbsSwiper = $thumbsContainer.data('swiper-instance');
+
+                if (!isMobile) {
+                    if (mainSwiper) {
+                        mainSwiper.destroy(true, true);
+                        $mainContainer.removeData('swiper-instance');
+                    }
+                    if (thumbsSwiper) {
+                        thumbsSwiper.destroy(true, true);
+                        $thumbsContainer.removeData('swiper-instance');
+                    }
+                    
+                    $mainContainer.removeClass('swiper');
+                    $grid.removeClass('swiper-wrapper');
+                    $items.removeClass('swiper-slide');
+                    
+                    if ($thumbsContainer.length) {
+                        $thumbsContainer.removeClass('swiper');
+                        $thumbsGrid.removeClass('swiper-wrapper');
+                        $thumbItems.removeClass('swiper-slide');
+                        $thumbsGrid.removeAttr('style');
+                        $thumbItems.removeAttr('style');
+                    }
+                    
+                    $grid.removeAttr('style');
+                    $items.removeAttr('style');
+                } else {
+                    if (!mainSwiper) {
+                        $mainContainer.addClass('swiper');
+                        $grid.addClass('swiper-wrapper');
+                        $items.addClass('swiper-slide');
+                        
+                        // Initialize thumbs swiper only if we have more than 1 image and the container exists
+                        if ($items.length > 1 && $thumbsContainer.length) {
+                            $thumbsContainer.addClass('swiper');
+                            $thumbsGrid.addClass('swiper-wrapper');
+                            $thumbItems.addClass('swiper-slide');
+
+                            thumbsSwiper = new Swiper($thumbsContainer[0], {
+                                modules: [Thumbs],
+                                spaceBetween: 8,
+                                slidesPerView: 4,
+                                freeMode: true,
+                                watchSlidesProgress: true,
+                            });
+                            $thumbsContainer.data('swiper-instance', thumbsSwiper);
+                        }
+
+                        const mainSwiperConfig = {
+                            modules: [Thumbs, Navigation],
+                            spaceBetween: 10,
+                            slidesPerView: 1,
+                            navigation: {
+                                nextEl: $mainContainer.find('.swiper-button-next')[0],
+                                prevEl: $mainContainer.find('.swiper-button-prev')[0]
+                            }
+                        };
+
+                        if (thumbsSwiper) {
+                            mainSwiperConfig.thumbs = {
+                                swiper: thumbsSwiper,
+                            };
+                        }
+
+                        mainSwiper = new Swiper($mainContainer[0], mainSwiperConfig);
+                        $mainContainer.data('swiper-instance', mainSwiper);
+                    }
+                }
+            });
+        };
+
+        initOrDestroyGallerySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroyGallerySwiper, 150);
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -1118,6 +1246,7 @@ import { CountUp } from 'countup.js';
         vmParallaxGraphics()
         vmInitLicenseModal()
         vmInitTourGallery()
+        vmInitMobileGallerySwiper()
         vmInitQuantitySelectors()
         vmInitAjaxTourOptions()
         vmInitCheckoutForm()
