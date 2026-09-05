@@ -10029,7 +10029,7 @@ body.offcanvas-open {
   color: #FF9900;
   display: inline-block;
   width: 100%;
-  line-height: 150%;
+  margin-top: 10px;
 }
 .page-template-front-page .hero-section__desc {
   margin-top: 24px;
