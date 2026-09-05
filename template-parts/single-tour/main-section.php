@@ -204,7 +204,9 @@ $price_tour = get_field('price_tour'); // For demo sticky
                     <div class="vm-form-booking__body">
                         <div class="form-group">
                             <label>Date Visit</label>
-                            <input type="date" class="form-control" placeholder="Select date">
+                            <input type="date" id="vm-date-visit" name="date_visit" class="form-control"
+                                value="<?php echo esc_attr(current_time('Y-m-d')); ?>"
+                                min="<?php echo esc_attr(current_time('Y-m-d')); ?>">
                         </div>
 
                         <div class="form-row">
@@ -259,7 +261,6 @@ $price_tour = get_field('price_tour'); // For demo sticky
                         </div>
                     </div>
                 </div>
-                <!-- End DEMO -->
             </div>
         </div>
     </div>
