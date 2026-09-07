@@ -18,7 +18,7 @@ $img = get_field('img_best_time_cate_tour_tpl');
             </div>
 
             <div class="best-time-section__media">
-                <img src="<?= $img ?>" alt="image best time Phu Quoc Day Trip" />
+                <img src="<?= $img ?>" alt="image best time Phu Quoc Tour" />
             </div>
         </div>
     </div>

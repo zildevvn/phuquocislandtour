@@ -636,6 +636,45 @@
             "append": ""
         },
         {
+            "key": "field_6a7404188e6f0",
+            "label": "Sub Heading",
+            "name": "sub_hd_car_tours",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a70602047e10",
+            "label": "Daily Tours Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_6a701b84e0989",
             "label": "Steps List",
             "name": "steps_list_hp",
@@ -729,24 +768,6 @@
                     "parent_repeater": "field_6a701b84e0989"
                 }
             ]
-        },
-        {
-            "key": "field_6a70602047e10",
-            "label": "Daily Tours Section",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
         },
         {
             "key": "field_6a70603247e11",
@@ -968,27 +989,6 @@
             ]
         },
         {
-            "key": "field_6a7403ff8e6ef",
-            "label": "Heading",
-            "name": "heading_car_tours",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6a73f991a90e0",
             "label": "Package Tours Section",
             "name": "",
@@ -1008,7 +1008,7 @@
         },
         {
             "key": "field_6a73f9c5a90e1",
-            "label": "Heading Package Tours",
+            "label": "Heading",
             "name": "hd_package_tours",
             "aria-label": "",
             "type": "text",
@@ -1028,51 +1028,9 @@
             "append": ""
         },
         {
-            "key": "field_6a71979007fb9",
-            "label": "Heading",
-            "name": "hd_faq_hp",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6a73f9dca90e2",
-            "label": "Sub Heading Package Tours",
-            "name": "sub_hd_package_tours",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6a7404188e6f0",
             "label": "Sub Heading",
-            "name": "sub_hd_car_tours",
+            "name": "sub_hd_package_tours",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -1107,6 +1065,27 @@
             "placement": "left",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_6a7403ff8e6ef",
+            "label": "Heading",
+            "name": "heading_car_tours",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6a7197a407fba",
@@ -1146,6 +1125,27 @@
             "placement": "left",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_6a71979007fb9",
+            "label": "Heading",
+            "name": "hd_faq_hp",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6a7541f827dc1",
@@ -1344,5 +1344,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787298520
+    "modified": 1788753678
 }
