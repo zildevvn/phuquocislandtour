@@ -143,10 +143,6 @@ $price_tour = get_field('price_tour'); // For demo sticky
                                 </div>
                             <?php endif; ?>
 
-                            <?php if (!empty($itinerary_tour['img'])): ?>
-                                <img src="<?= $itinerary_tour['img'] ?>" alt="image Itinerary for <?= the_title() ?>" />
-                            <?php endif; ?>
-
                             <div class="tour-itinerary__list">
                                 <?php foreach ($itinerary_tour['itinerary_list'] as $index => $item): ?>
                                     <div class="itinerary-item">
@@ -179,6 +175,9 @@ $price_tour = get_field('price_tour'); // For demo sticky
                                 <?php endforeach; ?>
                             </div>
 
+                            <?php if (!empty($itinerary_tour['img'])): ?>
+                                <img src="<?= $itinerary_tour['img'] ?>" alt="image Itinerary for <?= the_title() ?>" />
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
 

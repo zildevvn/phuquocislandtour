@@ -14881,6 +14881,11 @@ body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card h3 svg
 body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card.card-excluded svg {
   stroke: red;
 }
+body.single-tours .main-section .tour-itinerary > img {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  margin-top: 20px;
+}
 body.single-tours .main-section .tour-itinerary__list {
   box-sizing: border-box;
   display: flex;
