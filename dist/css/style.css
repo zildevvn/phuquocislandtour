@@ -18607,6 +18607,9 @@ body.page-template-category-tours-template .about-section {
     padding: 40px 0;
   }
 }
+body.page-template-category-tours-template .about-section .vm-heading {
+  max-width: 850px;
+}
 body.page-template-category-tours-template .about-section > .container {
   max-width: 100%;
   padding-right: 0;

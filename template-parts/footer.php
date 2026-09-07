@@ -79,7 +79,7 @@ $bg_footer = get_field('background_image', 'option');
 
                     <?php if (has_nav_menu('daily-tours-menu')): ?>
                         <div class="main-footer__menu daily-tours-menu">
-                            <h2 class="h5">Daily Tours</h2>
+                            <h2 class="h5">Day Trip</h2>
                             <?php wp_nav_menu(array('theme_location' => 'daily-tours-menu', 'menu_class' => 'daily-tours-menu')) ?>
                         </div>
                     <?php endif; ?>
