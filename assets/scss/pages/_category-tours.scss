@@ -1,0 +1,139 @@
+body.page-template-category-tours-template {
+
+    .about-section {
+        padding: 90px 0;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+
+        >.container {
+            max-width: 100%;
+            padding-right: 0;
+
+            @media (min-width: 1200px) {
+                padding-left: calc(((100% - 1230px) / 2) + 20px);
+            }
+        }
+
+        .vm-heading,
+        .vm-sub-heading {
+            @include media-breakpoint-down(lg) {
+                padding-right: 20px;
+            }
+        }
+
+        .vm-sub-heading {
+            margin-left: auto;
+            margin-right: auto;
+
+            @media(min-width: 1200px) {
+                max-width: 930px;
+            }
+        }
+
+
+        &-media {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            margin-top: 32px;
+
+            @include media-breakpoint-down(lg) {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                margin-top: 28px;
+                gap: 24px;
+            }
+
+            >div {
+                width: 50%;
+
+                @include media-breakpoint-down(lg) {
+                    width: 100%;
+                }
+            }
+
+            &__content {
+
+                @include media-breakpoint-down(lg) {
+                    padding-right: 20px;
+                }
+
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-bottom: 24px;
+
+                    @include media-breakpoint-down(md) {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                h3,
+                h4,
+                h5,
+                h6,
+                ul,
+                p {
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+            }
+
+            &__gallery {
+
+                .gallery-item {
+                    height: auto;
+
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    .day-trip-section {
+        padding: 90px 0;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                url('../../images/tropical-background.jpg') center bottom / cover no-repeat;
+
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+    }
+}

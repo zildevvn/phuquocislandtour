@@ -99,24 +99,13 @@
             fetchTours();
         });
 
-        // Pagination
-        $(document).on('click', '#vm-tours-pagination a.page-numbers', function (e) {
-            e.preventDefault();
-            const href = $(this).attr('href');
-
-            let match = href.match(/paged=(\d+)/) || href.match(/\/page\/(\d+)/);
-            if (match && match[1]) {
-                currentPage = parseInt(match[1], 10);
-            } else if ($(this).hasClass('prev')) {
-                currentPage = Math.max(1, currentPage - 1);
-            } else if ($(this).hasClass('next')) {
-                currentPage = currentPage + 1;
-            } else {
-                currentPage = 1;
+        // Integration with central AJAX pagination
+        $(document).on('vm_pagination_before_ajax', function(e, data) {
+            if (data.action === 'vm_ajax_filter_tours') {
+                const state = getFilterState();
+                Object.assign(data.params, state);
+                data.params.page = data.page; 
             }
-
-            fetchTours();
-            $('html, body').animate({ scrollTop: $('.tours-content').offset().top - 150 }, 300);
         });
 
 

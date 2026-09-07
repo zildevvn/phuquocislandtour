@@ -1286,6 +1286,108 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitAjaxPagination = () => {
+        $(document).on('click', '[data-ajax="true"] a.page-numbers', function (e) {
+            e.preventDefault();
+            const $this = $(this);
+            const $wrapper = $this.closest('[data-ajax="true"]');
+            const href = $this.attr('href');
+            
+            if (!href) return;
+            
+            // Extract page number
+            let page = 1;
+            const match = href.match(/paged=(\d+)/) || href.match(/\/page\/(\d+)/);
+            if (match && match[1]) {
+                page = parseInt(match[1], 10);
+            } else if ($this.hasClass('prev')) {
+                page = Math.max(1, parseInt($wrapper.find('.current').text() || 2, 10) - 1);
+            } else if ($this.hasClass('next')) {
+                page = parseInt($wrapper.find('.current').text() || 1, 10) + 1;
+            }
+
+            const action = $wrapper.data('action');
+            const containerSelector = $wrapper.data('container');
+            const nonce = $wrapper.data('nonce');
+            
+            // Read initial params
+            let params = $wrapper.data('params') || {};
+            if (typeof params === 'string') {
+                try {
+                    params = JSON.parse(params);
+                } catch (e) {
+                    params = {};
+                }
+            }
+
+            // Allow external scripts to attach extra dynamic filters
+            const eventData = { action: action, params: params, page: page };
+            $(document).trigger('vm_pagination_before_ajax', [eventData]);
+
+            // Prevent multiple requests
+            if ($wrapper.hasClass('is-loading')) return;
+            $wrapper.addClass('is-loading');
+
+            const $container = $(containerSelector);
+            if ($container.length) {
+                // Find a common wrapper to add loading state
+                $container.parent().addClass('is-loading');
+            }
+
+            $.ajax({
+                url: php_data.ajax_url,
+                type: 'POST',
+                data: {
+                    action: eventData.action,
+                    nonce: nonce,
+                    page: eventData.page,
+                    ...eventData.params
+                },
+                success: function (res) {
+                    $wrapper.removeClass('is-loading');
+                    if ($container.length) {
+                        $container.parent().removeClass('is-loading');
+                    }
+                    if (res.success && res.data) {
+                        // Update items container
+                        if (res.data.html !== undefined || res.data.items !== undefined) {
+                            const newHtml = res.data.html !== undefined ? res.data.html : res.data.items;
+                            if ($container.length) {
+                                $container.html(newHtml);
+                                // Reinitialize any JS dependencies on new content
+                                $(document).trigger('vm_content_loaded', [$container]);
+                            }
+                        }
+
+                        // Update pagination HTML
+                        if (res.data.pagination) {
+                            $wrapper.html(res.data.pagination);
+                        } else {
+                            $wrapper.empty();
+                        }
+
+                        // Update count if provided
+                        if (res.data.count !== undefined) {
+                            $(document).trigger('vm_pagination_count_updated', [action, res.data.count]);
+                        }
+                        
+                        // Scroll to top of container
+                        if ($container.length) {
+                            $('html, body').animate({ scrollTop: $container.offset().top - 150 }, 300);
+                        }
+                    }
+                },
+                error: function () {
+                    $wrapper.removeClass('is-loading');
+                    if ($container.length) {
+                        $container.parent().removeClass('is-loading');
+                    }
+                    console.error('AJAX Pagination Failed');
+                }
+            });
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -1308,5 +1410,6 @@ import { CountUp } from 'countup.js';
         vmInitCheckoutForm()
         vmInitAboutCarGallerySwiper()
         vmInitHotelAreaTabs()
+        vmInitAjaxPagination()
     });
 })(jQuery);

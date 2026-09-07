@@ -140,8 +140,13 @@ $query = new WP_Query($args);
                         </div>
                     </div>
 
-                    <div id="vm-tours-pagination">
-                        <?php vm_pagination($query->query_vars['paged'] ?: 1, $query->max_num_pages); ?>
+                    <div id="vm-tours-pagination"
+                        data-ajax="true"
+                        data-action="vm_ajax_filter_tours"
+                        data-container="#vm-tours-results"
+                        data-nonce="<?= esc_attr(wp_create_nonce('vm_filter_tours')) ?>"
+                        data-params="<?= esc_attr(wp_json_encode([])) ?>">
+                        <?php vm_pagination($paged, $query->max_num_pages); ?>
                     </div>
 
                     <div id="vm-tours-empty" style="display: none;">No results found for your search.</div>

@@ -107,8 +107,13 @@ $sub_hd = get_field('sub_hd_blog_tpl');
                     </div>
                 </div>
 
-                <div id="vm-posts-pagination">
-                    <?php vm_pagination($query->query_vars['paged'] ?: 1, $query->max_num_pages); ?>
+                <div id="vm-posts-pagination"
+                    data-ajax="true"
+                    data-action="vm_ajax_filter_posts"
+                    data-container="#vm-posts-results"
+                    data-nonce="<?= esc_attr(wp_create_nonce('vm_filter_posts')) ?>"
+                    data-params="<?= esc_attr(wp_json_encode([])) ?>">
+                    <?php vm_pagination($paged, $query->max_num_pages); ?>
                 </div>
 
                 <div id="vm-posts-empty" style="display: none;">

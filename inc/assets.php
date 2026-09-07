@@ -33,6 +33,7 @@ add_action('wp_enqueue_scripts', function () {
 		'vm_filter_tours_nonce' => wp_create_nonce('vm_filter_tours'),
 		'vm_filter_posts_nonce' => wp_create_nonce('vm_filter_posts'),
 		'vm_filter_cars_nonce' => wp_create_nonce('vm_filter_cars'),
+		'vm_load_grid_tours_nonce' => wp_create_nonce('vm_load_grid_tours'),
 	]);
 
 	wp_localize_script('theme-scripts', 'themeData', [

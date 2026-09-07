@@ -78,14 +78,12 @@
             triggerFilter(true);
         });
 
-        // Pagination Click
-        $(document).on('click', '#vm-posts-pagination a.page-numbers', function (e) {
-            e.preventDefault();
-            const href = $(this).attr('href');
-            if (href) {
-                const match = href.match(/paged=(\d+)/) || href.match(/\/page\/(\d+)/);
-                currentPage = match ? parseInt(match[1]) : 1;
-                triggerFilter(false); // Do not reset page to 1
+        // Integration with central AJAX pagination
+        $(document).on('vm_pagination_before_ajax', function(e, data) {
+            if (data.action === 'vm_ajax_filter_posts') {
+                data.params.keySeach = $searchInput.val();
+                data.params.post_cat = $('input[name="post_cat"]:checked').val();
+                data.params.currentpage = data.page; 
             }
         });
 

@@ -539,3 +539,55 @@ function vm_ajax_submit_checkout()
         'country' => $customer_country
     ]);
 }
+
+add_action('wp_ajax_vm_ajax_load_grid_tours', 'vm_ajax_load_grid_tours');
+add_action('wp_ajax_nopriv_vm_ajax_load_grid_tours', 'vm_ajax_load_grid_tours');
+function vm_ajax_load_grid_tours()
+{
+    // Nonce check
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'vm_load_grid_tours')) {
+        wp_send_json_error(['message' => 'Security check failed.']);
+    }
+
+    $page = isset($_POST['page']) ? max(1, absint($_POST['page'])) : 1;
+    $category_slug = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+
+    $args = [
+        'post_type' => 'tours',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+        'paged' => $page,
+    ];
+
+    if (!empty($category_slug)) {
+        $args['tax_query'] = [
+            [
+                'taxonomy' => 'tour_cats',
+                'field' => 'slug',
+                'terms' => $category_slug,
+            ]
+        ];
+    }
+
+    $the_query = new WP_Query($args);
+
+    ob_start();
+    if ($the_query->have_posts()) {
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+            vm_item_tour();
+        }
+    }
+    $html = ob_get_clean();
+
+    ob_start();
+    vm_pagination($page, $the_query->max_num_pages);
+    $pagination = ob_get_clean();
+
+    wp_reset_postdata();
+
+    wp_send_json_success([
+        'html' => $html,
+        'pagination' => $pagination,
+    ]);
+}

@@ -18593,3 +18593,138 @@ body.page-template-port-template .book-car-section__form .nf-form-cont .nf-form-
 body.page-template-port-template .book-car-section__form .nf-form-cont .nf-form-layout nf-fields-wrap nf-field:nth-child(7), body.page-template-port-template .book-car-section__form .nf-form-cont .nf-form-layout nf-fields-wrap nf-field:nth-child(8), body.page-template-port-template .book-car-section__form .nf-form-cont .nf-form-layout nf-fields-wrap nf-field:nth-child(9) {
   width: 100% !important;
 }
+
+body.page-template-category-tours-template .about-section {
+  padding: 90px 0;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .about-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-category-tours-template .about-section {
+    padding: 40px 0;
+  }
+}
+body.page-template-category-tours-template .about-section > .container {
+  max-width: 100%;
+  padding-right: 0;
+}
+@media (min-width: 1200px) {
+  body.page-template-category-tours-template .about-section > .container {
+    padding-left: calc((100% - 1230px) / 2 + 20px);
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .about-section .vm-heading,
+  body.page-template-category-tours-template .about-section .vm-sub-heading {
+    padding-right: 20px;
+  }
+}
+body.page-template-category-tours-template .about-section .vm-sub-heading {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  body.page-template-category-tours-template .about-section .vm-sub-heading {
+    max-width: 930px;
+  }
+}
+body.page-template-category-tours-template .about-section-media {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .about-section-media {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-category-tours-template .about-section-media {
+    margin-top: 28px;
+    gap: 24px;
+  }
+}
+body.page-template-category-tours-template .about-section-media > div {
+  width: 50%;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .about-section-media > div {
+    width: 100%;
+  }
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .about-section-media__content {
+    padding-right: 20px;
+  }
+}
+body.page-template-category-tours-template .about-section-media__content h3, body.page-template-category-tours-template .about-section-media__content .h3,
+body.page-template-category-tours-template .about-section-media__content h4,
+body.page-template-category-tours-template .about-section-media__content .h4,
+body.page-template-category-tours-template .about-section-media__content h5,
+body.page-template-category-tours-template .about-section-media__content .h5,
+body.page-template-category-tours-template .about-section-media__content h6,
+body.page-template-category-tours-template .about-section-media__content .h6 {
+  margin-bottom: 24px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-category-tours-template .about-section-media__content h3, body.page-template-category-tours-template .about-section-media__content .h3,
+  body.page-template-category-tours-template .about-section-media__content h4,
+  body.page-template-category-tours-template .about-section-media__content .h4,
+  body.page-template-category-tours-template .about-section-media__content h5,
+  body.page-template-category-tours-template .about-section-media__content .h5,
+  body.page-template-category-tours-template .about-section-media__content h6,
+  body.page-template-category-tours-template .about-section-media__content .h6 {
+    margin-bottom: 20px;
+  }
+}
+body.page-template-category-tours-template .about-section-media__content h3:last-child, body.page-template-category-tours-template .about-section-media__content .h3:last-child,
+body.page-template-category-tours-template .about-section-media__content h4:last-child,
+body.page-template-category-tours-template .about-section-media__content .h4:last-child,
+body.page-template-category-tours-template .about-section-media__content h5:last-child,
+body.page-template-category-tours-template .about-section-media__content .h5:last-child,
+body.page-template-category-tours-template .about-section-media__content h6:last-child,
+body.page-template-category-tours-template .about-section-media__content .h6:last-child,
+body.page-template-category-tours-template .about-section-media__content ul:last-child,
+body.page-template-category-tours-template .about-section-media__content p:last-child {
+  margin-bottom: 0;
+}
+body.page-template-category-tours-template .about-section-media__gallery .gallery-item {
+  height: auto;
+}
+body.page-template-category-tours-template .about-section-media__gallery .gallery-item img {
+  height: 100%;
+  object-fit: cover;
+}
+body.page-template-category-tours-template .day-trip-section {
+  padding: 90px 0;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-category-tours-template .day-trip-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-category-tours-template .day-trip-section {
+    padding: 40px 0;
+  }
+}
+body.page-template-category-tours-template .day-trip-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url(../images/tropical-background.jpg) center bottom/cover no-repeat;
+  opacity: 0.65;
+  pointer-events: none;
+}
+body.page-template-category-tours-template .day-trip-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
