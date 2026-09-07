@@ -5,6 +5,11 @@ $desc = get_field('desc_ab_cate_tours');
 $gallerys = get_field('gallerys_ab_cate_tours');
 ?>
 <section class="vm-section about-section">
+    <div class="about-section__graphic">
+        <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
+            alt="image graphic Phu Quoc Day Trip" />
+    </div>
+
     <div class="container">
         <?php vm_icon_heading() ?>
         <?php if (!empty($heading)): ?>

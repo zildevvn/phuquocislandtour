@@ -10,7 +10,7 @@ $args = array(
         array(
             'taxonomy' => 'tour_cats',
             'field' => 'slug',
-            'terms' => 'daily-tours',
+            'terms' => 'day-trip',
         ),
     ),
 );
