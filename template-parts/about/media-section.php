@@ -12,7 +12,7 @@ $media = get_field('media_list');
                                 alt="image phu quoc travel agency for <?= $item['heading'] ?>" />
                         </div>
                         <div class="media-item__content">
-                            <h2 class="h3"> <?= $item['heading'] ?> </h2>
+                            <h2 class="h4"> <?= $item['heading'] ?> </h2>
                             <div class="media-item__desc"> <?= $item['desc'] ?> </div>
                         </div>
                     </div>
