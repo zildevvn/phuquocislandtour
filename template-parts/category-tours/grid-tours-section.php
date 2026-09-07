@@ -7,7 +7,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('pa
 
 $args = array(
     'post_type' => 'tours',
-    'posts_per_page' => 3,
+    'posts_per_page' => 12,
     'post_status' => 'publish',
     'paged' => $paged,
     'tax_query' => array(
@@ -20,9 +20,6 @@ $args = array(
 );
 $query = new WP_Query($args);
 
-// echo "<pre>";
-// echo print_r($category->slug);
-// echo "</pre>";
 ?>
 <?php if (!empty($category) && $query->have_posts()): ?>
     <section class="vm-section day-trip-section">
@@ -47,11 +44,8 @@ $query = new WP_Query($args);
                 ?>
             </div>
 
-            <div class="mt-5" id="vm-grid-tours-pagination" 
-                data-ajax="true" 
-                data-action="vm_ajax_load_grid_tours" 
-                data-container="#vm-grid-tours-results" 
-                data-nonce="<?= esc_attr(wp_create_nonce('vm_load_grid_tours')) ?>" 
+            <div class="mt-5" id="vm-grid-tours-pagination" data-ajax="true" data-action="vm_ajax_load_grid_tours"
+                data-container="#vm-grid-tours-results" data-nonce="<?= esc_attr(wp_create_nonce('vm_load_grid_tours')) ?>"
                 data-params="<?= esc_attr(wp_json_encode(['category' => $category->slug])) ?>">
                 <?php vm_pagination($paged, $query->max_num_pages); ?>
             </div>
