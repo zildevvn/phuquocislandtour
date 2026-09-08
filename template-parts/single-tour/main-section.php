@@ -191,7 +191,7 @@ $price_tour = get_field('price_tour'); // For demo sticky
                         <div class="price">
                             <span class="label">FROM</span>
                             <span
-                                class="value">$<?php echo number_format((float) ($price_tour ? $price_tour : 100), 2); ?></span>
+                                class="value">$<?php echo number_format((float) ($price_tour ? $price_tour : 100)); ?></span>
                             <span class="unit">/ person</span>
                         </div>
                         <div class="rating">
