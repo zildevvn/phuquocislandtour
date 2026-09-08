@@ -1240,6 +1240,15 @@ body.single-tours {
             }
         }
 
+        .tour-overview {
+            &__content {
+                img {
+                    aspect-ratio: 16 / 9;
+                    object-fit: cover;
+                }
+            }
+        }
+
         .tour-inclusions {
             &__wrapper {
                 display: grid;

@@ -14857,6 +14857,10 @@ body.single-tours .main-section .tour-overview__content .h6:last-child,
 body.single-tours .main-section .tour-overview__content ul:last-child {
   margin-bottom: 0;
 }
+body.single-tours .main-section .tour-overview__content img {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
 body.single-tours .main-section .tour-inclusions__wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
