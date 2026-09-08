@@ -1,7 +1,9 @@
 <?php
-$heading = get_field('hd_best_time_cate_tour_tpl');
-$desc = get_field('desc_best_time_cate_tour_tpl');
+
 $img = get_field('img_best_time_cate_tour_tpl');
+$best_time = get_field('best_time_visit', 'option');
+$heading = $best_time['heading'] ?: '';
+$desc = $best_time['desc'] ?: '';
 ?>
 
 <section class="vm-section best-time-section">

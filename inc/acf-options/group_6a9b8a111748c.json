@@ -1,6 +1,6 @@
 {
     "key": "group_6a9b8a111748c",
-    "title": "Category Tours Settins",
+    "title": "Terms Tours Settins",
     "fields": [
         {
             "key": "field_6a9b8a11eace7",
@@ -113,7 +113,7 @@
         },
         {
             "key": "field_6a9b8f30fc034",
-            "label": "List Tour by Category",
+            "label": "List Tour by Term",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -172,6 +172,35 @@
             "append": ""
         },
         {
+            "key": "field_6a9f8d61beb55",
+            "label": "Select Term",
+            "name": "select_term_tour_cate_tpl",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "category": "Category",
+                "location": "Location"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_6a9b8f4cfc035",
             "label": "Select Category",
             "name": "select_category_tour_tpl",
@@ -179,13 +208,55 @@
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9f8d61beb55",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "taxonomy": "tour_cats",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "select",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_6a9f8d6cbeb56",
+            "label": "Select Location",
+            "name": "select_location_tour_tpl",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9f8d61beb55",
+                        "operator": "==",
+                        "value": "location"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "tour_locations",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
@@ -214,48 +285,6 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
-        },
-        {
-            "key": "field_6a9e2a597479f",
-            "label": "Heading",
-            "name": "hd_best_time_cate_tour_tpl",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6a9e2a9b827fe",
-            "label": "Description",
-            "name": "desc_best_time_cate_tour_tpl",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 1,
-            "delay": 0
         },
         {
             "key": "field_6a9e2ac5827ff",
@@ -305,5 +334,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788750875
+    "modified": 1788841500
 }

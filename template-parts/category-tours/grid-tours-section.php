@@ -2,6 +2,11 @@
 $heading = get_field('hd_list_tour_cate_tpl');
 $sub_heading = get_field('sub_hd_list_tour_cate_tpl');
 $category = get_field('select_category_tour_tpl');
+$location = get_field('select_location_tour_tpl');
+$terms = get_field('select_term_tour_cate_tpl');
+$term = $terms == 'category'
+    ? 'tour_cats'
+    : ($terms == 'location' ? 'tour_locations' : '');
 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
 
@@ -10,14 +15,23 @@ $args = array(
     'posts_per_page' => 12,
     'post_status' => 'publish',
     'paged' => $paged,
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'tour_cats',
-            'field' => 'slug',
-            'terms' => $category->slug,
-        ),
-    ),
 );
+
+
+if ($term) {
+    $selected_term = $terms == 'category' ? $category : $location;
+
+    if ($selected_term) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => $term,
+                'field' => 'slug',
+                'terms' => $selected_term->slug,
+            ),
+        );
+    }
+}
+
 $query = new WP_Query($args);
 
 ?>

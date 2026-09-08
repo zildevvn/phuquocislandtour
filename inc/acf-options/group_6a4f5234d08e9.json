@@ -176,11 +176,11 @@
             ]
         },
         {
-            "key": "field_6a58540091f3d",
-            "label": "Included List",
-            "name": "included_tour",
+            "key": "field_6a5dd29bfb176",
+            "label": "Highlights",
+            "name": "highlights_tour",
             "aria-label": "",
-            "type": "repeater",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -189,44 +189,19 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_6a58541a91f3e",
-                    "label": "Excluded Item",
-                    "name": "excluded_item",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6a58540091f3d"
-                }
-            ]
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
         },
         {
-            "key": "field_6a58543091f3f",
-            "label": "Excluded List",
-            "name": "excluded_tour",
+            "key": "field_6a5743def1591",
+            "label": "Gallery",
+            "name": "gallery_tour",
             "aria-label": "",
-            "type": "repeater",
+            "type": "gallery",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -235,37 +210,19 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_6a58543091f40",
-                    "label": "Excluded Item",
-                    "name": "excluded_item",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6a58543091f3f"
-                }
-            ]
+            "return_format": "url",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         },
         {
             "key": "field_6a58868a73f12",
@@ -419,6 +376,98 @@
                             "parent_repeater": "field_6a84009d3f364"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "field_6a58540091f3d",
+            "label": "Included List",
+            "name": "included_tour",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a58541a91f3e",
+                    "label": "Excluded Item",
+                    "name": "excluded_item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a58540091f3d"
+                }
+            ]
+        },
+        {
+            "key": "field_6a58543091f3f",
+            "label": "Excluded List",
+            "name": "excluded_tour",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a58543091f40",
+                    "label": "Excluded Item",
+                    "name": "excluded_item",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a58543091f3f"
                 }
             ]
         },
@@ -842,55 +891,6 @@
                     "parent_repeater": "field_6a7d6ef2fe936"
                 }
             ]
-        },
-        {
-            "key": "field_6a5dd29bfb176",
-            "label": "Highlights",
-            "name": "highlights_tour",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_6a5743def1591",
-            "label": "Gallery",
-            "name": "gallery_tour",
-            "aria-label": "",
-            "type": "gallery",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min": "",
-            "max": "",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "insert": "append",
-            "preview_size": "medium"
         }
     ],
     "location": [
@@ -914,5 +914,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788769212
+    "modified": 1788840827
 }
