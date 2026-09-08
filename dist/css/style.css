@@ -9179,7 +9179,7 @@ body.offcanvas-open {
 }
 .map-section__map .map-locations .location__name {
   gap: 5px;
-  color: #0C2C7A;
+  color: #19232B;
 }
 .map-section__map .map-locations .location__name svg {
   width: 100%;
@@ -9191,6 +9191,7 @@ body.offcanvas-open {
 .map-section__map .map-locations .location__desc {
   margin-top: 16px;
   font-size: 13px;
+  color: #555555;
 }
 @media (max-width: 767.98px) {
   .map-section__map .map-locations .location__desc {

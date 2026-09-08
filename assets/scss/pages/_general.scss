@@ -429,7 +429,8 @@
 
                 &__name {
                     gap: 5px;
-                    color: $color-primary;
+                    color: $color-text;
+
 
                     svg {
                         width: 100%;
@@ -443,6 +444,7 @@
                 &__desc {
                     margin-top: 16px;
                     font-size: 13px;
+                    color: $color-body;
 
                     @include media-breakpoint-down(md) {
                         margin-top: 10px;
