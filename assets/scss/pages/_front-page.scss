@@ -45,6 +45,10 @@
 
         &-gallery,
         &-video {
+            @include media-breakpoint-down(md) {
+                margin-top: -20px;
+            }
+
             .gallery-item {
                 &__media {
                     display: flex;
@@ -1046,7 +1050,8 @@
                     position: absolute;
                     inset: 0;
                     height: 100%;
-                    width: 100%
+                    width: 100%;
+                    object-fit: cover;
                 }
             }
 

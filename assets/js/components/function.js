@@ -1388,6 +1388,50 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitSearchModal = () => {
+        const $modal = $('#search-modal');
+        const $btnOpen = $('#btn_search');
+        const $btnClose = $('.search-modal__close');
+        const $overlay = $('.search-modal__overlay');
+        const $input = $('#search-modal-input');
+
+        if (!$modal.length || !$btnOpen.length) return;
+
+        const openModal = () => {
+            $modal.addClass('is-active');
+            $('body').addClass('search-modal-open');
+            setTimeout(() => {
+                $input.focus();
+            }, 100);
+        };
+
+        const closeModal = () => {
+            $modal.removeClass('is-active');
+            $('body').removeClass('search-modal-open');
+            $btnOpen.focus();
+        };
+
+        $btnOpen.on('click', function(e) {
+            e.preventDefault();
+            openModal();
+        });
+
+        $btnClose.on('click', function(e) {
+            e.preventDefault();
+            closeModal();
+        });
+
+        $overlay.on('click', function(e) {
+            closeModal();
+        });
+
+        $(document).on('keydown', function(e) {
+            if (e.key === 'Escape' && $modal.hasClass('is-active')) {
+                closeModal();
+            }
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -1411,5 +1455,6 @@ import { CountUp } from 'countup.js';
         vmInitAboutCarGallerySwiper()
         vmInitHotelAreaTabs()
         vmInitAjaxPagination()
+        vmInitSearchModal()
     });
 })(jQuery);

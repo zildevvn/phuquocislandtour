@@ -22,6 +22,7 @@ $bg_banner = get_field('bg_banner', 'option');
 
 	<div class="container">
 		<div class="hero-section-shared__box">
+			<?php vm_breadcrumbs('Search Results'); ?>
 			<?php if (!empty($search_query)): ?>
 				<h1 class="search-title">
 					Search: <span>"<?php echo esc_html($search_query); ?>"</span>
@@ -57,7 +58,7 @@ $bg_banner = get_field('bg_banner', 'option');
 				</form>
 			</div>
 
-			<?php vm_breadcrumbs('Search Results'); ?>
+
 		</div>
 	</div>
 </section>
@@ -93,62 +94,17 @@ $bg_banner = get_field('bg_banner', 'option');
 					<?php while (have_posts()):
 						the_post();
 						$post_type = get_post_type();
-						$post_type_label = get_post_type_object($post_type)->labels->singular_name ?? $post_type;
-						$thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
-						?>
-						<a href="<?php the_permalink(); ?>" class="search-card">
-							<?php if ($thumbnail_url): ?>
-								<div class="search-card__image">
-									<img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
-										loading="lazy">
-									<span class="search-card__badge"><?php echo esc_html($post_type_label); ?></span>
-								</div>
-							<?php else: ?>
-								<div class="search-card__image"
-									style="background: #E5E7EB; display: flex; align-items: center; justify-content: center; position: relative;">
-									<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"
-										stroke-linecap="round" stroke-linejoin="round">
-										<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-										<circle cx="8.5" cy="8.5" r="1.5"></circle>
-										<polyline points="21 15 16 10 5 21"></polyline>
-									</svg>
-									<span class="search-card__badge"><?php echo esc_html($post_type_label); ?></span>
-								</div>
-							<?php endif; ?>
 
-							<div class="search-card__content">
-								<div class="search-card__meta">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-										stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-										<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-										<line x1="16" y1="2" x2="16" y2="6"></line>
-										<line x1="8" y1="2" x2="8" y2="6"></line>
-										<line x1="3" y1="10" x2="21" y2="10"></line>
-									</svg>
-									<?php echo get_the_date(); ?>
-								</div>
-
-								<h3 class="search-card__title">
-									<?php the_title(); ?>
-								</h3>
-
-								<div class="search-card__excerpt">
-									<?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
-								</div>
-
-								<div class="search-card__footer">
-									<span class="read-more">
-										Read More
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-											stroke-linecap="round" stroke-linejoin="round">
-											<line x1="5" y1="12" x2="19" y2="12"></line>
-											<polyline points="12 5 19 12 12 19"></polyline>
-										</svg>
-									</span>
-								</div>
-							</div>
-						</a>
-					<?php endwhile; ?>
+						if ($post_type === 'tours' && function_exists('vm_item_tour')) {
+							vm_item_tour();
+						} elseif ($post_type === 'cars' && function_exists('vm_car_tour_item')) {
+							vm_car_tour_item();
+						} else {
+							if (function_exists('vm_post_item')) {
+								vm_post_item();
+							}
+						}
+					endwhile; ?>
 				</div>
 
 				<?php
@@ -243,8 +199,8 @@ $bg_banner = get_field('bg_banner', 'option');
 							<div class="vm-results-search-section__list">
 								<?php while ($popular_tours->have_posts()):
 									$popular_tours->the_post();
-									if (function_exists('vm_tour_item')) {
-										vm_tour_item();
+									if (function_exists('vm_item_tour')) {
+										vm_item_tour();
 									}
 								endwhile;
 								wp_reset_postdata(); ?>

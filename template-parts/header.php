@@ -62,8 +62,8 @@ $email = get_field('email', 'option');
             </div>
 
             <div class="header-main__actions d-flex align-items-center justify-content-end gap-3">
-                <button class="header-main__search d-flex align-items-center justify-content-center"
-                    aria-label="<?php esc_attr_e('Open search', 'hle'); ?>" type="button">
+                <button id="btn_search" class="header-main__search d-flex align-items-center justify-content-center"
+                    aria-label="<?php esc_attr_e('Open search', 'vm'); ?>" type="button">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M17 17L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
