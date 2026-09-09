@@ -9467,6 +9467,12 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .steps-booking-section__list {
     margin-top: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 413.98px) {
+  .steps-booking-section__list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -9496,12 +9502,25 @@ body.offcanvas-open {
   border: 6px solid #0C2C7A;
   margin-right: -20px;
 }
+@media (max-width: 767.98px) {
+  .steps-booking-section__list .step-item__icon {
+    width: 50px;
+    height: 50px;
+    margin-right: -5px;
+  }
+}
 .steps-booking-section__list .step-item__icon img,
 .steps-booking-section__list .step-item__icon svg {
   width: 100%;
   height: auto;
   max-width: 30px;
   border-radius: 0;
+}
+@media (max-width: 767.98px) {
+  .steps-booking-section__list .step-item__icon img,
+  .steps-booking-section__list .step-item__icon svg {
+    max-width: 24px;
+  }
 }
 .steps-booking-section__list .step-item__number {
   width: 70px;
@@ -9511,6 +9530,14 @@ body.offcanvas-open {
   border-radius: 20px;
   font-weight: 800;
   letter-spacing: -0.048em;
+}
+@media (max-width: 767.98px) {
+  .steps-booking-section__list .step-item__number {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    letter-spacing: 0;
+  }
 }
 .steps-booking-section__list .step-item h3, .steps-booking-section__list .step-item .h3 {
   margin: 12px 0;
@@ -9917,6 +9944,12 @@ body.offcanvas-open {
   max-width: 24px;
 }
 
+@media (max-width: 767.98px) {
+  .tours-carousel {
+    margin-right: -20px !important;
+  }
+}
+
 .page-template-front-page .hero-section {
   background: #fff;
 }
@@ -10260,13 +10293,19 @@ body.offcanvas-open {
   .page-template-front-page .counters-section__list .counter-item-content {
     margin-left: 25%;
     border-width: 3.5px;
-    padding: 24px 10px;
+    padding: 20px 10px;
+    border-radius: 20px;
   }
 }
 .page-template-front-page .counters-section__list .counter-item-content p {
   font-weight: 800;
   margin-top: 12px;
   color: #0C2C7A;
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .counters-section__list .counter-item-content p {
+    margin-top: 10px;
+  }
 }
 @media (max-width: 767.98px) {
   .page-template-front-page .counters-section__list .counter-item-content .h6 {
@@ -10350,9 +10389,20 @@ body.offcanvas-open {
   gap: 24px;
   margin-top: 48px;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 1023.98px) {
   .page-template-front-page .services-section__list {
     margin-top: 32px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .services-section__list {
+    margin-top: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 413.98px) {
+  .page-template-front-page .services-section__list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -10670,6 +10720,8 @@ body.offcanvas-open {
   max-width: 100%;
   vertical-align: middle;
   border-radius: 30px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
 }
 .page-template-front-page .testimonials-section .testimonials-carousel .testimonial-item-content {
   padding-left: 5%;
@@ -10830,6 +10882,11 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .page-template-front-page .car-tour-section__actions {
     margin-top: 28px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .car-tour-section__carousel {
+    margin-right: -20px !important;
   }
 }
 .page-template-front-page .car-tour-section__grid {
@@ -11127,6 +11184,11 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .page-template-front-page .posts-section__cta {
     margin-top: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .page-template-front-page .posts-section__carousel {
+    margin-right: -20px;
   }
 }
 .page-template-front-page .posts-section .post-card {

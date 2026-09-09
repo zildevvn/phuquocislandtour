@@ -150,19 +150,19 @@ import { CountUp } from 'countup.js';
 
             new Swiper(this, {
                 modules: [Navigation, Pagination, Autoplay],
-                slidesPerView: 1,
+                slidesPerView: 1.25,
                 spaceBetween: 16,
                 loop: $slides.length > 3,
                 grabCursor: true,
                 speed: 600,
                 observer: true,
                 observeParents: true,
-                // autoplay: {
-                //     delay: 3000,
-                //     disableOnInteraction: false,
-                //     pauseOnMouseEnter: true,
-                // },
-                autoplay: false,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                // autoplay: false,
                 navigation: {
                     nextEl: $carousel.find('.swiper-button-next')[0],
                     prevEl: $carousel.find('.swiper-button-prev')[0],
@@ -207,7 +207,7 @@ import { CountUp } from 'countup.js';
 
                         swiper = new Swiper(this, {
                             modules: [Navigation, Pagination, Autoplay],
-                            slidesPerView: 1,
+                            slidesPerView: 1.25,
                             spaceBetween: 16,
                             loop: $slides.length > 2,
                             grabCursor: true,
@@ -260,7 +260,7 @@ import { CountUp } from 'countup.js';
 
                         swiper = new Swiper(this, {
                             modules: [Navigation, Pagination, Autoplay],
-                            slidesPerView: 1,
+                            slidesPerView: 1.25,
                             spaceBetween: 16,
                             loop: $slides.length > 2,
                             grabCursor: true,
@@ -1292,9 +1292,9 @@ import { CountUp } from 'countup.js';
             const $this = $(this);
             const $wrapper = $this.closest('[data-ajax="true"]');
             const href = $this.attr('href');
-            
+
             if (!href) return;
-            
+
             // Extract page number
             let page = 1;
             const match = href.match(/paged=(\d+)/) || href.match(/\/page\/(\d+)/);
@@ -1309,7 +1309,7 @@ import { CountUp } from 'countup.js';
             const action = $wrapper.data('action');
             const containerSelector = $wrapper.data('container');
             const nonce = $wrapper.data('nonce');
-            
+
             // Read initial params
             let params = $wrapper.data('params') || {};
             if (typeof params === 'string') {
@@ -1370,7 +1370,7 @@ import { CountUp } from 'countup.js';
                         if (res.data.count !== undefined) {
                             $(document).trigger('vm_pagination_count_updated', [action, res.data.count]);
                         }
-                        
+
                         // Scroll to top of container
                         if ($container.length) {
                             $('html, body').animate({ scrollTop: $container.offset().top - 150 }, 300);
@@ -1411,21 +1411,21 @@ import { CountUp } from 'countup.js';
             $btnOpen.focus();
         };
 
-        $btnOpen.on('click', function(e) {
+        $btnOpen.on('click', function (e) {
             e.preventDefault();
             openModal();
         });
 
-        $btnClose.on('click', function(e) {
+        $btnClose.on('click', function (e) {
             e.preventDefault();
             closeModal();
         });
 
-        $overlay.on('click', function(e) {
+        $overlay.on('click', function (e) {
             closeModal();
         });
 
-        $(document).on('keydown', function(e) {
+        $(document).on('keydown', function (e) {
             if (e.key === 'Escape' && $modal.hasClass('is-active')) {
                 closeModal();
             }
