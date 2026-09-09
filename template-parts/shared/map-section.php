@@ -42,7 +42,10 @@ $terms = get_terms([
                                     <?= $term->name ?>
                                 </h3>
 
-                                <div class="location__desc"> <?= $term->description ?> </div>
+                                <div class="location__desc">
+                                    <?= $term->description ?>
+                                    <span class="btn"> Read More </span>
+                                </div>
                             </div>
                         </a>
                     <?php endforeach; ?>

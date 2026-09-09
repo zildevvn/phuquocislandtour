@@ -286,7 +286,7 @@
             }
 
             @include media-breakpoint-down(md) {
-                gap: 20px;
+                gap: 16px;
             }
 
             @media (max-width: 413.98px) {
@@ -347,13 +347,19 @@
                     @include media-breakpoint-down(md) {
                         margin-left: 25%;
                         border-width: 3.5px;
+                        padding: 24px 10px;
                     }
 
                     p {
                         font-weight: 800;
-                        // font-family: $font-primary;
                         margin-top: 12px;
                         color: $color-primary;
+                    }
+
+                    .h6 {
+                        @include media-breakpoint-down(md) {
+                            font-size: 1.15rem;
+                        }
                     }
                 }
             }

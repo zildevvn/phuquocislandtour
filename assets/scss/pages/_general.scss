@@ -352,11 +352,12 @@
         @include media-breakpoint-down(lg) {
             display: flex;
             flex-direction: column-reverse;
-            gap: 32px;
+            gap: 24px;
         }
 
         @include media-breakpoint-down(md) {
-            margin-top: -210px;
+            margin-top: -240px;
+            gap: 10px;
         }
 
         .map-locations {
@@ -450,6 +451,15 @@
                         margin-top: 10px;
                         font-size: 12px;
                     }
+
+                    span {
+                        width: 100%;
+                        display: inline-block;
+                        margin-top: 4px;
+                        color: $color-primary;
+                        font-weight: 600;
+                        text-decoration: underline;
+                    }
                 }
 
                 &__image {
@@ -461,6 +471,7 @@
 
                     @include media-breakpoint-down(md) {
                         border-radius: 20px 20px 0 0;
+                        aspect-ratio: 4 / 3;
                     }
 
                     img {
@@ -492,7 +503,11 @@
                 margin: 0 auto;
 
                 @include media-breakpoint-down(md) {
-                    max-width: 90%;
+                    max-width: 70%;
+                }
+
+                @include media-breakpoint-down(sm) {
+                    max-width: 66%;
                 }
             }
 
