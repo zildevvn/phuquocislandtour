@@ -15,7 +15,7 @@ $max_pax = isset($paxs_tours['max']) ? $paxs_tours['max'] : '';
 $features = get_field('features_tour');
 
 // Taxonomy for Type/Badge (assume 'tour_category' or similar, we'll use a generic placeholder or try to fetch it if exists)
-$tour_types = get_the_terms(get_the_ID(), 'tour_category');
+$tour_types = get_the_terms(get_the_ID(), 'tour_cats');
 $tour_type_name = ($tour_types && !is_wp_error($tour_types)) ? $tour_types[0]->name : 'Day Trip';
 ?>
 <section class="hero-section" style="background-image: url('<?php echo esc_url($image); ?>');">
