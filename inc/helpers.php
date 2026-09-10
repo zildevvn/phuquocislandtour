@@ -167,60 +167,82 @@ if (!function_exists('vm_extract_gallery_image_data')) {
 }
 
 if (!function_exists('vm_calculate_tour_price')) {
-    /**
-     * Calculate tour price based on option and pax
-     * 
-     * @param array $selected_option
-     * @param int $total_pax
-     * @return array
-     */
-    function vm_calculate_tour_price($selected_option, $total_pax) {
-        if ($total_pax < 1) {
-            $total_pax = 1;
-        }
+	/**
+	 * Calculate tour price based on option and pax
+	 * 
+	 * @param array $selected_option
+	 * @param int $total_pax
+	 * @return array
+	 */
+	function vm_calculate_tour_price($selected_option, $adults, $children = 0)
+	{
+		$adults = intval($adults);
+		$children = intval($children);
+		$total_pax = $adults + $children;
+		if ($total_pax < 1) {
+			$adults = 1;
+			$children = 0;
+			$total_pax = 1;
+		}
 
-        $private_tour = $selected_option['private_tour'] ?? false;
-        $price_group = $selected_option['price_group'] ?? 0;
-        $price_private = $selected_option['price_private'] ?? [];
+		$private_tour = $selected_option['private_tour'] ?? false;
+		$price_group = $selected_option['price_group'] ?? 0;
+		$price_group_child = $selected_option['child_price_group'] ?? null;
+		$price_private = $selected_option['price_private'] ?? [];
 
-        $price_per_person = 0.0;
+		$adult_price = 0.0;
+		$child_price = 0.0;
 
-        if (empty($private_tour)) {
-            $group_price_val = is_array($price_group) && isset($price_group['price']) ? $price_group['price'] : (is_scalar($price_group) ? $price_group : 0);
-            $price_per_person = floatval(str_replace(['₫', '$', ',', ' '], '', $group_price_val));
-        } else {
-            $private_price_val = 0;
-            if (is_array($price_private) && !empty($price_private)) {
-                $available_pax = [];
-                foreach ($price_private as $p_key => $p_val) {
-                    $num = intval($p_key);
-                    if ($num > 0 && $p_val !== '') {
-                        $available_pax[$num] = $p_val;
-                    }
-                }
-                if (!empty($available_pax)) {
-                    ksort($available_pax);
-                    $found_price = null;
-                    $max_pax_price = 0;
-                    foreach ($available_pax as $p_num => $p_val) {
-                        $max_pax_price = $p_val;
-                        if ($p_num >= $total_pax && $found_price === null) {
-                            $found_price = $p_val;
-                        }
-                    }
-                    $private_price_val = $found_price ?? $max_pax_price;
-                }
-            }
-            $price_per_person = floatval(str_replace(['₫', '$', ',', ' '], '', $private_price_val));
-        }
+		if (empty($private_tour)) {
+			$group_price_val = is_array($price_group) && isset($price_group['price']) ? $price_group['price'] : (is_scalar($price_group) ? $price_group : 0);
+			$adult_price = floatval(str_replace(['₫', '$', ',', ' '], '', $group_price_val));
 
-        $is_price_available = ($price_per_person !== 0.0);
-        $total_price = $price_per_person * $total_pax;
+			if (isset($price_group_child) && $price_group_child !== '') {
+				$group_child_price_val = is_array($price_group_child) && isset($price_group_child['price']) ? $price_group_child['price'] : (is_scalar($price_group_child) ? $price_group_child : 0);
+				// Handle if it's an array with an empty price string
+				if (is_array($price_group_child) && isset($price_group_child['price']) && $price_group_child['price'] === '') {
+					$child_price = $adult_price;
+				} else {
+					$child_price = floatval(str_replace(['₫', '$', ',', ' '], '', $group_child_price_val));
+				}
+			} else {
+				$child_price = $adult_price;
+			}
+		} else {
+			$private_price_val = 0;
+			if (is_array($price_private) && !empty($price_private)) {
+				$available_pax = [];
+				foreach ($price_private as $p_key => $p_val) {
+					$num = intval($p_key);
+					if ($num > 0 && $p_val !== '') {
+						$available_pax[$num] = $p_val;
+					}
+				}
+				if (!empty($available_pax)) {
+					ksort($available_pax);
+					$found_price = null;
+					$max_pax_price = 0;
+					foreach ($available_pax as $p_num => $p_val) {
+						$max_pax_price = $p_val;
+						if ($p_num >= $total_pax && $found_price === null) {
+							$found_price = $p_val;
+						}
+					}
+					$private_price_val = $found_price ?? $max_pax_price;
+				}
+			}
+			$adult_price = floatval(str_replace(['₫', '$', ',', ' '], '', $private_price_val));
+			$child_price = $adult_price * 0.75;
+		}
 
-        return [
-            'price_per_person' => $price_per_person,
-            'total_price' => $total_price,
-            'is_price_available' => $is_price_available
-        ];
-    }
+		$is_price_available = ($adult_price !== 0.0);
+		$total_price = ($adult_price * $adults) + ($child_price * $children);
+
+		return [
+			'price_per_person' => $adult_price,
+			'child_price' => $child_price,
+			'total_price' => $total_price,
+			'is_price_available' => $is_price_available
+		];
+	}
 }

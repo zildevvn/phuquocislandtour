@@ -583,7 +583,7 @@
                 },
                 {
                     "key": "field_6a7d7054fe93b",
-                    "label": "Price",
+                    "label": "Adult Price",
                     "name": "price_group",
                     "aria-label": "",
                     "type": "text",
@@ -599,7 +599,37 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "",
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a7d6ef2fe936"
+                },
+                {
+                    "key": "field_6aa23119342d3",
+                    "label": "Child Price",
+                    "name": "child_price_group",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a7d6f8cfe938",
+                                "operator": "!=",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
@@ -914,5 +944,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1788840827
+    "modified": 1789014352
 }

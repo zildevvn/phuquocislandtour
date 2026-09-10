@@ -411,7 +411,7 @@ function vm_ajax_submit_checkout()
     $children = intval($booking_data['children']);
     $total_pax = $adults + $children;
 
-    $pricing = vm_calculate_tour_price($selected_option, $total_pax);
+    $pricing = vm_calculate_tour_price($selected_option, $adults, $children);
     $price_per_person = $pricing['price_per_person'];
     $total_price = $pricing['total_price'];
     $is_price_available = $pricing['is_price_available'];

@@ -5,6 +5,7 @@ $excluded_tour = get_field('excluded_tour');
 $itinerary_tour = get_field('itinerary_tour');
 $highlights = get_field('highlights_tour');
 $price_group = get_field('price_for_group_tour');
+$price_group_child = get_field('child_price_group');
 $price_private = get_field('price_for_private_tour');
 $gallery_tour = get_field('gallery_tour'); // From info-section
 $price_tour = get_field('price_tour'); // For demo sticky

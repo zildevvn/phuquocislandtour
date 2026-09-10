@@ -40,7 +40,7 @@ if (!$booking_data) {
                 $children = intval($booking_data['children']);
                 $total_pax = $adults + $children;
 
-                $pricing = vm_calculate_tour_price($selected_option, $total_pax);
+                $pricing = vm_calculate_tour_price($selected_option, $adults, $children);
                 $price_per_person = $pricing['price_per_person'];
                 $total_price = $pricing['total_price'];
                 $is_price_available = $pricing['is_price_available'];
@@ -249,14 +249,18 @@ if (!$booking_data) {
                                         </div>
                                     <?php else: ?>
                                         <ul class="price-list">
+                                            <?php if ($adults > 0): ?>
                                             <li>
-                                                Price per person
+                                                Adults (× <?= esc_html($adults) ?>)
                                                 <strong><?= number_format($price_per_person, 0, '.', ',') ?> $</strong>
                                             </li>
+                                            <?php endif; ?>
+                                            <?php if ($children > 0): ?>
                                             <li>
-                                                Total Participants
-                                                <strong>× <?= esc_html($total_pax) ?></strong>
+                                                Children (× <?= esc_html($children) ?>)
+                                                <strong><?= number_format($pricing['child_price'], 0, '.', ',') ?> $</strong>
                                             </li>
+                                            <?php endif; ?>
                                         </ul>
                                         <div class="total-price-box">
                                             <span>Total Price</span>
