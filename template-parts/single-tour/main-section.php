@@ -135,54 +135,11 @@ $price_tour = get_field('price_tour'); // For demo sticky
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($itinerary_tour['itinerary_list'])): ?>
-                        <div id="tour-itinerary" class="tour-itinerary">
-                            <h2 class="vm-heading ">Itinerary</h2>
-                            <?php if (!empty($itinerary_tour['itinerary_desc'])): ?>
-                                <div class="tour-itinerary__desc">
-                                    <?= $itinerary_tour['itinerary_desc']; ?>
-                                </div>
-                            <?php endif; ?>
 
-                            <div class="tour-itinerary__list">
-                                <?php foreach ($itinerary_tour['itinerary_list'] as $index => $item): ?>
-                                    <div class="itinerary-item">
-                                        <?php
-                                        $time = $item['time'] ?? '';
-                                        $title = $item['title'] ?? '';
-                                        $description = $item['description'] ?? '';
-                                        ?>
-
-                                        <div class="itinerary-item__time-wrapper">
-                                            <?php if ($time): ?>
-                                                <div class="itinerary-item__time">
-                                                    <?= esc_html($time); ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                        <div class="itinerary-item__divider">
-                                            <div class="itinerary-item__dot"></div>
-                                            <div class="itinerary-item__line"></div>
-                                        </div>
-                                        <div class="itinerary-item__content">
-                                            <h3 class="itinerary-item__title"><?= esc_html($title); ?></h3>
-                                            <?php if ($description): ?>
-                                                <div class="itinerary-item__desc">
-                                                    <?= wp_kses_post($description); ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-
-                            <?php if (!empty($itinerary_tour['img'])): ?>
-                                <img src="<?= $itinerary_tour['img'] ?>" alt="image Itinerary for <?= the_title() ?>" />
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php get_template_part('template-parts/single-tour/review-section'); ?>
+                    <?php
+                    get_template_part('template-parts/single-tour/itinerary-section');
+                    get_template_part('template-parts/single-tour/review-section');
+                    ?>
                 </div>
             </div>
 
