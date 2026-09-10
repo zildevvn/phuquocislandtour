@@ -16,7 +16,7 @@ $tour_options = get_field('tour_options');
                     $starting_time = $option['starting_time'] ?? '';
                     $private_tour = $option['private_tour'] ?? false;
                     $price_group = $option['price_group'] ?? 0;
-                    $price_group_child = $option['child_price_group'] ?? 0;
+                    $price_group_child = $option['child_price_group'] ?? $option['child_price_group'] ?? 0;
                     $price_private = $option['price_private'] ?? [];
                     ?>
                     <?php

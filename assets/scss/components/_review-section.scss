@@ -9,19 +9,8 @@
     }
 
     &__title {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 26px;
-        font-weight: 700;
-        margin-top: 0;
+        margin-top: 16px;
         margin-bottom: 32px;
-        color: $color-text;
-
-        svg {
-            stroke: $color-primary;
-            flex-shrink: 0;
-        }
     }
 
     &__container {
@@ -46,10 +35,9 @@
     // ── Summary Box ─────────────────────────────────────────────
     &__summary {
         background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
         padding: 32px 24px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         position: sticky;
         top: 180px;
 
@@ -124,7 +112,7 @@
 
     &__progress-bar {
         height: 100%;
-        background: linear-gradient(90deg, $color-primary, lighten($color-primary, 20%));
+        background: $color-primary;
         border-radius: 99px;
         transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -152,20 +140,20 @@
 
     &__card {
         background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 16px;
-        padding: 32px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 32px 0;
+        transition: all 0.3s ease;
+
+        &:last-child {
+            border-bottom: none;
+        }
 
         &:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            transform: translateY(-2px);
-            border-color: rgba($color-primary, 0.15);
+            transform: translateX(4px);
         }
 
         @include media-breakpoint-down(sm) {
-            padding: 24px;
+            padding: 24px 0;
         }
     }
 
@@ -178,19 +166,19 @@
     }
 
     &__avatar {
-        width: 48px;
-        height: 48px;
+        width: 56px;
+        height: 56px;
         border-radius: 50%;
-        background: linear-gradient(135deg, $color-primary, lighten($color-primary, 15%));
-        color: #fff;
+        background: #f5f5f5;
+        color: $color-primary;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 700;
         font-family: $font-second;
         flex-shrink: 0;
-        box-shadow: 0 4px 10px rgba($color-primary, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     &__author-meta {
@@ -391,10 +379,9 @@
     // ── Review Form ─────────────────────────────────────────────
     &__form-container {
         background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
         padding: 40px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         margin-top: 48px;
 
         @include media-breakpoint-down(sm) {
@@ -498,16 +485,8 @@
     }
 
     &__submit {
-        svg {
-            max-width: 15px;
-            transform: rotate(0deg);
-        }
-
-        &:hover {
-            svg {
-                transform: rotate(45deg);
-            }
-        }
+        margin-top: 8px;
+        align-self: flex-start;
     }
 }
 

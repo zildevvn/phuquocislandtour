@@ -1431,6 +1431,77 @@ import { CountUp } from 'countup.js';
             }
         });
     };
+    const vmInitStarRating = () => {
+        const $picker = $('#star-picker');
+        if (!$picker.length) return;
+
+        const $labels = $picker.find('.star-picker__label');
+        const $text = $('#star-picker-text');
+        const defaultText = $text.text();
+
+        $labels.on('mouseenter', function() {
+            const index = $(this).index('.star-picker__label');
+            $labels.removeClass('is-hovered');
+            $labels.each(function(i) {
+                if (i <= index) {
+                    $(this).addClass('is-hovered');
+                }
+            });
+            const rating = $(this).find('input').val();
+            $text.text(rating + ' star' + (rating > 1 ? 's' : ''));
+        });
+
+        $picker.on('mouseleave', function() {
+            $labels.removeClass('is-hovered');
+            const $checked = $picker.find('input:checked');
+            if ($checked.length) {
+                const rating = $checked.val();
+                $text.text(rating + ' star' + (rating > 1 ? 's' : ''));
+            } else {
+                $text.text(defaultText);
+            }
+        });
+
+        $labels.on('click', function() {
+            const index = $(this).index('.star-picker__label');
+            $labels.removeClass('is-active');
+            $labels.each(function(i) {
+                if (i <= index) {
+                    $(this).addClass('is-active');
+                }
+            });
+            $picker.removeClass('star-picker--error');
+        });
+
+        // Add focus/keyboard support
+        $picker.find('input').on('focus', function() {
+            $(this).parent().addClass('is-hovered');
+        }).on('blur', function() {
+            $(this).parent().removeClass('is-hovered');
+        }).on('change', function() {
+            const index = $(this).parent().index('.star-picker__label');
+            $labels.removeClass('is-active');
+            $labels.each(function(i) {
+                if (i <= index) {
+                    $(this).addClass('is-active');
+                }
+            });
+            $picker.removeClass('star-picker--error');
+            const rating = $(this).val();
+            $text.text(rating + ' star' + (rating > 1 ? 's' : ''));
+        });
+
+        $('#vm-review-form').on('submit', function(e) {
+            const $checked = $picker.find('input:checked');
+            if (!$checked.length) {
+                e.preventDefault();
+                $picker.addClass('star-picker--error');
+                setTimeout(() => {
+                    $picker.removeClass('star-picker--error');
+                }, 400);
+            }
+        });
+    };
 
     $(document).ready(function () {
         vmHeroSliders()
@@ -1456,5 +1527,6 @@ import { CountUp } from 'countup.js';
         vmInitHotelAreaTabs()
         vmInitAjaxPagination()
         vmInitSearchModal()
+        vmInitStarRating()
     });
 })(jQuery);

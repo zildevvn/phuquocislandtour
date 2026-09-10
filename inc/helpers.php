@@ -187,7 +187,7 @@ if (!function_exists('vm_calculate_tour_price')) {
 
 		$private_tour = $selected_option['private_tour'] ?? false;
 		$price_group = $selected_option['price_group'] ?? 0;
-		$price_group_child = $selected_option['child_price_group'] ?? null;
+		$price_group_child = $selected_option['child_price_group'] ?? $selected_option['child_price_group'] ?? null;
 		$price_private = $selected_option['price_private'] ?? [];
 
 		$adult_price = 0.0;
