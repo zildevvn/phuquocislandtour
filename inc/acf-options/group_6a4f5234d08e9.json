@@ -288,27 +288,6 @@
                     "preview_size": "medium"
                 },
                 {
-                    "key": "field_6aa259f2cd842",
-                    "label": "Enable Itinerary Paragraph",
-                    "name": "enable_itinerary_paragraph",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "ui": 1
-                },
-                {
                     "key": "field_6a84009d3f364",
                     "label": "Itinerary List",
                     "name": "itinerary_list",
@@ -316,17 +295,9 @@
                     "type": "repeater",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6aa259f2cd842",
-                                "operator": "!=",
-                                "value": "1"
-                            }
-                        ]
-                    ],
+                    "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "100",
                         "class": "",
                         "id": ""
                     },
@@ -405,35 +376,6 @@
                             "parent_repeater": "field_6a84009d3f364"
                         }
                     ]
-                },
-                {
-                    "key": "field_6aa259aecd841",
-                    "label": "Itinerary Paragraph",
-                    "name": "itinerary_paragraph",
-                    "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6aa259f2cd842",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "allow_in_bindings": 0,
-                    "tabs": "all",
-                    "toolbar": "basic",
-                    "media_upload": 1,
-                    "delay": 0
                 }
             ]
         },
@@ -1002,5 +944,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1789024970
+    "modified": 1789033512
 }
