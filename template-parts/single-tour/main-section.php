@@ -148,9 +148,16 @@ $price_tour = get_field('price_tour'); // For demo sticky
                     <div class="vm-form-booking__header">
                         <div class="price">
                             <span class="label">FROM</span>
-                            <span
-                                class="value">$<?php echo number_format((float) ($price_tour ? $price_tour : 100)); ?></span>
-                            <span class="unit">/ person</span>
+                            <span class="value">
+                                $<?php echo number_format((float) ($price_tour ? $price_tour : 100)); ?>
+                            </span>
+                            <?php
+                            $is_car_tour = has_term('Car Tours', 'tour_cats', get_the_ID());
+                            $is_private_only = empty($price_group) && !empty($price_private);
+                            if (!$is_private_only && !$is_car_tour):
+                                ?>
+                                <span class="unit">/ person</span>
+                            <?php endif; ?>
                         </div>
                         <div class="rating">
                             <span class="stars">★★★★★</span>

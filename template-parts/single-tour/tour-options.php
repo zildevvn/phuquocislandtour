@@ -28,7 +28,7 @@ $tour_options = get_field('tour_options');
                     $children = isset($_POST['children']) ? intval($_POST['children']) : 0;
                     $total_pax = $adults + $children;
 
-                    $pricing = vm_calculate_tour_price($option, $adults, $children);
+                    $pricing = vm_calculate_tour_price($option, $adults, $children, get_the_ID());
                     $price_per_person = $pricing['price_per_person'];
                     $total_price = $pricing['total_price'];
                     $is_price_available = $pricing['is_price_available'];
@@ -100,17 +100,29 @@ $tour_options = get_field('tour_options');
                                 <h4 class="option-item__price-total h5">
                                     <?= number_format($total_price, 0, '.', ',') ?> $
                                 </h4>
-                                <?php if ($adults > 0): ?>
+                                <?php if (!empty($pricing['is_car_tour'])): ?>
                                     <div class="option-item__price-calc">
-                                        <span>Adults × <?= esc_html($adults) ?></span>
+                                        <span>Vehicle Price</span>
                                         <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
                                     </div>
-                                <?php endif; ?>
-                                <?php if ($children > 0): ?>
+                                <?php elseif (!empty($pricing['is_private_tour'])): ?>
                                     <div class="option-item__price-calc">
-                                        <span>Children × <?= esc_html($children) ?></span>
-                                        <span><?= number_format($pricing['child_price'], 0, '.', ',') ?> $</span>
+                                        <span>Private Tour Package</span>
+                                        <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
                                     </div>
+                                <?php else: ?>
+                                    <?php if ($adults > 0): ?>
+                                        <div class="option-item__price-calc">
+                                            <span>Adults × <?= esc_html($adults) ?></span>
+                                            <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if ($children > 0): ?>
+                                        <div class="option-item__price-calc">
+                                            <span>Children × <?= esc_html($children) ?></span>
+                                            <span><?= number_format($pricing['child_price'], 0, '.', ',') ?> $</span>
+                                        </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                                 <div class="option-item__price-tax">All taxes and fees included</div>
                             <?php endif; ?>

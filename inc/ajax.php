@@ -310,7 +310,7 @@ function vm_ajax_process_booking()
     }
 
     if (strtotime($date) < strtotime(current_time('Y-m-d'))) {
-        wp_send_json_error(['message' => 'Vui lòng chọn ngày hiện tại hoặc tương lai.']);
+        wp_send_json_error(['message' => 'Please select today’s date or a future date.']);
     }
 
     if ($adults < 0 || $children < 0) {
@@ -318,7 +318,7 @@ function vm_ajax_process_booking()
     }
     $total_pax = $adults + $children;
     if ($total_pax < 1 || $total_pax > 50) {
-        wp_send_json_error(['message' => 'Tổng số lượng người phải từ 1 đến 50.']);
+        wp_send_json_error(['message' => 'The total number of guests must be between 1 and 50.']);
     }
 
     $post = get_post($post_id);
@@ -366,8 +366,7 @@ function vm_ajax_submit_checkout()
         wp_send_json_error(['message' => 'Your booking session has expired or is invalid.']);
     }
 
-    // Delete transient immediately to prevent double submission
-    delete_transient('vm_booking_' . $token);
+    // Transient will be deleted only after successful booking persistence
 
     // Extract and sanitize customer info
     $customer_name = isset($_POST['customer_name']) ? sanitize_text_field($_POST['customer_name']) : '';
@@ -411,10 +410,26 @@ function vm_ajax_submit_checkout()
     $children = intval($booking_data['children']);
     $total_pax = $adults + $children;
 
-    $pricing = vm_calculate_tour_price($selected_option, $adults, $children);
+    $pricing = vm_calculate_tour_price($selected_option, $adults, $children, $tour_id);
     $price_per_person = $pricing['price_per_person'];
     $total_price = $pricing['total_price'];
     $is_price_available = $pricing['is_price_available'];
+
+    // Prevent duplicate booking submission server-side
+    $existing_booking = get_posts([
+        'post_type' => 'tour_booking',
+        'meta_key' => 'booking_token',
+        'meta_value' => $token,
+        'post_status' => 'any',
+        'fields' => 'ids',
+        'posts_per_page' => 1
+    ]);
+
+    if (!empty($existing_booking)) {
+        // Delete transient since it's already processed
+        delete_transient('vm_booking_' . $token);
+        wp_send_json_error(['message' => 'This booking has already been processed successfully.']);
+    }
 
     // Generate Booking Reference
     $booking_ref = 'VM-' . strtoupper(substr(uniqid(), -6));
@@ -424,32 +439,38 @@ function vm_ajax_submit_checkout()
         'post_title' => $booking_ref,
         'post_status' => 'publish',
         'post_type' => 'tour_booking',
-    ]);
+    ], true); // true parameter to return WP_Error on failure
 
-    if ($booking_post_id && !is_wp_error($booking_post_id)) {
-        // Customer Info
-        update_post_meta($booking_post_id, 'customer_name', $customer_name);
-        update_post_meta($booking_post_id, 'customer_email', $customer_email);
-        update_post_meta($booking_post_id, 'customer_phone', $customer_phone);
-        update_post_meta($booking_post_id, 'customer_pickup', $customer_pickup);
-        update_post_meta($booking_post_id, 'customer_dropoff', $customer_dropoff);
-        update_post_meta($booking_post_id, 'customer_country', $customer_country);
-        update_post_meta($booking_post_id, 'customer_messages', $customer_messages);
-        update_post_meta($booking_post_id, 'payment_method', $payment_method);
-
-        // Tour/Car Info
-        $booking_type = get_post_type($tour_id); // 'tours' or 'cars'
-        update_post_meta($booking_post_id, 'booking_type', $booking_type);
-        update_post_meta($booking_post_id, 'tour_id', $tour_id);
-        update_post_meta($booking_post_id, 'option_name', $selected_option['name'] ?? '');
-        update_post_meta($booking_post_id, 'date', $booking_data['date']);
-        update_post_meta($booking_post_id, 'starting_time', $selected_option['starting_time'] ?? '');
-        update_post_meta($booking_post_id, 'adults', $adults);
-        update_post_meta($booking_post_id, 'children', $children);
-        update_post_meta($booking_post_id, 'total_pax', $total_pax);
-        update_post_meta($booking_post_id, 'price_per_person', $price_per_person);
-        update_post_meta($booking_post_id, 'total_price', $total_price);
+    if (is_wp_error($booking_post_id) || empty($booking_post_id)) {
+        if (is_wp_error($booking_post_id)) {
+            error_log('Booking Insert Error: ' . $booking_post_id->get_error_message());
+        }
+        wp_send_json_error(['message' => 'Failed to save booking. Please try again or contact support.']);
     }
+
+    // Customer Info
+    update_post_meta($booking_post_id, 'customer_name', $customer_name);
+    update_post_meta($booking_post_id, 'customer_email', $customer_email);
+    update_post_meta($booking_post_id, 'customer_phone', $customer_phone);
+    update_post_meta($booking_post_id, 'customer_pickup', $customer_pickup);
+    update_post_meta($booking_post_id, 'customer_dropoff', $customer_dropoff);
+    update_post_meta($booking_post_id, 'customer_country', $customer_country);
+    update_post_meta($booking_post_id, 'customer_messages', $customer_messages);
+    update_post_meta($booking_post_id, 'payment_method', $payment_method);
+
+    // Tour/Car Info
+    $booking_type = get_post_type($tour_id); // 'tours' or 'cars'
+    update_post_meta($booking_post_id, 'booking_type', $booking_type);
+    update_post_meta($booking_post_id, 'tour_id', $tour_id);
+    update_post_meta($booking_post_id, 'booking_token', $token);
+    update_post_meta($booking_post_id, 'option_name', $selected_option['name'] ?? '');
+    update_post_meta($booking_post_id, 'date', $booking_data['date']);
+    update_post_meta($booking_post_id, 'starting_time', $selected_option['starting_time'] ?? '');
+    update_post_meta($booking_post_id, 'adults', $adults);
+    update_post_meta($booking_post_id, 'children', $children);
+    update_post_meta($booking_post_id, 'total_pax', $total_pax);
+    update_post_meta($booking_post_id, 'price_per_person', $price_per_person);
+    update_post_meta($booking_post_id, 'total_price', $total_price);
 
     // Common Styles for Email
     $table_style = 'width: 100%; max-width: 600px; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 14px;';
@@ -529,6 +550,9 @@ function vm_ajax_submit_checkout()
 
     $formatted_date = date('F j, Y', strtotime($booking_data['date']));
     $payment_method_label = $payment_method === 'bank_transfer' ? 'Bank Transfer' : 'Pay on Arrival';
+
+    // Delete transient after successful save and email processing
+    delete_transient('vm_booking_' . $token);
 
     wp_send_json_success([
         'message' => 'Booking successful.',

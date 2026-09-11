@@ -174,7 +174,7 @@ if (!function_exists('vm_calculate_tour_price')) {
 	 * @param int $total_pax
 	 * @return array
 	 */
-	function vm_calculate_tour_price($selected_option, $adults, $children = 0)
+	function vm_calculate_tour_price($selected_option, $adults, $children = 0, $post_id = 0)
 	{
 		$adults = intval($adults);
 		$children = intval($children);
@@ -232,17 +232,30 @@ if (!function_exists('vm_calculate_tour_price')) {
 				}
 			}
 			$adult_price = floatval(str_replace(['₫', '$', ',', ' '], '', $private_price_val));
-			$child_price = $adult_price * 0.75;
+			$child_price = 0; // Private tours do not calculate a separate child price
 		}
 
 		$is_price_available = ($adult_price !== 0.0);
-		$total_price = ($adult_price * $adults) + ($child_price * $children);
+		
+		$is_car_tour = false;
+		if ($post_id > 0 && has_term('Car Tours', 'tour_cats', $post_id)) {
+			$is_car_tour = true;
+		}
+
+		if ($is_car_tour || $private_tour) {
+			$total_price = $adult_price;
+			$child_price = 0;
+		} else {
+			$total_price = ($adult_price * $adults) + ($child_price * $children);
+		}
 
 		return [
 			'price_per_person' => $adult_price,
 			'child_price' => $child_price,
 			'total_price' => $total_price,
-			'is_price_available' => $is_price_available
+			'is_price_available' => $is_price_available,
+			'is_car_tour' => $is_car_tour,
+			'is_private_tour' => $private_tour
 		];
 	}
 }

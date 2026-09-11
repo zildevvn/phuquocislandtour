@@ -40,7 +40,7 @@ if (!$booking_data) {
                 $children = intval($booking_data['children']);
                 $total_pax = $adults + $children;
 
-                $pricing = vm_calculate_tour_price($selected_option, $adults, $children);
+                $pricing = vm_calculate_tour_price($selected_option, $adults, $children, $tour_id);
                 $price_per_person = $pricing['price_per_person'];
                 $total_price = $pricing['total_price'];
                 $is_price_available = $pricing['is_price_available'];
@@ -249,17 +249,29 @@ if (!$booking_data) {
                                         </div>
                                     <?php else: ?>
                                         <ul class="price-list">
-                                            <?php if ($adults > 0): ?>
+                                            <?php if (!empty($pricing['is_car_tour'])): ?>
                                             <li>
-                                                Adults (× <?= esc_html($adults) ?>)
+                                                Vehicle Price
                                                 <strong><?= number_format($price_per_person, 0, '.', ',') ?> $</strong>
                                             </li>
-                                            <?php endif; ?>
-                                            <?php if ($children > 0): ?>
+                                            <?php elseif (!empty($pricing['is_private_tour'])): ?>
                                             <li>
-                                                Children (× <?= esc_html($children) ?>)
-                                                <strong><?= number_format($pricing['child_price'], 0, '.', ',') ?> $</strong>
+                                                Private Tour Package
+                                                <strong><?= number_format($price_per_person, 0, '.', ',') ?> $</strong>
                                             </li>
+                                            <?php else: ?>
+                                                <?php if ($adults > 0): ?>
+                                                <li>
+                                                    Adults (× <?= esc_html($adults) ?>)
+                                                    <strong><?= number_format($price_per_person, 0, '.', ',') ?> $</strong>
+                                                </li>
+                                                <?php endif; ?>
+                                                <?php if ($children > 0): ?>
+                                                <li>
+                                                    Children (× <?= esc_html($children) ?>)
+                                                    <strong><?= number_format($pricing['child_price'], 0, '.', ',') ?> $</strong>
+                                                </li>
+                                                <?php endif; ?>
                                             <?php endif; ?>
                                         </ul>
                                         <div class="total-price-box">
