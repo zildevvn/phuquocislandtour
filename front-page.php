@@ -15,7 +15,7 @@ get_header();
     <?php get_template_part('template-parts/home/package-tours-section'); ?>
     <?php get_template_part('template-parts/home/car-tours-section'); ?>
     <?php get_template_part('template-parts/home/services-section'); ?>
-    <?php get_template_part('template-parts/home/steps-booking-section'); ?>
+    <?php get_template_part('template-parts/shared/steps-booking-section'); ?>
     <?php get_template_part('template-parts/home/testimonials-section'); ?>
     <?php get_template_part('template-parts/home/faqs-section'); ?>
     <?php get_template_part('template-parts/home/posts-section'); ?>

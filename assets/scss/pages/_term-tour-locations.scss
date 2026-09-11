@@ -1,4 +1,8 @@
-body.page-template-category-tours-template {
+body.tax-tour_locations {
+    .site-main {
+        width: 100%;
+        overflow: hidden;
+    }
 
     .about-section {
         padding: 90px 0;
@@ -10,10 +14,6 @@ body.page-template-category-tours-template {
         @include media-breakpoint-down(md) {
             padding: 40px 0;
         }
-
-        // .vm-heading {
-        //     max-width: 850px;
-        // }
 
 
         >.container {

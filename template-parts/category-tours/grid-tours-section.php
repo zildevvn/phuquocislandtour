@@ -36,7 +36,7 @@ $query = new WP_Query($args);
 
 ?>
 <?php if (!empty($category) && $query->have_posts()): ?>
-    <section class="vm-section day-trip-section">
+    <section class="vm-section grid-tour-section">
         <div class="container">
             <?php vm_icon_heading() ?>
             <?php if (!empty($heading)): ?>
@@ -50,7 +50,7 @@ $query = new WP_Query($args);
                 </p>
             <?php endif; ?>
 
-            <div class="day-trip-section__grid" id="vm-grid-tours-results">
+            <div class="grid-tour-section__grid" id="vm-grid-tours-results">
                 <?php while ($query->have_posts()):
                     $query->the_post();
                     vm_item_tour();

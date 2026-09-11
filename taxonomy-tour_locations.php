@@ -12,14 +12,12 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main container">
-    <?php
-    if (have_posts()):
-        get_template_part('template-parts/content-loop', get_post_type());
-    else:
-        get_template_part('template-parts/content', 'none');
-    endif;
-    ?>
+<main id="primary" class="site-main">
+    <?php get_template_part('template-parts/tour-locations/hero-section'); ?>
+    <?php get_template_part('template-parts/tour-locations/about-section'); ?>
+    <?php get_template_part('template-parts/tour-locations/grid-tour-section'); ?>
+    <?php get_template_part('template-parts/shared/steps-booking-section'); ?>
+    <?php get_template_part('template-parts/tour-locations/best-time-section'); ?>
 </main><!-- #main -->
 <?php
 get_footer();
