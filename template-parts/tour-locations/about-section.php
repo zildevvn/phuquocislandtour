@@ -1,15 +1,15 @@
 <?php
 $term = get_queried_object();
 $about_ss = get_field('about_section', $term);
-$heading = $about_ss['heading'];
-$sub_hd = $about_ss['sub_heading'];
-$desc = $about_ss['description'];
-$gallerys = $about_ss['gallerys'];
+$heading = $about_ss['heading'] ?? '';
+$sub_hd = $about_ss['sub_heading'] ?? '';
+$desc = $about_ss['description'] ?? '';
+$gallerys = $about_ss['gallerys'] ?? [];
 ?>
 <section class="vm-section about-section">
     <div class="container">
-        <?php vm_icon_heading() ?>
         <?php if (!empty($heading)): ?>
+            <?php vm_icon_heading() ?>
             <h2 class="vm-heading">
                 <?= $heading ?>
             </h2>
@@ -24,9 +24,7 @@ $gallerys = $about_ss['gallerys'];
         <div class="about-section-media">
             <div class="about-section-media__content">
                 <?php if (!empty($desc)): ?>
-
                     <?= $desc ?>
-
                 <?php endif; ?>
             </div>
 
@@ -35,7 +33,8 @@ $gallerys = $about_ss['gallerys'];
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">
-                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for Car Rental in Phu Quoc" />
+                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for <?= $term->name ?> in Phu Quoc Island"
+                                    loading="lazy" />
                             </div>
                         <?php endforeach; ?>
                     </div>

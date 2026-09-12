@@ -1,14 +1,15 @@
 <?php
 $term = get_queried_object();
 $grid_tour = get_field('grid_tour_section', $term);
-$heading = $grid_tour['heading'];
-$sub_heading = $grid_tour['sub_heading'];
+$heading = $grid_tour['heading'] ?? '';
+$sub_heading = $grid_tour['sub_heading'] ?? '';
 ?>
 <?php if (have_posts()): ?>
     <section class="vm-section grid-tour-section">
         <div class="container">
-            <?php vm_icon_heading() ?>
+
             <?php if (!empty($heading)): ?>
+                <?php vm_icon_heading() ?>
                 <h2 class="vm-heading">
                     <?= $heading ?>
                 </h2>
