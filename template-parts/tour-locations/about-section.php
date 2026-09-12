@@ -33,7 +33,7 @@ $gallerys = $about_ss['gallerys'] ?? [];
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">
-                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for <?= $term->name ?> in Phu Quoc Island"
+                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for <?= $term->name ?> in Phu Quoc"
                                     loading="lazy" />
                             </div>
                         <?php endforeach; ?>
