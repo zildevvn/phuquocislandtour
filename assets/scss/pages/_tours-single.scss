@@ -832,7 +832,7 @@ body.single-tours {
 
         .h5 {
             margin-bottom: 24px;
-            color: #0C2C7A;
+            color: $color-primary;
             font-weight: 700;
         }
 
@@ -859,8 +859,7 @@ body.single-tours {
             padding: 24px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             border: 2px solid #eaeaea;
-            /* Base border */
-            transition: all 0.3s ease;
+            transition: $transition-base;
             cursor: pointer;
             height: 100%;
 
@@ -870,12 +869,12 @@ body.single-tours {
             }
 
             &.is-selected {
-                border-color: #0C2C7A;
+                border-color: $color-primary;
                 /* Theme primary blue */
                 background-color: #f8faff;
 
                 .option-item__radio-inner {
-                    background-color: #0C2C7A;
+                    background-color: $color-primary;
                     transform: scale(1);
                 }
             }
@@ -934,7 +933,7 @@ body.single-tours {
                 }
 
                 .option-item__read-more {
-                    color: #00656D;
+                    color: $color-secondary;
                     text-decoration: underline;
                     font-weight: 500;
                     font-size: 13px;
@@ -985,7 +984,7 @@ body.single-tours {
                     display: inline-block;
                     padding: 6px 12px;
                     background: #eef2ff;
-                    color: #0C2C7A;
+                    color: $color-primary;
                     border-radius: 6px;
                     font-size: 14px;
                     font-weight: 600;
@@ -1031,19 +1030,19 @@ body.single-tours {
                     font-size: 16px;
                     transition: all 0.3s ease;
                     background: transparent;
-                    color: #0C2C7A;
-                    border: 2px solid #0C2C7A;
+                    color: $color-primary;
+                    border: 2px solid $color-primary;
 
                     &:hover {
                         background: rgba(12, 44, 122, 0.05);
                     }
 
                     &.btn-select--active {
-                        background: #0C2C7A;
+                        background: $color-primary;
                         color: #fff;
 
                         &:hover {
-                            background: darken(#0C2C7A, 5%);
+                            background: darken($color-primary, 5%);
                         }
                     }
                 }
@@ -1166,6 +1165,10 @@ body.single-tours {
         padding: 60px 0;
         background-color: #fcfcfc;
 
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
         &-wrap {
             display: flex;
             gap: 40px;
@@ -1255,6 +1258,10 @@ body.single-tours {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 24px;
 
+                @include media-breakpoint-down(md) {
+                    gap: 10px;
+                }
+
                 .inclusion-card {
                     svg {
                         width: 100%;
@@ -1280,6 +1287,11 @@ body.single-tours {
                         display: flex;
                         align-items: center;
                         gap: 8px;
+
+                        @include media-breakpoint-down(md) {
+                            gap: 4px;
+                            font-size: calc(1.175rem + 0.3vw);
+                        }
 
                         svg {
                             max-width: 20px;
@@ -1316,8 +1328,12 @@ body.single-tours {
                 position: relative;
                 gap: 20px;
 
-                @include media-breakpoint-down(md) {
+                @include media-breakpoint-down(lg) {
                     gap: 16px;
+                }
+
+                @include media-breakpoint-down(md) {
+                    gap: 10px;
                 }
 
                 &:last-child {
@@ -1334,10 +1350,14 @@ body.single-tours {
                     flex: 0 0 100px;
                     display: flex;
                     justify-content: flex-end;
-                    padding-top: 1px; // Align slightly down with title
+                    padding-top: 1px;
+
+                    @include media-breakpoint-down(lg) {
+                        flex: 0 0 80px;
+                    }
 
                     @include media-breakpoint-down(md) {
-                        flex: 0 0 80px;
+                        flex: 0 0 66px;
                         justify-content: flex-start;
                     }
                 }
@@ -1353,9 +1373,14 @@ body.single-tours {
                     text-align: center;
                     height: max-content;
 
-                    @include media-breakpoint-down(md) {
+                    @include media-breakpoint-down(lg) {
                         font-size: 13px;
                         padding: 4px 12px;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 12px;
+                        padding: 4px 9px;
                     }
                 }
 
@@ -1480,7 +1505,7 @@ body.single-tours {
             .value {
                 font-size: 28px;
                 font-weight: 700;
-                color: #0C2C7A;
+                color: $color-primary;
             }
 
             .unit {
@@ -1535,7 +1560,7 @@ body.single-tours {
                 outline: none;
 
                 &:focus {
-                    border-color: #0C2C7A;
+                    border-color: $color-primary;
                 }
             }
         }
@@ -1593,7 +1618,7 @@ body.single-tours {
 
         .btn-book-demo {
             width: 100%;
-            background: #0C2C7A;
+            background: $color-primary;
             color: #fff;
             border: none;
             padding: 16px;
@@ -1605,7 +1630,7 @@ body.single-tours {
             margin-top: 12px;
 
             &:hover {
-                background: darken(#0C2C7A, 5%);
+                background: darken($color-primary, 5%);
                 transform: translateY(-2px);
                 box-shadow: 0 8px 20px rgba(12, 44, 122, 0.2);
             }
@@ -1644,13 +1669,13 @@ body.single-tours {
             display: flex;
             align-items: center;
             gap: 12px;
-            color: #0C2C7A;
+            color: $color-primary;
             font-size: 28px;
             font-weight: 700;
             margin: 0 0 8px 0;
 
             svg {
-                color: #00656D;
+                color: $color-secondary;
             }
         }
 
@@ -1704,7 +1729,6 @@ body.single-tours {
 
         &.swiper-slide-thumb-active {
             opacity: 1;
-            border: 2px solid #00656D;
         }
     }
 
@@ -1795,7 +1819,7 @@ body.single-tours {
             align-items: center;
             gap: 8px;
             background: rgba(255, 255, 255, 0.95);
-            color: #0C2C7A;
+            color: $color-primary;
             padding: 10px 20px;
             border-radius: 30px;
             font-weight: 600;

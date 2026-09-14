@@ -7290,8 +7290,14 @@ body.logged-in .anchor-nav {
 }
 @media (max-width: 767.98px) {
   .anchor-nav__link {
-    padding: 8px 6px;
-    font-size: 10px;
+    padding: 8px 4px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 389.98px) {
+  .anchor-nav__link {
+    font-size: 12px;
+    padding: 8px 2px;
   }
 }
 .anchor-nav__link:hover {
@@ -8825,6 +8831,11 @@ body.offcanvas-open {
   min-height: 80vh;
   display: flex;
   align-items: center;
+}
+@media (max-width: 767.98px) {
+  .hero-section-shared {
+    min-height: 60vh;
+  }
 }
 .hero-section-shared__desc {
   color: #fff;
@@ -12497,12 +12508,12 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
 }
 @media (max-width: 1023.98px) {
   .tours-list-section {
-    padding-bottom: 60px;
+    padding: 60px 0;
   }
 }
 @media (max-width: 767.98px) {
   .tours-list-section {
-    padding-bottom: 40px;
+    padding: 40px 0;
   }
 }
 .tours-list-section .tours-list-wrapper {
@@ -14702,7 +14713,6 @@ body.single-tours .vm-tour-options .option-item {
   padding: 24px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border: 2px solid #eaeaea;
-  /* Base border */
   transition: all 0.3s ease;
   cursor: pointer;
   height: 100%;
@@ -14977,6 +14987,11 @@ body.single-tours .main-section {
   padding: 60px 0;
   background-color: #fcfcfc;
 }
+@media (max-width: 767.98px) {
+  body.single-tours .main-section {
+    padding: 40px 0;
+  }
+}
 body.single-tours .main-section-wrap {
   display: flex;
   gap: 40px;
@@ -15082,6 +15097,11 @@ body.single-tours .main-section .tour-inclusions__wrapper {
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
+@media (max-width: 767.98px) {
+  body.single-tours .main-section .tour-inclusions__wrapper {
+    gap: 10px;
+  }
+}
 body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card svg {
   width: 100%;
   height: auto;
@@ -15100,6 +15120,12 @@ body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card h3, bo
   display: flex;
   align-items: center;
   gap: 8px;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card h3, body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card .h3 {
+    gap: 4px;
+    font-size: calc(1.175rem + 0.3vw);
+  }
 }
 body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card h3 svg, body.single-tours .main-section .tour-inclusions__wrapper .inclusion-card .h3 svg {
   max-width: 20px;
@@ -15124,9 +15150,14 @@ body.single-tours .main-section .tour-itinerary .itinerary-item {
   position: relative;
   gap: 20px;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 1023.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item {
     gap: 16px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item {
+    gap: 10px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item:last-child .itinerary-item__line {
@@ -15141,9 +15172,14 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
   justify-content: flex-end;
   padding-top: 1px;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 1023.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
     flex: 0 0 80px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
+    flex: 0 0 66px;
     justify-content: flex-start;
   }
 }
@@ -15158,10 +15194,16 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time {
   text-align: center;
   height: max-content;
 }
-@media (max-width: 767.98px) {
+@media (max-width: 1023.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time {
     font-size: 13px;
     padding: 4px 12px;
+  }
+}
+@media (max-width: 767.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__time {
+    font-size: 12px;
+    padding: 4px 9px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__divider {
@@ -15463,7 +15505,6 @@ body.logged-in .vm-form-booking {
 }
 .tour-gallery .tour-gallery__thumb-item.swiper-slide-thumb-active {
   opacity: 1;
-  border: 2px solid #00656D;
 }
 .tour-gallery .tour-gallery__grid {
   display: grid;
