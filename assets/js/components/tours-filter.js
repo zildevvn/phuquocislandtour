@@ -12,6 +12,10 @@
         const $loadingContainer = $('.tours-content');
 
         const $searchInput = $('#vm-tours-search-input');
+        const $mobileFilterBtn = $('#vm-mobile-filter-btn');
+        const $closeFilterBtn = $('#vm-close-filter-btn');
+        const $sidebarBackdrop = $('#vm-tours-sidebar-backdrop');
+        const $body = $('body');
         const $sortSelect = $('#vm-tours-sort');
         const $clearBtn = $('#vm-clear-filters');
         let currentPage = 1;
@@ -80,6 +84,29 @@
             });
         }
 
+        // Mobile Filter Toggle
+        const openMobileFilter = () => {
+            $tours.addClass('is-open');
+            $sidebarBackdrop.addClass('is-visible');
+            $body.css('overflow', 'hidden');
+        };
+
+        const closeMobileFilter = () => {
+            $tours.removeClass('is-open');
+            $sidebarBackdrop.removeClass('is-visible');
+            $body.css('overflow', '');
+        };
+
+        $mobileFilterBtn.on('click', openMobileFilter);
+        $closeFilterBtn.on('click', closeMobileFilter);
+        $sidebarBackdrop.on('click', closeMobileFilter);
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && $tours.hasClass('is-open')) {
+                closeMobileFilter();
+            }
+        });
+
         // Event Listeners
         $searchInput.on('input', function () {
             clearTimeout(searchTimeout);
@@ -100,11 +127,11 @@
         });
 
         // Integration with central AJAX pagination
-        $(document).on('vm_pagination_before_ajax', function(e, data) {
+        $(document).on('vm_pagination_before_ajax', function (e, data) {
             if (data.action === 'vm_ajax_filter_tours') {
                 const state = getFilterState();
                 Object.assign(data.params, state);
-                data.params.page = data.page; 
+                data.params.page = data.page;
             }
         });
 
@@ -180,6 +207,10 @@
                         }
 
                         $count.text(payload.count);
+
+                        if ($tours.hasClass('is-open')) {
+                            closeMobileFilter();
+                        }
                     } else {
                         console.error('Filter Error:', res.data.message);
                     }

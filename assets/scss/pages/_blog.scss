@@ -16,12 +16,40 @@ body.page-template-blog-template {
             align-items: center;
             gap: 48px;
 
+            @include media-breakpoint-down(lg) {
+                gap: 32px;
+            }
+
+            @include media-breakpoint-down(md) {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
             h2 {
                 margin-bottom: 20px;
             }
 
             >div {
                 width: 50%;
+
+                @include media-breakpoint-down(md) {
+                    width: 100%;
+                }
+            }
+
+            &__content {
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p {
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
     }

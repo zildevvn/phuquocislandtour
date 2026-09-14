@@ -32,9 +32,15 @@ $query = new WP_Query($args);
                 </p>
             <?php endif; ?>
 
-
             <div class="tours-list-wrapper">
+                <div class="tours-sidebar-backdrop" id="vm-tours-sidebar-backdrop"></div>
                 <div class="tours-sidebar">
+                    <div class="tours-sidebar__header mobile-only">
+                        <h3 class="tours-sidebar__title">Filters</h3>
+                        <button type="button" class="btn-close-filter" id="vm-close-filter-btn" aria-label="Close filters">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
                     <div class="tours-sidebar__widget tours-sidebar__search">
                         <div class="search-input-wrapper">
                             <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -114,6 +120,10 @@ $query = new WP_Query($args);
                                 <span id="vm-tours-count"><?= $query->found_posts ?></span> tours found
                             </div>
                             <div class="tours-header-controls">
+                                <button type="button" class="btn-mobile-filter" id="vm-mobile-filter-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                                    Filters
+                                </button>
                                 <button type="button" id="vm-clear-filters" class="btn-clear-filters"
                                     style="display: none;">
                                     Clear Filters
@@ -140,11 +150,8 @@ $query = new WP_Query($args);
                         </div>
                     </div>
 
-                    <div id="vm-tours-pagination"
-                        data-ajax="true"
-                        data-action="vm_ajax_filter_tours"
-                        data-container="#vm-tours-results"
-                        data-nonce="<?= esc_attr(wp_create_nonce('vm_filter_tours')) ?>"
+                    <div id="vm-tours-pagination" data-ajax="true" data-action="vm_ajax_filter_tours"
+                        data-container="#vm-tours-results" data-nonce="<?= esc_attr(wp_create_nonce('vm_filter_tours')) ?>"
                         data-params="<?= esc_attr(wp_json_encode([])) ?>">
                         <?php vm_pagination($paged, $query->max_num_pages); ?>
                     </div>
