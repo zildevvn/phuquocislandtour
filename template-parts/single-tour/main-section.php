@@ -161,7 +161,12 @@ $price_tour = get_field('price_tour'); // For demo sticky
                         </div>
                         <div class="rating">
                             <span class="stars">★★★★★</span>
-                            <span class="text">4.9 (128 reviews)</span>
+                            <?php 
+                            $post_id = get_the_ID();
+                            $views = function_exists('vm_get_post_views') ? vm_get_post_views($post_id) : 0;
+                            $display_views = $views > 0 ? number_format($views) : 128;
+                            ?>
+                            <span class="text">4.9 (<?php echo esc_html($display_views); ?> reviews)</span>
                         </div>
                     </div>
 

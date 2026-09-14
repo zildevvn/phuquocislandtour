@@ -236,7 +236,7 @@ if (!function_exists('vm_calculate_tour_price')) {
 		}
 
 		$is_price_available = ($adult_price !== 0.0);
-		
+
 		$is_car_tour = false;
 		if ($post_id > 0 && has_term('Car Tours', 'tour_cats', $post_id)) {
 			$is_car_tour = true;
@@ -257,5 +257,43 @@ if (!function_exists('vm_calculate_tour_price')) {
 			'is_car_tour' => $is_car_tour,
 			'is_private_tour' => $private_tour
 		];
+	}
+}
+
+if (!function_exists('vm_track_post_views')) {
+	function vm_track_post_views()
+	{
+		if (!is_singular()) {
+			return;
+		}
+
+		$post_id = get_queried_object_id();
+
+		if (!$post_id) {
+			return;
+		}
+
+		$count_key = 'vm_post_views_count';
+		$count = (int) get_post_meta($post_id, $count_key, true);
+
+		$count++;
+
+		update_post_meta($post_id, $count_key, $count);
+	}
+
+	add_action('wp', 'vm_track_post_views');
+}
+
+if (!function_exists('vm_get_post_views')) {
+	function vm_get_post_views($post_id)
+	{
+		$count_key = 'vm_post_views_count';
+		$count = get_post_meta($post_id, $count_key, true);
+
+		if ($count === '') {
+			return 0;
+		}
+
+		return (int) $count;
 	}
 }
