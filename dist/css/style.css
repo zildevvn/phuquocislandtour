@@ -12505,6 +12505,7 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
 
 .tours-list-section {
   padding: 90px 0;
+  overflow: hidden;
 }
 @media (max-width: 1023.98px) {
   .tours-list-section {
@@ -12533,6 +12534,9 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
   .tours-list-section .tours-list-wrapper {
     margin-top: 28px;
     gap: 24px;
+    width: 100%;
+    overflow: hidden;
+    max-width: 100%;
   }
 }
 .tours-list-section .tours-sidebar-backdrop {
@@ -14855,20 +14859,51 @@ body.single-tours .vm-tour-options .option-item.is-selected .option-item__radio-
   transform: scale(1);
 }
 body.single-tours .vm-tour-options .option-item {
+  /* Benefits Section */
+}
+body.single-tours .vm-tour-options .option-item__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body.single-tours .vm-tour-options .option-item__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+body.single-tours .vm-tour-options .option-item__benefits li::before {
+  content: none;
+}
+body.single-tours .vm-tour-options .option-item__benefits li.maximum svg {
+  width: 100%;
+  height: auto;
+  max-width: 16px;
+}
+body.single-tours .vm-tour-options .option-item__benefits li svg {
+  stroke: #0C2C7A;
+  margin-top: 2px;
+}
+body.single-tours .vm-tour-options .option-item {
   /* Header & Radio */
 }
-body.single-tours .vm-tour-options .option-item .option-item__header {
+body.single-tours .vm-tour-options .option-item__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
 }
-body.single-tours .vm-tour-options .option-item .option-item__header h3, body.single-tours .vm-tour-options .option-item .option-item__header .h3 {
+body.single-tours .vm-tour-options .option-item__header h3, body.single-tours .vm-tour-options .option-item__header .h3 {
   margin: 0;
   color: #19232B;
   padding-right: 12px;
 }
-body.single-tours .vm-tour-options .option-item .option-item__header .option-item__radio {
+body.single-tours .vm-tour-options .option-item__header .option-item__radio {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
@@ -14881,7 +14916,7 @@ body.single-tours .vm-tour-options .option-item .option-item__header .option-ite
   transition: all 0.2s ease;
   opacity: 0 !important;
 }
-body.single-tours .vm-tour-options .option-item .option-item__header .option-item__radio .option-item__radio-inner {
+body.single-tours .vm-tour-options .option-item__header .option-item__radio .option-item__radio-inner {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -14892,13 +14927,13 @@ body.single-tours .vm-tour-options .option-item .option-item__header .option-ite
 body.single-tours .vm-tour-options .option-item {
   /* Description */
 }
-body.single-tours .vm-tour-options .option-item .option-item__desc {
+body.single-tours .vm-tour-options .option-item__desc {
   margin-bottom: 20px;
   font-size: 14px;
   color: #555;
   line-height: 1.5;
 }
-body.single-tours .vm-tour-options .option-item .option-item__desc p {
+body.single-tours .vm-tour-options .option-item__desc p {
   margin: 0 0 4px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -14906,52 +14941,26 @@ body.single-tours .vm-tour-options .option-item .option-item__desc p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-body.single-tours .vm-tour-options .option-item .option-item__desc .option-item__read-more {
+body.single-tours .vm-tour-options .option-item__desc .option-item__read-more {
   color: #00656D;
   text-decoration: underline;
   font-weight: 500;
   font-size: 13px;
 }
 body.single-tours .vm-tour-options .option-item {
-  /* Benefits Section */
-}
-body.single-tours .vm-tour-options .option-item .option-item__benefits {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-body.single-tours .vm-tour-options .option-item .option-item__benefits li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 14px;
-  padding: 0;
-  margin: 0;
-}
-body.single-tours .vm-tour-options .option-item .option-item__benefits li::before {
-  content: none;
-}
-body.single-tours .vm-tour-options .option-item .option-item__benefits li svg {
-  stroke: #0C2C7A;
-  margin-top: 2px;
-}
-body.single-tours .vm-tour-options .option-item {
   /* Starting Time */
 }
-body.single-tours .vm-tour-options .option-item .option-item__time {
+body.single-tours .vm-tour-options .option-item__time {
   margin-bottom: 24px;
 }
-body.single-tours .vm-tour-options .option-item .option-item__time .option-item__time-label {
+body.single-tours .vm-tour-options .option-item__time .option-item__time-label {
   display: block;
   font-size: 13px;
   font-weight: 600;
   color: #333;
   margin-bottom: 8px;
 }
-body.single-tours .vm-tour-options .option-item .option-item__time .option-item__time-chip {
+body.single-tours .vm-tour-options .option-item__time .option-item__time-chip {
   display: inline-block;
   padding: 6px 12px;
   background: #eef2ff;
@@ -15395,6 +15404,12 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__desc p:last-chi
     font-size: 14px;
   }
 }
+body.single-tours .main-section #tour-review .kk-star-ratings .kksr-legend {
+  font-family: "Afacad", sans-serif;
+  font-weight: 500;
+  color: #0C2C7A;
+  margin-top: 3px;
+}
 body.single-tours .main-section #tour-overview,
 body.single-tours .main-section #tour-highlights,
 body.single-tours .main-section #tour-inclusions,
@@ -15407,7 +15422,7 @@ body.logged-in body.single-tours .main-section #tour-highlights,
 body.logged-in body.single-tours .main-section #tour-inclusions,
 body.logged-in body.single-tours .main-section #tour-prices,
 body.logged-in body.single-tours .main-section #tour-itinerary {
-  scroll-margin-top: 182px;
+  scroll-margin-top: 184px;
 }
 
 /* --- DEMO Sticky Booking Card --- */
@@ -15431,6 +15446,9 @@ body.logged-in .vm-form-booking {
   margin-bottom: 24px;
   padding-bottom: 20px;
   border-bottom: 1px solid #f0f0f0;
+}
+.vm-form-booking .vm-form-booking__header .price {
+  min-width: fit-content;
 }
 .vm-form-booking .vm-form-booking__header .price .label {
   display: block;
@@ -15461,6 +15479,26 @@ body.logged-in .vm-form-booking {
   font-size: 13px;
   color: #666;
   text-decoration: underline;
+}
+.vm-form-booking .vm-form-booking__header .rating .kk-star-ratings {
+  flex-wrap: wrap;
+  justify-content: end;
+}
+.vm-form-booking .vm-form-booking__header .rating .kk-star-ratings > div {
+  width: 100%;
+}
+.vm-form-booking .vm-form-booking__header .rating .kk-star-ratings .kksr-stars {
+  max-width: fit-content;
+}
+.vm-form-booking .vm-form-booking__header .rating .kk-star-ratings .kksr-legend {
+  font-size: 14px !important;
+  font-weight: 500;
+  padding: 0;
+  margin: 4px 0 0 0;
+}
+.vm-form-booking .vm-form-booking__header .rating .kksr-template .kksr-star .kksr-icon {
+  width: 12px !important;
+  height: 12px !important;
 }
 .vm-form-booking .vm-form-booking__body .form-group {
   margin-bottom: 16px;

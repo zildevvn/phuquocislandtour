@@ -539,8 +539,8 @@
                 },
                 {
                     "key": "field_6a7d6fe8fe939",
-                    "label": "Pax",
-                    "name": "pax",
+                    "label": "Maximum",
+                    "name": "maximum",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -944,5 +944,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1789099475
+    "modified": 1789368842
 }

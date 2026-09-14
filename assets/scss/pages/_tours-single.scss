@@ -879,8 +879,45 @@ body.single-tours {
                 }
             }
 
+
+            /* Benefits Section */
+            &__benefits {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 24px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                li {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 8px;
+                    font-size: 14px;
+                    padding: 0;
+                    margin: 0;
+
+                    &::before {
+                        content: none;
+                    }
+
+                    &.maximum {
+                        svg {
+                            width: 100%;
+                            height: auto;
+                            max-width: 16px;
+                        }
+                    }
+
+                    svg {
+                        stroke: $color-primary;
+                        margin-top: 2px;
+                    }
+                }
+            }
+
             /* Header & Radio */
-            .option-item__header {
+            &__header {
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
@@ -917,7 +954,7 @@ body.single-tours {
             }
 
             /* Description */
-            .option-item__desc {
+            &__desc {
                 margin-bottom: 20px;
                 font-size: 14px;
                 color: #555;
@@ -940,36 +977,8 @@ body.single-tours {
                 }
             }
 
-            /* Benefits Section */
-            .option-item__benefits {
-                list-style: none;
-                padding: 0;
-                margin: 0 0 24px 0;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                li {
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 8px;
-                    font-size: 14px;
-                    padding: 0;
-                    margin: 0;
-
-                    &::before {
-                        content: none;
-                    }
-
-                    svg {
-                        stroke: $color-primary;
-                        margin-top: 2px;
-                    }
-                }
-            }
-
             /* Starting Time */
-            .option-item__time {
+            &__time {
                 margin-bottom: 24px;
 
                 .option-item__time-label {
@@ -1456,6 +1465,17 @@ body.single-tours {
             }
         }
 
+        #tour-review {
+            .kk-star-ratings {
+                .kksr-legend {
+                    font-family: $font-second;
+                    font-weight: 500;
+                    color: $color-primary;
+                    margin-top: 3px;
+                }
+            }
+        }
+
         #tour-overview,
         #tour-highlights,
         #tour-inclusions,
@@ -1464,7 +1484,7 @@ body.single-tours {
             scroll-margin-top: 150px;
 
             body.logged-in & {
-                scroll-margin-top: 182px;
+                scroll-margin-top: 184px;
             }
         }
     }
@@ -1494,6 +1514,8 @@ body.single-tours {
         border-bottom: 1px solid #f0f0f0;
 
         .price {
+            min-width: fit-content;
+
             .label {
                 display: block;
                 font-size: 12px;
@@ -1528,6 +1550,35 @@ body.single-tours {
                 font-size: 13px;
                 color: #666;
                 text-decoration: underline;
+            }
+
+            .kk-star-ratings {
+                flex-wrap: wrap;
+                justify-content: end;
+
+                >div {
+                    width: 100%;
+                }
+
+                .kksr-stars {
+                    max-width: fit-content;
+                }
+
+                .kksr-legend {
+                    font-size: 14px !important;
+                    font-weight: 500;
+                    padding: 0;
+                    margin: 4px 0 0 0;
+                }
+            }
+
+            .kksr-template {
+                .kksr-star {
+                    .kksr-icon {
+                        width: 12px !important;
+                        height: 12px !important;
+                    }
+                }
             }
         }
     }

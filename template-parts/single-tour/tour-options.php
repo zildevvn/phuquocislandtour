@@ -18,6 +18,7 @@ $tour_options = get_field('tour_options');
                     $price_group = $option['price_group'] ?? 0;
                     $price_group_child = $option['child_price_group'] ?? $option['child_price_group'] ?? 0;
                     $price_private = $option['price_private'] ?? [];
+                    $maximum = $option['maximum'] ?? '';
                     ?>
                     <?php
                     $is_selected_class = ($key === 0) ? 'is-selected' : '';
@@ -63,6 +64,22 @@ $tour_options = get_field('tour_options');
                                 </svg>
                                 <span>Guide: English</span>
                             </li>
+
+                            <?php if (!empty($maximum) || $private_tour): ?>
+                                <li class="maximum">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                    <span>
+                                        <?= !empty($maximum) ? 'Max: ' . esc_html($maximum) . ' paxs' : 'No Limited'; ?>
+                                    </span>
+                                </li>
+                            <?php endif; ?>
+
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

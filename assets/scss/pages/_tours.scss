@@ -1,5 +1,6 @@
 .tours-list-section {
     padding: 90px 0;
+    overflow: hidden;
 
     @include media-breakpoint-down(lg) {
         padding: 60px 0;
@@ -25,6 +26,9 @@
         @include media-breakpoint-down(md) {
             margin-top: 28px;
             gap: 24px;
+            width: 100%;
+            overflow: hidden;
+            max-width: 100%;
         }
     }
 
@@ -39,7 +43,7 @@
         z-index: 1040;
         opacity: 0;
         transition: opacity 0.3s ease;
-        
+
         &.is-visible {
             display: block;
             opacity: 1;
@@ -91,8 +95,8 @@
             padding: 0;
             overflow-y: auto;
             transition: left 0.3s ease;
-            box-shadow: 2px 0 12px rgba(0,0,0,0.15);
-            
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+
             &.is-open {
                 left: 0;
             }
@@ -102,7 +106,7 @@
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px 24px;
-                border-bottom: 1px solid rgba(0,0,0,0.08);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
                 position: sticky;
                 top: 0;
                 background: #fff;
