@@ -472,6 +472,8 @@ function vm_ajax_submit_checkout()
     update_post_meta($booking_post_id, 'price_per_person', $price_per_person);
     update_post_meta($booking_post_id, 'total_price', $total_price);
 
+    $payment_method_label = $payment_method === 'bank_transfer' ? 'Bank Transfer' : 'Pay on Arrival';
+
     // Common Styles for Email
     $table_style = 'width: 100%; max-width: 600px; border-collapse: collapse; margin-bottom: 20px; font-family: Arial, sans-serif; font-size: 14px;';
     $th_style = 'padding: 12px; border: 1px solid #e0e0e0; background-color: #f8f9fa; text-align: left; font-weight: bold; width: 35%; color: #333;';
@@ -497,7 +499,7 @@ function vm_ajax_submit_checkout()
         $message_admin .= "<tr><th style='{$th_style}'>Country</th><td style='{$td_style}'>" . esc_html($customer_country) . "</td></tr>";
     if (!empty($customer_messages))
         $message_admin .= "<tr><th style='{$th_style}'>Messages</th><td style='{$td_style}'>" . nl2br(esc_html($customer_messages)) . "</td></tr>";
-    $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method_label) . "</td></tr>";
     $message_admin .= "</table>";
 
     $message_admin .= "<h3 style='{$h3_style}'>Booking Information</h3>";
@@ -538,7 +540,7 @@ function vm_ajax_submit_checkout()
             $message_customer .= "<tr><th style='{$th_style}'>Country</th><td style='{$td_style}'>" . esc_html($customer_country) . "</td></tr>";
         }
         $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
-        $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method) . "</td></tr>";
+        $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method_label) . "</td></tr>";
         $message_customer .= "</table>";
 
         $message_customer .= "<p style='font-size: 14px; color: #888; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;'>If you have any questions, simply reply to this email.</p>";
@@ -549,7 +551,6 @@ function vm_ajax_submit_checkout()
     }
 
     $formatted_date = date('F j, Y', strtotime($booking_data['date']));
-    $payment_method_label = $payment_method === 'bank_transfer' ? 'Bank Transfer' : 'Pay on Arrival';
 
     // Delete transient after successful save and email processing
     delete_transient('vm_booking_' . $token);

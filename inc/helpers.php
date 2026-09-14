@@ -213,12 +213,23 @@ if (!function_exists('vm_calculate_tour_price')) {
 			if (is_array($price_private) && !empty($price_private)) {
 				$available_pax = [];
 				foreach ($price_private as $p_key => $p_val) {
-					$num = intval($p_key);
-					if ($num > 0 && $p_val !== '') {
-						$available_pax[$num] = $p_val;
+					if (is_array($p_val)) {
+						$num = isset($p_val['pax']) ? intval($p_val['pax']) : 
+							   (isset($p_val['guests']) ? intval($p_val['guests']) : 0);
+						$price = isset($p_val['price']) ? $p_val['price'] : '';
+						if ($num > 0 && $price !== '') {
+							$available_pax[$num] = $price;
+						}
+					} else {
+						$num = intval($p_key);
+						if ($num > 0 && $p_val !== '') {
+							$available_pax[$num] = $p_val;
+						}
 					}
 				}
-				if (!empty($available_pax)) {
+				if ($total_pax > 12 && !empty($price_private['no_limited'])) {
+					$private_price_val = $price_private['no_limited'];
+				} else if (!empty($available_pax)) {
 					ksort($available_pax);
 					$found_price = null;
 					$max_pax_price = 0;
@@ -232,7 +243,7 @@ if (!function_exists('vm_calculate_tour_price')) {
 				}
 			}
 			$adult_price = floatval(str_replace(['₫', '$', ',', ' '], '', $private_price_val));
-			$child_price = 0; // Private tours do not calculate a separate child price
+			$child_price = $adult_price * 0.75; 
 		}
 
 		$is_price_available = ($adult_price !== 0.0);
@@ -242,7 +253,7 @@ if (!function_exists('vm_calculate_tour_price')) {
 			$is_car_tour = true;
 		}
 
-		if ($is_car_tour || $private_tour) {
+		if ($is_car_tour) {
 			$total_price = $adult_price;
 			$child_price = 0;
 		} else {

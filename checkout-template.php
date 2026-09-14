@@ -167,6 +167,7 @@ if (!$booking_data) {
                                         </svg>
                                         Payment Method
                                     </h2>
+                                    
                                     <div class="form-group">
                                         <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px;">
                                             <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 16px; border: 1px solid #e0e0e0; border-radius: 12px; flex: 1; min-width: 200px;">

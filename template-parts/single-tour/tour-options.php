@@ -122,11 +122,6 @@ $tour_options = get_field('tour_options');
                                         <span>Vehicle Price</span>
                                         <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
                                     </div>
-                                <?php elseif (!empty($pricing['is_private_tour'])): ?>
-                                    <div class="option-item__price-calc">
-                                        <span>Private Tour Package</span>
-                                        <span><?= number_format($price_per_person, 0, '.', ',') ?> $</span>
-                                    </div>
                                 <?php else: ?>
                                     <?php if ($adults > 0): ?>
                                         <div class="option-item__price-calc">
