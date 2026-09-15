@@ -13141,9 +13141,12 @@ body.page-template-blog-template .about-section__header .header-content .h6:last
 body.page-template-blog-template .about-section__header .header-content p:last-child {
   margin-bottom: 0;
 }
+body.page-template-blog-template .about-section__header .header-content h4, body.page-template-blog-template .about-section__header .header-content .h4 {
+  margin-bottom: 20px;
+}
 @media (min-width: 1200px) {
   body.page-template-blog-template .about-section__header .header-content h4, body.page-template-blog-template .about-section__header .header-content .h4 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 body.page-template-blog-template .about-section__posts {

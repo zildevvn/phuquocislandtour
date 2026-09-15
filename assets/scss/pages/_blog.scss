@@ -50,8 +50,10 @@ body.page-template-blog-template {
                 }
 
                 h4 {
+                    margin-bottom: 20px;
+
                     @media (min-width: 1200px) {
-                        font-size: 1.7rem;
+                        font-size: 1.5rem;
                     }
                 }
             }
