@@ -437,6 +437,23 @@
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.03);
         }
+
+        &--item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+
+            .star-picker {
+                gap: 3px;
+            }
+
+            .star-picker__label svg {
+                width: 20px;
+                height: 20px;
+                fill: #a1abb3;
+            }
+        }
     }
 
     &__label {

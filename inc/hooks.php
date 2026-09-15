@@ -98,6 +98,17 @@ add_action('comment_post', function ($comment_id, $comment_approved) {
 			add_comment_meta($comment_id, 'rating', $rating, true);
 		}
 	}
+	
+	$categories = ['services', 'driver', 'experiences'];
+	foreach ($categories as $cat) {
+		$field = 'vm_tour_rating_' . $cat;
+		if (isset($_POST[$field])) {
+			$cat_rating = intval($_POST[$field]);
+			if ($cat_rating >= 1 && $cat_rating <= 5) {
+				add_comment_meta($comment_id, 'rating_' . $cat, $cat_rating, true);
+			}
+		}
+	}
 }, 10, 2);
 
 /**
@@ -106,6 +117,28 @@ add_action('comment_post', function ($comment_id, $comment_approved) {
 add_filter('preprocess_comment', function ($commentdata) {
 	$post_id = isset($commentdata['comment_post_ID']) ? intval($commentdata['comment_post_ID']) : 0;
 	if ($post_id && in_array(get_post_type($post_id), ['tours', 'cars'])) {
+		
+		// For tours, validate categories first and auto-calculate overall rating if missing
+		if (get_post_type($post_id) === 'tours') {
+			$categories = [
+				'services' => __('Services', 'hue-local-experience'),
+				'driver' => __('Driver', 'hue-local-experience'),
+				'experiences' => __('Experiences', 'hue-local-experience')
+			];
+			$sum = 0;
+			foreach ($categories as $cat => $label) {
+				$field = 'vm_tour_rating_' . $cat;
+				if (empty($_POST[$field]) || intval($_POST[$field]) < 1) {
+					wp_die(sprintf(__('Please select a star rating for %s before submitting your review.'), $label), __('Missing Rating'), ['back_link' => true, 'response' => 400]);
+				}
+				$sum += intval($_POST[$field]);
+			}
+			// Automatically calculate overall rating from categories if not provided directly
+			if (empty($_POST['vm_tour_rating'])) {
+				$_POST['vm_tour_rating'] = round($sum / count($categories));
+			}
+		}
+
 		if (empty($_POST['vm_tour_rating']) || intval($_POST['vm_tour_rating']) < 1) {
 			wp_die(__('Please select a star rating before submitting your review.'), __('Missing Rating'), ['back_link' => true, 'response' => 400]);
 		}
