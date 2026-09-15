@@ -150,6 +150,21 @@
 
         a {
             text-decoration: none;
+            letter-spacing: 0.048em;
+        }
+    }
+
+    &__phone>a,
+    &__email>a,
+    &__address>p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-width: 17px;
         }
     }
 

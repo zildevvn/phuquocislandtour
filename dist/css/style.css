@@ -6667,6 +6667,10 @@ strong {
   color: #19232B;
 }
 
+a > strong {
+  color: inherit;
+}
+
 .vm-loading-overlay {
   position: absolute;
   inset: 0;
@@ -8705,6 +8709,17 @@ body.offcanvas-open {
 }
 .main-footer__phone a, .main-footer__email a, .main-footer__address a {
   text-decoration: none;
+  letter-spacing: 0.048em;
+}
+.main-footer__phone > a, .main-footer__email > a, .main-footer__address > p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.main-footer__phone > a svg, .main-footer__email > a svg, .main-footer__address > p svg {
+  width: 100%;
+  height: auto;
+  max-width: 17px;
 }
 .main-footer-bottom {
   gap: 20px;

@@ -456,6 +456,10 @@ strong {
     color: $color-text;
 }
 
+a>strong {
+    color: inherit;
+}
+
 // Global AJAX Loading Spinner
 .vm-loading-overlay {
     position: absolute;

@@ -35,6 +35,14 @@ $bg_footer = get_field('background_image', 'option');
                             <h2 class="h5">24/7 Support</h2>
                             <a href="https://wa.me/<?= esc_attr($phone); ?>" target="_blank" rel="noopener noreferrer"
                                 aria-label="Chat with us on WhatsApp">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-phone-forwarded">
+                                    <path d="M14 6h8" />
+                                    <path d="m18 2 4 4-4 4" />
+                                    <path
+                                        d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                                </svg>
                                 +<?= $phone ?>
                             </a>
 
@@ -45,6 +53,12 @@ $bg_footer = get_field('background_image', 'option');
                         <div class="main-footer__email">
                             <h2 class="h5">Email Us</h2>
                             <a href="mailto:<?= $email ?>">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22 4 12 14 2 4"></polyline>
+                                </svg>
                                 <?= $email ?>
                             </a>
                         </div>
@@ -54,7 +68,17 @@ $bg_footer = get_field('background_image', 'option');
                     <?php if (!empty($address)): ?>
                         <div class="main-footer__address">
                             <h2 class="h5">Our Location </h2>
-                            <p class="mb-0"> <?= $address ?> </p>
+                            <p class="mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-map-pin-check">
+                                    <path
+                                        d="M19.43 12.935c.357-.967.57-1.955.57-2.935a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 1.202 0 32.197 32.197 0 0 0 .813-.728" />
+                                    <circle cx="12" cy="10" r="3" />
+                                    <path d="m16 18 2 2 4-4" />
+                                </svg>
+                                <?= $address ?>
+                            </p>
                         </div>
                     <?php endif; ?>
                 </div>
