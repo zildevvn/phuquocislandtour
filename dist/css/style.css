@@ -19522,21 +19522,11 @@ body.page-template-customized-tours-template .form-section__left {
   }
 }
 body.page-template-customized-tours-template .form-section__left-images {
-  margin-top: 24px;
-}
-@media (max-width: 767.98px) {
-  body.page-template-customized-tours-template .form-section__left-images {
-    margin-top: 16px;
-  }
+  margin-top: 8px;
 }
 body.page-template-customized-tours-template .form-section__left-images img {
-  aspect-ratio: 3/4;
   object-fit: cover;
-}
-@media (max-width: 767.98px) {
-  body.page-template-customized-tours-template .form-section__left-images img {
-    aspect-ratio: 16/9;
-  }
+  margin-top: 16px;
 }
 body.page-template-customized-tours-template .form-section__left-bg {
   position: absolute;

@@ -105,6 +105,9 @@ $open_time = get_field('open_time', 'option');
                     <?php if (!empty($image)): ?>
                         <div class="form-section__left-images">
                             <img src="<?= $image ?>" alt="image for Customzied Tours">
+
+                            <img src="<?= get_template_directory_uri(); ?>/assets/images/trip-choice-2023.jpg"
+                                alt="image forrip-choice " />
                         </div>
                     <?php endif; ?>
                 </div>
