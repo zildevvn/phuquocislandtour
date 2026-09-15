@@ -6,6 +6,21 @@
         display: none;
     }
 
+    .nf-response-msg {
+        >p {
+            margin: 0;
+            font-size: calc(1.3rem + 0.6vw);
+            font-family: $font-second;
+            text-align: center;
+            font-weight: 700;
+            color: $color-primary;
+
+            @media (min-width: 1200px) {
+                padding-bottom: 1rem;
+            }
+        }
+    }
+
     .nf-form-content {
         padding: 0 !important;
 
@@ -18,6 +33,7 @@
         nf-field {
             padding: 0 !important;
             margin-bottom: 0 !important;
+            width: 100%;
 
             >.nf-field-container {
                 margin: 0;
@@ -25,12 +41,17 @@
         }
 
         .nf-field-label {
-            margin-bottom: 8px !important;
+            font-size: 14px;
+            font-weight: 700;
+            color: $color-text;
+            margin-bottom: 8px;
 
             label {
-                font-weight: 500 !important;
-                font-size: 14px !important;
-                color: $color-text !important;
+                font-weight: 700 !important;
+            }
+
+            .ninja-forms-req-symbol {
+                color: #EF4444;
             }
         }
 
@@ -90,8 +111,13 @@
 
         /* Checkboxes & Radios */
         .nf-field-element ul {
-            margin: 0;
-            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+
+            @include media-breakpoint-down(md) {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
             li {
                 padding: 0;
@@ -99,7 +125,7 @@
                 border: none;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 6px;
 
                 &::before {
                     display: none;
@@ -107,17 +133,19 @@
 
                 input[type="checkbox"],
                 input[type="radio"] {
-                    width: 18px !important;
-                    height: 18px !important;
-                    margin: 0 !important;
+                    width: 18px;
+                    height: 18px;
+                    margin: 0;
                     cursor: pointer;
                     accent-color: $color-primary;
+                    min-width: 18px;
                 }
 
                 label {
-                    font-size: 15px !important;
-                    font-weight: 400 !important;
+                    font-size: 13px;
+                    font-weight: 400;
                     cursor: pointer;
+                    margin: 0;
                 }
             }
         }
@@ -125,18 +153,20 @@
         /* Submit Button */
         input[type="button"],
         input[type="submit"] {
-            border-radius: $border-radius;
-            overflow: hidden;
-            background: $color-secondary;
-            color: #fff;
-            height: 50px;
-            padding: 0 20px;
-            transition: $transition-base;
-            gap: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            border: none;
-            width: 100%;
+            background: linear-gradient(90deg, #094754 0%, #0c697c 100%) !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 16px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            width: 100% !important;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+                opacity: 0.9;
+            }
 
             @include media-breakpoint-down(md) {
                 height: 46px;
