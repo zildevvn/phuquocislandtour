@@ -12266,6 +12266,20 @@ body.page-template-contact-template .main-section__right .form-features .feature
   line-height: 1.4;
 }
 
+body.page-template-about-section .about-section {
+  background: #F2F3F5;
+  padding: 90px 0;
+}
+@media (max-width: 1023.98px) {
+  body.page-template-about-section .about-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-about-section .about-section {
+    padding: 40px 0;
+  }
+}
 body.page-template-about-section .media-section {
   background: #fff;
   padding: 90px 0;
@@ -15401,7 +15415,7 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
 }
 @media (max-width: 389.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
-    flex: 0 0 66px;
+    flex: 0 0 64px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__time {
@@ -15479,7 +15493,7 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__title {
 }
 @media (max-width: 767.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__title {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__desc {

@@ -1,4 +1,18 @@
 body.page-template-about-section {
+    .about-section {
+        background: $color-bg;
+        padding: 90px 0;
+
+        @include media-breakpoint-down(lg) {
+            padding: 60px 0;
+        }
+
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+    }
+
     .media-section {
         background: #fff;
         padding: 90px 0;
