@@ -10,17 +10,34 @@ $image_ab = get_field('img_ab_blog_tpl');
     </div>
 
     <div class="container">
-        <div class="about-section-media">
-            <div class="about-section-media__content">
-                <h2 class="h3">
-                    <?= $heading ?>
-                </h2>
-                <?= $desc ?>
+        <div class="about-section-warp">
+            <div class="about-section__header">
+                <div class="header-content">
+                    <h2 class="h4">
+                        <?= $heading ?>
+                    </h2>
+                    <?= $desc ?>
+                </div>
             </div>
 
-            <div class="about-section-media__image">
-                <img src="<?= $image_ab ?>" alt="image about Phu Quoc Island Travel Guide" class="img-fluid"
-                    loading="lazy" />
+            <div class="about-section__posts">
+                <?php
+                $recent_posts = new WP_Query([
+                    'post_type' => 'post',
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post_status' => 'publish'
+                ]);
+
+                if ($recent_posts->have_posts()):
+                    while ($recent_posts->have_posts()):
+                        $recent_posts->the_post();
+                        vm_post_item();
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
             </div>
         </div>
     </div>

@@ -11,33 +11,31 @@ body.page-template-blog-template {
             z-index: 999;
         }
 
-        &-media {
+        &-warp {
             display: flex;
-            align-items: center;
-            gap: 48px;
+            align-items: stretch;
+            gap: 32px;
+            justify-content: space-between;
 
             @include media-breakpoint-down(lg) {
-                gap: 32px;
+                flex-direction: column;
             }
 
             @include media-breakpoint-down(md) {
                 gap: 24px;
-                flex-wrap: wrap;
+            }
+        }
+
+        &__header {
+            width: calc((100% / 3) - 16px);
+            display: flex;
+            align-items: center;
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
             }
 
-            h2 {
-                margin-bottom: 20px;
-            }
-
-            >div {
-                width: 50%;
-
-                @include media-breakpoint-down(md) {
-                    width: 100%;
-                }
-            }
-
-            &__content {
+            .header-content {
 
                 h1,
                 h2,
@@ -50,8 +48,203 @@ body.page-template-blog-template {
                         margin-bottom: 0;
                     }
                 }
+
+                h4 {
+                    @media (min-width: 1200px) {
+                        font-size: 1.7rem;
+                    }
+                }
             }
         }
+
+        &__posts {
+            width: calc((100% * 2 / 3) - 10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 240px 240px;
+            gap: 32px;
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
+
+            @include media-breakpoint-down(md) {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 16px;
+            }
+
+            // Asymmetric layout overlay design
+            .post-item-card {
+                height: 100%;
+                margin: 0;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+                &:nth-child(1) {
+                    grid-row: 1 / span 2;
+                    grid-column: 1;
+
+                    @include media-breakpoint-down(md) {
+                        grid-row: auto;
+                        grid-column: auto;
+                        height: 320px;
+                    }
+                }
+
+                &:nth-child(2) {
+                    grid-row: 1;
+                    grid-column: 2;
+
+                    @include media-breakpoint-down(md) {
+                        grid-row: auto;
+                        grid-column: auto;
+                        height: 320px;
+                    }
+                }
+
+                &:nth-child(3) {
+                    grid-row: 2;
+                    grid-column: 2;
+
+                    @include media-breakpoint-down(md) {
+                        grid-row: auto;
+                        grid-column: auto;
+                        height: 320px;
+                    }
+                }
+
+                // Overrides for overlay design
+                &__link {
+                    display: block;
+                    height: 100%;
+                    position: relative;
+                    padding: 0; // prevent standard card padding if any
+                    background: transparent;
+                    border: none;
+                }
+
+                &__thumbnail {
+                    position: absolute;
+                    inset: 0;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+                    }
+
+                    // Dark gradient overlay
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.05) 100%);
+                        z-index: 1;
+                        pointer-events: none;
+                    }
+
+                    .post-item-card__overlay {
+                        display: none;
+                    }
+                }
+
+                &:hover {
+                    .post-item-card__thumbnail img {
+                        transform: scale(1.08);
+                    }
+                }
+
+                &__body {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 24px;
+                    z-index: 2;
+                    background: transparent;
+                    border: none;
+
+                    @include media-breakpoint-down(md) {
+                        padding: 16px;
+                    }
+                }
+
+                &__meta {
+                    color: rgba(255, 255, 255, 0.8);
+                    margin-bottom: 8px;
+
+                    svg {
+                        stroke: rgba(255, 255, 255, 0.8);
+                    }
+
+                    .meta-date {
+                        color: rgba(255, 255, 255, 0.8);
+                    }
+                }
+
+                &__title {
+                    color: #fff;
+                    font-size: 20px;
+                    margin: 0;
+                    line-height: 1.3;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                }
+
+                // Hide excerpt and footer for cleaner overlay look
+                &__excerpt,
+                &__footer {
+                    display: none;
+                }
+            }
+
+            // Increase title size for the large first card
+            .post-item-card:nth-child(1) .post-item-card__title {
+                font-size: 26px;
+
+                @include media-breakpoint-down(md) {
+                    font-size: 22px;
+                }
+            }
+        }
+
+        // &-media {
+        //     display: flex;
+        //     align-items: center;
+        //     gap: 48px;
+
+        //     @include media-breakpoint-down(lg) {
+        //         gap: 32px;
+        //     }
+
+        //     @include media-breakpoint-down(md) {
+        //         gap: 24px;
+        //         flex-wrap: wrap;
+        //     }
+
+        //     h2 {
+        //         margin-bottom: 20px;
+        //     }
+
+        //     >div {
+        //         width: 50%;
+
+        //         @include media-breakpoint-down(md) {
+        //             width: 100%;
+        //         }
+        //     }
+
+        //     &__content {
+
+
+        //     }
+        // }
     }
 
     .posts-list-section {

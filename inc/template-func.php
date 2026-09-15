@@ -268,7 +268,7 @@ function vm_hero_section_shared($title = '', $image = '', $desc = '')
 { ?>
     <section class="vm-section hero-section-shared">
         <div class="vm-section__bg">
-            <img src="<?= $image ?>" alt="background hero for <?= $title ?>" />
+            <img src="<?= $image ?>" alt="background image for hero <?= $title ?>" />
         </div>
 
         <div class="container">
