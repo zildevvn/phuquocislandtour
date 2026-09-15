@@ -2,6 +2,7 @@
 $heading = get_field('hd_form_customized');
 $desc = get_field('desc_contact');
 $form_contact = get_field('shortcode_form_customized');
+$image = get_field('image_form_customized');
 $address = get_field('address', 'option');
 $phone = get_field('phone', 'option');
 $email = get_field('email', 'option');
@@ -100,6 +101,12 @@ $open_time = get_field('open_time', 'option');
                             </a>
                         <?php endif; ?>
                     </div>
+
+                    <?php if (!empty($image)): ?>
+                        <div class="form-section__left-images">
+                            <img src="<?= $image ?>" alt="image for Customzied Tours">
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 

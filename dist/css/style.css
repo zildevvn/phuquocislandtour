@@ -19264,6 +19264,7 @@ body.page-template-customized-tours-template .form-section__left {
   position: relative;
   z-index: 1;
   display: flex;
+  align-items: center;
 }
 @media (max-width: 1199.98px) {
   body.page-template-customized-tours-template .form-section__left {
@@ -19273,7 +19274,23 @@ body.page-template-customized-tours-template .form-section__left {
 @media (max-width: 767.98px) {
   body.page-template-customized-tours-template .form-section__left {
     padding: 32px 20px;
-    align-items: center;
+  }
+}
+body.page-template-customized-tours-template .form-section__left-images {
+  margin-top: 24px;
+}
+@media (max-width: 767.98px) {
+  body.page-template-customized-tours-template .form-section__left-images {
+    margin-top: 16px;
+  }
+}
+body.page-template-customized-tours-template .form-section__left-images img {
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+@media (max-width: 767.98px) {
+  body.page-template-customized-tours-template .form-section__left-images img {
+    aspect-ratio: 16/9;
   }
 }
 body.page-template-customized-tours-template .form-section__left-bg {
