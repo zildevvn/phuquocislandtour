@@ -15395,8 +15395,13 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
 }
 @media (max-width: 767.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
-    flex: 0 0 66px;
+    flex: 0 0 70px;
     justify-content: flex-start;
+  }
+}
+@media (max-width: 389.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
+    flex: 0 0 66px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__time {
@@ -15420,6 +15425,12 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time {
     font-size: 12px;
     padding: 4px 9px;
+  }
+}
+@media (max-width: 389.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__time {
+    font-size: 11px;
+    padding: 4px 7px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__divider {
