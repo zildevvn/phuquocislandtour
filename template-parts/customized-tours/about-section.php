@@ -33,7 +33,7 @@ $gallerys = get_field('gallery_tpl_ctt');
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">
-                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for Car Rental in Phu Quoc" />
+                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for phu quoc island holiday packages" />
                             </div>
                         <?php endforeach; ?>
                     </div>

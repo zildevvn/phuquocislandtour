@@ -19108,6 +19108,7 @@ body.tax-tour_locations .about-section-media__gallery .gallery-item img {
 }
 
 body.page-template-customized-tours-template .about-section {
+  background: #F2F3F5;
   padding: 90px 0;
 }
 @media (max-width: 1023.98px) {
@@ -19263,7 +19264,6 @@ body.page-template-customized-tours-template .form-section__left {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
 }
 @media (max-width: 1199.98px) {
   body.page-template-customized-tours-template .form-section__left {
@@ -19273,6 +19273,7 @@ body.page-template-customized-tours-template .form-section__left {
 @media (max-width: 767.98px) {
   body.page-template-customized-tours-template .form-section__left {
     padding: 32px 20px;
+    align-items: center;
   }
 }
 body.page-template-customized-tours-template .form-section__left-bg {
@@ -19372,7 +19373,7 @@ body.page-template-customized-tours-template .form-section__right .form-wrapper 
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
-  body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:first-child, body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(2), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(3), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(4) {
+  body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:first-child, body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(2), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(3), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(4), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(8), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(9), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(10), body.page-template-customized-tours-template .form-section__right .form-wrapper .nf-form-cont .nf-form-layout .nf-form-content nf-fields-wrap nf-field:nth-child(11) {
     max-width: calc(50% - 10px);
   }
 }
