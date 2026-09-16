@@ -8,7 +8,8 @@ $price_group = get_field('price_for_group_tour');
 $price_group_child = get_field('child_price_group');
 $price_private = get_field('price_for_private_tour');
 $gallery_tour = get_field('gallery_tour'); // From info-section
-$price_tour = get_field('price_tour'); // For demo sticky
+$price_tour = get_field('price_tour');
+$faqs_tour = get_field('faqs_list_tour'); // For demo sticky
 ?>
 <section class="vm-section main-section">
     <div class="container">
@@ -23,7 +24,7 @@ $price_tour = get_field('price_tour'); // For demo sticky
                 $nav_items['tour-prices'] = ['label' => __('Prices', 'vm'), 'show' => (!empty($price_group) || !empty($price_private))];
                 $nav_items['tour-itinerary'] = ['label' => __('Itinerary', 'vm'), 'show' => !empty($itinerary_tour)];
                 $nav_items['tour-review'] = ['label' => __('Reviews', 'vm'), 'show' => (comments_open() || get_comments_number() > 0)];
-                $nav_items['tour-faqs'] = ['label' => __('FAQs', 'vm'), 'show' => (comments_open() || get_comments_number() > 0)];
+                $nav_items['tour-faqs'] = ['label' => __('FAQs', 'vm'), 'show' => !empty($faqs_tour)];
                 ?>
 
                 <!-- Anchor Navigation Menu -->
