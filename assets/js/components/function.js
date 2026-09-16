@@ -1513,11 +1513,63 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitRelatedSwiper = () => {
+        const $carousels = $('.related-tour-section__list.swiper, .related-post-section__list.swiper');
+        if (!$carousels.length) return;
+
+        const initOrDestroySwiper = () => {
+            const isMobile = window.innerWidth <= 991;
+
+            $carousels.each(function () {
+                const $carousel = $(this);
+                let swiper = $carousel.data('swiper-instance');
+
+                if (isMobile) {
+                    if (!swiper) {
+                        swiper = new Swiper(this, {
+                            modules: [Autoplay],
+                            slidesPerView: 1.15,
+                            spaceBetween: 16,
+                            grabCursor: true,
+                            speed: 600,
+                            autoplay: {
+                                delay: 3000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+                            breakpoints: {
+                                768: {
+                                    slidesPerView: 2.15,
+                                    spaceBetween: 24,
+                                }
+                            }
+                        });
+                        $carousel.data('swiper-instance', swiper);
+                    }
+                } else {
+                    if (swiper) {
+                        swiper.destroy(true, true);
+                        $carousel.removeData('swiper-instance');
+                    }
+                }
+            });
+        };
+
+        initOrDestroySwiper();
+
+        let resizeTimer;
+        $(window).on('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initOrDestroySwiper, 150);
+        });
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
         vmIconHeading()
         vmInitToursSwiper()
+        vmInitRelatedSwiper()
         vmInitTestimonialsSwiper()
         vmInitCarToursSwiper()
         vmInitPostsSwiper()

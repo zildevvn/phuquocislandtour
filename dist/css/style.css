@@ -14346,20 +14346,44 @@ body.single-post .related-post-section {
   }
 }
 body.single-post .related-post-section__list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
   margin-top: 32px;
 }
-@media (max-width: 1023.98px) {
+@media (max-width: 767.98px) {
   body.single-post .related-post-section__list {
+    margin-top: 28px;
+    overflow: hidden;
+    margin-right: -20px;
+  }
+}
+body.single-post .related-post-section__list .post-item-card {
+  display: inline-block;
+  height: 100%;
+  box-shadow: none;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  body.single-post .related-post-section__list .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body.single-post .related-post-section__list .swiper-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 767.98px) {
-  body.single-post .related-post-section__list {
-    grid-template-columns: 1fr;
-    margin-top: 28px;
+  body.single-post .related-post-section__list .swiper-wrapper {
+    align-items: stretch;
+  }
+}
+body.single-post .related-post-section__list .swiper-slide {
+  height: auto;
+}
+@media (min-width: 992px) {
+  body.single-post .related-post-section__list .swiper-slide {
+    width: auto !important;
   }
 }
 
@@ -15144,6 +15168,7 @@ body.single-tours .vm-reviews__form-container {
 }
 body.single-tours .related-tour-section {
   padding: 90px 0;
+  background: #F2F3F5;
 }
 @media (max-width: 1023.98px) {
   body.single-tours .related-tour-section {
@@ -15157,20 +15182,47 @@ body.single-tours .related-tour-section {
 }
 body.single-tours .related-tour-section__list {
   margin-top: 48px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
 }
 @media (max-width: 1023.98px) {
   body.single-tours .related-tour-section__list {
-    grid-template-columns: repeat(2, 1fr);
     margin-top: 32px;
   }
 }
 @media (max-width: 767.98px) {
   body.single-tours .related-tour-section__list {
-    grid-template-columns: 1fr;
     margin-top: 28px;
+    overflow: hidden;
+    margin-right: -20px;
+  }
+}
+body.single-tours .related-tour-section__list .tour-item {
+  display: inline-block;
+  height: 100% !important;
+  box-shadow: none;
+}
+@media (min-width: 992px) {
+  body.single-tours .related-tour-section__list .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  body.single-tours .related-tour-section__list .swiper-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767.98px) {
+  body.single-tours .related-tour-section__list .swiper-wrapper {
+    align-items: stretch;
+  }
+}
+body.single-tours .related-tour-section__list .swiper-slide {
+  height: auto;
+}
+@media (min-width: 992px) {
+  body.single-tours .related-tour-section__list .swiper-slide {
+    width: auto !important;
   }
 }
 body.single-tours .vm-tour-options {
@@ -15490,7 +15542,7 @@ body.single-tours .hero-section__features .feature-badge svg {
 }
 body.single-tours .main-section {
   padding: 60px 0;
-  background-color: #fcfcfc;
+  background-color: #fff;
 }
 @media (max-width: 767.98px) {
   body.single-tours .main-section {

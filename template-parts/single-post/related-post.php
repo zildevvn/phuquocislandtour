@@ -20,20 +20,26 @@ $the_query = new WP_Query($args);
             <?php vm_icon_heading() ?>
 
             <h2 class="vm-heading">
-                Related articles
+                Related <span>articles</span>
             </h2>
 
             <p class="vm-sub-heading">Explore our Phu Quoc Island Tours to discover the best beaches and attractions.</p>
 
-            <div class="related-post-section__list">
-                <?php
-                while ($the_query->have_posts()):
-                    $the_query->the_post();
-                    vm_post_item();
-                endwhile;
+            <div class="related-post-section__list swiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    while ($the_query->have_posts()):
+                        $the_query->the_post();
+                        ?>
+                        <div class="swiper-slide">
+                            <?php vm_post_item(); ?>
+                        </div>
+                        <?php
+                    endwhile;
 
-                wp_reset_postdata();
-                ?>
+                    wp_reset_postdata();
+                    ?>
+                </div>
             </div>
 
         </div>

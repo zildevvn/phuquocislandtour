@@ -885,6 +885,7 @@ body.single-tours {
 
     .related-tour-section {
         padding: 90px 0;
+        background: $color-bg;
 
         @include media-breakpoint-down(lg) {
             padding: 60px 0;
@@ -896,18 +897,46 @@ body.single-tours {
 
         &__list {
             margin-top: 48px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
 
             @include media-breakpoint-down(lg) {
-                grid-template-columns: repeat(2, 1fr);
                 margin-top: 32px;
             }
 
             @include media-breakpoint-down(md) {
-                grid-template-columns: 1fr;
                 margin-top: 28px;
+                overflow: hidden;
+                margin-right: -20px;
+            }
+
+            .tour-item {
+                display: inline-block;
+                height: 100% !important;
+                box-shadow: none;
+            }
+
+            .swiper-wrapper {
+                @media (min-width: 992px) {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 24px;
+
+                    @media (max-width: 1199.98px) {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @include media-breakpoint-down(md) {
+                    align-items: stretch;
+                }
+            }
+
+            .swiper-slide {
+                height: auto;
+
+                @media (min-width: 992px) {
+
+                    width: auto !important;
+                }
             }
         }
     }
@@ -1270,7 +1299,7 @@ body.single-tours {
 
     .main-section {
         padding: 60px 0;
-        background-color: #fcfcfc;
+        background-color: #fff;
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
