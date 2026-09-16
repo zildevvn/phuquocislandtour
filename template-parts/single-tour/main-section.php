@@ -7,9 +7,9 @@ $highlights = get_field('highlights_tour');
 $price_group = get_field('price_for_group_tour');
 $price_group_child = get_field('child_price_group');
 $price_private = get_field('price_for_private_tour');
-$gallery_tour = get_field('gallery_tour'); // From info-section
+$gallery_tour = get_field('gallery_tour');
 $price_tour = get_field('price_tour');
-$faqs_tour = get_field('faqs_list_tour'); // For demo sticky
+$faqs_tour = get_field('faqs_list_tour');
 ?>
 <section class="vm-section main-section">
     <div class="container">
