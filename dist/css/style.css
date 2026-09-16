@@ -19579,6 +19579,9 @@ body.tax-tour_locations .about-section-media__gallery .gallery-item img {
   height: 100%;
   object-fit: cover;
 }
+body.tax-tour_locations .faqs-section {
+  background: #eee;
+}
 
 body.page-template-customized-tours-template .about-section {
   background: #F2F3F5;
