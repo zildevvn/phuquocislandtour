@@ -157,12 +157,12 @@ import { CountUp } from 'countup.js';
                 speed: 600,
                 observer: true,
                 observeParents: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-                // autoplay: false,
+                // autoplay: {
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                //     pauseOnMouseEnter: true,
+                // },
+                autoplay: false,
                 navigation: {
                     nextEl: $carousel.find('.swiper-button-next')[0],
                     prevEl: $carousel.find('.swiper-button-prev')[0],
@@ -1435,16 +1435,16 @@ import { CountUp } from 'countup.js';
         const $pickers = $('.star-picker');
         if (!$pickers.length) return;
 
-        $pickers.each(function() {
+        $pickers.each(function () {
             const $picker = $(this);
             const $labels = $picker.find('.star-picker__label');
             const $text = $picker.find('.star-picker__text');
             const defaultText = $text.text();
 
-            $labels.on('mouseenter', function() {
+            $labels.on('mouseenter', function () {
                 const index = $(this).index('.star-picker__label');
                 $labels.removeClass('is-hovered');
-                $labels.each(function(i) {
+                $labels.each(function (i) {
                     if (i <= index) {
                         $(this).addClass('is-hovered');
                     }
@@ -1453,7 +1453,7 @@ import { CountUp } from 'countup.js';
                 $text.text(rating + ' star' + (rating > 1 ? 's' : ''));
             });
 
-            $picker.on('mouseleave', function() {
+            $picker.on('mouseleave', function () {
                 $labels.removeClass('is-hovered');
                 const $checked = $picker.find('input:checked');
                 if ($checked.length) {
@@ -1464,10 +1464,10 @@ import { CountUp } from 'countup.js';
                 }
             });
 
-            $labels.on('click', function() {
+            $labels.on('click', function () {
                 const index = $(this).index('.star-picker__label');
                 $labels.removeClass('is-active');
-                $labels.each(function(i) {
+                $labels.each(function (i) {
                     if (i <= index) {
                         $(this).addClass('is-active');
                     }
@@ -1476,14 +1476,14 @@ import { CountUp } from 'countup.js';
             });
 
             // Add focus/keyboard support
-            $picker.find('input').on('focus', function() {
+            $picker.find('input').on('focus', function () {
                 $(this).parent().addClass('is-hovered');
-            }).on('blur', function() {
+            }).on('blur', function () {
                 $(this).parent().removeClass('is-hovered');
-            }).on('change', function() {
+            }).on('change', function () {
                 const index = $(this).parent().index('.star-picker__label');
                 $labels.removeClass('is-active');
-                $labels.each(function(i) {
+                $labels.each(function (i) {
                     if (i <= index) {
                         $(this).addClass('is-active');
                     }
@@ -1494,9 +1494,9 @@ import { CountUp } from 'countup.js';
             });
         });
 
-        $('#vm-review-form').on('submit', function(e) {
+        $('#vm-review-form').on('submit', function (e) {
             let hasError = false;
-            $pickers.each(function() {
+            $pickers.each(function () {
                 const $picker = $(this);
                 const $checked = $picker.find('input:checked');
                 if (!$checked.length) {

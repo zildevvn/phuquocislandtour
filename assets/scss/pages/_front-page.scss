@@ -289,7 +289,7 @@
                 gap: 16px;
             }
 
-            @media (max-width: 413.98px) {
+            @media (max-width: 389.98px) {
                 grid-template-columns: repeat(1, 1fr);
             }
 
@@ -458,7 +458,7 @@
                 gap: 16px;
             }
 
-            @media (max-width: 413.98px) {
+            @media (max-width: 389.98px) {
                 grid-template-columns: repeat(1, 1fr);
             }
 
@@ -579,8 +579,12 @@
             overflow: hidden;
             position: relative;
 
-            @include media-breakpoint-down(md) {
+            @include media-breakpoint-down(lg) {
                 border-radius: 100px;
+            }
+
+            @include media-breakpoint-down(md) {
+                border-radius: 80px;
             }
 
             img {
@@ -588,6 +592,10 @@
                 height: 200px;
                 -o-object-fit: cover;
                 object-fit: cover;
+
+                @include media-breakpoint-down(md) {
+                    height: 20vh;
+                }
             }
         }
     }

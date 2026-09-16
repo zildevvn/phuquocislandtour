@@ -12,6 +12,7 @@
     background: #fff;
     height: auto !important;
     text-decoration: none;
+    padding-bottom: 48px;
 
     &:hover {
         .tour-item__thumb img {
@@ -38,6 +39,14 @@
     &-meta,
     &-action {
         margin-top: 16px;
+    }
+
+    &-action {
+        position: absolute;
+        width: 100%;
+        bottom: 16px;
+        left: 0;
+        padding: 0 16px;
     }
 
     &__time {
