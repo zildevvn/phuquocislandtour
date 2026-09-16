@@ -81,6 +81,27 @@
             "append": ""
         },
         {
+            "key": "field_6aaa4cfce9e4d",
+            "label": "Sub Heading",
+            "name": "sub_hd_ab_blog_tpl",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6a868355e3fc0",
             "label": "Description",
             "name": "desc_ab_blog_tpl",
@@ -100,32 +121,6 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
-        },
-        {
-            "key": "field_6a8683a4e3fc1",
-            "label": "Image",
-            "name": "img_ab_blog_tpl",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
         },
         {
             "key": "field_6a867e7d96601",
@@ -209,5 +204,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787200488
+    "modified": 1789545740
 }

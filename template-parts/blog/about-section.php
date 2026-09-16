@@ -1,5 +1,6 @@
 <?php
 $heading = get_field('hd_ab_blog_tpl');
+$sub_heading = get_field('sub_hd_ab_blog_tpl');
 $desc = get_field('desc_ab_blog_tpl');
 $image_ab = get_field('img_ab_blog_tpl');
 ?>
@@ -13,9 +14,18 @@ $image_ab = get_field('img_ab_blog_tpl');
         <div class="about-section-warp">
             <div class="about-section__header">
                 <div class="header-content">
-                    <h2 class="h4">
-                        <?= $heading ?>
-                    </h2>
+                    <?php if (!empty($sub_heading)): ?>
+                        <p class="sub-heading h6">
+                            <?= $sub_heading ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if (!empty($heading)): ?>
+                        <h2 class="h4">
+                            <?= $heading ?>
+                        </h2>
+                    <?php endif; ?>
+
                     <?= $desc ?>
                 </div>
             </div>

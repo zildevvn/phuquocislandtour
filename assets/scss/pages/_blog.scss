@@ -51,10 +51,15 @@ body.page-template-blog-template {
 
                 h4 {
                     margin-bottom: 20px;
+                    font-size: calc(1.5rem + 0.6vw);
 
                     @media (min-width: 1200px) {
-                        font-size: 1.5rem;
+                        font-size: 2rem;
                     }
+                }
+
+                .sub-heading {
+                    color: $color-primary;
                 }
             }
         }
