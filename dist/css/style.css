@@ -10159,6 +10159,132 @@ body.offcanvas-open {
   display: block;
 }
 
+.faqs-section {
+  padding: 90px 0;
+  overflow: hidden;
+}
+@media (max-width: 1023.98px) {
+  .faqs-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  .faqs-section {
+    padding: 40px 0;
+  }
+}
+.faqs-section__graphic {
+  position: absolute;
+  top: 40px;
+  right: -4%;
+  z-index: 0;
+  opacity: 0.5;
+  max-width: 300px;
+  pointer-events: none;
+}
+@media (max-width: 1023.98px) {
+  .faqs-section__graphic {
+    max-width: 150px;
+    top: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .faqs-section__graphic {
+    max-width: 100px;
+    top: 10px;
+    right: -5%;
+  }
+}
+.faqs-section__graphic img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.faqs-section > .container {
+  position: relative;
+  z-index: 2;
+}
+.faqs-section-inner {
+  gap: 48px;
+}
+@media (max-width: 1023.98px) {
+  .faqs-section-inner {
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+}
+.faqs-section-inner > div {
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .faqs-section-inner > div {
+    width: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  .faqs-section__left h2, .faqs-section__left .h2,
+  .faqs-section__left p {
+    text-align: left;
+  }
+}
+@media (min-width: 1024px) {
+  .faqs-section__left .vm-icon-heading {
+    justify-content: start !important;
+  }
+}
+.faqs-section__left img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.faqs-section__img {
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  margin-top: 20px;
+}
+@media (min-width: 1024px) {
+  .faqs-section__img {
+    margin-top: 24px;
+  }
+}
+.faqs-section__img p {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 20px rgba(255, 184, 0, 0.1), 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+  /* bg-white/60 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
+  position: absolute;
+  bottom: -2rem;
+  /* -bottom-8 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 91.666667%;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  color: #0C2C7A;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+.faqs-section__img p::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 1rem;
+  background: linear-gradient(to right, rgba(253, 230, 138, 0.5), transparent);
+  padding: 2px;
+  box-sizing: border-box;
+}
+
 .page-template-front-page .hero-section {
   background: #fff;
 }
@@ -11237,134 +11363,6 @@ body.offcanvas-open {
   top: inherit;
   right: inherit;
   bottom: inherit;
-}
-.page-template-front-page .faqs-section {
-  padding: 90px 0;
-  overflow: hidden;
-}
-@media (max-width: 1023.98px) {
-  .page-template-front-page .faqs-section {
-    padding: 60px 0;
-  }
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section {
-    padding: 40px 0;
-  }
-}
-.page-template-front-page .faqs-section__graphic {
-  position: absolute;
-  top: 40px;
-  right: -4%;
-  z-index: 0;
-  opacity: 0.5;
-  max-width: 300px;
-  pointer-events: none;
-}
-@media (max-width: 1023.98px) {
-  .page-template-front-page .faqs-section__graphic {
-    max-width: 150px;
-    top: 20px;
-  }
-}
-@media (max-width: 767.98px) {
-  .page-template-front-page .faqs-section__graphic {
-    max-width: 100px;
-    top: 10px;
-    right: -5%;
-  }
-}
-.page-template-front-page .faqs-section__graphic img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-.page-template-front-page .faqs-section > .container {
-  position: relative;
-  z-index: 2;
-}
-.page-template-front-page .faqs-section-inner {
-  gap: 48px;
-}
-@media (max-width: 1023.98px) {
-  .page-template-front-page .faqs-section-inner {
-    flex-wrap: wrap;
-    gap: 60px;
-  }
-}
-.page-template-front-page .faqs-section-inner > div {
-  width: 100%;
-}
-@media (min-width: 1024px) {
-  .page-template-front-page .faqs-section-inner > div {
-    width: 50%;
-  }
-}
-@media (min-width: 1024px) {
-  .page-template-front-page .faqs-section__left h2, .page-template-front-page .faqs-section__left .h2,
-  .page-template-front-page .faqs-section__left p {
-    text-align: left;
-  }
-}
-@media (min-width: 1024px) {
-  .page-template-front-page .faqs-section__left .vm-icon-heading {
-    justify-content: start !important;
-  }
-}
-.page-template-front-page .faqs-section__left img {
-  width: 100%;
-  height: auto;
-  border-radius: 30px;
-  object-fit: cover;
-}
-.page-template-front-page .faqs-section__img {
-  position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-  margin-top: 20px;
-}
-@media (min-width: 1024px) {
-  .page-template-front-page .faqs-section__img {
-    margin-top: 24px;
-  }
-}
-.page-template-front-page .faqs-section__img p {
-  background-color: rgba(255, 255, 255, 0.6);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 0 20px rgba(255, 184, 0, 0.1), 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.6);
-  /* bg-white/60 */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
-  position: absolute;
-  bottom: -2rem;
-  /* -bottom-8 */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 91.666667%;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  color: #0C2C7A;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-}
-.page-template-front-page .faqs-section__img p::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 1rem;
-  background: linear-gradient(to right, rgba(253, 230, 138, 0.5), transparent);
-  /* before:p-[2px] */
-  padding: 2px;
-  box-sizing: border-box;
-}
-.page-template-front-page .faqs-section__img p {
-  /* w-11/12 */
 }
 .page-template-front-page .posts-section {
   padding: 90px 0;

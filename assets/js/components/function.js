@@ -34,12 +34,11 @@ import { CountUp } from 'countup.js';
                 },
                 pagination: false,
                 navigation: false,
-                autoplay: false,
-                // autoplay: {
-                //     delay: 5000,
-                //     disableOnInteraction: false,
-                //     pauseOnMouseEnter: true,
-                // }
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }
             });
         });
     }
@@ -1622,7 +1621,7 @@ import { CountUp } from 'countup.js';
             for (let i = 0; i < sections.length; i++) {
                 const section = sections[i];
                 const sectionTop = section.target.offset().top - offset;
-                
+
                 if (scrollPos >= sectionTop) {
                     currentActive = section.link;
                 }
