@@ -98,7 +98,7 @@ add_action('comment_post', function ($comment_id, $comment_approved) {
 			add_comment_meta($comment_id, 'rating', $rating, true);
 		}
 	}
-	
+
 	$categories = ['services', 'driver', 'experiences'];
 	foreach ($categories as $cat) {
 		$field = 'vm_tour_rating_' . $cat;
@@ -117,13 +117,13 @@ add_action('comment_post', function ($comment_id, $comment_approved) {
 add_filter('preprocess_comment', function ($commentdata) {
 	$post_id = isset($commentdata['comment_post_ID']) ? intval($commentdata['comment_post_ID']) : 0;
 	if ($post_id && in_array(get_post_type($post_id), ['tours', 'cars'])) {
-		
+
 		// For tours, validate categories first and auto-calculate overall rating if missing
 		if (get_post_type($post_id) === 'tours') {
 			$categories = [
-				'services' => __('Services', 'hue-local-experience'),
-				'driver' => __('Driver', 'hue-local-experience'),
-				'experiences' => __('Experiences', 'hue-local-experience')
+				'services' => __('Services', 'vm'),
+				'driver' => __('Driver', 'vm'),
+				'experiences' => __('Experiences', 'vm')
 			];
 			$sum = 0;
 			foreach ($categories as $cat => $label) {

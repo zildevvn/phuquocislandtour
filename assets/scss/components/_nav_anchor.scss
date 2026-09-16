@@ -72,13 +72,13 @@
         letter-spacing: 0.032em;
 
         @include media-breakpoint-down(md) {
-            padding: 8px 4px;
+            padding: 6px 3px;
             font-size: 13px;
         }
 
         @media (max-width: 389.98px) {
             font-size: 12px;
-            padding: 8px 2px;
+            padding: 6px 2px;
         }
 
         &:hover {

@@ -11,10 +11,10 @@ if (post_password_required()) {
                 <?php
                 $comments_number = get_comments_number();
                 if ('1' === $comments_number) {
-                    printf(esc_html__('1 Comment', 'hue-local-experience'));
+                    printf(esc_html__('1 Comment', 'vm'));
                 } else {
                     printf(
-                        esc_html(_nx('%1$s Comment', '%1$s Comments', $comments_number, 'comments title', 'hue-local-experience')),
+                        esc_html(_nx('%1$s Comment', '%1$s Comments', $comments_number, 'comments title', 'vm')),
                         number_format_i18n($comments_number)
                     );
                 }
@@ -44,7 +44,7 @@ if (post_password_required()) {
     <?php endif; ?>
 
     <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')): ?>
-        <p class="no-comments"><?php esc_html_e('Comments are closed.', 'hue-local-experience'); ?></p>
+        <p class="no-comments"><?php esc_html_e('Comments are closed.', 'vm'); ?></p>
     <?php endif; ?>
 
     <?php

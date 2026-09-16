@@ -7322,14 +7322,14 @@ body.logged-in .anchor-nav {
 }
 @media (max-width: 767.98px) {
   .anchor-nav__link {
-    padding: 8px 4px;
+    padding: 6px 3px;
     font-size: 13px;
   }
 }
 @media (max-width: 389.98px) {
   .anchor-nav__link {
     font-size: 12px;
-    padding: 8px 2px;
+    padding: 6px 2px;
   }
 }
 .anchor-nav__link:hover {
@@ -15779,14 +15779,16 @@ body.single-tours .main-section #tour-overview,
 body.single-tours .main-section #tour-highlights,
 body.single-tours .main-section #tour-inclusions,
 body.single-tours .main-section #tour-prices,
-body.single-tours .main-section #tour-itinerary {
+body.single-tours .main-section #tour-itinerary,
+body.single-tours .main-section #tour-faqs {
   scroll-margin-top: 150px;
 }
 body.logged-in body.single-tours .main-section #tour-overview,
 body.logged-in body.single-tours .main-section #tour-highlights,
 body.logged-in body.single-tours .main-section #tour-inclusions,
 body.logged-in body.single-tours .main-section #tour-prices,
-body.logged-in body.single-tours .main-section #tour-itinerary {
+body.logged-in body.single-tours .main-section #tour-itinerary,
+body.logged-in body.single-tours .main-section #tour-faqs {
   scroll-margin-top: 184px;
 }
 

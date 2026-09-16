@@ -19,51 +19,50 @@ $routes_and_stop_over_car = get_field('routes_and_stop_over_car');
 
                 // Overview (always exists if there's content or title)
                 $nav_items['car-overview'] = [
-                    'label' => __('Overview', 'hue-local-experience'),
+                    'label' => __('Overview', 'vm'),
                     'show' => true
                 ];
 
                 // Highlights
                 $nav_items['car-highlights'] = [
-                    'label' => __('Highlights', 'hue-local-experience'),
+                    'label' => __('Highlights', 'vm'),
                     'show' => !empty($highlights)
                 ];
 
                 // Inclusions
                 $nav_items['car-inclusions'] = [
-                    'label' => __('Inclusions', 'hue-local-experience'),
+                    'label' => __('Inclusions', 'vm'),
                     'show' => (!empty($included_car) || !empty($excluded_car))
                 ];
 
                 // Prices
                 $nav_items['car-prices'] = [
-                    'label' => __('Prices', 'hue-local-experience'),
+                    'label' => __('Prices', 'vm'),
                     'show' => !empty($tour_car_price)
                 ];
 
                 // Itinerary
                 $nav_items['car-itinerary'] = [
-                    'label' => __('Itinerary', 'hue-local-experience'),
+                    'label' => __('Itinerary', 'vm'),
                     'show' => !empty($itinerary_car)
                 ];
 
                 // sightseeing_stop
                 $nav_items['sightseeing-stop'] = [
-                    'label' => __('Sightseeing Stop', 'hue-local-experience'),
+                    'label' => __('Sightseeing Stop', 'vm'),
                     'show' => !empty($itinerary_car)
                 ];
 
                 // Reviews
                 $nav_items['car-review'] = [
-                    'label' => __('Reviews', 'hue-local-experience'),
+                    'label' => __('Reviews', 'vm'),
                     'show' => (comments_open() || get_comments_number() > 0)
                 ];
 
                 ?>
 
                 <!-- Anchor Navigation Menu -->
-                <nav class="anchor-nav" id="vm-anchor-nav"
-                    aria-label="<?php esc_attr_e('car navigation', 'hue-local-experience'); ?>">
+                <nav class="anchor-nav" id="vm-anchor-nav" aria-label="<?php esc_attr_e('car navigation', 'vm'); ?>">
                     <div class="anchor-nav__inner">
                         <ul class="anchor-nav__list">
                             <?php foreach ($nav_items as $id => $item):

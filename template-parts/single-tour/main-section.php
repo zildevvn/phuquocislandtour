@@ -17,17 +17,17 @@ $price_tour = get_field('price_tour'); // For demo sticky
                 <?php
                 // Build array of menu items to display dynamically
                 $nav_items = [];
-                $nav_items['tour-overview'] = ['label' => __('Overview', 'hue-local-experience'), 'show' => true];
-                $nav_items['tour-highlights'] = ['label' => __('Highlights', 'hue-local-experience'), 'show' => !empty($highlights) || !empty($gallery_tour)];
-                $nav_items['tour-inclusions'] = ['label' => __('Inclusions', 'hue-local-experience'), 'show' => (!empty($included_tour) || !empty($excluded_tour))];
-                $nav_items['tour-prices'] = ['label' => __('Prices', 'hue-local-experience'), 'show' => (!empty($price_group) || !empty($price_private))];
-                $nav_items['tour-itinerary'] = ['label' => __('Itinerary', 'hue-local-experience'), 'show' => !empty($itinerary_tour)];
-                $nav_items['tour-review'] = ['label' => __('Reviews', 'hue-local-experience'), 'show' => (comments_open() || get_comments_number() > 0)];
+                $nav_items['tour-overview'] = ['label' => __('Overview', 'vm'), 'show' => true];
+                $nav_items['tour-highlights'] = ['label' => __('Highlights', 'vm'), 'show' => !empty($highlights) || !empty($gallery_tour)];
+                $nav_items['tour-inclusions'] = ['label' => __('Inclusions', 'vm'), 'show' => (!empty($included_tour) || !empty($excluded_tour))];
+                $nav_items['tour-prices'] = ['label' => __('Prices', 'vm'), 'show' => (!empty($price_group) || !empty($price_private))];
+                $nav_items['tour-itinerary'] = ['label' => __('Itinerary', 'vm'), 'show' => !empty($itinerary_tour)];
+                $nav_items['tour-review'] = ['label' => __('Reviews', 'vm'), 'show' => (comments_open() || get_comments_number() > 0)];
+                $nav_items['tour-faqs'] = ['label' => __('FAQs', 'vm'), 'show' => (comments_open() || get_comments_number() > 0)];
                 ?>
 
                 <!-- Anchor Navigation Menu -->
-                <nav class="anchor-nav" id="vm-anchor-nav"
-                    aria-label="<?php esc_attr_e('Tour navigation', 'hue-local-experience'); ?>">
+                <nav class="anchor-nav" id="vm-anchor-nav" aria-label="<?php esc_attr_e('Tour navigation', 'vm'); ?>">
                     <div class="anchor-nav__inner">
                         <ul class="anchor-nav__list">
                             <?php foreach ($nav_items as $id => $item):
@@ -139,6 +139,7 @@ $price_tour = get_field('price_tour'); // For demo sticky
                     <?php
                     get_template_part('template-parts/single-tour/itinerary-section');
                     get_template_part('template-parts/single-tour/review-section');
+                    get_template_part('template-parts/single-tour/faqs-section');
                     ?>
                 </div>
             </div>
