@@ -3,6 +3,7 @@ $heading = get_field('hd_form_customized');
 $desc = get_field('desc_contact');
 $form_contact = get_field('shortcode_form_customized');
 $image = get_field('image_form_customized');
+$trip_image = get_field('trip_image_customized');
 $address = get_field('address', 'option');
 $phone = get_field('phone', 'option');
 $email = get_field('email', 'option');
@@ -102,12 +103,15 @@ $open_time = get_field('open_time', 'option');
                         <?php endif; ?>
                     </div>
 
-                    <?php if (!empty($image)): ?>
+                    <?php if (!empty($image) || !empty($trip_image)): ?>
                         <div class="form-section__left-images">
-                            <img src="<?= $image ?>" alt="image for Customzied Tours">
+                            <?php if (!empty($image)): ?>
+                                <img src="<?= $image ?>" alt="image for Customzied Tours">
+                            <?php endif; ?>
 
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/trip-choice-2023.jpg"
-                                alt="image forrip-choice " />
+                            <?php if (!empty($trip_image)): ?>
+                                <img src="<?= $trip_image ?>" alt="image for trip choice " />
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
                 </div>
