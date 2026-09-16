@@ -231,52 +231,47 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.575rem + 3.9vw);
+  font-size: calc(1.525rem + 3.3vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.475rem + 2.7vw);
+  font-size: calc(1.425rem + 2.1vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.4rem + 1.8vw);
+  font-size: calc(1.35rem + 1.2vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
 }
 
 h4, .h4 {
-  font-size: calc(1.3rem + 0.6vw);
-}
-@media (min-width: 1200px) {
-  h4, .h4 {
-    font-size: 1.75rem;
-  }
-}
-
-h5, .h5 {
   font-size: calc(1.275rem + 0.3vw);
 }
 @media (min-width: 1200px) {
-  h5, .h5 {
+  h4, .h4 {
     font-size: 1.5rem;
   }
 }
 
-h6, .h6 {
+h5, .h5 {
   font-size: 1.25rem;
+}
+
+h6, .h6 {
+  font-size: 1.125rem;
 }
 
 p {
@@ -3108,27 +3103,27 @@ progress {
 }
 
 .fs-1 {
-  font-size: calc(1.575rem + 3.9vw) !important;
+  font-size: calc(1.525rem + 3.3vw) !important;
 }
 
 .fs-2 {
-  font-size: calc(1.475rem + 2.7vw) !important;
+  font-size: calc(1.425rem + 2.1vw) !important;
 }
 
 .fs-3 {
-  font-size: calc(1.4rem + 1.8vw) !important;
+  font-size: calc(1.35rem + 1.2vw) !important;
 }
 
 .fs-4 {
-  font-size: calc(1.3rem + 0.6vw) !important;
-}
-
-.fs-5 {
   font-size: calc(1.275rem + 0.3vw) !important;
 }
 
-.fs-6 {
+.fs-5 {
   font-size: 1.25rem !important;
+}
+
+.fs-6 {
+  font-size: 1.125rem !important;
 }
 
 .fst-italic {
@@ -6121,18 +6116,15 @@ progress {
 }
 @media (min-width: 1200px) {
   .fs-1 {
-    font-size: 4.5rem !important;
+    font-size: 4rem !important;
   }
   .fs-2 {
-    font-size: 3.5rem !important;
+    font-size: 3rem !important;
   }
   .fs-3 {
-    font-size: 2.75rem !important;
+    font-size: 2.25rem !important;
   }
   .fs-4 {
-    font-size: 1.75rem !important;
-  }
-  .fs-5 {
     font-size: 1.5rem !important;
   }
 }
@@ -6383,6 +6375,11 @@ a {
   text-align: center;
 }
 .vm-heading span {
+  color: #0C2C7A;
+}
+
+.vm-heading-intro {
+  text-align: center;
   color: #0C2C7A;
 }
 
@@ -19757,11 +19754,10 @@ body.page-template-customized-tours-template .form-section__left {
   }
 }
 body.page-template-customized-tours-template .form-section__left-images {
-  margin-top: 8px;
+  margin-bottom: 20px;
 }
 body.page-template-customized-tours-template .form-section__left-images img {
   object-fit: cover;
-  margin-top: 16px;
 }
 body.page-template-customized-tours-template .form-section__left-bg {
   position: absolute;
@@ -19794,6 +19790,7 @@ body.page-template-customized-tours-template .form-section__left .contact-cards 
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 16px;
 }
 body.page-template-customized-tours-template .form-section__left .contact-info {
   text-decoration: none;

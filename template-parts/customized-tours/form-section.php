@@ -1,5 +1,6 @@
 <?php
 $heading = get_field('hd_form_customized');
+$hd_intro = get_field('hd_intro_form_customized');
 $desc = get_field('desc_contact');
 $form_contact = get_field('shortcode_form_customized');
 $image = get_field('image_form_customized');
@@ -13,6 +14,12 @@ $open_time = get_field('open_time', 'option');
     <div class="container">
 
         <?php vm_icon_heading() ?>
+
+        <?php if (!empty($hd_intro)): ?>
+            <h3 class="vm-heading-intro h5">
+                <?= $hd_intro ?>
+            </h3>
+        <?php endif; ?>
 
         <?php if (!empty($heading)): ?>
             <h2 class="vm-heading">
@@ -28,12 +35,15 @@ $open_time = get_field('open_time', 'option');
 
         <div class="form-section-warp">
             <div class="form-section__left">
-
-                <div class="form-section__left-bg">
-
-                </div>
-
                 <div class="form-section__left-inner">
+                    <div class="form-section__left-images">
+                        <?php if (!empty($image)): ?>
+                            <img src="<?= $image ?>" alt="image for Customzied Tours">
+                        <?php endif; ?>
+
+
+                    </div>
+
                     <h3 class="h4">Let's Connect</h3>
 
                     <div class="contact-cards">
@@ -103,16 +113,13 @@ $open_time = get_field('open_time', 'option');
                         <?php endif; ?>
                     </div>
 
-                    <?php if (!empty($image) || !empty($trip_image)): ?>
-                        <div class="form-section__left-images">
-                            <?php if (!empty($image)): ?>
-                                <img src="<?= $image ?>" alt="image for Customzied Tours">
-                            <?php endif; ?>
+                    <?php if (!empty($trip_image)): ?>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g293926-d5569598-Reviews-VM_Travel-Hue_Thua_Thien_Hue_Province.html"
+                            target="_bank" aria-label="image for trip choice ">
+                            <img src="<?= $trip_image ?>" alt="image for trip choice " />
 
-                            <?php if (!empty($trip_image)): ?>
-                                <img src="<?= $trip_image ?>" alt="image for trip choice " />
-                            <?php endif; ?>
-                        </div>
+                            <p class="mb-0 mt-3 h5 text-center text-light"> Voir les avis sur TripAdvisor</p>
+                        </a>
                     <?php endif; ?>
                 </div>
             </div>

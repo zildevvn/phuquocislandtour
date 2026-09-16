@@ -165,12 +165,13 @@ body.page-template-customized-tours-template {
             }
 
             &-images {
-                margin-top: 8px;
+                // margin-top: 8px;
+                margin-bottom: 20px;
 
                 img {
                     // aspect-ratio: 3 / 4;
                     object-fit: cover;
-                    margin-top: 16px;
+                    // margin-top: 16px;
 
                     // @include media-breakpoint-down(md) {
                     //     aspect-ratio: 16 / 9;
@@ -212,6 +213,7 @@ body.page-template-customized-tours-template {
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
+                margin-bottom: 16px;
             }
 
             .contact-info {
