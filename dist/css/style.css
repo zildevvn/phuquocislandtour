@@ -15791,6 +15791,19 @@ body.logged-in body.single-tours .main-section #tour-itinerary,
 body.logged-in body.single-tours .main-section #tour-faqs {
   scroll-margin-top: 184px;
 }
+body.single-tours .faqs-list .faq-item__question h3, body.single-tours .faqs-list .faq-item__question .h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #19232B;
+  text-transform: none;
+  letter-spacing: 0.1px;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .faqs-list .faq-item__question h3, body.single-tours .faqs-list .faq-item__question .h3 {
+    font-size: 16px;
+  }
+}
 
 /* --- DEMO Sticky Booking Card --- */
 .vm-form-booking {

@@ -1596,6 +1596,19 @@ body.single-tours {
             }
         }
     }
+
+    .faqs-list .faq-item__question h3 {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: $color-text;
+        text-transform: none;
+        letter-spacing: 0.1px;
+
+        @include media-breakpoint-down(md) {
+            font-size: 16px;
+        }
+    }
 }
 
 /* --- DEMO Sticky Booking Card --- */
