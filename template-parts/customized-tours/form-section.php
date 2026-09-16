@@ -118,7 +118,7 @@ $open_time = get_field('open_time', 'option');
                             target="_bank" aria-label="image for trip choice ">
                             <img src="<?= $trip_image ?>" alt="image for trip choice " />
 
-                            <p class="mb-0 mt-3 h5 text-center text-light"> Voir les avis sur TripAdvisor</p>
+                            <p class="mb-0 mt-3 h5 text-center text-light"> See TripAdvisor reviews </p>
                         </a>
                     <?php endif; ?>
                 </div>
