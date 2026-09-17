@@ -6,6 +6,7 @@ get_header();
 ?>
 <main id="primary" class="site-main">
     <?php get_template_part('template-parts/about/hero-section'); ?>
+    <?php get_template_part('template-parts/about/intro-section'); ?>
     <?php get_template_part('template-parts/about/about-section'); ?>
     <?php get_template_part('template-parts/about/media-section'); ?>
     <?php get_template_part('template-parts/about/steps-booking-section'); ?>

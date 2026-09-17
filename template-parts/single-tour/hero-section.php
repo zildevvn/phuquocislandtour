@@ -89,7 +89,7 @@ $tour_type_name = ($tour_types && !is_wp_error($tour_types)) ? $tour_types[0]->n
 
             <?php if (function_exists('kk_star_ratings')): ?>
                 <div class="hero-section__ratings">
-                        <?php echo kk_star_ratings(); ?>
+                    <?php echo kk_star_ratings(); ?>
                 </div>
             <?php endif; ?>
         </div>

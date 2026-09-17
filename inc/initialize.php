@@ -24,8 +24,8 @@ add_action('after_setup_theme', function () {
 	add_editor_style('build/editor.css');
 });
 
-add_filter('use_block_editor_for_post', '__return_false', 10);
-add_filter('use_block_editor_for_post_type', '__return_false', 10);
+// add_filter('use_block_editor_for_post', '__return_false', 10);
+// add_filter('use_block_editor_for_post_type', '__return_false', 10);
 
 function vm_add_slug_to_body_class($classes)
 {
