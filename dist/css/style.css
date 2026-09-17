@@ -13883,7 +13883,8 @@ body.single-post .main-section img {
 body.single-post .main-section figure {
   max-width: 100%;
 }
-body.single-post .main-section .wp-caption-text {
+body.single-post .main-section .wp-caption-text,
+body.single-post .main-section figcaption {
   font-size: 16px;
   font-weight: 500;
   display: flex;
