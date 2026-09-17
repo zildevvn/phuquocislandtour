@@ -13893,6 +13893,7 @@ body.single-post .main-section figcaption {
   text-align: center;
   margin-top: 12px;
   font-style: italic;
+  margin-bottom: 0;
 }
 body.single-post .main-section ul {
   list-style: none;
