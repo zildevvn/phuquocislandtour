@@ -14191,9 +14191,6 @@ body.single-post .main-section .main-section-left .post-comments-section .commen
   background: #fff;
   border: 1px solid #E5E7EB;
 }
-body.single-post .main-section .main-section-left .post-comments-section .comment-respond {
-  margin-top: 48px;
-}
 body.single-post .main-section .main-section-left .post-comments-section .comment-respond .vm-comment-form .form-control {
   width: 100%;
   padding: 14px 20px;
