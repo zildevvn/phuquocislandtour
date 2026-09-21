@@ -543,6 +543,46 @@ a>strong {
     }
 }
 
+.rank-math-block {
+    .rank-math-list {
+        &-item {
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+
+        .rank-math-question {
+            font-size: calc(1.275rem + 0.3vw);
+            font-weight: 700;
+            line-height: 1.3;
+            font-family: $font-second;
+            color: $color-text;
+            margin: 0 0 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 0.5px solid #E5E7EB;
+
+            @media (min-width: 1200px) {
+                font-size: 1.5rem;
+            }
+        }
+
+        .rank-math-answer {
+
+            p,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
 .is-loading .vm-loading-overlay {
     opacity: 1;
     visibility: visible;

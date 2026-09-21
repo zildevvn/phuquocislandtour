@@ -675,17 +675,58 @@ body.single-post {
             background: #F9FAFB;
             border: 1px solid #E5E7EB;
             border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
+            padding: 0 24px;
+            margin-bottom: 24px;
             display: none;
+
+            @include media-breakpoint-down(md) {
+                padding: 0 20px;
+                margin-bottom: 20px;
+            }
 
             .toc-header {
                 font-size: 18px;
                 font-weight: 700;
-                color: #111827;
-                margin-bottom: 16px;
-                padding-bottom: 12px;
-                border-bottom: 1px solid #E5E7EB;
+                color: $color-primary;
+                border-bottom: none;
+                padding: 24px 0;
+                cursor: pointer;
+                user-select: none;
+
+                @include media-breakpoint-down(md) {
+                    padding: 20px 0;
+                    font-size: 17px;
+                }
+
+                .toc-toggle-btn {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    color: $color-primary;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    outline: none;
+
+                    &:hover {
+                        color: darken($color-primary, 10%);
+                    }
+
+                    .toc-toggle-icon {
+                        transition: transform 0.3s ease;
+                    }
+                }
+            }
+
+            .toc-body {
+                padding-top: 16px;
+                border-top: 1px solid #E5E7EB;
+                padding-bottom: 24px;
+
+                @include media-breakpoint-down(md) {
+                    padding-bottom: 20px;
+                }
             }
 
             .toc-list,
@@ -723,9 +764,6 @@ body.single-post {
                 a {
                     color: $color-text;
                     text-decoration: none;
-                    font-size: 15px;
-                    line-height: 1.5;
-                    transition: all 0.2s ease;
                     display: inline-block;
                     font-weight: 500;
 

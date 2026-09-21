@@ -424,3 +424,9 @@ function header_booking_top($original_price, $discount_price)
         </div>
     </div>
 <?php }
+
+function vm_table_of_content_shortcode()
+{
+    return '<div id="vm-table-of-content"></div>';
+}
+add_shortcode('vm_table_of_content', 'vm_table_of_content_shortcode');

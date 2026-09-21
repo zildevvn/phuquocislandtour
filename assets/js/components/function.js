@@ -1430,6 +1430,164 @@ import { CountUp } from 'countup.js';
             }
         });
     };
+    const vmTableOfContent = () => {
+        const tocContainer = document.getElementById('vm-table-of-content');
+        if (!tocContainer) return;
+
+        // Query inside the post content to avoid sidebars
+        const contentContainer = tocContainer.closest('.main-section-left__content') ||
+            tocContainer.closest('.entry-content') ||
+            document.querySelector('.main-section-left__content') ||
+            document.querySelector('.entry-content') ||
+            document.body;
+
+        if (!contentContainer) {
+            tocContainer.style.display = 'none';
+            return;
+        }
+
+        const headings = contentContainer.querySelectorAll('h2, h3, h4');
+        if (headings.length === 0) {
+            tocContainer.style.display = 'none';
+            return;
+        }
+
+        // Build HTML
+        let tocHTML = `
+            <div class="toc-header d-flex align-items-center justify-content-between">
+                <span>Contents</span>
+                <button class="toc-toggle-btn d-flex align-items-center gap-2" aria-expanded="false" aria-label="Expand Table of Contents">
+                    <svg class="toc-toggle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <div class="toc-body" style="display: none;">
+                <ul class="toc-list">
+        `;
+        let currentLevel = 1; // 1 = h2, 2 = h3, 3 = h4
+
+        headings.forEach((heading, index) => {
+            // Generate ID if missing
+            if (!heading.id) {
+                const text = heading.innerText || heading.textContent;
+                heading.id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + index;
+            }
+
+            let level;
+            if (heading.tagName.toLowerCase() === 'h2') level = 1;
+            else if (heading.tagName.toLowerCase() === 'h3') level = 2;
+            else if (heading.tagName.toLowerCase() === 'h4') level = 3;
+            else return;
+
+            const headingId = heading.id;
+            const headingText = heading.innerText || heading.textContent;
+
+            if (index > 0) {
+                if (level === currentLevel) {
+                    tocHTML += '</li>';
+                } else if (level > currentLevel) {
+                    while (currentLevel < level) {
+                        tocHTML += '<ul class="toc-nested-list">';
+                        currentLevel++;
+                    }
+                } else if (level < currentLevel) {
+                    while (currentLevel > level) {
+                        tocHTML += '</li></ul>';
+                        currentLevel--;
+                    }
+                    tocHTML += '</li>';
+                }
+            }
+
+            tocHTML += `<li class="toc-item toc-h${level + 1}"><a href="#${headingId}">${headingText}</a>`;
+            currentLevel = level;
+        });
+
+        while (currentLevel > 1) {
+            tocHTML += '</li></ul>';
+            currentLevel--;
+        }
+        if (headings.length > 0) {
+            tocHTML += '</li>';
+        }
+        tocHTML += '</ul></div>';
+
+        tocContainer.innerHTML = tocHTML;
+        tocContainer.style.display = 'block';
+
+        // Toggle logic
+        const tocHeader = tocContainer.querySelector('.toc-header');
+        const toggleBtn = tocContainer.querySelector('.toc-toggle-btn');
+        const tocBody = tocContainer.querySelector('.toc-body');
+        const toggleIcon = tocContainer.querySelector('.toc-toggle-icon');
+
+        if (tocHeader && toggleBtn && tocBody) {
+            tocHeader.addEventListener('click', function () {
+                const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    // Collapse
+                    $(tocBody).slideUp(300);
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                    toggleIcon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Expand
+                    $(tocBody).slideDown(300);
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    toggleIcon.style.transform = 'rotate(180deg)';
+                }
+            });
+        }
+
+        // Smooth scroll
+        const tocLinks = tocContainer.querySelectorAll('a');
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    // Accounting for fixed header
+                    const offset = 100;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetEl.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for highlighting
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    const activeLink = tocContainer.querySelector(`a[href="#${id}"]`);
+
+                    if (activeLink) {
+                        // Remove active class from all
+                        tocLinks.forEach(link => link.classList.remove('is-active'));
+                        // Add active class
+                        activeLink.classList.add('is-active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        headings.forEach(heading => observer.observe(heading));
+    };
+
     const vmInitStarRating = () => {
         const $pickers = $('.star-picker');
         if (!$pickers.length) return;
@@ -1696,5 +1854,6 @@ import { CountUp } from 'countup.js';
         vmInitAjaxPagination()
         vmInitSearchModal()
         vmInitStarRating()
+        vmTableOfContent()
     });
 })(jQuery);
