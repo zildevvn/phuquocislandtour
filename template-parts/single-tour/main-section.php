@@ -164,7 +164,12 @@ $faqs_tour = get_field('faqs_list_tour');
                         <div class="rating">
                             <?php if (function_exists('kk_star_ratings')): ?>
                                 <?php if (function_exists('kk_star_ratings')): ?>
-                                    <span class="text"><?php echo kk_star_ratings(); ?></span>
+                                    <span class="text">
+                                        <?php echo kk_star_ratings([
+                                            'count' => 997,
+                                            'rating' => 4.9,
+                                        ]); ?>
+                                    </span>
                                 <?php endif; ?>
                             <?php else: ?>
                                 <span class="stars">★★★★★</span>
