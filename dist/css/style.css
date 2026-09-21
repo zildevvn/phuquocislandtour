@@ -13920,7 +13920,7 @@ body.single-post .main-section figure {
 }
 body.single-post .main-section .wp-caption-text,
 body.single-post .main-section figcaption {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   display: flex;
   align-items: center;
