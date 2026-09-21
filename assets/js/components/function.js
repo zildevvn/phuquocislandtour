@@ -1465,7 +1465,7 @@ import { CountUp } from 'countup.js';
             <div class="toc-body" style="display: none;">
                 <ul class="toc-list">
         `;
-        let currentLevel = 1; // 1 = h2, 2 = h3, 3 = h4
+        let currentLevel = 1; // 1 = h2, 2 = h3
 
         headings.forEach((heading, index) => {
             // Generate ID if missing
@@ -1477,7 +1477,6 @@ import { CountUp } from 'countup.js';
             let level;
             if (heading.tagName.toLowerCase() === 'h2') level = 1;
             else if (heading.tagName.toLowerCase() === 'h3') level = 2;
-            else if (heading.tagName.toLowerCase() === 'h4') level = 3;
             else return;
 
             const headingId = heading.id;
