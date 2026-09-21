@@ -13823,6 +13823,9 @@ body.page-template-blog-template .posts-list-section #vm-posts-empty .empty-stat
   transform: translateX(-4px);
 }
 
+body.single-post .hero-section-shared .vm-heading {
+  max-width: 900px;
+}
 body.single-post .main-section {
   padding-top: 60px;
   padding-bottom: 60px;
