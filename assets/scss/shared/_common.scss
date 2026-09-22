@@ -27,7 +27,8 @@ body {
         max-width: fit-content;
     }
 
-    .wp-caption-text {
+    .wp-caption-text,
+    .wp-element-caption {
         font-size: 16px;
         font-weight: 500;
         display: flex;

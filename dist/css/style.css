@@ -6270,7 +6270,8 @@ html {
 body figure {
   max-width: fit-content;
 }
-body .wp-caption-text {
+body .wp-caption-text,
+body .wp-element-caption {
   font-size: 16px;
   font-weight: 500;
   display: flex;
@@ -13923,18 +13924,6 @@ body.single-post .main-section img {
 body.single-post .main-section figure {
   max-width: 100%;
 }
-body.single-post .main-section .wp-caption-text,
-body.single-post .main-section figcaption {
-  font-size: 15px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 12px;
-  font-style: italic;
-  margin-bottom: 0;
-}
 body.single-post .main-section ul {
   list-style: none;
   padding-left: 0;
@@ -16839,16 +16828,6 @@ body.single-cars .main-section img {
 }
 body.single-cars .main-section figure {
   max-width: 100%;
-}
-body.single-cars .main-section .wp-caption-text {
-  font-size: 16px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 12px;
-  font-style: italic;
 }
 body.single-cars .main-section ul {
   list-style: none;
