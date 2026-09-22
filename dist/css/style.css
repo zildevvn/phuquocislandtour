@@ -9793,9 +9793,7 @@ body.offcanvas-open {
 .faqs-list {
   border-radius: 30px;
   padding: 30px;
-  background: #F2F3F5;
-  box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
-  border: 5px solid #0C2C7A;
+  background: rgba(242, 243, 245, 0.3098039216);
   display: flex;
   flex-direction: column;
   gap: 16px;

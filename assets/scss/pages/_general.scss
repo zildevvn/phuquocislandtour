@@ -1018,9 +1018,9 @@
 .faqs-list {
     border-radius: $border-radius;
     padding: 30px;
-    background: $color-bg;
-    box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
-    border: 5px solid $color-primary;
+    background: #f2f3f54f;
+    // box-shadow: 0 8px 32px rgba(255, 184, 0, 0.15);
+    // border: 5px solid $color-primary;
     display: flex;
     flex-direction: column;
     gap: 16px;
