@@ -88,11 +88,25 @@ $tour_type_name = ($tour_types && !is_wp_error($tour_types)) ? $tour_types[0]->n
             <?php endif; ?>
 
             <?php if (function_exists('kk_star_ratings')): ?>
+                <?php
+                $post_id = get_the_ID();
+
+                // Random cố định theo từng tour
+                $count = 500 + (abs(crc32((string) $post_id)) % 501);
+
+                $rating_values = [4.8, 4.9, 5.0];
+
+                $rating_index = abs(crc32('rating-' . $post_id)) % count($rating_values);
+                $rating = $rating_values[$rating_index];
+                ?>
+
                 <div class="hero-section__ratings">
-                    <?php echo kk_star_ratings([
-                        'count' => 997,
-                        'rating' => 4.9,
-                    ]); ?>
+                    <?php
+                    echo kk_star_ratings([
+                        'count' => $count,
+                        'rating' => $rating,
+                    ]);
+                    ?>
                 </div>
             <?php endif; ?>
         </div>
