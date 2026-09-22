@@ -8792,11 +8792,11 @@ body.offcanvas-open {
 
 .back-to-top {
   position: fixed;
-  bottom: 30px;
+  bottom: 100px;
   right: 30px;
   width: 44px;
   height: 44px;
-  background: #00656D;
+  background: #0C2C7A;
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -8811,8 +8811,8 @@ body.offcanvas-open {
 }
 @media (max-width: 767.98px) {
   .back-to-top {
-    bottom: 20px;
-    right: 20px;
+    bottom: 80px;
+    right: 5px;
     width: 40px;
     height: 40px;
   }
