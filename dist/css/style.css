@@ -6666,7 +6666,8 @@ strong {
   color: #19232B;
 }
 
-a > strong {
+a > strong,
+a > b {
   color: inherit;
 }
 

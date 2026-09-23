@@ -463,7 +463,8 @@ strong {
     color: $color-text;
 }
 
-a>strong {
+a>strong,
+a>b {
     color: inherit;
 }
 
