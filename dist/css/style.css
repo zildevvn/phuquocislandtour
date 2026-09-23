@@ -11555,7 +11555,7 @@ body.offcanvas-open {
   }
 }
 .page-template-front-page .posts-section .post-card--compact .post-card__title {
-  padding-right: 65px;
+  padding-right: 70px;
 }
 @media (min-width: 1024px) {
   .page-template-front-page .posts-section .post-card--compact {
