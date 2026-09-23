@@ -9424,7 +9424,7 @@ body.offcanvas-open {
     font-size: 13px;
   }
 }
-.map-section__map .map-images__list .map-item#map-dinh-cau {
+.map-section__map .map-images__list .map-item#map-dinh-cau-temple-phu-quoc {
   left: 44%;
   top: 44%;
   translate: 0 -50%;
@@ -9434,16 +9434,16 @@ body.offcanvas-open {
   top: 46%;
   translate: 0 -50%;
 }
-.map-section__map .map-images__list .map-item#map-gam-ghi-island {
+.map-section__map .map-images__list .map-item#map-gam-ghi-island-phu-quoc {
   bottom: 2%;
   left: 56%;
   translate: -50% 0;
 }
-.map-section__map .map-images__list .map-item#map-grand-world {
+.map-section__map .map-images__list .map-item#map-grand-world-phu-quoc {
   left: 30%;
   top: 22%;
 }
-.map-section__map .map-images__list .map-item#map-ho-quoc-temple {
+.map-section__map .map-images__list .map-item#map-ho-quoc-pagoda-phu-quoc {
   top: 62%;
   translate: 0 -50%;
   right: 40%;
@@ -9452,7 +9452,7 @@ body.offcanvas-open {
   right: 43%;
   bottom: 22%;
 }
-.map-section__map .map-images__list .map-item#map-kiss-bridge {
+.map-section__map .map-images__list .map-item#map-phu-quoc-kiss-bridge {
   right: 50%;
   bottom: 24%;
 }
@@ -9476,7 +9476,7 @@ body.offcanvas-open {
   left: 44%;
   top: 14%;
 }
-.map-section__map .map-images__list .map-item#map-sunset-town {
+.map-section__map .map-images__list .map-item#map-phu-quoc-sunset-town {
   right: 41%;
   bottom: 21%;
 }
