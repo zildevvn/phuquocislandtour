@@ -65,7 +65,8 @@ if (!empty($whatsapp_number)) {
             <div class="hero-section-video">
                 <div class="gallery-item">
                     <div class="gallery-item__media">
-                        <video class="gallery-item__video" autoplay muted loop playsinline preload="auto">
+                        <video class="gallery-item__video lazy-video" autoplay muted loop playsinline preload="none"
+                            poster="<?= get_template_directory_uri(); ?>/assets/images/img-poster.webp">
                             <source src="<?= $video ?>" type="video/mp4">
                             Trình duyệt của bạn không hỗ trợ phát video.
                         </video>

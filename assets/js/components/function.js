@@ -1826,6 +1826,113 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmLazyLoadVideos = () => {
+        const initLazyVideos = () => {
+            const lazyVideos = document.querySelectorAll('video.lazy-video, video[data-src], video source[data-src]');
+            lazyVideos.forEach(element => {
+                const video = element.tagName.toLowerCase() === 'source' ? element.closest('video') : element;
+
+                if (video && !video.dataset.lazyLoaded && !video.dataset.isObserving) {
+                    if ('IntersectionObserver' in window) {
+                        video.dataset.isObserving = 'true';
+                        videoObserver.observe(video);
+                    } else {
+                        loadVideo(video);
+                    }
+                }
+            });
+        };
+
+        const loadVideo = (video) => {
+            if (video.dataset.lazyLoaded) return;
+            video.dataset.lazyLoaded = 'true';
+
+            let needsLoad = false;
+
+            if (video.hasAttribute('data-src')) {
+                video.src = video.getAttribute('data-src');
+                video.removeAttribute('data-src');
+                needsLoad = true;
+            }
+
+            const sources = video.querySelectorAll('source');
+            sources.forEach(source => {
+                if (source.hasAttribute('data-src')) {
+                    source.src = source.getAttribute('data-src');
+                    source.removeAttribute('data-src');
+                    needsLoad = true;
+                }
+            });
+
+            if (needsLoad) {
+                video.load();
+                // Play if autoplay attribute is present, sometimes required by browsers when src is set dynamically
+                if (video.hasAttribute('autoplay')) {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                            // Autoplay was prevented by browser, safe to ignore
+                        });
+                    }
+                }
+            }
+        };
+
+        let videoObserver;
+        if ('IntersectionObserver' in window) {
+            videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        loadVideo(video);
+                        observer.unobserve(video);
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px',
+                threshold: 0.01
+            });
+        }
+
+        initLazyVideos();
+
+        if (typeof MutationObserver !== 'undefined') {
+            const mutationObserver = new MutationObserver((mutations) => {
+                let hasNewNodes = false;
+                for (let i = 0; i < mutations.length; i++) {
+                    const mutation = mutations[i];
+                    if (mutation.addedNodes.length > 0) {
+                        for (let j = 0; j < mutation.addedNodes.length; j++) {
+                            const node = mutation.addedNodes[j];
+                            if (node.nodeType === 1) {
+                                if (node.tagName && node.tagName.toLowerCase() === 'video' && (node.classList.contains('lazy-video') || node.hasAttribute('data-src') || node.querySelector('source[data-src]'))) {
+                                    hasNewNodes = true;
+                                    break;
+                                } else if (node.querySelectorAll) {
+                                    const lazyVideos = node.querySelectorAll('video.lazy-video, video[data-src], video source[data-src]');
+                                    if (lazyVideos.length > 0) {
+                                        hasNewNodes = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (hasNewNodes) break;
+                }
+
+                if (hasNewNodes) {
+                    initLazyVideos();
+                }
+            });
+
+            mutationObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+    };
+
     $(document).ready(function () {
         vmHeroSliders()
         vmCounters()
@@ -1854,5 +1961,6 @@ import { CountUp } from 'countup.js';
         vmInitSearchModal()
         vmInitStarRating()
         vmTableOfContent()
+        // vmLazyLoadVideos()
     });
 })(jQuery);
