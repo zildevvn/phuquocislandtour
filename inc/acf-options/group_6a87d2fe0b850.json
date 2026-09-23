@@ -69,7 +69,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -85,21 +85,21 @@
             "label": "Sub Heading",
             "name": "sub_hd_ab_ticket_tpl",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
             "allow_in_bindings": 0,
-            "rows": 5,
-            "placeholder": "",
-            "new_lines": ""
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_6a87d2fe0c90c",
@@ -558,5 +558,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787298590
+    "modified": 1790159689
 }
