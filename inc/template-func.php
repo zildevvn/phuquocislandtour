@@ -281,6 +281,14 @@ function vm_hero_section_shared($title = '', $image = '', $desc = '')
                         <?= $desc ?>
                     </div>
                 <?php endif; ?>
+
+                <?php if (is_singular('post')): ?>
+                    <div class="hero-section-shared__ratings">
+                        <?php if (function_exists('kk_star_ratings')): ?>
+                            <?= kk_star_ratings(); ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

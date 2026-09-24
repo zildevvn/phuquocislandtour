@@ -8940,6 +8940,14 @@ body.offcanvas-open {
   margin-bottom: 0;
   max-width: 800px;
 }
+.hero-section-shared__ratings {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -9999;
+  opacity: 0;
+  visibility: hidden;
+}
 .hero-section-shared .vm-section__bg::before {
   content: " ";
   display: inline-block;

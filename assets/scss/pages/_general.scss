@@ -124,6 +124,14 @@
         max-width: 800px;
     }
 
+    &__ratings {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -9999;
+        opacity: 0;
+        visibility: hidden;
+    }
 
     .vm-section__bg {
         &::before {
