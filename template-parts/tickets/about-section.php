@@ -14,9 +14,9 @@ $gallerys = get_field('gallery_ticket_tpl');
         <?php endif; ?>
 
         <?php if (!empty($sub_hd)): ?>
-            <p class="vm-sub-heading">
+            <div class="vm-sub-heading">
                 <?= $sub_hd ?>
-            </p>
+            </div>
         <?php endif; ?>
 
         <div class="about-section-media">
