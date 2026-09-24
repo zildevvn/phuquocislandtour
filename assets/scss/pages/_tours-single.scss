@@ -945,10 +945,17 @@ body.single-tours {
         padding: 60px 0;
         background: #f9f9f9;
 
-        .h5 {
+        @include media-breakpoint-down(md) {
+            padding: 40px 0;
+        }
+
+        .h4 {
             margin-bottom: 24px;
             color: $color-primary;
-            font-weight: 700;
+
+            @include media-breakpoint-down(md) {
+                margin-bottom: 20px;
+            }
         }
 
         .vm-tour-options__grid {
@@ -961,6 +968,10 @@ body.single-tours {
             }
 
             @include media-breakpoint-down(md) {
+                gap: 20px 10px;
+            }
+
+            @media (max-width: 399.98px) {
                 grid-template-columns: 1fr;
             }
         }
@@ -978,9 +989,19 @@ body.single-tours {
             cursor: pointer;
             height: 100%;
 
+            @include media-breakpoint-down(md) {
+                padding: 20px 10px;
+                border-width: 1px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
             &:hover {
                 border-color: #d1d5db;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+                @include media-breakpoint-down(md) {
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+                }
             }
 
             &.is-selected {
@@ -1040,8 +1061,10 @@ body.single-tours {
 
                 h3 {
                     margin: 0;
-                    color: $color-text;
-                    padding-right: 12px;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 1.1rem;
+                    }
                 }
 
                 .option-item__radio {
@@ -1123,11 +1146,6 @@ body.single-tours {
                 border-top: 1px solid #eaeaea;
                 margin-bottom: 20px;
 
-                // .option-item__price-total {
-                //     /* Accent color */
-                //     margin-bottom: 6px;
-                // }
-
                 .option-item__price-calc {
                     display: flex;
                     justify-content: space-between;
@@ -1152,10 +1170,15 @@ body.single-tours {
                     border-radius: 8px;
                     font-weight: 600;
                     font-size: 16px;
-                    transition: all 0.3s ease;
+                    transition: $transition-base;
                     background: transparent;
                     color: $color-primary;
                     border: 2px solid $color-primary;
+
+                    @include media-breakpoint-down(md) {
+                        padding: 10px;
+                        font-size: 14px;
+                    }
 
                     &:hover {
                         background: rgba(12, 44, 122, 0.05);

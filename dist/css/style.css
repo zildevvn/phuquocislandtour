@@ -15370,10 +15370,19 @@ body.single-tours .vm-tour-options {
   padding: 60px 0;
   background: #f9f9f9;
 }
-body.single-tours .vm-tour-options .h5 {
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options {
+    padding: 40px 0;
+  }
+}
+body.single-tours .vm-tour-options .h4 {
   margin-bottom: 24px;
   color: #0C2C7A;
-  font-weight: 700;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .h4 {
+    margin-bottom: 20px;
+  }
 }
 body.single-tours .vm-tour-options .vm-tour-options__grid {
   display: grid;
@@ -15386,6 +15395,11 @@ body.single-tours .vm-tour-options .vm-tour-options__grid {
   }
 }
 @media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .vm-tour-options__grid {
+    gap: 20px 10px;
+  }
+}
+@media (max-width: 399.98px) {
   body.single-tours .vm-tour-options .vm-tour-options__grid {
     grid-template-columns: 1fr;
   }
@@ -15402,9 +15416,21 @@ body.single-tours .vm-tour-options .option-item {
   cursor: pointer;
   height: 100%;
 }
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .option-item {
+    padding: 20px 10px;
+    border-width: 1px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+}
 body.single-tours .vm-tour-options .option-item:hover {
   border-color: #d1d5db;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .option-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  }
 }
 body.single-tours .vm-tour-options .option-item.is-selected {
   border-color: #0C2C7A;
@@ -15457,8 +15483,11 @@ body.single-tours .vm-tour-options .option-item__header {
 }
 body.single-tours .vm-tour-options .option-item__header h3, body.single-tours .vm-tour-options .option-item__header .h3 {
   margin: 0;
-  color: #19232B;
-  padding-right: 12px;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .option-item__header h3, body.single-tours .vm-tour-options .option-item__header .h3 {
+    font-size: 1.1rem;
+  }
 }
 body.single-tours .vm-tour-options .option-item__header .option-item__radio {
   flex-shrink: 0;
@@ -15562,6 +15591,12 @@ body.single-tours .vm-tour-options .option-item .option-item__cta .btn-select {
   background: transparent;
   color: #0C2C7A;
   border: 2px solid #0C2C7A;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .vm-tour-options .option-item .option-item__cta .btn-select {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 body.single-tours .vm-tour-options .option-item .option-item__cta .btn-select:hover {
   background: rgba(12, 44, 122, 0.05);
