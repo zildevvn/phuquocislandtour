@@ -8793,7 +8793,7 @@ body.offcanvas-open {
 
 .back-to-top {
   position: fixed;
-  bottom: 100px;
+  bottom: 110px;
   right: 30px;
   width: 44px;
   height: 44px;
@@ -8812,7 +8812,7 @@ body.offcanvas-open {
 }
 @media (max-width: 767.98px) {
   .back-to-top {
-    bottom: 80px;
+    bottom: 90px;
     right: 5px;
     width: 40px;
     height: 40px;

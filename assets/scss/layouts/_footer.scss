@@ -217,7 +217,7 @@
 
 .back-to-top {
     position: fixed;
-    bottom: 100px;
+    bottom: 110px;
     right: 30px;
     width: 44px;
     height: 44px;
@@ -235,7 +235,7 @@
     text-decoration: none;
 
     @include media-breakpoint-down(md) {
-        bottom: 80px;
+        bottom: 90px;
         right: 5px;
         width: 40px;
         height: 40px;
