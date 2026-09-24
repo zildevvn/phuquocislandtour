@@ -15719,6 +15719,7 @@ body.single-tours .hero-section__features .feature-badge svg {
 body.single-tours .main-section {
   padding: 60px 0;
   background-color: #fff;
+  z-index: 99;
 }
 @media (max-width: 767.98px) {
   body.single-tours .main-section {
@@ -15732,6 +15733,11 @@ body.single-tours .main-section-wrap {
 @media (max-width: 1023.98px) {
   body.single-tours .main-section-wrap {
     flex-direction: column;
+  }
+}
+@media (max-width: 767.98px) {
+  body.single-tours .main-section-wrap {
+    gap: 32px;
   }
 }
 body.single-tours .main-section-content {
@@ -15767,6 +15773,46 @@ body.single-tours .main-section-content-wrapper > div:not(:first-child) {
   margin-top: 30px;
   padding-top: 32px;
   border-top: 1px solid #eaeaea;
+}
+body.single-tours .main-section__sidebar-mobile {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1490196078);
+  padding: 12px;
+  z-index: 99999;
+}
+@media (min-width: 1024px) {
+  body.single-tours .main-section__sidebar-mobile {
+    display: none;
+    z-index: -99999;
+  }
+}
+body.single-tours .main-section__sidebar-mobile-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+body.single-tours .main-section__sidebar-mobile .price {
+  min-width: fit-content;
+}
+body.single-tours .main-section__sidebar-mobile .price .label {
+  font-weight: 600;
+  color: #19232B;
+}
+body.single-tours .main-section__sidebar-mobile .price .value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0C2C7A;
+}
+body.single-tours .main-section__sidebar-mobile .price .unit {
+  font-size: 14px;
+  color: #666;
 }
 body.single-tours .main-section__sidebar {
   width: 360px;

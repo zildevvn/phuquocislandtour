@@ -1323,6 +1323,7 @@ body.single-tours {
     .main-section {
         padding: 60px 0;
         background-color: #fff;
+        z-index: 99;
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
@@ -1332,9 +1333,12 @@ body.single-tours {
             display: flex;
             gap: 40px;
 
-
             @include media-breakpoint-down(lg) {
                 flex-direction: column;
+            }
+
+            @include media-breakpoint-down(md) {
+                gap: 32px;
             }
         }
 
@@ -1371,6 +1375,51 @@ body.single-tours {
                         padding-top: 32px;
                         border-top: 1px solid #eaeaea;
                     }
+                }
+            }
+        }
+
+        &__sidebar-mobile {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            background: #fff;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -2px 8px #00000026;
+            padding: 12px;
+            z-index: 99999;
+
+            @include media-breakpoint-up(lg) {
+                display: none;
+                z-index: -99999;
+            }
+
+            &-inner {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .price {
+                min-width: fit-content;
+
+                .label {
+                    font-weight: 600;
+                    color: $color-text;
+                }
+
+                .value {
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: $color-primary;
+                }
+
+                .unit {
+                    font-size: 14px;
+                    color: #666;
                 }
             }
         }
