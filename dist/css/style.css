@@ -10427,6 +10427,55 @@ body.offcanvas-open {
   }
 }
 
+.vm-media {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 1199.98px) {
+  .vm-media {
+    gap: 32px;
+  }
+}
+@media (max-width: 1023.98px) {
+  .vm-media {
+    gap: 24px;
+  }
+}
+@media (max-width: 767.98px) {
+  .vm-media {
+    flex-wrap: wrap;
+  }
+}
+.vm-media > div {
+  width: 50%;
+}
+@media (max-width: 767.98px) {
+  .vm-media > div {
+    width: 100%;
+  }
+}
+.vm-media__content .sub-heading {
+  color: #0C2C7A;
+}
+.vm-media .content {
+  margin-top: 24px;
+}
+.vm-media .content h1:last-child, .vm-media .content .h1:last-child,
+.vm-media .content h2:last-child,
+.vm-media .content .h2:last-child,
+.vm-media .content h3:last-child,
+.vm-media .content .h3:last-child,
+.vm-media .content h4:last-child,
+.vm-media .content .h4:last-child,
+.vm-media .content h5:last-child,
+.vm-media .content .h5:last-child,
+.vm-media .content h6:last-child,
+.vm-media .content .h6:last-child,
+.vm-media .content p:last-child {
+  margin-bottom: 0;
+}
+
 .page-template-front-page .hero-section {
   background: #fff;
 }
@@ -13231,6 +13280,7 @@ body.page-template-tours-template .about-section-media__gallery .gallery-item im
 }
 
 body.page-template-blog-template .about-section {
+  background: #F2F3F5;
   padding: 60px 0;
 }
 @media (max-width: 767.98px) {
@@ -13433,7 +13483,6 @@ body.page-template-blog-template .about-section__posts .post-item-card:nth-child
   }
 }
 body.page-template-blog-template .posts-list-section {
-  background-color: #F8F9FA;
   padding: 90px;
 }
 @media (max-width: 1199.98px) {
@@ -13694,6 +13743,20 @@ body.page-template-blog-template .posts-list-section #vm-posts-empty .empty-stat
   color: #6B7280;
   max-width: 400px;
   margin: 0 auto;
+}
+body.page-template-blog-template .travel-essentials-section {
+  background: #F2F3F5;
+  padding: 90px;
+}
+@media (max-width: 1199.98px) {
+  body.page-template-blog-template .travel-essentials-section {
+    padding: 60px 0;
+  }
+}
+@media (max-width: 767.98px) {
+  body.page-template-blog-template .travel-essentials-section {
+    padding: 40px 0;
+  }
 }
 
 .error-404-section {
