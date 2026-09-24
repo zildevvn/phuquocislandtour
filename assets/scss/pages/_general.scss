@@ -1130,6 +1130,10 @@
                     margin-bottom: 0;
                 }
             }
+
+            ul li::before {
+                top: 4px;
+            }
         }
 
         &.is-active {

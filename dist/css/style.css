@@ -9932,6 +9932,9 @@ body.offcanvas-open {
 .faqs-list .faq-item__answer .h6:last-child {
   margin-bottom: 0;
 }
+.faqs-list .faq-item__answer ul li::before {
+  top: 4px;
+}
 .faqs-list .faq-item.is-active {
   border-color: #0C2C7A;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
