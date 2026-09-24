@@ -168,7 +168,7 @@ $query = new WP_Query($args);
             </div>
 
             <div class="car-tour-section__actions d-flex align-items-center justify-content-center">
-                <?php vm_load_button('/car-rental-in-phu-quoc', 'View All', '', 'View All car rental Tours') ?>
+                <?php vm_load_button('/car-rental-in-phu-quoc/', 'View All', '', 'View All car rental Tours') ?>
             </div>
         </div>
     </section>
