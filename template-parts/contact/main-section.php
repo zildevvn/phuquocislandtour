@@ -7,7 +7,7 @@ $phone = get_field('phone', 'option');
 $email = get_field('email', 'option');
 $open_time = get_field('open_time', 'option');
 ?>
-<<section class="vm-section main-section">
+<section class="vm-section main-section">
     <div class="container">
 
         <?php vm_icon_heading() ?>
@@ -154,4 +154,4 @@ $open_time = get_field('open_time', 'option');
             </div>
         </div>
     </div>
-    </section>
+</section>
