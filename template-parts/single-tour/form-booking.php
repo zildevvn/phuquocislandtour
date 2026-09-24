@@ -19,28 +19,9 @@ $price_group = get_field('price_for_group_tour');
         </div>
         <div class="rating">
             <?php if (function_exists('kk_star_ratings')): ?>
-                <?php if (function_exists('kk_star_ratings')): ?>
-                    <?php
-                    $post_id = get_the_ID();
-
-                    // Random cố định theo từng tour
-                    $count = 500 + (abs(crc32((string) $post_id)) % 501);
-
-                    $rating_values = [4.8, 4.9, 5.0];
-
-                    $rating_index = abs(crc32('rating-' . $post_id)) % count($rating_values);
-                    $rating = $rating_values[$rating_index];
-
-                    ?>
-                    <span class="text">
-                        <?php
-                        echo kk_star_ratings([
-                            'count' => $count,
-                            'rating' => $rating,
-                        ]);
-                        ?>
-                    </span>
-                <?php endif; ?>
+                <span class="text">
+                    <?php echo kk_star_ratings(); ?>
+                </span>
             <?php else: ?>
                 <span class="stars">★★★★★</span>
                 <?php

@@ -315,3 +315,37 @@ function custom_tripadvisor_reviews_shortcode($atts)
 	return ob_get_clean();
 }
 add_shortcode('tripadvisor_badge', 'custom_tripadvisor_reviews_shortcode');
+
+
+add_filter('get_post_metadata', 'override_kk_star_ratings_meta', 10, 4);
+function override_kk_star_ratings_meta($value, $object_id, $meta_key, $single)
+{
+	// Các meta keys mà KK Star Ratings sử dụng để lấy dữ liệu
+	$kksr_keys = ['_kksr_casts', '_kksr_avg', '_kksr_ratings'];
+
+	if (in_array($meta_key, $kksr_keys)) {
+
+		// Bê nguyên logic tạo số ảo cố định theo ID bài viết của bạn vào đây
+		$count = 500 + (abs(crc32((string) $object_id)) % 501);
+		$rating_values = [4.8, 4.9, 5.0];
+		$rating_index = abs(crc32('rating-' . $object_id)) % count($rating_values);
+		$rating = $rating_values[$rating_index];
+
+		$override_value = '';
+
+		// Trả về dữ liệu tương ứng với từng meta key
+		if ($meta_key === '_kksr_casts') {
+			$override_value = $count;
+		} elseif ($meta_key === '_kksr_avg') {
+			$override_value = $rating;
+		} elseif ($meta_key === '_kksr_ratings') {
+			$override_value = $count * $rating;
+		}
+
+		// Đảm bảo trả về đúng format dữ liệu mà WordPress yêu cầu
+		return $single ? $override_value : [$override_value];
+	}
+
+	// Quan trọng: Trả về null để WordPress tiếp tục lấy dữ liệu từ DB cho các post meta khác
+	return null;
+}
