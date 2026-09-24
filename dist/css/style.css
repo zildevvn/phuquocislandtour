@@ -12795,8 +12795,8 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
   opacity: 0.6;
 }
 .tours-list-section .tours-sidebar__widget {
-  margin-bottom: 32px;
-  padding-bottom: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
 }
 .tours-list-section .tours-sidebar__widget:last-child {
