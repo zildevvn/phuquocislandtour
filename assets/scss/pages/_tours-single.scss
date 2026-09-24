@@ -1435,8 +1435,10 @@ body.single-tours {
 
             .vm-button {
                 @include media-breakpoint-down(md) {
-                    font-size: 13px;
+                    font-size: 12px;
                     padding: 0 10px;
+                    border-radius: 20px;
+                    height: 40px;
                 }
 
                 svg {

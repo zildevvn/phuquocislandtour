@@ -15831,8 +15831,10 @@ body.single-tours .main-section__sidebar-mobile .price .unit {
 }
 @media (max-width: 767.98px) {
   body.single-tours .main-section__sidebar-mobile .vm-button {
-    font-size: 13px;
+    font-size: 12px;
     padding: 0 10px;
+    border-radius: 20px;
+    height: 40px;
   }
 }
 @media (max-width: 767.98px) {
