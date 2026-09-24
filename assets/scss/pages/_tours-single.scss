@@ -893,6 +893,7 @@ body.single-tours {
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
+            overflow: hidden;
         }
 
         &__list {
@@ -1401,6 +1402,11 @@ body.single-tours {
                 justify-content: center;
                 align-items: center;
                 gap: 1rem;
+
+                @include media-breakpoint-down(md) {
+                    gap: 10px;
+                    justify-content: start;
+                }
             }
 
             .price {
@@ -1415,11 +1421,28 @@ body.single-tours {
                     font-size: 28px;
                     font-weight: 700;
                     color: $color-primary;
+
+                    @include media-breakpoint-down(md) {
+                        font-size: 24px;
+                    }
                 }
 
                 .unit {
                     font-size: 14px;
                     color: #666;
+                }
+            }
+
+            .vm-button {
+                @include media-breakpoint-down(md) {
+                    font-size: 13px;
+                    padding: 0 10px;
+                }
+
+                svg {
+                    @include media-breakpoint-down(md) {
+                        display: none;
+                    }
                 }
             }
         }

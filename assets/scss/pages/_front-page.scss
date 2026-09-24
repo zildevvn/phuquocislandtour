@@ -1082,6 +1082,7 @@
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
+            overflow: hidden;
         }
 
         &__list {
