@@ -308,11 +308,12 @@ import { CountUp } from 'countup.js';
             freeMode: true,
             loop: true,
             direction: 'horizontal',
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
+            // autoplay: {
+            //     delay: 3000,
+            //     disableOnInteraction: false,
+            //     pauseOnMouseEnter: true,
+            // },
+            autoplay: false,
             breakpoints: {
                 768: {
                     slidesPerView: 3,
