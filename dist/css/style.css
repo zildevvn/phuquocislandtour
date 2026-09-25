@@ -11154,6 +11154,14 @@ body.offcanvas-open {
     background-position: left;
   }
 }
+.page-template-front-page .hero-section__ratings {
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 @media (max-width: 767.98px) {
   .page-template-front-page .hero-section-gallery, .page-template-front-page .hero-section-video {
     margin-top: -20px;

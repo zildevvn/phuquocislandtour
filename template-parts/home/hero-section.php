@@ -58,6 +58,12 @@ if (!empty($whatsapp_number)) {
                     <?php endif; ?>
                 </div>
 
+                <?php if (function_exists('kk_star_ratings')): ?>
+                    <div class="hero-section__ratings">
+                        <?php echo kk_star_ratings(); ?>
+                    </div>
+                <?php endif; ?>
+
             </div>
         </div>
 

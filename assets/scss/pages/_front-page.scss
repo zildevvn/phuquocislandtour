@@ -43,6 +43,15 @@
             }
         }
 
+        &__ratings {
+            opacity: 0;
+            z-index: -1;
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
         &-gallery,
         &-video {
             @include media-breakpoint-down(md) {
