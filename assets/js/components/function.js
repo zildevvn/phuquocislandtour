@@ -341,11 +341,12 @@ import { CountUp } from 'countup.js';
             fadeEffect: {
                 crossFade: true
             },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
+            // autoplay: {
+            //     delay: 3000,
+            //     disableOnInteraction: false,
+            //     pauseOnMouseEnter: true,
+            // },
+            autoplay: false,
             navigation: {
                 nextEl: '.testimonials-section .swiper-button-next',
                 prevEl: '.testimonials-section .swiper-button-prev',
