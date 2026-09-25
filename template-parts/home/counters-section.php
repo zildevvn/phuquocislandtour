@@ -9,7 +9,7 @@ $counters = get_field('counters_list_hp');
                 <?php foreach ($counters as $key => $counter): ?>
                     <div class="counter-item">
                         <div class="counter-item__icon">
-                            <img src="<?= $counter['icon'] ?>" alt="icon for <?= $counter['label'] ?>" />
+                            <img src="<?= $counter['icon'] ?>" alt="icon for <?= $counter['label'] ?>" width="50" height="50" />
                         </div>
 
                         <div class="counter-item-content">

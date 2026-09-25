@@ -10,7 +10,7 @@ $license_desc = $operator_license['description'];
 <section class="vm-section about-section">
     <div class="about-section__graphic">
         <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
-            alt="image graphic phu quoc island tours" />
+            alt="image graphic phu quoc island tours" width="300" height="260" />
     </div>
 
     <div class="container">

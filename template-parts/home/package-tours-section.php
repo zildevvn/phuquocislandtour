@@ -62,7 +62,7 @@ $query = new WP_Query($args);
             </div>
 
             <div class="package-tours-section__actions d-flex align-items-center justify-content-center">
-                <?php vm_load_button('/phu-quoc-tours', 'View All', '', 'View All package Tours') ?>
+                <?php vm_load_button('/phu-quoc-tours/', 'View All', '', 'View All package Tours') ?>
             </div>
         </div>
     </section>

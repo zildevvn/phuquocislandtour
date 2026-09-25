@@ -37,7 +37,8 @@ $prepend_section = $args['prepend_section'] ?? '';
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">
                                 <img src="<?= esc_url($gallery) ?>"
-                                    alt="image <?= esc_attr($key) ?> for <?= esc_attr($alt_text) ?>" loading="lazy" />
+                                    alt="image <?= esc_attr($key) ?> for <?= esc_attr($alt_text) ?>" loading="lazy" width="534"
+                                    height="357" />
                             </div>
                         <?php endforeach; ?>
                     </div>

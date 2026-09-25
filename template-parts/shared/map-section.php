@@ -9,7 +9,7 @@ $terms = get_terms([
     <section class="vm-section map-section">
         <div class="map-section__graphic">
             <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-002.png"
-                alt="image graphic phu quoc island tour" />
+                alt="image graphic phu quoc island tour" width="324" height="184" />
         </div>
         <div class="container">
             <div class="map-section__map">
@@ -54,14 +54,15 @@ $terms = get_terms([
                 <div class="map-images">
                     <img class="map-images__bg"
                         src="<?= get_template_directory_uri(); ?>/assets/images/img-map-phu-quoc.jpg"
-                        alt="image map phu quoc" />
+                        alt="image map phu quoc" width="481" height="711" />
 
                     <div class="map-images__list">
                         <?php foreach ($terms as $key => $term): ?>
                             <?php $image = get_field('image', $term); ?>
                             <div id="map-<?= $term->slug ?>" data-location="#location-<?= $term->slug ?>" class="map-item"
                                 aria-label="Go to <?= $term->name ?>" style="z-index:<?= $key + 1 ?>">
-                                <img src="<?= $image['sizes']['thumbnail'] ?>" alt="image for map <?= $term->name ?> " />
+                                <img src="<?= $image['sizes']['thumbnail'] ?>" alt="image for map <?= $term->name ?> "
+                                    width="150" height="150" />
 
                                 <div class="map-tooltip">
                                     <span class="map-tooltip__name"><?= $term->name ?></span>

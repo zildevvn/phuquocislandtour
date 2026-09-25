@@ -91,22 +91,22 @@ if (!empty($whatsapp_number)) {
 
         <div class="hero-section__watercolor-top">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/image_wave_top_new.webp"
-                alt="image leaf top for hero section" />
+                alt="image leaf top for hero section" width="170" height="107" />
         </div>
 
         <div class="hero-section__baloon-top">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.webp"
-                alt="image baloon top for hero section" />
+                alt="image baloon top for hero section" width="150" height="100" />
         </div>
 
         <div class="hero-section__watercolor-bottom">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img-seashells-starfish-waves.webp"
-                alt="image leaf bottom for hero section" />
+                alt="image leaf bottom for hero section" width="220" height="91" />
         </div>
 
         <div class="hero-section__baloon-bottom">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/img_top_island.png"
-                alt="image baloon bottom for hero section" />
+                alt="image baloon bottom for hero section" width="150" height="100" />
         </div>
     </div>
 </section>

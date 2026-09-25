@@ -51,7 +51,8 @@ $email = get_field('email', 'option');
         <div class="header-main-warp d-flex align-items-center justify-content-between gap-3">
             <div class="header-main__logo">
                 <a class="d-flex " href="<?php echo home_url(); ?>" aria-label="<?php echo get_bloginfo('name'); ?>">
-                    <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
+                    <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>" width="200"
+                        height="54" />
                 </a>
             </div>
 

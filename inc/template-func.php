@@ -79,7 +79,7 @@ function vm_item_tour($class = '')
     ?>
     <a href="<?= the_permalink(); ?>" class="tour-item <?= $class ?>" aria-label="read more <?php the_title() ?>">
         <div class="tour-item__thumb">
-            <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>">
+            <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>" width="380" height="260" />
         </div>
 
         <div class="tour-item-content">
