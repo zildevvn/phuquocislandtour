@@ -3,54 +3,12 @@ $heading = get_field('hd_ab_ticket_tpl');
 $sub_hd = get_field('sub_hd_ab_ticket_tpl');
 $desc = get_field('description_ticket_tpl');
 $gallerys = get_field('gallery_ticket_tpl');
+
+get_template_part('template-parts/shared/about-section', null, [
+    'heading' => $heading,
+    'sub_heading' => $sub_hd,
+    'description' => $desc,
+    'gallery' => $gallerys,
+    'alt_text' => 'Phu Quoc Tickets',
+]);
 ?>
-<section class="vm-section about-section vm-media-carousel-section">
-    <div class="container">
-        <?php vm_icon_heading() ?>
-        <?php if (!empty($heading)): ?>
-            <h2 class="vm-heading">
-                <?= $heading ?>
-            </h2>
-        <?php endif; ?>
-
-        <?php if (!empty($sub_hd)): ?>
-            <div class="vm-sub-heading">
-                <?= $sub_hd ?>
-            </div>
-        <?php endif; ?>
-
-        <div class="vm-media-carousel-section__media">
-            <div class="content">
-                <?php if (!empty($desc)): ?>
-                    <?= $desc ?>
-                <?php endif; ?>
-            </div>
-
-            <?php if (!empty($gallerys)): ?>
-                <div class="gallerys gallerys-carousel swiper">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($gallerys as $key => $gallery): ?>
-                            <div class="gallery-item swiper-slide">
-                                <img src="<?= $gallery ?>" alt="image <?= $key ?> for Phu Quoc Tickets" />
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="swiper-button-prev">
-                        <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" color="#000000">
-                            <path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" stroke="#000000" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                    <div class="swiper-button-next">
-                        <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" color="#000000">
-                            <path d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5" stroke="#000000" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</section>
