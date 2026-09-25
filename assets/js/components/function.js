@@ -2,10 +2,6 @@
 
 import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, EffectFade, Keyboard, Thumbs } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
 import { CountUp } from 'countup.js';
 
 
@@ -392,41 +388,6 @@ import { CountUp } from 'countup.js';
             });
         });
     };
-
-    // const vmInitMapLocationsScroll = () => {
-    //     $('.map-images__list').on('click', '.map-item', function (e) {
-    //         e.preventDefault();
-    //         const $this = $(this);
-    //         const targetId = $this.data('location');
-
-    //         if (!targetId) return;
-
-    //         const $target = $(targetId);
-    //         const $container = $('.map-locations');
-
-    //         if ($target.length && $container.length) {
-    //             // Update active state
-    //             $('.map-images__list .map-item').removeClass('is-active');
-    //             $this.addClass('is-active');
-
-    //             // Calculate dynamic header height offset
-    //             const $header = $('header, .header, #masthead, .site-header').first();
-    //             const headerHeight = $header.length ? $header.outerHeight() : 0;
-    //             const scrollOffset = headerHeight + 20;
-
-    //             // Calculate the absolute position of the target within the container
-    //             const targetPositionInContainer = $target.offset().top - $container.offset().top + $container.scrollTop();
-
-    //             // Set the scroll position so the target is offset from the top, not hidden by the header
-    //             const scrollTo = targetPositionInContainer - scrollOffset;
-
-    //             // Smooth scroll the container
-    //             $container.animate({
-    //                 scrollTop: scrollTo
-    //             }, 400);
-    //         }
-    //     });
-    // };
 
     const vmInitMapLocationsScroll = () => {
         // Đồng bộ breakpoint với CSS: @media (max-width: 1023.98px)
