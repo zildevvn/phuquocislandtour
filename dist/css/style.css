@@ -8027,7 +8027,7 @@ body.logged-in #car-review {
 }
 
 .header-main {
-  background: #0C2C7A;
+  background: #00656D;
   position: static;
   padding: 20px 20px 20px 20px;
   box-sizing: border-box;
@@ -12513,26 +12513,6 @@ body.page-template-about-section .about-section__grid {
     margin-top: 28px;
   }
 }
-body.page-template-about-section .about-section__grid .media-item {
-  display: flex;
-  gap: 48px;
-  align-items: center;
-}
-@media (max-width: 1199.98px) {
-  body.page-template-about-section .about-section__grid .media-item {
-    gap: 32px;
-  }
-}
-@media (max-width: 1023.98px) {
-  body.page-template-about-section .about-section__grid .media-item {
-    gap: 24px;
-  }
-}
-@media (max-width: 767.98px) {
-  body.page-template-about-section .about-section__grid .media-item {
-    flex-wrap: wrap;
-  }
-}
 body.page-template-about-section .about-section__grid .media-item:nth-child(odd) {
   flex-direction: row-reverse;
 }
@@ -12544,43 +12524,21 @@ body.page-template-about-section .about-section__grid .media-item:not(:last-chil
     margin-bottom: 28px;
   }
 }
-body.page-template-about-section .about-section__grid .media-item > div {
-  width: 50%;
-}
-@media (max-width: 767.98px) {
-  body.page-template-about-section .about-section__grid .media-item > div {
-    width: 100%;
-  }
-}
-body.page-template-about-section .about-section__grid .media-item__content h2, body.page-template-about-section .about-section__grid .media-item__content .h2 {
+body.page-template-about-section .about-section__grid .media-item .vm-media__content h2, body.page-template-about-section .about-section__grid .media-item .vm-media__content .h2 {
   margin-bottom: 16px;
 }
 @media (max-width: 767.98px) {
-  body.page-template-about-section .about-section__grid .media-item__content h2, body.page-template-about-section .about-section__grid .media-item__content .h2 {
+  body.page-template-about-section .about-section__grid .media-item .vm-media__content h2, body.page-template-about-section .about-section__grid .media-item .vm-media__content .h2 {
     margin-bottom: 12px;
   }
 }
+body.page-template-about-section .about-section__grid .media-item .content {
+  margin-top: 0;
+}
 @media (max-width: 1023.98px) {
-  body.page-template-about-section .about-section__grid .media-item__desc {
+  body.page-template-about-section .about-section__grid .media-item .content {
     font-size: 14px;
   }
-}
-body.page-template-about-section .about-section__grid .media-item__desc a {
-  font-weight: 700;
-}
-body.page-template-about-section .about-section__grid .media-item__desc h1:last-child, body.page-template-about-section .about-section__grid .media-item__desc .h1:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc h2:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc .h2:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc h3:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc .h3:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc h4:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc .h4:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc h5:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc .h5:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc h6:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc .h6:last-child,
-body.page-template-about-section .about-section__grid .media-item__desc p:last-child {
-  margin-bottom: 0;
 }
 body.page-template-about-section .steps-booking-section {
   background: #F2F3F5;

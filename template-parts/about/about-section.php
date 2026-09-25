@@ -31,16 +31,19 @@ $license_desc = $operator_license['description'];
         <?php if (!empty($media)): ?>
             <div class="about-section__grid">
                 <?php foreach ($media as $item): ?>
-                    <div class="media-item">
-                        <div class="media-item__image">
+                    <div class="media-item vm-media">
+                        <div class="vm-media__image">
                             <img src="<?= $item['image']['sizes']['large'] ?>"
                                 alt="image phu quoc travel agency for <?= $item['heading'] ?>" />
                         </div>
-                        <div class="media-item__content">
-                            <h2 class="h4">
-                                <?= $item['heading'] ?>
-                            </h2>
-                            <div class="media-item__desc">
+                        <div class="vm-media__content">
+                            <?php if (!empty($item['heading'])): ?>
+                                <h2 class="h4">
+                                    <?= $item['heading'] ?>
+                                </h2>
+                            <?php endif; ?>
+
+                            <div class="content">
                                 <?= $item['desc'] ?>
                             </div>
                         </div>
