@@ -672,9 +672,10 @@
                 &__avatar {
                     margin-bottom: 0px;
                     position: relative;
-                    max-width: 35%;
+                    max-width: 30%;
                     z-index: 1;
                     margin-right: 95px;
+                    flex-shrink: 0;
 
                     @include media-breakpoint-down(lg) {
                         max-width: 250px;
@@ -777,82 +778,6 @@
 
                 .vm-rating {
                     margin-top: 16px;
-                }
-            }
-        }
-    }
-
-    .testimonials-thumbs {
-        position: absolute;
-        left: 100%;
-        top: 100%;
-        opacity: 0;
-        visibility: hidden;
-
-        @include media-breakpoint-up(lg) {
-            height: 370px;
-            overflow: hidden;
-            width: 115px;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 550px;
-            // touch-action: pan-y;
-
-            >.swiper-wrapper {
-                flex-direction: column;
-            }
-        }
-
-        @include media-breakpoint-down(md) {
-            margin-top: 32px;
-            padding: 10px 0;
-            max-width: 100%;
-        }
-
-        .swiper-slide {
-            width: 100% !important;
-
-            @include media-breakpoint-down(md) {
-                width: auto !important;
-                display: flex;
-                justify-content: center;
-            }
-
-            img {
-                width: 76px;
-                height: 76px;
-                -o-object-fit: cover;
-                object-fit: cover;
-                -o-object-position: center;
-                object-position: center;
-                border-radius: 20px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                border: 2px solid transparent;
-                opacity: 0.6;
-                transform: scale(0.9);
-            }
-
-            &:hover {
-                img {
-                    opacity: 0.8;
-                    transform: scale(0.95);
-                }
-            }
-
-            &.swiper-slide-thumb-active {
-                img {
-                    opacity: 1;
-                    transform: scale(1.15);
-                    border-color: $color-primary;
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                }
-
-                @include media-breakpoint-up(lg) {
-                    img {
-                        margin-left: 30px;
-                    }
                 }
             }
         }

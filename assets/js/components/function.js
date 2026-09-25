@@ -291,42 +291,10 @@ import { CountUp } from 'countup.js';
         if (!$section.length) return;
 
         const $carousel = $section.find('.testimonials-carousel');
-        const $thumbs = $section.find('.testimonials-thumbs');
-        if (!$carousel.length || !$thumbs.length) return;
+        if (!$carousel.length) return;
 
         const $slides = $carousel.find('.swiper-slide');
         if ($slides.length <= 1) return;
-
-        const thumbsSwiper = new Swiper($thumbs[0], {
-            modules: [Thumbs, Autoplay],
-            spaceBetween: 10,
-            slidesPerView: 3,
-            centeredSlides: true,
-            slideToClickedSlide: true,
-            watchSlidesProgress: true,
-            watchSlidesVisibility: true,
-            freeMode: true,
-            loop: true,
-            direction: 'horizontal',
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            //     pauseOnMouseEnter: true,
-            // },
-            autoplay: false,
-            breakpoints: {
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 16,
-                    direction: 'horizontal',
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 16,
-                    direction: 'vertical',
-                }
-            }
-        });
 
         new Swiper($carousel[0], {
             modules: [Navigation, Pagination, Autoplay, Thumbs, EffectFade],
@@ -341,12 +309,12 @@ import { CountUp } from 'countup.js';
             fadeEffect: {
                 crossFade: true
             },
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            //     pauseOnMouseEnter: true,
-            // },
-            autoplay: false,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            // autoplay: false,
             navigation: {
                 nextEl: '.testimonials-section .swiper-button-next',
                 prevEl: '.testimonials-section .swiper-button-prev',
@@ -355,9 +323,6 @@ import { CountUp } from 'countup.js';
                 el: '.testimonials-section .swiper-pagination',
                 clickable: true,
             },
-            thumbs: {
-                swiper: thumbsSwiper,
-            }
         });
     };
 

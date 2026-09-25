@@ -89,21 +89,7 @@ $testimonials = get_field('testimonials_list');
                         </div>
                     </div>
                 </div>
-
-                <!-- Thumbnail Slider -->
-                <div class="testimonials-thumbs swiper mt-4">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($testimonials as $key => $testimonial): ?>
-                            <div class="swiper-slide">
-                                <?php if (!empty($testimonial['avatar'])): ?>
-                                    <img src="<?php echo esc_url($testimonial['avatar']); ?>" alt="avatar thumb">
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
             </div>
-
         </div>
     </section>
 <?php endif; ?>
