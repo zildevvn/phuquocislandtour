@@ -4,7 +4,7 @@ $sub_hd = get_field('sub_hd_ab_tpl_tour');
 $desc = get_field('desc_ab_tpl_tour');
 $gallerys = get_field('gallery_ab_tpl_tour');
 ?>
-<section class="vm-section about-section">
+<section class="vm-section about-section vm-media-carousel-section">
     <div class="container">
         <?php vm_icon_heading() ?>
         <?php if (!empty($heading)): ?>
@@ -19,17 +19,15 @@ $gallerys = get_field('gallery_ab_tpl_tour');
             </p>
         <?php endif; ?>
 
-        <div class="about-section-media">
-            <div class="about-section-media__content">
+        <div class="vm-media-carousel-section__media">
+            <div class="content">
                 <?php if (!empty($desc)): ?>
-
                     <?= $desc ?>
-
                 <?php endif; ?>
             </div>
 
             <?php if (!empty($gallerys)): ?>
-                <div class="about-section-media__gallery swiper">
+                <div class="gallerys gallerys-carousel swiper">
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">

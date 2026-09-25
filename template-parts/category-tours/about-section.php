@@ -4,7 +4,7 @@ $sub_hd = get_field('sub_hd_ab_cate_tours');
 $desc = get_field('desc_ab_cate_tours');
 $gallerys = get_field('gallerys_ab_cate_tours');
 ?>
-<section class="vm-section about-section">
+<section class="vm-section about-section vm-media-carousel-section">
     <div class="about-section__graphic">
         <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
             alt="image graphic Phu Quoc Day Trip" />
@@ -24,8 +24,8 @@ $gallerys = get_field('gallerys_ab_cate_tours');
             </p>
         <?php endif; ?>
 
-        <div class="about-section-media">
-            <div class="about-section-media__content">
+        <div class="vm-media-carousel-section__media">
+            <div class="content">
                 <?php if (!empty($desc)): ?>
 
                     <?= $desc ?>
@@ -34,7 +34,7 @@ $gallerys = get_field('gallerys_ab_cate_tours');
             </div>
 
             <?php if (!empty($gallerys)): ?>
-                <div class="about-section-media__gallery swiper">
+                <div class="gallerys gallerys-carousel swiper">
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">

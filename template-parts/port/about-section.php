@@ -4,7 +4,7 @@ $sub_hd = get_field('sub_hd_ab_port_tpl');
 $desc = get_field('description_port_tpl');
 $gallerys = get_field('gallery_port_tpl');
 ?>
-<section class="vm-section about-section">
+<section class="vm-section about-section vm-media-carousel-section">
     <div class="container">
         <?php vm_icon_heading() ?>
         <?php if (!empty($heading)): ?>
@@ -19,8 +19,8 @@ $gallerys = get_field('gallery_port_tpl');
             </p>
         <?php endif; ?>
 
-        <div class="about-section-media">
-            <div class="about-section-media__content">
+        <div class="vm-media-carousel-section__media">
+            <div class="content">
                 <div class="content">
                     <?php if (!empty($desc)): ?>
                         <?= $desc ?>
@@ -49,7 +49,7 @@ $gallerys = get_field('gallery_port_tpl');
             </div>
 
             <?php if (!empty($gallerys)): ?>
-                <div class="about-section-media__gallery swiper">
+                <div class="gallerys gallerys-carousel swiper">
                     <div class="swiper-wrapper">
                         <?php foreach ($gallerys as $key => $gallery): ?>
                             <div class="gallery-item swiper-slide">

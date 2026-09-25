@@ -1040,7 +1040,7 @@ import { CountUp } from 'countup.js';
     };
 
     const vmInitAboutCarGallerySwiper = () => {
-        const $carousels = $('.about-section-media__gallery');
+        const $carousels = $('.gallerys-carousel');
         if (!$carousels.length) return;
 
         $carousels.each(function () {
