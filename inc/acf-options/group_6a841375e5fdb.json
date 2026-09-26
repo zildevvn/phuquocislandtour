@@ -3,45 +3,6 @@
     "title": "Template for Tours",
     "fields": [
         {
-            "key": "field_6a84137619ecb",
-            "label": "Hero",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6a84139d3f9d8",
-            "label": "Description",
-            "name": "desc_tour_tpl",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
             "key": "field_6a841588f0761",
             "label": "Tours List",
             "name": "",
@@ -129,7 +90,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -150,14 +111,14 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
-            "rows": 5,
+            "rows": 3,
             "placeholder": "",
             "new_lines": ""
         },
@@ -407,5 +368,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1790392144
+    "modified": 1790392738
 }
