@@ -8900,6 +8900,7 @@ body.logged-in #car-review {
   width: 100%;
   height: auto;
   max-width: 24px;
+  min-width: 24px;
 }
 .header-main__search svg path {
   stroke: #0C2C7A;
@@ -8916,6 +8917,7 @@ body.logged-in #car-review {
 @media (max-width: 767.98px) {
   .header-main__actions {
     padding-right: 40px;
+    gap: 10px !important;
   }
 }
 .header-main__actions #mobile-side-drawer {
@@ -8927,7 +8929,7 @@ body.logged-in #car-review {
   height: 40px;
   align-content: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   position: absolute;
   right: 0;
   top: 50%;
@@ -8940,7 +8942,7 @@ body.logged-in #car-review {
   }
 }
 .header-main__actions #mobile-side-drawer.is-active .icon-bar.icon-bar-first {
-  transform: rotate(45deg) translateX(5px) translateY(2px);
+  transform: rotate(45deg) translateX(7px) translateY(2px);
 }
 .header-main__actions #mobile-side-drawer.is-active .icon-bar.icon-bar-two {
   position: absolute;
@@ -8950,7 +8952,7 @@ body.logged-in #car-review {
   transform: translateY(-50%);
 }
 .header-main__actions #mobile-side-drawer.is-active .icon-bar.icon-bar-three {
-  transform: rotate(-45deg) translateX(5px) translateY(-2px);
+  transform: rotate(-45deg) translateX(6px) translateY(-2px);
 }
 .header-main__actions #mobile-side-drawer .icon-bar {
   height: 3px;
