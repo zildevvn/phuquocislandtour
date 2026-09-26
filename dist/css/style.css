@@ -10413,7 +10413,6 @@ body.offcanvas-open {
 .faqs-list .faq-item__answer {
   display: none;
   padding: 0 24px 24px 24px;
-  font-size: 14px;
 }
 @media (max-width: 1199.98px) {
   .faqs-list .faq-item__answer {
