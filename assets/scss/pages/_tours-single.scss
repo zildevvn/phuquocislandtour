@@ -1569,7 +1569,18 @@ body.single-tours {
                     gap: 10px;
                 }
 
+                @include media-breakpoint-down(sm) {
+                    flex-wrap: wrap;
+                    border-bottom: 1px solid rgba(12, 44, 122, 0.2);
+                    margin-bottom: 20px;
+                }
+
                 &:last-child {
+                    @include media-breakpoint-down(sm) {
+                        margin-bottom: 0;
+                        border-bottom: none;
+                    }
+
                     .itinerary-item__line {
                         display: none;
                     }
@@ -1594,8 +1605,8 @@ body.single-tours {
                         justify-content: flex-start;
                     }
 
-                    @media (max-width: 389.98px) {
-                        flex: 0 0 64px;
+                    @include media-breakpoint-down(sm) {
+                        flex: 0 0 100%;
                     }
                 }
 
@@ -1632,6 +1643,10 @@ body.single-tours {
                     align-items: center;
                     flex: 0 0 20px;
                     position: relative;
+
+                    @include media-breakpoint-down(sm) {
+                        display: none;
+                    }
                 }
 
                 &__dot {
@@ -1662,6 +1677,10 @@ body.single-tours {
 
                     @include media-breakpoint-down(md) {
                         padding-bottom: 28px;
+                    }
+
+                    @include media-breakpoint-down(sm) {
+                        padding-bottom: 20px;
                     }
                 }
 

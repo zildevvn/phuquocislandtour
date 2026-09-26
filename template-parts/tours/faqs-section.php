@@ -1,16 +1,16 @@
 <?php
-$heading = get_field('hd_faq_hp');
-$sub_hd = get_field('sub_hd_faq_hp');
-$img = get_field('img_faq_hp');
-$hd_img = get_field('hd_img_faq_hp');
-$faqs = get_field('faqs_list_hp');
+$heading = get_field('hd_faq_tpl_t');
+$sub_hd = get_field('sub_hd_faq_tpl_t');
+$img = get_field('img_faq_tpl_t');
+$hd_img = get_field('hd_img_faq_tpl_t');
+$faqs = get_field('faqs_list_tpl_t');
 ?>
 
 <?php if (!empty($faqs)): ?>
     <section class="vm-section faqs-section">
         <div class="faqs-section__graphic">
             <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
-                alt="image graphic for FAQs phu quoc island tours" width="300" height="259" />
+                alt="image graphic for FAQs phu quoc tours" width="300" height="259" />
         </div>
 
         <div class="container">
@@ -59,7 +59,9 @@ $faqs = get_field('faqs_list_hp');
                             <div class="faq-item <?= $classActive ?>">
                                 <div class="faq-item__question d-flex justify-content-between gap-2">
                                     <h3 class="h6 mb-0">
-                                        0<?= $key + 1 ?> - <?= $item['question'] ?>
+                                        0
+                                        <?= $key + 1 ?> -
+                                        <?= $item['question'] ?>
                                     </h3>
 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

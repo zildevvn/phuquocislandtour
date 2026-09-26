@@ -287,6 +287,7 @@
 
         @include media-breakpoint-down(md) {
             padding: 40px 0;
+            overflow: hidden;
         }
 
         &::before {
@@ -360,13 +361,15 @@
 
             @include media-breakpoint-down(md) {
                 margin-top: 28px;
-                grid-template-columns: repeat(2, 1fr);
+                // grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
+                padding-bottom: 10px;
+                overflow-x: auto;
             }
 
-            @media (max-width: 389.98px) {
-                grid-template-columns: repeat(1, 1fr);
-            }
+            // @media (max-width: 389.98px) {
+            //     grid-template-columns: repeat(1, 1fr);
+            // }
 
             .service-item {
                 position: relative;
@@ -379,13 +382,10 @@
                 @include media-breakpoint-down(md) {
                     padding: 20px 10px 32px;
                     border-radius: 60px 20px 60px 20px;
+                    min-width: 300px;
                 }
 
                 &:nth-child(2) {
-                    // .service-item__icon img {
-                    //     filter: brightness(0) saturate(100%) invert(64%) sepia(100%) saturate(1157%) hue-rotate(350deg) brightness(103%) contrast(103%);
-                    // }
-
                     .service-item__step .step-corner {
                         border-bottom: 90px solid #FFAA0D;
 

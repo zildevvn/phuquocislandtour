@@ -933,24 +933,6 @@
             "append": ""
         },
         {
-            "key": "field_6a71977f07fb8",
-            "label": "FAQs Section",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
             "key": "field_6a71979007fb9",
             "label": "Heading",
             "name": "hd_faq_hp",
@@ -970,6 +952,24 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6a71977f07fb8",
+            "label": "FAQs Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6a7197a407fba",
@@ -1189,5 +1189,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1789613776
+    "modified": 1790392019
 }

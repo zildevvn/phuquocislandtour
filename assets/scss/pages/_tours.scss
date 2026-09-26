@@ -527,19 +527,13 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        // .tours-pagination {
-        //     display: flex;
-
-        // }
     }
 }
 
 
 body.page-template-tours-template {
-    .about-section {
-        background: $color-bg;
 
+    .about-section {
         .vm-sub-heading {
             margin-left: auto;
             margin-right: auto;
@@ -548,5 +542,10 @@ body.page-template-tours-template {
                 max-width: 930px;
             }
         }
+    }
+
+    .faqs-section,
+    .tours-list-section {
+        background: $color-bg;
     }
 }

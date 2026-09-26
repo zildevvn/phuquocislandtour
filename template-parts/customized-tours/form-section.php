@@ -126,7 +126,7 @@ $open_time = get_field('open_time', 'option');
 
             <div class="form-section__right">
                 <?php if (!empty($form_contact)): ?>
-                    <div class="form-wrapper">
+                    <div id="form-customize-tour" class="form-wrapper">
                         <?= do_shortcode($form_contact) ?>
                     </div>
                 <?php endif; ?>

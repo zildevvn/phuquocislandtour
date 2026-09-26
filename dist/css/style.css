@@ -6800,11 +6800,6 @@ html {
   }
 }
 
-@media (max-width: 767.98px) {
-  body {
-    font-size: 14px;
-  }
-}
 body figure {
   max-width: fit-content;
 }
@@ -10105,13 +10100,9 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .steps-booking-section__list {
     margin-top: 28px;
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-  }
-}
-@media (max-width: 413.98px) {
-  .steps-booking-section__list {
-    grid-template-columns: repeat(1, 1fr);
+    overflow-x: auto;
+    padding-bottom: 10px;
   }
 }
 .steps-booking-section__list .step-item {
@@ -10130,6 +10121,8 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .steps-booking-section__list .step-item {
     padding: 20px 10px;
+    min-width: 300px;
+    box-shadow: none;
   }
 }
 .steps-booking-section__list .step-item__icon {
@@ -11395,6 +11388,7 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .page-template-front-page .services-section {
     padding: 40px 0;
+    overflow: hidden;
   }
 }
 .page-template-front-page .services-section::before {
@@ -11468,13 +11462,9 @@ body.offcanvas-open {
 @media (max-width: 767.98px) {
   .page-template-front-page .services-section__list {
     margin-top: 28px;
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-  }
-}
-@media (max-width: 389.98px) {
-  .page-template-front-page .services-section__list {
-    grid-template-columns: repeat(1, 1fr);
+    padding-bottom: 10px;
+    overflow-x: auto;
   }
 }
 .page-template-front-page .services-section__list .service-item {
@@ -11489,6 +11479,7 @@ body.offcanvas-open {
   .page-template-front-page .services-section__list .service-item {
     padding: 20px 10px 32px;
     border-radius: 60px 20px 60px 20px;
+    min-width: 300px;
   }
 }
 .page-template-front-page .services-section__list .service-item:nth-child(2) .service-item__step .step-corner {
@@ -13601,9 +13592,6 @@ body.page-template-about-section .our-team-section .our-team-carousel .team-item
   }
 }
 
-body.page-template-tours-template .about-section {
-  background: #F2F3F5;
-}
 body.page-template-tours-template .about-section .vm-sub-heading {
   margin-left: auto;
   margin-right: auto;
@@ -13612,6 +13600,10 @@ body.page-template-tours-template .about-section .vm-sub-heading {
   body.page-template-tours-template .about-section .vm-sub-heading {
     max-width: 930px;
   }
+}
+body.page-template-tours-template .faqs-section,
+body.page-template-tours-template .tours-list-section {
+  background: #F2F3F5;
 }
 
 body.page-template-blog-template .about-section {
@@ -16376,6 +16368,19 @@ body.single-tours .main-section .tour-itinerary .itinerary-item {
     gap: 10px;
   }
 }
+@media (max-width: 575.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item {
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(12, 44, 122, 0.2);
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 575.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
 body.single-tours .main-section .tour-itinerary .itinerary-item:last-child .itinerary-item__line {
   display: none;
 }
@@ -16399,9 +16404,9 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
     justify-content: flex-start;
   }
 }
-@media (max-width: 389.98px) {
+@media (max-width: 575.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__time-wrapper {
-    flex: 0 0 64px;
+    flex: 0 0 100%;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__time {
@@ -16440,6 +16445,11 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__divider {
   flex: 0 0 20px;
   position: relative;
 }
+@media (max-width: 575.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__divider {
+    display: none;
+  }
+}
 body.single-tours .main-section .tour-itinerary .itinerary-item__dot {
   width: 14px;
   height: 14px;
@@ -16467,6 +16477,11 @@ body.single-tours .main-section .tour-itinerary .itinerary-item__content {
 @media (max-width: 767.98px) {
   body.single-tours .main-section .tour-itinerary .itinerary-item__content {
     padding-bottom: 28px;
+  }
+}
+@media (max-width: 575.98px) {
+  body.single-tours .main-section .tour-itinerary .itinerary-item__content {
+    padding-bottom: 20px;
   }
 }
 body.single-tours .main-section .tour-itinerary .itinerary-item__title {
