@@ -7879,7 +7879,6 @@ body.logged-in .anchor-nav {
   color: #19232B;
   text-decoration: none;
   border-radius: 8px;
-  transition: all 0.25s ease;
   position: relative;
   outline: none;
   font-family: "Afacad", sans-serif;
@@ -7898,8 +7897,7 @@ body.logged-in .anchor-nav {
   }
 }
 .anchor-nav__link:hover {
-  background-color: #0C2C7A;
-  color: #fff;
+  color: #0C2C7A;
 }
 .anchor-nav__link:focus-visible {
   outline: 2px solid #0C2C7A;
@@ -11602,6 +11600,9 @@ body.offcanvas-open {
   opacity: 0.65;
   pointer-events: none;
 }
+.page-template-front-page .package-tours-section .tour-item {
+  box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
+}
 .page-template-front-page .daily-tour-section {
   background-color: #0C2C7A;
   background-image: url(../images/patern.png);
@@ -12384,7 +12385,6 @@ body.page-template-cars-template .popular-section .hotel-area-tabs .hotel-area-t
   background-color: #0C2C7A;
   color: #ffffff;
   border-color: #0C2C7A;
-  box-shadow: 0 4px 12px rgba(12, 44, 122, 0.2);
 }
 body.page-template-cars-template .popular-section .hotel-area-panel[hidden] {
   display: none !important;
@@ -12447,12 +12447,23 @@ body.page-template-cars-template .popular-section .table-responsive table thead 
   width: 12.5%;
   border-right: 1px dashed rgba(0, 0, 0, 0.05);
 }
+@media (max-width: 767.98px) {
+  body.page-template-cars-template .popular-section .table-responsive table thead th {
+    width: 9%;
+  }
+}
 body.page-template-cars-template .popular-section .table-responsive table thead th:last-child {
   border-right: none;
 }
 body.page-template-cars-template .popular-section .table-responsive table thead th.col-area-name {
   text-align: left;
   width: 25%;
+}
+@media (max-width: 767.98px) {
+  body.page-template-cars-template .popular-section .table-responsive table thead th.col-area-name {
+    width: 20%;
+    max-width: 20%;
+  }
 }
 body.page-template-cars-template .popular-section .table-responsive table thead th .car-header {
   display: flex;
