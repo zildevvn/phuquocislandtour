@@ -9380,9 +9380,8 @@ body.offcanvas-open {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
-  box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
   background: #fff;
-  height: auto !important;
+  height: auto;
   text-decoration: none;
   padding-bottom: 48px;
 }
