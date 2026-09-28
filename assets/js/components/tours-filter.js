@@ -233,24 +233,6 @@
             ajaxRequest = currentAjax;
         };
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlTourCat = urlParams.get('tour_cat');
-
-        if (urlTourCat) {
-            const $matchedRadio = $(`input[name="tour_cat"][data-slug="${urlTourCat}"]`);
-            if ($matchedRadio.length) {
-                $matchedRadio.prop('checked', true);
-                currentPage = 1;
-                fetchTours();
-
-                setTimeout(() => {
-                    $('html, body').animate({
-                        scrollTop: $('.tours-sidebar').offset().top - 100
-                    }, 400);
-                }, 100);
-            }
-        }
-
     }
 
     $(document).ready(function () {
