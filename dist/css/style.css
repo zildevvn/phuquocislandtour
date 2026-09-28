@@ -9378,6 +9378,7 @@ body.offcanvas-open {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
+  box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
   background: #fff;
   height: auto;
   text-decoration: none;
@@ -11599,9 +11600,6 @@ body.offcanvas-open {
   background: url(../images/tropical-background.jpg) center bottom/cover no-repeat;
   opacity: 0.65;
   pointer-events: none;
-}
-.page-template-front-page .package-tours-section .tour-item {
-  box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
 }
 .page-template-front-page .daily-tour-section {
   background-color: #0C2C7A;
