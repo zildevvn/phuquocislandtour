@@ -149,4 +149,24 @@ $bg_footer = get_field('background_image', 'option');
             <path d="m18 15-6-6-6 6" />
         </svg>
     </a>
+
+    <?php if (!empty($phone)): ?>
+        <?php
+        $phone = preg_replace('/\D+/', '', $phone);
+        if (strpos($phone, '0') === 0) {
+            $phone = '84' . substr($phone, 1);
+        }
+        ?>
+        <a class="btn-whatsapp" href="https://wa.me/<?= esc_attr($phone); ?>" target="_blank" rel="noopener noreferrer"
+            aria-label="Chat with us on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-phone-forwarded preview-icon">
+                <path d="M14 6h8" />
+                <path d="m18 2 4 4-4 4" />
+                <path
+                    d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+            </svg>
+        </a>
+    <?php endif; ?>
 </footer>

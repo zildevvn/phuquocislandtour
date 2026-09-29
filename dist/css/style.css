@@ -9324,10 +9324,9 @@ body.offcanvas-open {
   min-width: 27px;
 }
 
-.back-to-top {
+.back-to-top,
+.btn-whatsapp {
   position: fixed;
-  bottom: 110px;
-  right: 30px;
   width: 44px;
   height: 44px;
   background: #0C2C7A;
@@ -9337,11 +9336,44 @@ body.offcanvas-open {
   align-items: center;
   justify-content: center;
   z-index: 99;
-  opacity: 0;
-  visibility: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   text-decoration: none;
+}
+@media (hover: hover) {
+  .back-to-top:hover,
+  .btn-whatsapp:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+.back-to-top svg,
+.btn-whatsapp svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+.btn-whatsapp {
+  bottom: 60px;
+  left: 30px;
+}
+@media (max-width: 767.98px) {
+  .btn-whatsapp {
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    bottom: 30px;
+  }
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  opacity: 0;
+  visibility: hidden;
 }
 @media (max-width: 767.98px) {
   .back-to-top {
@@ -9361,11 +9393,6 @@ body.offcanvas-open {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   }
-}
-.back-to-top svg {
-  width: 24px;
-  height: 24px;
-  stroke: currentColor;
 }
 
 .hero-section {
