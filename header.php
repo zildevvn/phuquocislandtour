@@ -12,6 +12,9 @@
     <!-- seo bing -->
     <meta name="msvalidate.01" content="7F52FBDBE648507BE1CF2D7D1EE75784" />
 
+    <!-- seo yandex -->
+    <meta name="yandex-verification" content="4c7a7c75940218b8" />
+
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link
         href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
