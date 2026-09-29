@@ -195,7 +195,7 @@ a {
     transition: $transition-base;
     width: fit-content;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
         padding: 8px 16px;
         gap: 8px;
     }
@@ -259,6 +259,7 @@ a {
         font-weight: 500;
         font-size: 14px;
         color: $color-body;
+        min-width: fit-content;
 
         @include media-breakpoint-down(md) {
             font-size: 13px;

@@ -28,6 +28,8 @@ if (!empty($whatsapp_number)) {
 <section class="vm-section hero-section">
     <div class="hero-section-inner">
         <div class="hero-section__bg">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/overlay-shape-green.png" width="1920"
+                height="1080" alt="background graphic hero for phu quoc island tour" fetchpriority="high" />
             <div class="hero-section-content">
                 <?php if (!empty($hd)): ?>
                     <h1><?= $hd ?></h1>
