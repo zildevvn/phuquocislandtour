@@ -5,6 +5,10 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="2mpfUMJmwRUQF5ZE9UEn7dZiskd0XSM3HiLv_0UxQc4" />
+
+    <!-- pinterest -->
+    <meta name="p:domain_verify" content="3cf57f5f957add29f98288016246dd25" />
+
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link
         href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
