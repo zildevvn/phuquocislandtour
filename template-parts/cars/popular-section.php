@@ -24,7 +24,7 @@ $phone = get_field('phone', 'option');
                 </p>
             <?php endif; ?>
 
-            <div class="popular-section-tables">
+            <div id="book-car-section" class="popular-section-tables">
                 <?php
                 // SVGs for cars
                 $svgs = [
@@ -51,30 +51,28 @@ $phone = get_field('phone', 'option');
                     // Generate a unique ID for this section instance to ensure unique tab/panel IDs
                     $section_uid = uniqid('ha-');
                     ?>
-                    
+
                     <?php if (count($popular_options) > 1): ?>
-                    <div class="hotel-area-tabs" role="tablist" aria-label="Hotel Areas">
-                        <?php foreach ($popular_options as $index => $popular_option): ?>
-                            <?php 
-                            $hotel_area_name = $popular_option['hotel_area']['name'];
-                            $tab_id = 'tab-' . $section_uid . '-' . $index;
-                            $panel_id = 'panel-' . $section_uid . '-' . $index;
-                            $is_active = $index === 0;
-                            ?>
-                            <button role="tab" 
-                                    aria-selected="<?= $is_active ? 'true' : 'false' ?>" 
-                                    aria-controls="<?= $panel_id ?>" 
-                                    id="<?= $tab_id ?>" 
+                        <div class="hotel-area-tabs" role="tablist" aria-label="Hotel Areas">
+                            <?php foreach ($popular_options as $index => $popular_option): ?>
+                                <?php
+                                $hotel_area_name = $popular_option['hotel_area']['name'];
+                                $tab_id = 'tab-' . $section_uid . '-' . $index;
+                                $panel_id = 'panel-' . $section_uid . '-' . $index;
+                                $is_active = $index === 0;
+                                ?>
+                                <button role="tab" aria-selected="<?= $is_active ? 'true' : 'false' ?>"
+                                    aria-controls="<?= $panel_id ?>" id="<?= $tab_id ?>"
                                     class="hotel-area-tab <?= $is_active ? 'is-active' : '' ?>">
-                                <?= esc_html($hotel_area_name) ?>
-                            </button>
-                        <?php endforeach; ?>
-                    </div>
+                                    <?= esc_html($hotel_area_name) ?>
+                                </button>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
 
                     <div class="hotel-area-panels">
                         <?php foreach ($popular_options as $index => $popular_option): ?>
-                            <?php 
+                            <?php
                             $hotel_area = $popular_option['hotel_area'];
                             $hotel_area_name = $hotel_area['name'];
                             $services = $hotel_area['services'];
@@ -82,12 +80,9 @@ $phone = get_field('phone', 'option');
                             $panel_id = 'panel-' . $section_uid . '-' . $index;
                             $is_active = $index === 0;
                             ?>
-                            <div id="<?= $panel_id ?>" 
-                                 role="tabpanel" 
-                                 aria-labelledby="<?= $tab_id ?>" 
-                                 class="hotel-area-panel" 
-                                 <?= $is_active ? '' : 'hidden' ?>>
-                                
+                            <div id="<?= $panel_id ?>" role="tabpanel" aria-labelledby="<?= $tab_id ?>" class="hotel-area-panel"
+                                <?= $is_active ? '' : 'hidden' ?>>
+
                                 <div class="popular-table-wrapper">
                                     <div class="table-responsive">
                                         <table class="vm-popular-table single-table">
@@ -155,7 +150,8 @@ $phone = get_field('phone', 'option');
                                     </div>
                                     <div class="popular-table-footer">
                                         <span class="footer-icon"><?= $svgs['info'] ?></span>
-                                        <span class="footer-text">All prices are in USD and for reference only. Please contact us for more
+                                        <span class="footer-text">All prices are in USD and for reference only. Please contact
+                                            us for more
                                             details.</span>
                                     </div>
                                 </div>
