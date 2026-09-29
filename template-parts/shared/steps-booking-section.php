@@ -6,7 +6,7 @@ $steps = get_field('steps_list_hp', 'option');
 <section class="vm-section steps-booking-section">
     <div class="steps-booking-section__graphic">
         <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
-            alt="image graphic steps booking phu quoc island tours" />
+            alt="image graphic steps booking phu quoc island tours" width="300" height="259" />
     </div>
 
     <div class="container">

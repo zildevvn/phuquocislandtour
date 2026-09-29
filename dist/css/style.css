@@ -1,11 +1,7 @@
 /*!*******************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/fonts/stylesheet.css ***!
   \*******************************************************************************/
-@import url(https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap);
-/*!***********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/fonts/stylesheet.css (1) ***!
-  \***********************************************************************************/
-
+/* @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap'); */
 /*!****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./assets/scss/style.scss ***!
   \****************************************************************************************************************************************************************************************/
@@ -8564,6 +8560,17 @@ body.logged-in #car-review {
   padding: 20px 20px 20px 20px;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  min-height: 140px;
+}
+@media (max-width: 1023.98px) {
+  .header-main {
+    min-height: 130px;
+  }
+}
+@media (max-width: 767.98px) {
+  .header-main {
+    min-height: 30px;
+  }
 }
 .header-main-inner {
   background-color: #fff;

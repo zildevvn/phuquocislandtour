@@ -73,7 +73,7 @@ $license_desc = $operator_license['description'];
                     <div class="vm-license-modal__left">
                         <div class="vm-license-modal__image">
                             <img src="<?= esc_url($license_image) ?>" alt="Operator License" class="img-fluid"
-                                loading="lazy" />
+                                loading="lazy" width="312" height="410" />
                         </div>
                     </div>
                     <div class="vm-license-modal__right">

@@ -4,6 +4,15 @@
     padding: 20px 20px 20px 20px;
     box-sizing: border-box;
     transition: $transition-base;
+    min-height: 140px;
+
+    @include media-breakpoint-down(lg) {
+        min-height: 130px;
+    }
+
+    @include media-breakpoint-down(md) {
+        min-height: 30px;
+    }
 
     &-inner {
         background-color: #fff;
