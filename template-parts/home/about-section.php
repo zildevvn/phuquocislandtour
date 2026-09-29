@@ -10,7 +10,7 @@ $license_desc = $operator_license['description'];
 <section class="vm-section about-section">
     <div class="about-section__graphic">
         <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
-            alt="image graphic phu quoc island tours" width="300" height="260" />
+            alt="image about graphic phu quoc island tours" width="300" height="260" />
     </div>
 
     <div class="container">
@@ -31,7 +31,7 @@ $license_desc = $operator_license['description'];
             <?php if (!empty($image_ab['url'])): ?>
                 <div class="about-section__license_image">
                     <img src="<?= $image_ab['url'] ?>" alt="image about phu quoc island tours" class="img-fluid"
-                        loading="lazy" />
+                        loading="lazy" width="536" height="357" />
                 </div>
             <?php endif; ?>
 

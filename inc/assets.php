@@ -7,9 +7,10 @@ add_action('wp_enqueue_scripts', function () {
 		wp_enqueue_script('vm-nouislider', get_template_directory_uri() . '/assets/lib/no-ui-slider/nouislider.min.js', array(), '15.7.1', true);
 	}
 
-	wp_enqueue_style('fancybox-css', get_template_directory_uri() . '/assets/lib/fancybox/fancybox.css', array(), '5.0');
-	wp_enqueue_script('fancybox-js', get_template_directory_uri() . '/assets/lib/fancybox/fancybox.umd.js', array(), '5.0', true);
-
+	if (is_singular('tours')) {
+		wp_enqueue_style('fancybox-css', get_template_directory_uri() . '/assets/lib/fancybox/fancybox.css', array(), '5.0');
+		wp_enqueue_script('fancybox-js', get_template_directory_uri() . '/assets/lib/fancybox/fancybox.umd.js', array(), '5.0', true);
+	}
 	$style_path = get_template_directory() . '/dist/css/style.css';
 	$script_path = get_template_directory() . '/dist/js/main.bundle.js';
 

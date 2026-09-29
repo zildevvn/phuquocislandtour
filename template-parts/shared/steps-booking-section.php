@@ -32,7 +32,7 @@ $steps = get_field('steps_list_hp', 'option');
 
                             <?php if (!empty($step['icon'])): ?>
                                 <div class="step-item__icon d-flex align-items-center justify-content-center">
-                                    <img src="<?= $step['icon'] ?>" alt="icon for step <?= $key + 1 ?>" />
+                                    <img src="<?= $step['icon'] ?>" alt="icon for step <?= $key + 1 ?>" width="30" height="30" />
                                 </div>
                             <?php endif; ?>
                         </div>

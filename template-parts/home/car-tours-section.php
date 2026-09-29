@@ -21,7 +21,7 @@ $query = new WP_Query($args);
     <section class="vm-section car-tour-section">
         <div class="car-tour-section__graphic">
             <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-003.png"
-                alt="image graphic phu quoc island tour" />
+                alt="image graphic phu quoc island tour" width="300" height="260" />
         </div>
         <div class="container">
             <?php vm_icon_heading() ?>
@@ -50,7 +50,8 @@ $query = new WP_Query($args);
                         <a href="<?= the_permalink(); ?>" class="car-tour-item d-flex swiper-slide"
                             aria-label="read more <?php the_title() ?>">
                             <div class="car-tour-item__thumb">
-                                <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>">
+                                <img src="<?= get_the_post_thumbnail_url(); ?>" alt="image for <?= the_title(); ?>" width="257"
+                                    height="218" />
                             </div>
                             <div class="car-tour-item-content">
                                 <div class="car-tour-item-content-wrap">

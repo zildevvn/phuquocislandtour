@@ -3,9 +3,9 @@ $location_tour = get_field('location_tour');
 $time_tour = get_field('time_tour');
 $price_tour = get_field('price_tour');
 $paxs_tours = get_field('paxs_tours');
-
 $min_pax = isset($paxs_tours['min']) ? $paxs_tours['min'] : '';
 $max_pax = isset($paxs_tours['max']) ? $paxs_tours['max'] : '';
+
 ?>
 <section class="vm-tour-info vm-section">
     <div class="container">

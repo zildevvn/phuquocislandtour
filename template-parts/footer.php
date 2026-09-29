@@ -19,7 +19,8 @@ $bg_footer = get_field('background_image', 'option');
                 <div class="main-footer__logo">
                     <a class="d-flex " href="<?php echo home_url(); ?>"
                         aria-label="<?php echo get_bloginfo('name'); ?>">
-                        <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>">
+                        <img src="<?php echo $logo_url; ?>" alt="<?php echo get_bloginfo('name'); ?>" width="200"
+                            height="54" />
                     </a>
                 </div>
 
@@ -127,10 +128,11 @@ $bg_footer = get_field('background_image', 'option');
 
                 <?php if (!empty($socials)): ?>
                     <div class="main-footer__socials d-flex align-items-center">
-                        <?php foreach ($socials as $social): ?>
+                        <?php foreach ($socials as $key => $social): ?>
                             <div class="item-social">
                                 <a href="<?= $social['link'] ?>" class="d-flex align-items-center justify-content-center">
-                                    <img src="<?= $social['icon'] ?>" alt="icon-footer">
+                                    <img src="<?= $social['icon'] ?>" alt="icon-footer <?= $key + 1 ?>" width="24"
+                                        height="24" />
                                 </a>
                             </div>
                         <?php endforeach; ?>
