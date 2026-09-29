@@ -5,7 +5,7 @@ $popular_options = get_field('popular_op_ticket_tpl');
 $phone = get_field('phone', 'option');
 ?>
 <?php if (!empty($popular_options)): ?>
-    <section class="vm-section popular-section">
+    <section id="popular-tickets" class="vm-section popular-section">
         <div class="popular-section__graphic">
             <img src="<?= get_template_directory_uri(); ?>/assets/images/img-graphic-001.png"
                 alt="image graphic phu quoc island tours" />

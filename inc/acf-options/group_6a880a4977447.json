@@ -3,45 +3,6 @@
     "title": "Template for Port",
     "fields": [
         {
-            "key": "field_6a880a49790a7",
-            "label": "Hero Section",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "left",
-            "endpoint": 0,
-            "selected": 0
-        },
-        {
-            "key": "field_6a880a49790ac",
-            "label": "Description",
-            "name": "desc_hero_port_tpl",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
             "key": "field_6a880a49790af",
             "label": "About Section",
             "name": "",
@@ -313,5 +274,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787305978
+    "modified": 1790671745
 }
