@@ -226,7 +226,7 @@ body.single-post {
 
             @include media-breakpoint-down(lg) {
                 flex-direction: column;
-                gap: 40px;
+                gap: 24px;
             }
         }
 
@@ -523,8 +523,13 @@ body.single-post {
             .sidebar-widget {
                 background: #F9FAFB;
                 border-radius: 20px;
-                padding: 32px;
+                padding: 32px 16px;
                 margin-bottom: 32px;
+
+                @include media-breakpoint-down(md) {
+                    padding: 24px 16px;
+                    margin-bottom: 24px;
+                }
 
                 &:last-child {
                     margin-bottom: 0;
@@ -670,6 +675,16 @@ body.single-post {
                         svg {
                             color: $color-primary;
                         }
+                    }
+                }
+            }
+
+            .widget-form-support {
+                .nf-form-cont .nf-form-content .nf-field-element ul {
+                    grid-template-columns: repeat(2, 1fr);
+
+                    @media (max-width: 399.98px) {
+                        grid-template-columns: repeat(1, 1fr);
                     }
                 }
             }
