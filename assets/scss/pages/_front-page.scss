@@ -553,14 +553,6 @@
             opacity: 0.65;
             pointer-events: none;
         }
-
-        // &__carousel {
-        //     overflow: inherit;
-        // }
-
-        // .tour-item {
-        //     box-shadow: 0px 18px 18px rgba(0, 106, 114, 0.15);
-        // }
     }
 
     .daily-tour-section {
@@ -596,6 +588,12 @@
 
                     &:hover {
                         background: $color-secondary;
+
+                        svg {
+                            path {
+                                stroke: #fff;
+                            }
+                        }
                     }
 
                     svg {

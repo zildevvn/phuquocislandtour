@@ -7411,7 +7411,6 @@ a > b {
 .swiper .swiper-button-prev:hover,
 .swiper .swiper-button-next:hover {
   background-color: #0C2C7A;
-  transform: scale(1.05);
 }
 .swiper .swiper-button-prev:hover svg path,
 .swiper .swiper-button-next:hover svg path {
@@ -11713,6 +11712,9 @@ body.offcanvas-open {
 }
 .page-template-front-page .daily-tour-section__carousel .swiper-action > div:hover {
   background: #00656D;
+}
+.page-template-front-page .daily-tour-section__carousel .swiper-action > div:hover svg path {
+  stroke: #fff;
 }
 .page-template-front-page .daily-tour-section__carousel .swiper-action > div svg path {
   stroke: #0C2C7A;
