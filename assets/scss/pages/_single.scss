@@ -687,6 +687,10 @@ body.single-post {
                         grid-template-columns: repeat(1, 1fr);
                     }
                 }
+
+                .nf-form-cont .nf-response-msg>p {
+                    font-size: calc(0.6rem + 0.6vw);
+                }
             }
         }
 

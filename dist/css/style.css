@@ -14875,6 +14875,9 @@ body.single-post .main-section .main-section-right .widget-form-support .nf-form
     grid-template-columns: repeat(1, 1fr);
   }
 }
+body.single-post .main-section .main-section-right .widget-form-support .nf-form-cont .nf-response-msg > p {
+  font-size: calc(0.6rem + 0.6vw);
+}
 body.single-post .main-section #vm-table-of-content {
   background: #F9FAFB;
   border: 1px solid #E5E7EB;
