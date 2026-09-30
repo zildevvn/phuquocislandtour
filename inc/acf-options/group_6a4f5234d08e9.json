@@ -310,16 +310,16 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_6a8400b63f365",
-                            "label": "Time",
-                            "name": "time",
+                            "key": "field_6a84010c3f366",
+                            "label": "Title",
+                            "name": "title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "100",
                                 "class": "",
                                 "id": ""
                             },
@@ -332,9 +332,9 @@
                             "parent_repeater": "field_6a84009d3f364"
                         },
                         {
-                            "key": "field_6a84010c3f366",
-                            "label": "Title",
-                            "name": "title",
+                            "key": "field_6a8400b63f365",
+                            "label": "Time",
+                            "name": "time",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -363,7 +363,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -975,7 +975,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "100",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
@@ -997,7 +997,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "100",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
@@ -1033,5 +1033,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1789526849
+    "modified": 1790761522
 }
