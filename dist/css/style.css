@@ -19609,6 +19609,9 @@ body.page-template-category-tours-template .quick-facts-section {
 body.page-template-category-tours-template .quick-facts-section .vm-media__content h2, body.page-template-category-tours-template .quick-facts-section .vm-media__content .h2 {
   text-align: left;
 }
+body.page-template-category-tours-template .about-section .vm-heading {
+  max-width: 100%;
+}
 
 body.tax-tour_locations .site-main {
   width: 100%;
