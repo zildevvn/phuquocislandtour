@@ -10,7 +10,7 @@ $desc = $best_time['desc'] ?: '';
     <div class="container">
         <div class="best-time-section__grid">
             <div class="best-time-section__content">
-                <h2 class="vm-heading h4">
+                <h2 class="vm-heading h3">
                     <?= $heading ?>
                 </h2>
 
@@ -20,7 +20,7 @@ $desc = $best_time['desc'] ?: '';
             </div>
 
             <div class="best-time-section__media">
-                <img src="<?= $img ?>" alt="image best time Phu Quoc Tour" />
+                <img src="<?= $img ?>" alt="image best time visut Phu Quoc Daily Tour" />
             </div>
         </div>
     </div>

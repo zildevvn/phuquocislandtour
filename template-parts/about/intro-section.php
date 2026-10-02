@@ -27,10 +27,6 @@ $license_desc = $operator_license['description'];
                     <?php endif; ?>
 
                     <div class="media-meta">
-                        <a href="https://www.dmca.com/Protection/Status.aspx?ID=5c4df07a-1c07-4bfe-8313-2f6ceb587ac5&refurl=https://vmtravel.com/about-us/"
-                            target="_blank" aria-label="read more VM Tralve DMC">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/img-dmc.png" alt="logo DMC">
-                        </a>
                         <button type="button" class="vm-button btn-view-license">
                             View Operator License
 

@@ -5,7 +5,7 @@ $counters = get_field('counters_list_hp');
 <?php if (!empty($counters)): ?>
     <section class="vm-section counters-section">
         <div class="container">
-            <div class="counters-section__list">
+            <div class="vm-counters">
                 <?php foreach ($counters as $key => $counter): ?>
                     <div class="counter-item">
                         <div class="counter-item__icon">
