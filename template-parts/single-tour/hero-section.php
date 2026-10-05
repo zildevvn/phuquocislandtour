@@ -66,7 +66,10 @@ $tour_type_name = ($tour_types && !is_wp_error($tour_types)) ? $tour_types[0]->n
 
                 <?php if ($price_tour): ?>
                     <div class="meta-item">
-                        <span>From $<?php echo number_format((float) $price_tour, 0); ?></span>
+                        <span>From
+                            <span class="mb-0">₫</span>
+                            <?php echo number_format((float) $price_tour, 0); ?>
+                        </span>
                     </div>
                 <?php endif; ?>
             </div>

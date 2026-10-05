@@ -81,16 +81,9 @@
         span {
             color: $color-primary;
             font-weight: 800;
-            margin-left: 8px;
-            display: inline-block;
-        }
-
-        svg {
-            stroke-width: 3;
-            width: 100%;
-            height: auto;
-            max-width: 20px;
-            stroke: $color-primary;
+            margin-left: 4px;
+            display: flex;
+            align-items: center;
         }
     }
 

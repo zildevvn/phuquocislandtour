@@ -510,7 +510,7 @@ function vm_ajax_submit_checkout()
     $message_admin .= "<tr><th style='{$th_style}'>Starting Time</th><td style='{$td_style}'>" . esc_html($selected_option['starting_time']) . "</td></tr>";
     $message_admin .= "<tr><th style='{$th_style}'>Participants</th><td style='{$td_style}'>{$total_pax} ({$adults} Adults, {$children} Children)</td></tr>";
     $formatted_price = number_format($total_price, 0, '.', ',');
-    $message_admin .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
+    $message_admin .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} ₫</strong></td></tr>";
     $message_admin .= "</table>";
     $message_admin .= "</div>";
 
@@ -539,7 +539,7 @@ function vm_ajax_submit_checkout()
         if (!empty($customer_country)) {
             $message_customer .= "<tr><th style='{$th_style}'>Country</th><td style='{$td_style}'>" . esc_html($customer_country) . "</td></tr>";
         }
-        $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} $</strong></td></tr>";
+        $message_customer .= "<tr><th style='{$th_style}'>Total Price</th><td style='{$td_style}'><strong style='color: #0C2C7A; font-size: 16px;'>{$formatted_price} ₫</strong></td></tr>";
         $message_customer .= "<tr><th style='{$th_style}'>Payment Method</th><td style='{$td_style}'>" . esc_html($payment_method_label) . "</td></tr>";
         $message_customer .= "</table>";
 
