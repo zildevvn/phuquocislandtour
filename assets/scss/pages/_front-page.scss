@@ -979,6 +979,37 @@
                 }
             }
 
+            &-meta {
+                .vm-rating {
+
+                    .kk-star-ratings {
+                        flex-wrap: wrap;
+                    }
+
+                    .kksr-stars {
+                        .kksr-star {
+                            padding-right: 3px !important;
+
+                            .kksr-icon {
+                                width: 13px !important;
+                                height: 13px !important;
+                            }
+                        }
+
+                    }
+
+
+                    .kksr-legend {
+                        margin-left: 0rem;
+                        margin-right: 0rem;
+                        font-size: 14px !important;
+                        width: 100%;
+                        display: inline-block;
+                        margin-top: 0.2rem;
+                    }
+                }
+            }
+
             &__title {
                 margin: 12px 0 0 0;
             }
@@ -1012,6 +1043,10 @@
                         }
                     }
                 }
+            }
+
+            &__price {
+                min-width: fit-content;
             }
         }
 

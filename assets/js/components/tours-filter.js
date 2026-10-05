@@ -8,8 +8,8 @@
         // ---------------------------
         // 1. UTILS & CONFIG
         // ---------------------------
-        const formatUSD = (val) => new Intl.NumberFormat('en-US', {
-            style: 'currency', currency: 'USD', minimumFractionDigits: 0
+        const formatUSD = (val) => new Intl.NumberFormat('vi-VN', {
+            style: 'currency', currency: 'VND', minimumFractionDigits: 0
         }).format(val);
 
         const SliderConfigs = {
@@ -18,7 +18,7 @@
                 formatDisplay: (min, max) => `${min} &ndash; ${max} Guests`
             },
             price: {
-                minDefault: 0, maxDefault: 1000, minRange: 0, maxRange: 1000, step: 10,
+                minDefault: 0, maxDefault: 20000000, minRange: 0, maxRange: 20000000, step: 10,
                 formatDisplay: (min, max) => `${formatUSD(min)} &mdash; ${formatUSD(max)}`
             }
         };
@@ -186,7 +186,7 @@
             if (!s.el.noUiSlider) {
                 const parsedMin = parseInt(s.minIn.value, 10);
                 const parsedMax = parseInt(s.maxIn.value, 10);
-                
+
                 let initMin = isNaN(parsedMin) ? config.minDefault : parsedMin;
                 let initMax = isNaN(parsedMax) ? config.maxDefault : parsedMax;
 

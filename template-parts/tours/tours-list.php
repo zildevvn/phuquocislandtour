@@ -38,7 +38,11 @@ $query = new WP_Query($args);
                     <div class="tours-sidebar__header mobile-only">
                         <h3 class="tours-sidebar__title">Filters</h3>
                         <button type="button" class="btn-close-filter" id="vm-close-filter-btn" aria-label="Close filters">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
                         </button>
                     </div>
                     <div class="tours-sidebar__widget tours-sidebar__search">
@@ -56,7 +60,7 @@ $query = new WP_Query($args);
                     <div class="tours-sidebar__widget tours-sidebar__pax">
                         <div class="range-header">
                             <label class="form-label">Number of Pax</label>
-                            <span class="range-value" id="vm-tours-pax-display">1 &ndash; 20 Guests</span>
+                            <span class="range-value" id="vm-tours-pax-display">1 - 20 Guests</span>
                         </div>
                         <div class="range-slider-container">
                             <div id="vm-tours-pax-slider"></div>
@@ -68,13 +72,13 @@ $query = new WP_Query($args);
                     <div class="tours-sidebar__widget tours-sidebar__price">
                         <div class="range-header">
                             <label class="form-label">Price Range</label>
-                            <span class="range-value" id="vm-tours-price-display">$0 &mdash; $1,000</span>
+                            <span class="range-value" id="vm-tours-price-display">₫0 - ₫20,000,000</span>
                         </div>
                         <div class="range-slider-container">
                             <div id="vm-tours-price-slider"></div>
                         </div>
                         <input type="hidden" id="vm-tours-price-min" value="0">
-                        <input type="hidden" id="vm-tours-price-max" value="1000">
+                        <input type="hidden" id="vm-tours-price-max" value="20000000">
                     </div>
 
                     <?php
@@ -121,7 +125,10 @@ $query = new WP_Query($args);
                             </div>
                             <div class="tours-header-controls">
                                 <button type="button" class="btn-mobile-filter" id="vm-mobile-filter-btn">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                    </svg>
                                     Filters
                                 </button>
                                 <button type="button" id="vm-clear-filters" class="btn-clear-filters"

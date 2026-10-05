@@ -9461,6 +9461,10 @@ body.offcanvas-open {
 .tour-item-meta, .tour-item-action {
   margin-top: 16px;
 }
+.tour-item-meta {
+  border-top: 1px solid rgb(221, 221, 221);
+  padding-top: 16px;
+}
 .tour-item-action {
   position: absolute;
   width: 100%;
@@ -9473,6 +9477,7 @@ body.offcanvas-open {
   gap: 4px;
   font-weight: 700;
   color: #0C2C7A;
+  min-width: fit-content;
 }
 .tour-item__time svg {
   width: 100%;
@@ -9507,6 +9512,24 @@ body.offcanvas-open {
   flex-shrink: 0;
   stroke: #0C2C7A;
   margin-top: 4px;
+}
+.tour-item .vm-rating .kk-star-ratings {
+  flex-wrap: wrap;
+}
+.tour-item .vm-rating .kksr-stars .kksr-star {
+  padding-right: 3px !important;
+}
+.tour-item .vm-rating .kksr-stars .kksr-star .kksr-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+.tour-item .vm-rating .kksr-legend {
+  margin-left: 0rem;
+  margin-right: 0rem;
+  font-size: 15px !important;
+  width: 100%;
+  display: inline-block;
+  margin-top: 0.35rem;
 }
 
 .hero-section-shared {
@@ -12056,6 +12079,24 @@ body.offcanvas-open {
   flex-shrink: 0;
   stroke: #0C2C7A;
 }
+.page-template-front-page .car-tour-section .car-tour-item-meta .vm-rating .kk-star-ratings {
+  flex-wrap: wrap;
+}
+.page-template-front-page .car-tour-section .car-tour-item-meta .vm-rating .kksr-stars .kksr-star {
+  padding-right: 3px !important;
+}
+.page-template-front-page .car-tour-section .car-tour-item-meta .vm-rating .kksr-stars .kksr-star .kksr-icon {
+  width: 13px !important;
+  height: 13px !important;
+}
+.page-template-front-page .car-tour-section .car-tour-item-meta .vm-rating .kksr-legend {
+  margin-left: 0rem;
+  margin-right: 0rem;
+  font-size: 14px !important;
+  width: 100%;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
 .page-template-front-page .car-tour-section .car-tour-item__title {
   margin: 12px 0 0 0;
 }
@@ -12082,6 +12123,9 @@ body.offcanvas-open {
 }
 .page-template-front-page .car-tour-section .car-tour-item__info span.group-size svg path {
   stroke: #0C2C7A;
+}
+.page-template-front-page .car-tour-section .car-tour-item__price {
+  min-width: fit-content;
 }
 .page-template-front-page .car-tour-section .swiper-action {
   gap: 10px;

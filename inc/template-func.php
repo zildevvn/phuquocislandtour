@@ -103,7 +103,12 @@ function vm_item_tour($class = '')
             <?php endif; ?>
 
             <div class="tour-item-meta d-flex align-items-center justify-content-between">
-                <?php vm_rating() ?>
+                <div class="vm-rating d-flex align-items-center">
+                    <?php if (function_exists('kk_star_ratings')): ?>
+                        <?php echo kk_star_ratings(); ?>
+                    <?php endif; ?>
+                </div>
+
                 <?php if (!empty($time)): ?>
                     <div class="tour-item__time d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

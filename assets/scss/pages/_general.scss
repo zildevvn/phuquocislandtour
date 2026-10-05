@@ -45,6 +45,11 @@
         margin-top: 16px;
     }
 
+    &-meta {
+        border-top: 1px solid rgb(221, 221, 221);
+        padding-top: 16px;
+    }
+
     &-action {
         position: absolute;
         width: 100%;
@@ -58,6 +63,7 @@
         gap: 4px;
         font-weight: 700;
         color: $color-primary;
+        min-width: fit-content;
 
         svg {
             width: 100%;
@@ -100,6 +106,35 @@
             flex-shrink: 0;
             stroke: $color-primary;
             margin-top: 4px;
+        }
+    }
+
+    .vm-rating {
+
+        .kk-star-ratings {
+            flex-wrap: wrap;
+        }
+
+        .kksr-stars {
+            .kksr-star {
+                padding-right: 3px !important;
+
+                .kksr-icon {
+                    width: 14px !important;
+                    height: 14px !important;
+                }
+            }
+
+        }
+
+
+        .kksr-legend {
+            margin-left: 0rem;
+            margin-right: 0rem;
+            font-size: 15px !important;
+            width: 100%;
+            display: inline-block;
+            margin-top: 0.35rem;
         }
     }
 }
