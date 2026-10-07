@@ -155,7 +155,8 @@ $faqs_tour = get_field('faqs_list_tour');
                     <div class="price">
                         <span class="label">From:</span>
                         <span class="value">
-                            $<?php echo number_format((float) ($price_tour ? $price_tour : 100)); ?>
+                            <span
+                                class="mb-0">₫</span><?php echo number_format((float) ($price_tour ? $price_tour : 100)); ?>
                         </span>
                         <?php
                         $is_car_tour = has_term('Car Tours', 'tour_cats', get_the_ID());
