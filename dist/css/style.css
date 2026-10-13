@@ -16730,6 +16730,9 @@ body.single-tours .faqs-list .faq-item__question h3, body.single-tours .faqs-lis
     font-size: 16px;
   }
 }
+body.single-tours #min-widget > iframe {
+  inset: auto 10px 65px auto !important;
+}
 
 /* --- DEMO Sticky Booking Card --- */
 .vm-form-booking {

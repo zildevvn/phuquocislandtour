@@ -73,7 +73,7 @@ if (!empty($whatsapp_number)) {
             <div class="hero-section-video">
                 <div class="gallery-item">
                     <div class="gallery-item__media">
-                        <video class="gallery-item__video lazy-video" autoplay muted loop playsinline preload="none"
+                        <video class="gallery-item__video lazy-video" autoplay muted loop playsinline preload="metadata"
                             poster="<?= get_template_directory_uri(); ?>/assets/images/img-poster.webp" width="840"
                             height="760">
                             <source src="<?= $video ?>" type="video/mp4">
