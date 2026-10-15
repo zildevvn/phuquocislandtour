@@ -3,7 +3,8 @@
 
 
   const hleInitStickyHeader = () => {
-    var $header = $('#site-header');
+    const $header = $('#site-header');
+    const $body = $('body')
     if ($header.length === 0) {
       return;
     }
@@ -19,11 +20,13 @@
       if (scrollTop > threshold) {
         if (!isFixed) {
           $header.addClass('is-fixed');
+          $body.addClass('is-fixed')
           isFixed = true;
         }
       } else {
         if (isFixed) {
           $header.removeClass('is-fixed');
+          $body.removeClass('is-fixed')
           isFixed = false;
         }
       }

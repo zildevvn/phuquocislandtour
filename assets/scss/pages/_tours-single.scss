@@ -1,4 +1,39 @@
 body.single-tours {
+    .main-section__sidebar-mobile {
+        transition: $transition-base;
+        opacity: 0;
+    }
+
+    &.is-fixed {
+        .main-section {
+            z-index: 99999999999;
+        }
+
+        .main-section__sidebar-mobile {
+            opacity: 1;
+        }
+
+        .btn-whatsapp,
+        .back-to-top.is-visible {
+            z-index: 999999999991;
+        }
+
+        .btn-whatsapp {
+            @include media-breakpoint-down(md) {
+                transform: translateY(-50px);
+            }
+        }
+    }
+
+    .btn-whatsapp {
+        transition: all 0.2s ease;
+        z-index: 999999999991;
+
+        @include media-breakpoint-down(md) {
+            transform: translateY(0px);
+        }
+    }
+
     .vm-tour-info {
         padding: 90px 0;
 

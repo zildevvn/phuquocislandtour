@@ -15098,6 +15098,34 @@ body.single-post .related-post-section__list .swiper-slide {
   }
 }
 
+body.single-tours .main-section__sidebar-mobile {
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+body.single-tours.is-fixed .main-section {
+  z-index: 99999999999;
+}
+body.single-tours.is-fixed .main-section__sidebar-mobile {
+  opacity: 1;
+}
+body.single-tours.is-fixed .btn-whatsapp,
+body.single-tours.is-fixed .back-to-top.is-visible {
+  z-index: 999999999991;
+}
+@media (max-width: 767.98px) {
+  body.single-tours.is-fixed .btn-whatsapp {
+    transform: translateY(-50px);
+  }
+}
+body.single-tours .btn-whatsapp {
+  transition: all 0.2s ease;
+  z-index: 999999999991;
+}
+@media (max-width: 767.98px) {
+  body.single-tours .btn-whatsapp {
+    transform: translateY(0px);
+  }
+}
 body.single-tours .vm-tour-info {
   padding: 90px 0;
 }
