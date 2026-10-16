@@ -1597,6 +1597,49 @@ import { CountUp } from 'countup.js';
         });
     };
 
+    const vmInitCustomTourModal = () => {
+        const $btn = $('#custom-tour-btn');
+        const $modal = $('.modal-custom-tour');
+        const $close = $modal.find('.modal-custom-tour__close');
+        const $overlay = $modal.find('.modal-custom-tour__overlay');
+
+        if (!$btn.length || !$modal.length) return;
+
+        const openModal = () => {
+            $modal.addClass('is-active');
+            $('body').addClass('modal-custom-tour-open');
+            setTimeout(() => {
+                $close.focus();
+            }, 100);
+        };
+
+        const closeModal = () => {
+            $modal.removeClass('is-active');
+            $('body').removeClass('modal-custom-tour-open');
+            $btn.focus();
+        };
+
+        $btn.on('click', function (e) {
+            e.preventDefault();
+            openModal();
+        });
+
+        $close.on('click', function (e) {
+            e.preventDefault();
+            closeModal();
+        });
+
+        $overlay.on('click', function () {
+            closeModal();
+        });
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && $modal.hasClass('is-active')) {
+                closeModal();
+            }
+        });
+    };
+
     const vmInitRelatedSwiper = () => {
         const $carousels = $('.related-tour-section__list.swiper, .related-post-section__list.swiper');
         if (!$carousels.length) return;
@@ -1887,6 +1930,7 @@ import { CountUp } from 'countup.js';
         vmInitHotelAreaTabs()
         vmInitAjaxPagination()
         vmInitSearchModal()
+        vmInitCustomTourModal()
         vmInitStarRating()
         vmTableOfContent()
         // vmLazyLoadVideos()

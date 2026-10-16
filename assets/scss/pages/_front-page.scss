@@ -1315,4 +1315,145 @@
             }
         }
     }
+
+    .custom-tour-section {
+        padding: 60px 0;
+
+        @include media-breakpoint-down(md) {
+            padding: 48px 0;
+        }
+
+        &__warp {
+            width: 100%;
+            position: relative;
+            z-index: 3;
+            color: #fff;
+            padding: 48px 24px;
+            box-shadow: rgba(0, 0, 0, 0.26) 0px 5px 12px;
+            border-radius: $border-radius;
+            overflow: hidden;
+
+            &::before {
+                content: " ";
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: linear-gradient(135deg, rgba(6, 37, 48, 0.94) 0%, rgba(11, 59, 73, 0.92) 50%, rgba(4, 26, 34, 0.97) 100%) center center / cover, radial-gradient(circle at 85% 20%, rgba(8, 145, 178, 0.35) 0%, transparent 60%), radial-gradient(circle at 15% 85%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+                z-index: 2;
+
+                background:
+                    linear-gradient(135deg,
+                        rgba(12, 55, 68, 0.88) 0%,
+                        rgba(20, 78, 91, 0.86) 50%,
+                        rgba(10, 43, 53, 0.91) 100%) center center / cover,
+                    radial-gradient(circle at 85% 20%,
+                        rgba(34, 184, 207, 0.38) 0%,
+                        transparent 60%),
+                    radial-gradient(circle at 15% 85%,
+                        rgba(245, 176, 65, 0.20) 0%,
+                        transparent 50%);
+            }
+        }
+
+        &-inner {
+            gap: 24px;
+            position: relative;
+            z-index: 3;
+
+            @include media-breakpoint-down(lg) {
+                flex-wrap: wrap;
+            }
+        }
+
+        &__left {
+            width: 70%;
+            flex-shrink: 0;
+
+            @include media-breakpoint-down(lg) {
+                width: 100%;
+            }
+
+            .vm-heading {
+                text-align: left;
+                color: #fff;
+                margin-bottom: 24px;
+                margin-top: 16px;
+
+                @include media-breakpoint-down(md) {
+                    margin-top: 8px;
+                    margin-bottom: 16px;
+                }
+            }
+        }
+
+        &__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: end;
+
+            @include media-breakpoint-down(lg) {
+                justify-content: start;
+            }
+        }
+
+        &__lable {
+            display: inline-flex;
+            padding: 3px 12px;
+            background: #fff;
+            color: $color-primary;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .vm-button {
+            background: $color-bg;
+            min-width: 246px;
+
+            &#custom-tour-btn {
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px)
+            }
+        }
+
+        a.vm-button {
+            color: $color-primary;
+            // margin-top: 12px;
+
+            svg {
+                path {
+                    stroke: $color-primary;
+                }
+            }
+        }
+
+
+        &__services {
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+
+            @include media-breakpoint-down(md) {
+                margin-top: 24px;
+            }
+
+            .service-item {
+                background-color: rgb(255 255 255 / 0.15);
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                gap: 0.375rem;
+                border-radius: 9999px;
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+        }
+    }
 }
