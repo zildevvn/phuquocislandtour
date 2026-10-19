@@ -566,6 +566,7 @@ import { CountUp } from 'countup.js';
             updateLightbox();
             $lightbox.addClass('is-active').attr('aria-hidden', 'false');
             $('body').css('overflow', 'hidden');
+            $('body').removeClass('is-fixed')
             isOpen = true;
             setTimeout(() => {
                 $lightbox.find('.tour-gallery__lightbox-close').focus();
@@ -575,6 +576,7 @@ import { CountUp } from 'countup.js';
         const closeLightbox = () => {
             $lightbox.removeClass('is-active').attr('aria-hidden', 'true');
             $('body').css('overflow', '');
+            $('body').addClass('is-fixed')
             isOpen = false;
             if ($lastFocusedElement && $lastFocusedElement.length) {
                 $lastFocusedElement.focus();

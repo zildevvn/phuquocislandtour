@@ -17345,7 +17345,7 @@ body.logged-in .vm-form-booking {
 .tour-gallery__lightbox {
   position: fixed;
   inset: 0;
-  z-index: 99999;
+  z-index: 9999999999991;
   display: none;
   align-items: center;
   justify-content: center;
@@ -17357,11 +17357,11 @@ body.logged-in .vm-form-booking {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.95);
-  z-index: 1;
+  z-index: 9999999999992;
 }
 .tour-gallery__lightbox .tour-gallery__lightbox-content {
   position: relative;
-  z-index: 2;
+  z-index: 9999999999993;
   width: 100%;
   height: 100%;
   display: flex;
