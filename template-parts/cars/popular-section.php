@@ -43,7 +43,7 @@ $phone = get_field('phone', 'option');
                     $val = trim($price);
                     if ($val === '')
                         return '<span class="price-contact">Contact</span>';
-                    return '<span class="price-amount">$ ' . number_format((float) $val, 0) . '</span>';
+                    return '<span class="price-amount">₫ ' . number_format((float) $val, 0) . '</span>';
                 };
                 ?>
                 <div class="hotel-area-tabs-container">
