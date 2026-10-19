@@ -12592,6 +12592,11 @@ body.offcanvas-open {
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+.page-template-front-page .custom-tour-section__services .service-item svg {
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+}
 
 body.page-template-cars-template .popular-section {
   position: relative;
