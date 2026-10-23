@@ -344,9 +344,7 @@ body.single-tours {
             color: $color-text;
         }
 
-        /* Shift hierarchy down by one level */
 
-        // H1 acts like H2
         h1 {
             font-size: calc(1.325rem + 0.9vw);
 
@@ -390,10 +388,6 @@ body.single-tours {
             letter-spacing: 0.5px;
             color: lighten($color-text, 15%);
         }
-
-
-
-
 
         &-inner {
             gap: 40px;

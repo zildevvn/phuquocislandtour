@@ -15633,9 +15633,6 @@ body.single-tours .main-section .h6:first-child {
 body.single-tours .main-section b {
   color: #19232B;
 }
-body.single-tours .main-section {
-  /* Shift hierarchy down by one level */
-}
 body.single-tours .main-section h1, body.single-tours .main-section .h1 {
   font-size: calc(1.325rem + 0.9vw);
 }

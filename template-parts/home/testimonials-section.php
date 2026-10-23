@@ -66,7 +66,9 @@ $testimonials = get_field('testimonials_list');
                                         </div>
                                     <?php endif; ?>
 
-                                    <?php vm_rating() ?>
+                                    <?php
+                                    // vm_rating() 
+                                    ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>
