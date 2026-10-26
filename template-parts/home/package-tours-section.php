@@ -35,7 +35,9 @@ $query = new WP_Query($args);
                 <div class=" swiper-wrapper">
                     <?php while ($query->have_posts()):
                         $query->the_post();
-                        vm_item_tour('swiper-slide');
+                        if (function_exists('vm_item_tour')) {
+                            vm_item_tour('swiper-slide');
+                        }
                     endwhile;
                     wp_reset_postdata();
                     ?>

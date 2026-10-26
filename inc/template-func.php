@@ -22,7 +22,7 @@ function vm_icon_heading()
         "></path>
         </svg>
     </div>
-<? }
+<?php }
 
 function vm_item_tour($class = '')
 {
