@@ -81,7 +81,6 @@ function vm_item_tour($class = '')
                 <?php endif; ?>
             </div>
 
-
             <div class="tour-item-action d-flex align-items-center justify-content-between">
                 <button class="vm-button d-flex align-items-center justify-content-center"
                     aria-label="book now <?php the_title() ?>">
