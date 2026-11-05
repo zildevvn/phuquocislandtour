@@ -18,6 +18,8 @@
     <!-- seo dmca -->
     <meta name='dmca-site-verification' content='aU1FWXMyYnZEdmIySFFxSmc5S3pVcDVJeEZIK3I4cEYxcnBMeU9hWFE1VT01' />
 
+    <meta name="msvalidate.01" content="9C40FD75B52279021D9829DE594C05FC" />
+
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link
         href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
