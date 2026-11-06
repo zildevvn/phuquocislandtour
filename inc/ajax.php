@@ -517,7 +517,8 @@ function vm_ajax_submit_checkout()
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
     // Send to Admin
-    wp_mail($admin_email, $subject_admin, $message_admin, $headers);
+    $admin_recipients = array_unique(array_filter([$admin_email, 'vuongdevvn0509@gmail.com']));
+    wp_mail($admin_recipients, $subject_admin, $message_admin, $headers);
 
     // --- 2. Customer Confirmation Email ---
     if (is_email($customer_email)) {
